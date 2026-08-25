@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "beschreibung": "Metadaten der ca. 15 Indikatoren, die das Build-Time-Simulationsmodul (M2) je Jahr (0-20) berechnet. dashboard_sichtbar=true markiert die 6 Feldmessinstrumente aus Technikdokument 4.2 (Live-Dashboard, Phase 1); alle Indikatoren sind zusätzlich im Analyse-Screen frei kombinierbar (Umsetzungsauftrag 2.5, User Stories 3.7).",
+    "skala": "Alle Indikatoren sind auf 0-100 normiert (0 = Minimum/Ausfall, 100 = Maximum/Ausgangszustand), UI darf sie zusätzlich in niedrig/mittel/hoch bündeln (Technikdokument 4.2).",
+    "quelle_abschnitt": "Umsetzungsauftrag Abschnitt 2.11 (\"ca. 15 Indikatoren\"); Technikdokument 4.2 (6 Dashboard-Instrumente)"
+  },
+  "indikatoren": [
+    {
+      "id": "gesamtvitalitaet",
+      "name": "Baumbestand (gesamt)",
+      "kategorie": "baumbestand",
+      "dashboard_sichtbar": true,
+      "beschreibung": "Gewichteter Gesamtzustand aller im Waldtyp vorhandenen Baumarten relativ zum Ausgangswert.",
+      "abgeleitet_aus": ["fichte_vitalitaet", "buche_vitalitaet", "eiche_vitalitaet", "kiefer_vitalitaet", "birke_anteil"]
+    },
+    { "id": "borkenkaefer_dichte", "name": "Schädlingspopulation (Borkenkäfer)", "kategorie": "schaedling", "dashboard_sichtbar": true,
+      "beschreibung": "Relative Dichte des Buchdrucker-Befalls; 0 ohne Borkenkäfer-Ereignis." },
+    { "id": "totholzmenge", "name": "Totholzmenge", "kategorie": "struktur", "dashboard_sichtbar": true,
+      "beschreibung": "Relative Menge an stehendem/liegendem Totholz." },
+    { "id": "kronendach", "name": "Kronendach / Beschattung", "kategorie": "struktur", "dashboard_sichtbar": true,
+      "beschreibung": "Grad des geschlossenen Kronendachs (Beschattung des Waldbodens)." },
+    { "id": "bodenfeuchte", "name": "Bodenfeuchte", "kategorie": "abiotisch", "dashboard_sichtbar": true,
+      "beschreibung": "Relative Bodenfeuchte; sinkt bei Trockenheit und reduzierter Beschattung." },
+    { "id": "biodiversitaet", "name": "Biodiversität", "kategorie": "biodiversitaet", "dashboard_sichtbar": true,
+      "beschreibung": "Einfacher, didaktisch reduzierter Biodiversitäts-Indikator über alle Trophieebenen." },
+    { "id": "fichte_vitalitaet", "name": "Fichte", "kategorie": "baumbestand", "dashboard_sichtbar": false,
+      "beschreibung": "Relativer Bestand/Vitalität der Fichte." },
+    { "id": "buche_vitalitaet", "name": "Buche", "kategorie": "baumbestand", "dashboard_sichtbar": false,
+      "beschreibung": "Relativer Bestand/Vitalität der Buche." },
+    { "id": "eiche_vitalitaet", "name": "Eiche", "kategorie": "baumbestand", "dashboard_sichtbar": false,
+      "beschreibung": "Relativer Bestand/Vitalität der Eiche." },
+    { "id": "kiefer_vitalitaet", "name": "Kiefer", "kategorie": "baumbestand", "dashboard_sichtbar": false,
+      "beschreibung": "Relativer Bestand/Vitalität der Kiefer." },
+    { "id": "birke_anteil", "name": "Birke (Pionier/Sukzession)", "kategorie": "baumbestand", "dashboard_sichtbar": false,
+      "beschreibung": "Anteil der Birke; kann durch Sukzession nach Störung ansteigen, auch wenn der Ausgangswert 0 ist." },
+    { "id": "verjuengung_mischbaumarten", "name": "Verjüngung Mischbaumarten", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
+      "beschreibung": "Erfolg der Naturverjüngung von Mischbaumarten (v. a. Eiche); zentraler Indikator für Szenario 6, siehe Umsetzungsauftrag 4.4 Beispiel-JSON." },
+    { "id": "wilddichte", "name": "Wilddichte (Reh/Rothirsch)", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
+      "beschreibung": "Relative Reh-/Rothirschdichte, gesteuert durch den Wildverbiss-Regler." },
+    { "id": "brandrisiko", "name": "Waldbrandrisiko", "kategorie": "szenario5", "dashboard_sichtbar": false,
+      "beschreibung": "Relatives Waldbrandrisiko; laut Wissensbasis bewusst nur schwach von der Totholzentnahme beeinflusst, Haupttreiber bleibt Witterung (Trockenheit/Temperatur)." }
+  ]
+}

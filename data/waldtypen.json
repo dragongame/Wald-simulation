@@ -15,10 +15,17 @@
         "buche": "dominant",
         "eiche": "beigemischt",
         "birke": "keine (nur als Pionier nach Störung)",
-        "fichte": "keine",
+        "fichte": "vereinzelt (gering, nicht dominant)",
         "kiefer": "keine"
       },
-      "anfangsbestand_hinweis": "Wissensbasis nennt zusätzlich Hainbuche, Bergahorn und Esche als beigemischt; diese sind im reduzierten Modell keine eigenen Baum-Knoten.",
+      "anfangsbestand_anteil_prozent": {
+        "buche": 65,
+        "eiche": 25,
+        "birke": 0,
+        "fichte": 5,
+        "kiefer": 0
+      },
+      "anfangsbestand_hinweis": "Wissensbasis nennt zusätzlich Hainbuche, Bergahorn und Esche als beigemischt; diese sind im reduzierten Modell keine eigenen Baum-Knoten. Numerische Prozentanteile sind eine Modellierungsentscheidung für M2 (Build-Time-Simulation), keine exakten Wissensbasis-Werte (didaktische Reduktion, Abschnitt 5). Die geringe Fichten-Beimischung ist absichtlich >0: die Wissensbasis (6.2/Szenario 1) verlangt, dass Borkenkäferbefall im Mischwald 'nur lokalen Schaden' erzeugt, WEIL der Käfer dort 'keine durchgehende Fichtennahrung findet' - das setzt voraus, dass zumindest vereinzelt Fichten vorhanden sind, auch wenn die Fließtext-Baumartenliste in Wissensbasis Abschnitt 1 sie nicht nennt (dort nur die pnV-Arten aufgezählt). Ohne diese Spur-Population wäre der Kontrasttest (Umsetzungsauftrag Abschnitt 6) mechanistisch nicht abbildbar.",
       "boden_wasser": "Tiefgründige, nährstoffreiche Braun-/Parabraunerden; ausgeglichener Wasserhaushalt durch unterschiedlich tiefe Wurzelsysteme (Herzwurzler Buche, Pfahlwurzler Eiche).",
       "krautschicht": "artenreich (u. a. Buschwindröschen, Waldmeister), v. a. im Frühjahr vor dem Laubaustrieb",
       "resilienzfaktoren": {
@@ -46,6 +53,13 @@
         "kiefer": "keine",
         "birke": "keine (nur als Pionier nach Störung)"
       },
+      "anfangsbestand_anteil_prozent": {
+        "fichte": 95,
+        "buche": 0,
+        "eiche": 0,
+        "kiefer": 0,
+        "birke": 0
+      },
       "boden_wasser": "Fichte ist Flachwurzler (\"Tellerwurzel\"); auf gut durchlüfteten Böden Senkerwurzeln bis ~2 m, auf feuchten/schlecht durchlüfteten Böden nur 20-40 cm tief - macht sie gleichzeitig windwurf- UND trockenstressanfällig. Fichtennadelstreu versauert den Boden.",
       "krautschicht": "artenarm, dunkler und saurer Boden typisch für Fichtenplantagen",
       "resilienzfaktoren": {
@@ -72,6 +86,13 @@
         "fichte": "keine",
         "buche": "keine",
         "eiche": "keine"
+      },
+      "anfangsbestand_anteil_prozent": {
+        "kiefer": 80,
+        "birke": 15,
+        "fichte": 0,
+        "buche": 0,
+        "eiche": 0
       },
       "boden_wasser": "Anspruchslos, tiefwurzelnder Pfahlwurzler; übersteht Trockenheit und sandige, nährstoffarme Böden gut (\"Stresstoleranz-Stratege\"). Natürlicherweise nur auf Extremstandorten dominant, sonst durch Buchenkonkurrenz verdrängt.",
       "krautschicht": "artenarm; an einem Hitzetag wurden bis zu 45°C am Boden einer Kiefernmonokultur bei Rheinsberg gemessen",
