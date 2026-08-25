@@ -1,0 +1,18 @@
+A mixed beech-oak stand with visible but still limited dieback: a small cluster of dead or fallen trees in one corner of the scene with a patch of deadwood and pioneer birch saplings starting to regrow there, while the majority of the stand remains green and intact — illustrating that damage stays localized even in a severe scenario. No spruce trees present.
+
+Botanical field-journal illustration, ink-and-watercolor sketch style, as if
+drawn in a naturalist's observation notebook. Moderate hand-drawn detail with
+visible watercolor texture and fine ink linework — not photorealistic, not a
+glossy 3D render, not flat cartoon/vector style. Muted, earthy color palette:
+moss green, bark brown, warm amber/rust, soft parchment tones. A small forest
+stand viewed from a slight distance, several trees with visible ground and
+understory, on a plain warm off-white paper-colored background (#EFE9DC),
+softly vignetted at the edges, no sky detail, no distant horizon. No text, no
+labels, no watermark, no signature. Wide landscape canvas (roughly 16:9),
+consistent lighting and framing across the whole set.
+
+avoid: cartoon style, flat vector illustration, glossy 3D render,
+photorealistic photograph, neon or highly saturated colors, visible text,
+labels, watermark or signature, sky detail, distant horizon
+
+# Hinweis: Für Mischwald ist dieser Schweregrad im Modell absichtlich schwer/selten erreichbar (Akzeptanzkriterium: nur lokaler Schaden) — Bild trotzdem vorhalten.

@@ -60,7 +60,7 @@ watermark or signature, multiple unrelated species in one image
 
 | # | Status | Dateiname (Vorschlag) | Verwendungsort in der App | Bildtyp (A / B / Sonstiges) | Prompt-Entwurf (Zustandsteil) | Priorität |
 |---|---|---|---|---|---|---|
-| _(noch leer – wird während der Umsetzung befüllt)_ | | | | | | |
+| 1 | offen | stoerung_wildverbiss.png | Wildverbiss-Regler (Kategorie „Strukturelles Ungleichgewicht", 2.10.2/3.2 Umsetzungsauftrag) auf dem Störungs-/Reglerbildschirm | A | „A symbolic illustration of overabundant deer browsing pressure on forest regeneration: a small browsed young sapling with visibly bitten-off shoot tips standing next to a healthy intact twig for contrast, evoking chronic selective browsing damage rather than a single acute event." | mittel |
 
 <!--
 Beispielzeile zur Orientierung (bitte löschen, sobald die erste echte Zeile eingetragen wird):

@@ -1,0 +1,3 @@
+A simplified, iconic emblem combining an open field-journal notebook with a small leaf or sprig growing from its pages, minimal ink-linework, bold and simple enough to remain legible at very small sizes, same muted earthy color palette (moss green, bark brown, parchment) as the rest of the app, on a plain solid background, square canvas, no text, no watermark.
+
+# Hinweis: Reduzierter Stil (kein volles Aquarell-Detail, siehe Fehlende_Grafiken_Bekannt Abschnitt 5) — feine Textur liest sich bei 48-192px kaum noch. Export in mehreren Auflösungen (typ. 192x192 und 512x512) für manifest.json.

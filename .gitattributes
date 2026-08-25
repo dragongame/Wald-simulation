@@ -1,0 +1,23 @@
+# Normalize line endings to LF for all text files, auto-detect text vs. binary
+* text=auto eol=lf
+
+# Explicit text types
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+
+# Binary assets - never diff/merge as text, never line-ending-normalize
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
