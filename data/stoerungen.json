@@ -1,0 +1,244 @@
+{
+  "_meta": {
+    "beschreibung": "Störungs-Stammdaten (5 Ereignis-Störungen + Wildverbiss-Regler + Zeit-/Kombinationsregeln), single source of truth für M2 (Build-Time-Simulationsmodul) und M4 (Auswahl-UI)."
+  },
+  "kategorien": [
+    {
+      "id": "naturereignis",
+      "name": "Naturereignis",
+      "beschreibung": "Abiotisch ausgelöst oder biotisch als Sekundäreffekt, wirkt von außen auf das System ein, zeitlich klar abgrenzbar (Event).",
+      "mitglieder": [
+        "borkenkaefer",
+        "trockenheit",
+        "temperatur",
+        "sturm"
+      ]
+    },
+    {
+      "id": "bewirtschaftungsmassnahme",
+      "name": "Bewirtschaftungsmaßnahme",
+      "beschreibung": "Eine bewusste menschliche Einzelmaßnahme mit eingebautem Zielkonflikt zwischen zwei Schutzgütern (Sicherheit vs. Biodiversität).",
+      "mitglieder": [
+        "totholzentnahme"
+      ]
+    },
+    {
+      "id": "strukturelles_ungleichgewicht",
+      "name": "Strukturelles Ungleichgewicht",
+      "beschreibung": "Kein einzelnes Ereignis, sondern ein dauerhaft fehlender Regulationsmechanismus (fehlende Prädatoren, unzureichende Bejagung), der graduell über Jahrzehnte wirkt.",
+      "mitglieder": [
+        "wildverbiss_regler"
+      ]
+    }
+  ],
+  "ereignis_stoerungen": [
+    {
+      "id": "borkenkaefer",
+      "name": "Borkenkäferbefall",
+      "kategorie": "naturereignis",
+      "icon_sprite": "borkenkaefer_massenvermehrung.png",
+      "icon_hinweis": "Kein neues Bild nötig - nutzt das bereits vorhandene Art-Sprite.",
+      "kurzbeschreibung": "Der Buchdrucker befällt bevorzugt geschwächte Fichten und kann sich bei warm-trockener Witterung explosionsartig vermehren.",
+      "relevante_knoten": [
+        "borkenkaefer",
+        "fichte",
+        "blaeuepilz",
+        "buntspecht",
+        "ameisenbuntkaefer",
+        "totholz"
+      ],
+      "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 1"
+    },
+    {
+      "id": "trockenheit",
+      "name": "Trockenheit / Dürre",
+      "kategorie": "naturereignis",
+      "icon_sprite": "stoerung_trockenheit.png",
+      "kurzbeschreibung": "Wassermangel senkt die Abwehrkraft der Bäume, besonders der Fichte, und macht sie anfälliger für Borkenkäfer und Hallimasch.",
+      "relevante_knoten": [
+        "wasser",
+        "fichte",
+        "borkenkaefer",
+        "hallimasch",
+        "buche",
+        "eiche",
+        "kiefer"
+      ],
+      "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 2"
+    },
+    {
+      "id": "temperatur",
+      "name": "Höhere Temperaturen",
+      "kategorie": "naturereignis",
+      "icon_sprite": "stoerung_temperatur.png",
+      "kurzbeschreibung": "Wärme beschleunigt die Käferentwicklung (mehr Generationen/Jahr) und verschiebt langfristig die Klima-Nischen der Baumarten.",
+      "relevante_knoten": [
+        "temperatur",
+        "borkenkaefer",
+        "fichte"
+      ],
+      "besonderheit": "dauerhafter_hintergrundfaktor",
+      "besonderheit_hinweis": "Anders als die anderen 4 Ereignis-Störungen kein punktuelles Trigger-Jahr: ab Jahr 0 durchgehend als erhöhter Hintergrundfaktor aktiv. Bei Kombination mit einer zweiten Störung entfällt deshalb die Reihenfolge-Auswahl in der UI.",
+      "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 3; Umsetzungsauftrag 2.6"
+    },
+    {
+      "id": "sturm",
+      "name": "Extremwetter (Sturm/Windwurf)",
+      "kategorie": "naturereignis",
+      "icon_sprite": "stoerung_sturm.png",
+      "kurzbeschreibung": "Sturm wirft v. a. flachwurzelnde Fichten um; das liegende Holz ist ideales Brutmaterial für den Borkenkäfer im Folgejahr.",
+      "relevante_knoten": [
+        "fichte",
+        "borkenkaefer",
+        "birke",
+        "eichelhaeher"
+      ],
+      "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 4"
+    },
+    {
+      "id": "totholzentnahme",
+      "name": "Totholzentnahme zur Waldbrandprävention",
+      "kategorie": "bewirtschaftungsmassnahme",
+      "icon_sprite": "stoerung_totholzentnahme.png",
+      "kurzbeschreibung": "Bewusste menschliche Entscheidung mit Zielkonflikt: Der erhoffte Effekt auf das Brandrisiko ist wissenschaftlich nur gering/unsicher, der Effekt auf die Biodiversität (Habitatverlust) ist dagegen deutlich.",
+      "relevante_knoten": [
+        "mensch_bewirtschaftung",
+        "totholz",
+        "hallimasch",
+        "zunderschwamm",
+        "buntspecht",
+        "ameisenbuntkaefer"
+      ],
+      "relevantester_waldtyp": "kiefernwald",
+      "empfehlung_umsetzung": "Brandschutz-Effekt bewusst klein/unsicher modellieren (kein starker linearer Effekt); der klar sichtbare, starke Effekt liegt auf dem Biodiversitäts-Indikator.",
+      "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 5; Umsetzungsauftrag 2.10.1/2.10.4"
+    }
+  ],
+  "wildverbiss_regler": {
+    "id": "wildverbiss_regler",
+    "name": "Prädator-Beute-Regulation / Wilddichte",
+    "kategorie": "strukturelles_ungleichgewicht",
+    "icon_sprite": "stoerung_wildverbiss.png",
+    "icon_hinweis": "In Fehlende_Grafiken_Bekannt ursprünglich nicht vorgesehen; während der Umsetzung ergänzt, siehe Fehlende_Grafiken_Laufend_Waldsimulation_Klasse8.md.",
+    "typ": "unabhaengiger_regler",
+    "kurzbeschreibung": "Fehlen große Beutegreifer (Luchs, Wolf) oder wird zu wenig gejagt, steigt die Reh-/Rothirschdichte über das für die Verjüngung tragbare Maß - eine schleichende, chronische Störung ohne einzelnes Auslöse-Ereignis.",
+    "stufen": [
+      "niedrig",
+      "mittel",
+      "hoch"
+    ],
+    "anzahl_stufen": 3,
+    "standardwert": "niedrig",
+    "standardwert_hinweis": "niedrig = kein/kaum Effekt (funktionierende Regulation, Kontrastfall Luchs/Wolf).",
+    "bewusst_diskret_hinweis": "Bewusst nur 3 feste Stufen statt stufenlos, damit alle Parameter für die Build-Time-Vorabsimulation diskret/endlich bleiben (Umsetzungsauftrag 2.11).",
+    "relevante_knoten": [
+      "reh",
+      "rothirsch",
+      "eichelhaeher",
+      "eichhoernchen",
+      "eiche",
+      "luchs",
+      "wolf"
+    ],
+    "relevantester_waldtyp": "mischwald",
+    "isoliert_spielbar": true,
+    "isoliert_spielbar_hinweis": "Bei 0 Ereignis-Störungen + Regler != niedrig zeigt sich im Mischwald die rein schleichende Verarmung der Baumartenvielfalt ohne akutes Ereignis (pädagogisch explizit gewollt, Wissensbasis Szenario 6).",
+    "zeitverhalten": {
+      "beschreibung": "Reine Encoding-Logik im Berechnungsmodul (M2), keine gesonderte UI: Effekt auf Verjüngung/Baumartenvielfalt ist in der ersten Hälfte der 20 Jahre kaum sichtbar, nimmt in der zweiten Hälfte zu.",
+      "sichtbar_ab_jahr_ungefaehr": 10
+    },
+    "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 6; Umsetzungsauftrag 2.10.2"
+  },
+  "paar_zeitabstaende": [
+    {
+      "paar": [
+        "sturm",
+        "borkenkaefer"
+      ],
+      "abstand_jahre": 1,
+      "reihenfolge_waehlbar": true,
+      "annahme": false,
+      "beschreibung": "Borkenkäfer-Massenvermehrung im Folgejahr nach Sturm (explizit in der Wissensbasis, Szenario 4)."
+    },
+    {
+      "paar": [
+        "trockenheit",
+        "borkenkaefer"
+      ],
+      "abstand_jahre": 0,
+      "reihenfolge_waehlbar": true,
+      "annahme": false,
+      "beschreibung": "Unmittelbares Zusammenwirken innerhalb derselben Vegetationsperiode (Wissensbasis, Szenario 2)."
+    },
+    {
+      "paar": [
+        "sturm",
+        "trockenheit"
+      ],
+      "abstand_jahre": 1,
+      "reihenfolge_waehlbar": true,
+      "annahme": true,
+      "beschreibung": "Nicht explizit in der Wissensbasis behandelt; Annahme, vor dem echten Unterrichtseinsatz mit einer Lehrkraft abzugleichen (Umsetzungsauftrag 2.6)."
+    },
+    {
+      "paar": [
+        "totholzentnahme",
+        "borkenkaefer"
+      ],
+      "abstand_jahre": 0,
+      "reihenfolge_waehlbar": false,
+      "annahme": true,
+      "beschreibung": "Totholzentnahme reduziert ab ihrem Zeitpunkt dauerhaft die Regulationskapazität (Habitat für Buntspecht/Ameisenbuntkäfer); neue Annahme, mit Lehrkraft abzugleichen (Umsetzungsauftrag 2.10.4)."
+    },
+    {
+      "paar": [
+        "totholzentnahme",
+        "trockenheit"
+      ],
+      "abstand_jahre": 0,
+      "reihenfolge_waehlbar": false,
+      "annahme": true,
+      "beschreibung": "Wie totholzentnahme+borkenkaefer; gleichzeitig (Umsetzungsauftrag 2.10.4)."
+    },
+    {
+      "paar": [
+        "totholzentnahme",
+        "sturm"
+      ],
+      "abstand_jahre": 0,
+      "reihenfolge_waehlbar": false,
+      "annahme": true,
+      "beschreibung": "Wie totholzentnahme+borkenkaefer; gleichzeitig (Umsetzungsauftrag 2.10.4)."
+    }
+  ],
+  "temperatur_kombinationen": {
+    "beschreibung": "Höhere Temperaturen ist ab Jahr 0 durchgehend aktiver Hintergrundfaktor (kein Trigger-Jahr). Bei Kombination mit einer zweiten Störung entfällt deshalb die Reihenfolge-Auswahl in der UI - die Partner-Störung triggert am angegebenen Jahr.",
+    "partner_trigger_jahr": {
+      "borkenkaefer": 0,
+      "trockenheit": 0,
+      "sturm": 1,
+      "totholzentnahme": 0
+    },
+    "quelle_abschnitt": "Umsetzungsauftrag Abschnitt 2.6 / 2.10.4"
+  },
+  "play_freischaltung": {
+    "regel": "\"Play\" ist erst aktivierbar, wenn mindestens eine Abweichung vom Ausgangszustand gewählt ist: mindestens 1 Ereignis-Störung ODER Wildverbiss-Regler != niedrig. Sonst erscheint ein Hinweistext.",
+    "ereignis_stoerungen_anzahl": {
+      "min": 0,
+      "max": 2
+    },
+    "quelle_abschnitt": "Umsetzungsauftrag Abschnitt 2.10.2 / 3.2"
+  },
+  "kombinatorik": {
+    "beschreibung": "Erwartete Gesamtzahl vorab zu berechnender 20-Jahres-Verläufe für die Build-Time-Vorabsimulation (M2) - siehe Umsetzungsauftrag 2.11. Wird dort NICHT berechnet, sondern nur als Prüfsumme für das Build-Skript dokumentiert.",
+    "ereignis_auswahlzustaende": 22,
+    "ereignis_auswahlzustaende_erklaerung": "0 Ereignisse (1) + 5 einzelne (5) + 16 Zweierkombinationen (Temperatur-Paare ohne Reihenfolge gezählt) = 22.",
+    "regler_stufen": 3,
+    "ungueltige_kombination_nichts_gewaehlt": 1,
+    "konfigurationen_pro_waldtyp": 65,
+    "konfigurationen_pro_waldtyp_formel": "22 * 3 - 1 = 65",
+    "waldtypen": 3,
+    "gesamt_zeitreihen": 195,
+    "gesamt_zeitreihen_formel": "65 * 3 = 195"
+  }
+}

@@ -1,0 +1,831 @@
+{
+  "_meta": {
+    "beschreibung": "Knoten-Stammdaten des Netzwerk-Graphen (single source of truth).",
+    "anzahl_knoten_gesamt": 35,
+    "anzahl_zaehlt_zu_32": 32,
+    "hinweis_abiotisch": "licht/wasser/temperatur zählen laut Umsetzungsauftrag 2.7/2.8 NICHT zu den 32 Lexikon-Knoten, werden aber für die abiotische Kopplung im Netzwerk-Graph benötigt (Wissensbasis 3.2) und im Arten-Lexikon nicht gelistet.",
+    "quellenrangfolge": "Umsetzungsauftrag > Wissensbasis > Styleguide > Illustrations-Promptvorlage > Technikdokument/User Stories"
+  },
+  "knoten": [
+    {
+      "id": "fichte",
+      "name": "Gemeine Fichte",
+      "wissenschaftlicher_name": "Picea abies",
+      "kategorie": "baum",
+      "trophieebene": 1,
+      "merkmale": {
+        "trockenresistenz": "gering",
+        "wurzeltyp": "Flachwurzler"
+      },
+      "rolle": "Hauptwirt des Buchdruckers; wirtschaftlich wichtigste, ökologisch riskanteste Baumart des Modells",
+      "steckbrief_fakten": [
+        "Flachwurzler – dadurch besonders windwurf- und trockenstressanfällig.",
+        "Hauptwirt des Borkenkäfers (Buchdrucker) und hat von allen Nadelbäumen im Modell die geringste Trockenheitsresistenz."
+      ],
+      "sprite": {
+        "praefix": "fichte",
+        "zustandsvarianten": [
+          "gesund",
+          "gestresst",
+          "befallen",
+          "abgestorben",
+          "totholz"
+        ],
+        "dateimuster": "fichte_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 3",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "buche",
+      "name": "Rotbuche",
+      "wissenschaftlicher_name": "Fagus sylvatica",
+      "kategorie": "baum",
+      "trophieebene": 1,
+      "merkmale": {
+        "trockenresistenz": "mittel-gering",
+        "wurzeltyp": "Herzwurzler",
+        "schattentoleranz": "sehr hoch"
+      },
+      "rolle": "Klimaxbaumart, konkurrenzstärkste Baumart Mitteleuropas (\"Mutter des Waldes\")",
+      "steckbrief_fakten": [
+        "Extrem schattentolerant – ihre Jungpflanzen wachsen noch bei nur rund 20% Lichtangebot.",
+        "Beschattet mit ihrer dichten Krone lichtbedürftige Konkurrenten wie Eiche und Fichte."
+      ],
+      "sprite": {
+        "praefix": "buche",
+        "zustandsvarianten": [
+          "gesund",
+          "gestresst"
+        ],
+        "dateimuster": "buche_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 1",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "eiche",
+      "name": "Stiel-/Traubeneiche",
+      "wissenschaftlicher_name": "Quercus robur / Q. petraea",
+      "kategorie": "baum",
+      "trophieebene": 1,
+      "merkmale": {
+        "trockenresistenz": "mittel-hoch",
+        "wurzeltyp": "Pfahlwurzler"
+      },
+      "rolle": "Lichtbaumart; behauptet sich ohne Konkurrenzdruck nur auf trocken-warmen oder staunassen Extremstandorten",
+      "steckbrief_fakten": [
+        "Tiefe Pfahlwurzel macht sie trockenheitsresistenter und standfester als die Fichte.",
+        "Ihre Verjüngung hängt stark von Eichelhäher und Eichhörnchen ab, die die schweren Eicheln verbreiten."
+      ],
+      "sprite": {
+        "praefix": "eiche",
+        "zustandsvarianten": [
+          "gesund"
+        ],
+        "dateimuster": "eiche_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 2",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "kiefer",
+      "name": "Waldkiefer",
+      "wissenschaftlicher_name": "Pinus sylvestris",
+      "kategorie": "baum",
+      "trophieebene": 1,
+      "merkmale": {
+        "trockenresistenz": "hoch",
+        "wurzeltyp": "Pfahlwurzler"
+      },
+      "rolle": "Pionier- und Stresstoleranz-Stratege, Trocken-Spezialist auf Sandböden",
+      "steckbrief_fakten": [
+        "Übersteht Trockenheit und nährstoffarme Sandböden besser als jede andere Baumart im Modell.",
+        "Harzreiches Holz und trockene Nadelstreu machen Kiefernwälder besonders waldbrandgefährdet."
+      ],
+      "sprite": {
+        "praefix": "kiefer",
+        "zustandsvarianten": [
+          "gesund",
+          "gestresst"
+        ],
+        "dateimuster": "kiefer_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 4",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "birke",
+      "name": "Hänge-Birke",
+      "wissenschaftlicher_name": "Betula pendula",
+      "kategorie": "baum",
+      "trophieebene": 1,
+      "merkmale": {
+        "trockenresistenz": "mittel"
+      },
+      "rolle": "Pionierbaumart, leitet nach Störungen die Wiederbewaldung ein",
+      "steckbrief_fakten": [
+        "Besiedelt als erste Baumart Störflächen wie Windwurf- oder Käferflächen.",
+        "Leichte, windverbreitete Samen ermöglichen eine schnelle Wiederbesiedlung offener Flächen."
+      ],
+      "sprite": {
+        "praefix": "birke",
+        "zustandsvarianten": [
+          "pionier"
+        ],
+        "dateimuster": "birke_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 5",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "hasel",
+      "name": "Hasel",
+      "wissenschaftlicher_name": "Corylus avellana",
+      "kategorie": "strauch",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Windblüher; Strauch- und Waldrandart",
+      "steckbrief_fakten": [
+        "Windblütler, dessen Nüsse eine wichtige Nahrungsquelle für Eichhörnchen und Eichelhäher sind.",
+        "Typische Strauch- und Waldrandart."
+      ],
+      "sprite": {
+        "praefix": "hasel",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "hasel_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 6",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "holunder",
+      "name": "Schwarzer Holunder",
+      "wissenschaftlicher_name": "Sambucus nigra",
+      "kategorie": "strauch",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Nährstoff- und lichtliebende Störzeigerart",
+      "steckbrief_fakten": [
+        "Seine Beeren werden von Vögeln gefressen und dabei verbreitet (Endozoochorie).",
+        "Zeigt nährstoffreiche, gestörte Standorte an."
+      ],
+      "sprite": {
+        "praefix": "holunder",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "holunder_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 7",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "brombeere",
+      "name": "Brombeere",
+      "wissenschaftlicher_name": "Rubus fruticosus agg.",
+      "kategorie": "strauch",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Besiedelt schnell lichte, gestörte Flächen",
+      "steckbrief_fakten": [
+        "Dominiert schnell lichte/gestörte Flächen wie Windwurf- oder Kahlflächen.",
+        "Konkurriert dort mit der Baumverjüngung um Licht, bietet aber Deckung und Nahrung für Kleintiere."
+      ],
+      "sprite": {
+        "praefix": "brombeere",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "brombeere_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 8",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "mykorrhizapilz",
+      "name": "Mykorrhizapilz (z. B. Steinpilz)",
+      "wissenschaftlicher_name": "Boletus edulis (exemplarisch)",
+      "kategorie": "pilz",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Symbiosepartner der Bäume (\"Wood Wide Web\")",
+      "steckbrief_fakten": [
+        "Liefert Bäumen über die Wurzeln Wasser und Nährstoffe (v. a. Phosphor, Stickstoff), im Gegenzug erhält er Zucker aus der Photosynthese.",
+        "Erhöht die Trockenheits- und Krankheitsresistenz von Buche, Eiche, Fichte und Kiefer."
+      ],
+      "sprite": {
+        "praefix": "mykorrhizapilz",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "mykorrhizapilz_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 9",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "hallimasch",
+      "name": "Hallimasch",
+      "wissenschaftlicher_name": "Armillaria spp.",
+      "kategorie": "pilz",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Doppelrolle: Zersetzer und Schwächeparasit",
+      "steckbrief_fakten": [
+        "Zersetzt Totholz und führt Nährstoffe in den Kreislauf zurück.",
+        "Befällt zugleich durch Trockenheit oder Schädlinge geschwächte Bäume über die Wurzeln und tötet das Kambium."
+      ],
+      "sprite": {
+        "praefix": "hallimasch",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "hallimasch_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 10",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "zunderschwamm",
+      "name": "Zunderschwamm",
+      "wissenschaftlicher_name": "Fomes fomentarius",
+      "kategorie": "pilz",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Totholz-Zersetzer, Charakterpilz des Buchen-Totholzes",
+      "steckbrief_fakten": [
+        "Verursacht Weißfäule und ist der Charakterpilz des Buchen-Totholzes.",
+        "Recycelt Holz und bietet zugleich Lebensraum für viele Insekten."
+      ],
+      "sprite": {
+        "praefix": "zunderschwamm",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "zunderschwamm_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 11",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "blaeuepilz",
+      "name": "Bläuepilz",
+      "wissenschaftlicher_name": "Ophiostoma/Ceratocystis spp.",
+      "kategorie": "pilz",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Symbiont des Borkenkäfers, verstärkt den Baumtod",
+      "steckbrief_fakten": [
+        "Wird vom Buchdrucker aktiv übertragen und blockiert die Wasserleitung im Splintholz der Fichte.",
+        "Beschleunigt dadurch das Absterben bereits befallener Bäume."
+      ],
+      "sprite": {
+        "praefix": "blaeuepilz",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "blaeuepilz_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 12",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "buschwindroeschen",
+      "name": "Buschwindröschen",
+      "wissenschaftlicher_name": "Anemone nemorosa",
+      "kategorie": "kraut",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Frühblüher, Lichtindikator",
+      "steckbrief_fakten": [
+        "Frühblüher, der das Lichtfenster vor dem Laubaustrieb der Bäume im Frühjahr nutzt.",
+        "Gilt als Indikator für die Lichtverhältnisse am Waldboden."
+      ],
+      "sprite": {
+        "praefix": "buschwindroeschen",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "buschwindroeschen_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 13",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "waldmeister",
+      "name": "Waldmeister",
+      "wissenschaftlicher_name": "Galium odoratum",
+      "kategorie": "kraut",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Schattenpflanze nährstoffreicher Buchenwälder",
+      "steckbrief_fakten": [
+        "Typische Schattenpflanze nährstoffreicher Buchenwälder.",
+        "Namensgebend für den Waldmeister-Buchenwald, eine charakteristische Waldgesellschaft Mitteleuropas."
+      ],
+      "sprite": {
+        "praefix": "waldmeister",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "waldmeister_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 14",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "brennnessel",
+      "name": "Brennnessel",
+      "wissenschaftlicher_name": "Urtica dioica",
+      "kategorie": "kraut",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Stickstoffzeiger",
+      "steckbrief_fakten": [
+        "Stickstoffzeiger – profitiert von Nährstofffreisetzung, etwa nach Baumsterben.",
+        "Wichtige Raupenfutterpflanze."
+      ],
+      "sprite": {
+        "praefix": "brennnessel",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "brennnessel_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 15",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "heidelbeere",
+      "name": "Heidelbeere",
+      "wissenschaftlicher_name": "Vaccinium myrtillus",
+      "kategorie": "kraut",
+      "trophieebene": 1,
+      "merkmale": {},
+      "rolle": "Säure- und Lichtzeiger",
+      "steckbrief_fakten": [
+        "Säure- und Lichtzeiger typischer, saurer Kiefern- und Fichtenwälder.",
+        "Ihre Beeren sind eine wichtige Nahrungsquelle für viele Waldtiere."
+      ],
+      "sprite": {
+        "praefix": "heidelbeere",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "heidelbeere_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 16",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "borkenkaefer",
+      "name": "Buchdrucker (Borkenkäfer)",
+      "wissenschaftlicher_name": "Ips typographus",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {
+        "vermehrungsrate": "sehr_hoch"
+      },
+      "rolle": "Zentraler Störungstreiber; Sekundärschädling der Fichte",
+      "steckbrief_fakten": [
+        "Bei bis zu 3 Generationen pro Jahr können aus einem Weibchen über 100.000 Nachkommen entstehen.",
+        "Aus einer befallenen Altfichte fliegen mindestens 20.000 Käfer aus, die rund 20 weitere Nachbarbäume befallen können."
+      ],
+      "sprite": {
+        "praefix": "borkenkaefer",
+        "zustandsvarianten": [
+          "einzeln",
+          "massenvermehrung"
+        ],
+        "dateimuster": "borkenkaefer_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 17",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "reh",
+      "name": "Reh",
+      "wissenschaftlicher_name": "Capreolus capreolus",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Wichtigster Verbisser; zentrale Art für Szenario 6 (Wildverbiss)",
+      "steckbrief_fakten": [
+        "Frisst selektiv bevorzugt Tanne, Ahorn, Eiche und Esche – das führt zur „Entmischung“ der Waldverjüngung.",
+        "Verbissdruck und Wildbestände sind laut Verbissgutachten der Bundesländer in den letzten Jahren bundesweit angestiegen."
+      ],
+      "sprite": {
+        "praefix": "reh",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "reh_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 18",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "rothirsch",
+      "name": "Rothirsch",
+      "wissenschaftlicher_name": "Cervus elaphus",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Verstärkt zusammen mit dem Reh den Wilddruck auf die Verjüngung",
+      "steckbrief_fakten": [
+        "Verbeißt und schält zusätzlich zum Reh die Rinde von Bäumen.",
+        "Hat einen größeren Raumbedarf als das Reh und verstärkt den Wilddruck auf die Verjüngung."
+      ],
+      "sprite": {
+        "praefix": "rothirsch",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "rothirsch_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 19",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "eichhoernchen",
+      "name": "Eichhörnchen",
+      "wissenschaftlicher_name": "Sciurus vulgaris",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Samenfresser UND Samenverbreiter (Doppelrolle)",
+      "steckbrief_fakten": [
+        "Vergräbt Samenvorräte und findet nur rund die Hälfte davon wieder – dadurch ist es zugleich ein wichtiger Verjüngungshelfer.",
+        "Beute von Habicht und Baummarder."
+      ],
+      "sprite": {
+        "praefix": "eichhoernchen",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "eichhoernchen_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 20",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "raupen",
+      "name": "Schmetterlingsraupen",
+      "wissenschaftlicher_name": "z. B. Eichenwickler",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Blattfresser, u. a. an der Eiche",
+      "steckbrief_fakten": [
+        "Blattfresser, z. B. der Eichenwickler an der Eiche.",
+        "Wichtige Nahrungsquelle für insektenfressende Vögel; bei Massenvermehrung kann es zur Entlaubung kommen."
+      ],
+      "sprite": {
+        "praefix": "raupen",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "raupen_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 21",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "blattlaeuse",
+      "name": "Blattläuse",
+      "wissenschaftlicher_name": "z. B. Grüne Fichtenröhrenlaus",
+      "kategorie": "herbivor",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Saftsauger, u. a. an der Fichte",
+      "steckbrief_fakten": [
+        "Saugt Pflanzensäfte, z. B. die Grüne Fichtenröhrenlaus an der Fichte.",
+        "Wichtige Nahrungsquelle für insektenfressende Vögel; bei Massenvermehrung schwächt sie den Wirtsbaum zusätzlich."
+      ],
+      "sprite": {
+        "praefix": "blattlaeuse",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "blattlaeuse_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 21",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "eichelhaeher",
+      "name": "Eichelhäher",
+      "wissenschaftlicher_name": "Garrulus glandarius",
+      "kategorie": "verbreiter",
+      "trophieebene": 2,
+      "merkmale": {},
+      "rolle": "Schlüssel-Mutualist für die Eichen-/Buchenverjüngung (\"Gärtner des Waldes\")",
+      "steckbrief_fakten": [
+        "Legt im Herbst mehrere Tausend Samenverstecke pro Vogel an (bis zu ca. 5.000 Eicheln pro Saison).",
+        "Nur rund ein Fünftel der Verstecke wird wiedergefunden – der Rest keimt und sichert die Eichenverjüngung."
+      ],
+      "sprite": {
+        "praefix": "eichelhaeher",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "eichelhaeher_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 22",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "buntspecht",
+      "name": "Buntspecht",
+      "wissenschaftlicher_name": "Dendrocopos major",
+      "kategorie": "praedator",
+      "trophieebene": 3,
+      "merkmale": {},
+      "rolle": "Borkenkäfer-Regulator, aber begrenzt wirksam",
+      "steckbrief_fakten": [
+        "Frisst Borkenkäfer und deren Larven unter der Rinde, wirkt aber v. a. bei niedriger Käferdichte regulierend.",
+        "Kann eine Massenvermehrung des Borkenkäfers wegen begrenzter eigener Vermehrungsrate und Reviergröße nicht stoppen."
+      ],
+      "sprite": {
+        "praefix": "buntspecht",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "buntspecht_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 23",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "ameisenbuntkaefer",
+      "name": "Ameisenbuntkäfer",
+      "wissenschaftlicher_name": "Thanasimus formicarius",
+      "kategorie": "praedator",
+      "trophieebene": 3,
+      "merkmale": {},
+      "rolle": "Wichtigster insektlicher Gegenspieler des Borkenkäfers",
+      "steckbrief_fakten": [
+        "Adulter Käfer und Larve fressen beide Borkenkäfer bzw. deren Brut.",
+        "Kann für rund 20% der natürlichen Sterberate des Buchdruckers verantwortlich sein – wirksamer als der Buntspecht."
+      ],
+      "sprite": {
+        "praefix": "ameisenbuntkaefer",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "ameisenbuntkaefer_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 24",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "fuchs",
+      "name": "Fuchs",
+      "wissenschaftlicher_name": "Vulpes vulpes",
+      "kategorie": "praedator",
+      "trophieebene": 3,
+      "merkmale": {},
+      "rolle": "Generalist, reguliert Kleinsäuger",
+      "steckbrief_fakten": [
+        "Generalist, der Mäuse, Jungtiere und Aas frisst.",
+        "Reguliert dadurch Kleinsäugerbestände im Wald."
+      ],
+      "sprite": {
+        "praefix": "fuchs",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "fuchs_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 25",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "habicht",
+      "name": "Habicht",
+      "wissenschaftlicher_name": "Accipiter gentilis",
+      "kategorie": "praedator",
+      "trophieebene": 3,
+      "merkmale": {},
+      "rolle": "Top-Prädator der Baumschicht",
+      "steckbrief_fakten": [
+        "Größerer der beiden Greifvögel im Modell; jagt Vögel und Eichhörnchen.",
+        "Top-Prädator der Baumschicht."
+      ],
+      "sprite": {
+        "praefix": "habicht",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "habicht_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 26",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "sperber",
+      "name": "Sperber",
+      "wissenschaftlicher_name": "Accipiter nisus",
+      "kategorie": "praedator",
+      "trophieebene": 3,
+      "merkmale": {},
+      "rolle": "Kleinerer, wendiger Greifvogel",
+      "steckbrief_fakten": [
+        "Kleinerer, wendiger Greifvogel; jagt vor allem kleinere Vögel.",
+        "Naher Verwandter des Habichts, besetzt eine ähnliche ökologische Rolle."
+      ],
+      "sprite": {
+        "praefix": "sperber",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "sperber_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 26",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "luchs",
+      "name": "Luchs",
+      "wissenschaftlicher_name": "Lynx lynx",
+      "kategorie": "praedator",
+      "trophieebene": 4,
+      "merkmale": {},
+      "rolle": "Großer Beutegreifer; Kontrastfall zu Szenario 6 (funktionierende Prädator-Beute-Regulation)",
+      "steckbrief_fakten": [
+        "Ein adulter Luchs erbeutet rund 55 Rehe (oder Gämsen) pro Jahr und bevorzugt dabei Rehe als Beute.",
+        "War in Deutschland rund 150 Jahre ausgerottet und wurde nur punktuell wiederangesiedelt (u. a. Harz, Bayerischer Wald, Pfälzerwald)."
+      ],
+      "kontext_abwesenheit": "Ohne diese Art bzw. bei geringer Bejagung steigt der Verbissdruck auf die Waldverjüngung deutlich an – Luchs und Wolf decken in Deutschland weiterhin nicht das gesamte Bundesgebiet ab (siehe Szenario 6).",
+      "sprite": {
+        "praefix": "luchs",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "luchs_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 27",
+      "zaehlt_zu_32_knoten": true
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "wissenschaftlicher_name": "Canis lupus",
+      "kategorie": "praedator",
+      "trophieebene": 4,
+      "merkmale": {},
+      "rolle": "Großer Beutegreifer; Kontrastfall zu Szenario 6 (funktionierende Prädator-Beute-Regulation)",
+      "steckbrief_fakten": [
+        "Reguliert wie der Luchs Reh- und Rothirschbestände und kann so den Verbissdruck auf die Waldverjüngung senken.",
+        "Ist erst seit dem Jahr 2000 wieder in Deutschland heimisch und erreichte bis November 2025 rund 219 Rudel, v. a. im Nordosten Deutschlands."
+      ],
+      "kontext_abwesenheit": "Ohne diese Art bzw. bei geringer Bejagung steigt der Verbissdruck auf die Waldverjüngung deutlich an – Luchs und Wolf decken in Deutschland weiterhin nicht das gesamte Bundesgebiet ab (siehe Szenario 6).",
+      "sprite": {
+        "praefix": "wolf",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "wolf_<zustand>.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 27",
+      "zaehlt_zu_32_knoten": true
+    },
+    {
+      "id": "totholz",
+      "name": "Totholz",
+      "wissenschaftlicher_name": null,
+      "kategorie": "destruent",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Zentrale Ressource für Nährstoffkreislauf und Habitat; zentraler Knoten für Szenario 5",
+      "steckbrief_fakten": [
+        "Rund 34% aller Arten mitteleuropäischer Wälder gelten als holzgebunden (xylobiont), bei Käfern sogar über 50%.",
+        "Die Eiche beherbergt rund 650 holzbewohnende Käferarten, die Buche rund 240, die Fichte nur rund 60."
+      ],
+      "sprite": {
+        "praefix": "totholz",
+        "zustandsvarianten": [
+          "generisch"
+        ],
+        "dateimuster": "totholz_generisch.png"
+      },
+      "quelle": "Wissensbasis Abschnitt 2, Nr. 28",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "mensch_bewirtschaftung",
+      "name": "Mensch (Bewirtschaftung)",
+      "wissenschaftlicher_name": null,
+      "kategorie": "anthropogen",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Bewusste Bewirtschaftungsentscheidung (Totholzentnahme); zentral für Szenario 5",
+      "steckbrief_fakten": [
+        "Entnimmt gezielt Totholz zur Waldbrandprävention – mit einem echten Zielkonflikt zwischen Sicherheit und Biodiversität.",
+        "Der erhoffte Effekt auf das Brandrisiko ist wissenschaftlich nur gering/unsicher belegt, der Effekt auf die Biodiversität (Habitatverlust) ist dagegen deutlich."
+      ],
+      "sprite": {
+        "praefix": "mensch_bewirtschaftung",
+        "zustandsvarianten": [
+          "portrait"
+        ],
+        "dateimuster": "mensch_bewirtschaftung_<zustand>.png"
+      },
+      "quelle": "Umsetzungsauftrag Abschnitt 2.10.5 / 4.1",
+      "zaehlt_zu_32_knoten": true,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "licht",
+      "name": "Licht",
+      "wissenschaftlicher_name": null,
+      "kategorie": "abiotisch",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Steuert Lichtnische von Bodenvegetation und Lichtbaumarten",
+      "steckbrief_fakten": [
+        "Buschwindröschen, Eiche und Kiefer sind auf ausreichend Licht angewiesen."
+      ],
+      "sprite": {
+        "praefix": "licht",
+        "zustandsvarianten": [],
+        "dateimuster": null
+      },
+      "quelle": "Wissensbasis Abschnitt 3.1/3.2",
+      "zaehlt_zu_32_knoten": false,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "wasser",
+      "name": "Wasser (Bodenfeuchte)",
+      "wissenschaftlicher_name": null,
+      "kategorie": "abiotisch",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Limitiert v. a. die Fichte bei Wassermangel",
+      "steckbrief_fakten": [
+        "Wassermangel senkt die Harzproduktion und damit die Abwehrkraft der Fichte gegen den Borkenkäfer."
+      ],
+      "sprite": {
+        "praefix": "wasser",
+        "zustandsvarianten": [],
+        "dateimuster": null
+      },
+      "quelle": "Wissensbasis Abschnitt 3.1/3.2",
+      "zaehlt_zu_32_knoten": false,
+      "kontext_abwesenheit": null
+    },
+    {
+      "id": "temperatur",
+      "name": "Temperatur",
+      "wissenschaftlicher_name": null,
+      "kategorie": "abiotisch",
+      "trophieebene": null,
+      "merkmale": {},
+      "rolle": "Steuert v. a. die Generationenzahl des Borkenkäfers",
+      "steckbrief_fakten": [
+        "Wärme beschleunigt die Käferentwicklung und erhöht so die Zahl der Borkenkäfer-Generationen pro Jahr."
+      ],
+      "sprite": {
+        "praefix": "temperatur",
+        "zustandsvarianten": [],
+        "dateimuster": null
+      },
+      "quelle": "Wissensbasis Abschnitt 3.1/3.2, 4 Szenario 3",
+      "zaehlt_zu_32_knoten": false,
+      "kontext_abwesenheit": null
+    }
+  ]
+}

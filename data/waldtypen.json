@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "beschreibung": "Waldtyp-Stammdaten (Startparameter je Vergleichs-Wald-Platz). Werte sind bewusst qualitativ/didaktisch skaliert (niedrig/mittel/hoch), keine exakten Prozentzahlen - siehe Wissensbasis Abschnitt 5 (didaktische Reduktion).",
+    "regel_vergleichsmodus": "Pro Durchlauf sind zwingend zwei unterschiedliche Waldtypen zu wählen (Umsetzungsauftrag 2.1) - derselbe Typ ist auf beiden Plätzen nicht wählbar."
+  },
+  "waldtypen": [
+    {
+      "id": "mischwald",
+      "kurzname": "Buchen-Eichen-Mischwald",
+      "langname": "Naturnaher Buchen-Eichen-Mischwald",
+      "rolle_im_modell": "Referenz / \"stabiles System\"",
+      "kurzbeschreibung": "Naturnaher Mischwald aus Buche und Eiche mit artenreicher Krautschicht - entspricht weitgehend der natürlichen Waldvegetation Mitteleuropas.",
+      "startbildschirm_kartenbild": "wald_mischwald_stabil.png",
+      "anfangsbestand": {
+        "buche": "dominant",
+        "eiche": "beigemischt",
+        "birke": "keine (nur als Pionier nach Störung)",
+        "fichte": "keine",
+        "kiefer": "keine"
+      },
+      "anfangsbestand_hinweis": "Wissensbasis nennt zusätzlich Hainbuche, Bergahorn und Esche als beigemischt; diese sind im reduzierten Modell keine eigenen Baum-Knoten.",
+      "boden_wasser": "Tiefgründige, nährstoffreiche Braun-/Parabraunerden; ausgeglichener Wasserhaushalt durch unterschiedlich tiefe Wurzelsysteme (Herzwurzler Buche, Pfahlwurzler Eiche).",
+      "krautschicht": "artenreich (u. a. Buschwindröschen, Waldmeister), v. a. im Frühjahr vor dem Laubaustrieb",
+      "resilienzfaktoren": {
+        "borkenkaefer": "hoch",
+        "trockenheit": "mittel-hoch",
+        "sturm": "hoch",
+        "feuer": "hoch",
+        "hinweis": "Durch Beschattung und höhere Luftfeuchtigkeit im Bestandsinneren geringere Waldbrandgefahr als in Nadelwäldern; liegendes Totholz wirkt eher feuchtigkeitsspeichernd als brandfördernd."
+      },
+      "szenario6_relevanz": "hoch - Referenzwaldtyp für Wildverbiss: die Resilienz beruht auf der Vielfalt der Verjüngungsschicht (Eiche neben Buche), die durch selektiven Wildverbiss über Jahrzehnte ausfallen kann (schleichende Verarmung zum Buchen-Reinbestand).",
+      "benchmark": "Borkenkäfer + Mischwald muss laut Akzeptanzkriterium nur zu lokalem Schaden führen (Kontrast zur Fichtenmonokultur).",
+      "quelle": "Wissensbasis Abschnitt 1, Waldtyp A"
+    },
+    {
+      "id": "fichtenmonokultur",
+      "kurzname": "Fichtenmonokultur",
+      "langname": "Fichtenmonokultur / Forstplantage",
+      "rolle_im_modell": "wirtschaftlich, \"anfälliges System\"",
+      "kurzbeschreibung": "Nahezu reiner, gleichaltriger Fichtenbestand - wirtschaftlich wichtig, aber besonders anfällig für Borkenkäfer, Trockenheit und Windwurf.",
+      "startbildschirm_kartenbild": "wald_fichtenmonokultur_stabil.png",
+      "anfangsbestand": {
+        "fichte": "dominant (nahezu Reinbestand, gleichaltrig)",
+        "buche": "keine",
+        "eiche": "keine",
+        "kiefer": "keine",
+        "birke": "keine (nur als Pionier nach Störung)"
+      },
+      "boden_wasser": "Fichte ist Flachwurzler (\"Tellerwurzel\"); auf gut durchlüfteten Böden Senkerwurzeln bis ~2 m, auf feuchten/schlecht durchlüfteten Böden nur 20-40 cm tief - macht sie gleichzeitig windwurf- UND trockenstressanfällig. Fichtennadelstreu versauert den Boden.",
+      "krautschicht": "artenarm, dunkler und saurer Boden typisch für Fichtenplantagen",
+      "resilienzfaktoren": {
+        "borkenkaefer": "gering",
+        "trockenheit": "gering",
+        "sturm": "gering",
+        "feuer": null,
+        "hinweis": "Bietet dem Buchdrucker optimale Vermehrungsbedingungen; fällt die eine Baumart aus, bricht das System großflächig zusammen. Die Fichte weist unter allen wichtigen Baumarten das höchste biotische Risiko auf (FVA Baden-Württemberg)."
+      },
+      "szenario6_relevanz": "gering - kaum Mischbaumarten-Verjüngung vorhanden, die verloren gehen könnte.",
+      "benchmark": "Borkenkäfer + Fichtenmonokultur MUSS laut Akzeptanzkriterium zu großflächigem Kollaps führen (verbindliches Testkriterium, Wissensbasis Abschnitt 6.2).",
+      "quelle": "Wissensbasis Abschnitt 1, Waldtyp B"
+    },
+    {
+      "id": "kiefernwald",
+      "kurzname": "Kiefernwald auf Sand",
+      "langname": "Kiefernwald auf sandigem Boden",
+      "rolle_im_modell": "Kontrast, \"Trocken-Spezialist\"",
+      "kurzbeschreibung": "Offener, lichter Kiefernwald auf nährstoffarmem Sandboden - trockentolerant, aber durch harzreiches Holz und trockene Nadelstreu besonders feueranfällig.",
+      "startbildschirm_kartenbild": "wald_kiefernwald_stabil.png",
+      "anfangsbestand": {
+        "kiefer": "dominant (oft Monokultur)",
+        "birke": "beigemischt (Pionierbaumart)",
+        "fichte": "keine",
+        "buche": "keine",
+        "eiche": "keine"
+      },
+      "boden_wasser": "Anspruchslos, tiefwurzelnder Pfahlwurzler; übersteht Trockenheit und sandige, nährstoffarme Böden gut (\"Stresstoleranz-Stratege\"). Natürlicherweise nur auf Extremstandorten dominant, sonst durch Buchenkonkurrenz verdrängt.",
+      "krautschicht": "artenarm; an einem Hitzetag wurden bis zu 45°C am Boden einer Kiefernmonokultur bei Rheinsberg gemessen",
+      "resilienzfaktoren": {
+        "borkenkaefer": "kaum betroffen (Kiefer ist nicht Hauptwirt des im Modell zentralen Buchdruckers)",
+        "trockenheit": "mittel (besser als Fichte)",
+        "sturm": null,
+        "feuer": "gering",
+        "hinweis": "Hohe Waldbrandgefahr durch harzhaltiges Holz und trockene Nadelstreu; damit der für Szenario 5 (Totholzentnahme/Brandprävention) relevanteste Waldtyp."
+      },
+      "szenario6_relevanz": "gering - Fokusart Eiche ist hier ohnehin kaum vertreten.",
+      "benchmark": null,
+      "quelle": "Wissensbasis Abschnitt 1, Waldtyp C"
+    }
+  ]
+}
