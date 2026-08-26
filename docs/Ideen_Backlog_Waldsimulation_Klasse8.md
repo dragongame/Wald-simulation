@@ -20,6 +20,7 @@
 ### Mehr Tiere und Pflanzen bei der Simulation anzeigen
 
 - So ist es klarer wer/was im Wald lebt und ggf. mehr oder weniger wird.
+- **Ergänzung (2026-08-26):** Gilt auch für die Kurven-Analyse (M6) – aktuell sind dort nur die 14 tatsächlich simulierten Indikatoren (5 Baumarten + Borkenkäfer-Dichte + Wilddichte + ein paar Ökosystem-Werte) als Kurve wählbar, nicht die übrigen ca. 25 Arten aus Netzwerk-Graph/Lexikon (die haben nur einen statischen Steckbrief, keine Zeitreihe). Erfordert eigene Dynamik-Regeln pro Art im Simulationsmodell (`scripts/simulation/model.py`) – eine fachliche Modellierungsentscheidung wie beim ursprünglichen Datenmodell (M1), kein kleiner Fix.
 
 ### Instrument Verbesserung
 

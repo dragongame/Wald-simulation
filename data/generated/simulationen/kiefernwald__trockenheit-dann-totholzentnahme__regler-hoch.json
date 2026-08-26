@@ -18,7 +18,7 @@
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 10.0,
@@ -28,13 +28,13 @@
       "verjuengung_mischbaumarten": 100.0,
       "wilddichte": 10.0,
       "brandrisiko": 70.0,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_1": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 4.0,
@@ -44,13 +44,13 @@
       "verjuengung_mischbaumarten": 99.9,
       "wilddichte": 31.0,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_2": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.9,
@@ -60,13 +60,13 @@
       "verjuengung_mischbaumarten": 99.7,
       "wilddichte": 45.7,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_3": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.8,
@@ -76,13 +76,13 @@
       "verjuengung_mischbaumarten": 99.6,
       "wilddichte": 56.0,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_4": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.7,
@@ -92,13 +92,13 @@
       "verjuengung_mischbaumarten": 99.4,
       "wilddichte": 63.2,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_5": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.5,
@@ -108,13 +108,13 @@
       "verjuengung_mischbaumarten": 99.3,
       "wilddichte": 68.2,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_6": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.4,
@@ -124,13 +124,13 @@
       "verjuengung_mischbaumarten": 99.2,
       "wilddichte": 71.8,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_7": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.3,
@@ -140,13 +140,13 @@
       "verjuengung_mischbaumarten": 99.0,
       "wilddichte": 74.2,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_8": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.2,
@@ -156,13 +156,13 @@
       "verjuengung_mischbaumarten": 98.9,
       "wilddichte": 76.0,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_9": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.1,
@@ -172,13 +172,13 @@
       "verjuengung_mischbaumarten": 98.8,
       "wilddichte": 77.2,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_10": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 3.0,
@@ -188,13 +188,13 @@
       "verjuengung_mischbaumarten": 98.6,
       "wilddichte": 78.0,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_11": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.9,
@@ -204,13 +204,13 @@
       "verjuengung_mischbaumarten": 97.9,
       "wilddichte": 78.6,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_12": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.9,
@@ -220,13 +220,13 @@
       "verjuengung_mischbaumarten": 97.2,
       "wilddichte": 79.0,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_13": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.8,
@@ -236,13 +236,13 @@
       "verjuengung_mischbaumarten": 96.5,
       "wilddichte": 79.3,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_14": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.7,
@@ -252,13 +252,13 @@
       "verjuengung_mischbaumarten": 95.9,
       "wilddichte": 79.5,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_15": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.6,
@@ -268,13 +268,13 @@
       "verjuengung_mischbaumarten": 95.2,
       "wilddichte": 79.7,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_16": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.5,
@@ -284,13 +284,13 @@
       "verjuengung_mischbaumarten": 94.5,
       "wilddichte": 79.8,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_17": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.5,
@@ -300,13 +300,13 @@
       "verjuengung_mischbaumarten": 93.8,
       "wilddichte": 79.8,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_18": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.4,
@@ -316,13 +316,13 @@
       "verjuengung_mischbaumarten": 93.1,
       "wilddichte": 79.9,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_19": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.3,
@@ -332,13 +332,13 @@
       "verjuengung_mischbaumarten": 92.4,
       "wilddichte": 79.9,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     },
     "jahr_20": {
       "fichte_vitalitaet": 0.0,
       "buche_vitalitaet": 0.0,
       "eiche_vitalitaet": 0.0,
-      "kiefer_vitalitaet": 80.0,
+      "kiefer_vitalitaet": 100.0,
       "birke_anteil": 15.0,
       "borkenkaefer_dichte": 0.0,
       "totholzmenge": 2.2,
@@ -348,7 +348,7 @@
       "verjuengung_mischbaumarten": 91.7,
       "wilddichte": 79.9,
       "brandrisiko": 63.2,
-      "gesamtvitalitaet": 69.7
+      "gesamtvitalitaet": 100.0
     }
   }
 }

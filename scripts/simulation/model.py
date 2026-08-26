@@ -80,13 +80,25 @@ class Simulation:
         self.res_sturm = _resilienz_faktor(rf.get("sturm"))
         self.res_feuer = _resilienz_faktor(rf.get("feuer"))
 
+        # Bestandsanteil (wie stark eine Art im Waldtyp vertreten ist, z. B. Fichte nur
+        # 5% Beimischung im Mischwald) und Vitalität (0-100-Gesundheitszustand dieser
+        # Art, 100 = Ausgangszustand "gesund") sind zwei verschiedene Größen, die vorher
+        # beide aus derselben Zahl (anfangsbestand_anteil_prozent) gebildet wurden. Das
+        # ließ z. B. die Fichte im Mischwald (Anteil 5) von Jahr 0 an als "abgestorben"
+        # erscheinen, obwohl sie völlig ungestört war (Fix nach Nutzer-Feedback, siehe
+        # Milestones-Dokument). self._bestandsanteil bleibt für die vier Nicht-Birke-Arten
+        # über den Lauf fix (kein Umbau-Mechanismus im Modell) und dient nur als Gewicht
+        # in _gesamtvitalitaet(); Vitalität startet unabhängig davon bei 100, wenn die
+        # Art überhaupt vorkommt, sonst bei 0 (Art nicht vorhanden, siehe M5: eine
+        # Art-Kachel erscheint nur, wenn ihr Indikator irgendwann > 0 ist).
         anteil = waldtyp["anfangsbestand_anteil_prozent"]
+        self._bestandsanteil = {art: float(anteil.get(art, 0)) for art in BAUMARTEN}
         self.state = {
-            "fichte_vitalitaet": float(anteil.get("fichte", 0)),
-            "buche_vitalitaet": float(anteil.get("buche", 0)),
-            "eiche_vitalitaet": float(anteil.get("eiche", 0)),
-            "kiefer_vitalitaet": float(anteil.get("kiefer", 0)),
-            "birke_anteil": float(anteil.get("birke", 0)),
+            "fichte_vitalitaet": 100.0 if self._bestandsanteil["fichte"] > 0 else 0.0,
+            "buche_vitalitaet": 100.0 if self._bestandsanteil["buche"] > 0 else 0.0,
+            "eiche_vitalitaet": 100.0 if self._bestandsanteil["eiche"] > 0 else 0.0,
+            "kiefer_vitalitaet": 100.0 if self._bestandsanteil["kiefer"] > 0 else 0.0,
+            "birke_anteil": self._bestandsanteil["birke"],
             "borkenkaefer_dichte": 0.0,
             "totholzmenge": float(BASIS_TOTHOLZ[self.wid]),
             "kronendach": 100.0,
@@ -257,23 +269,29 @@ class Simulation:
         s["biodiversitaet"] = _clamp(s["biodiversitaet"] + (ziel_biodiv - s["biodiversitaet"]) * 0.25)
 
     def _gesamtvitalitaet(self):
-        anteil = self.waldtyp["anfangsbestand_anteil_prozent"]
-        gewichte = {art: anteil.get(art, 0) for art in BAUMARTEN}
-        summe_gewichte = sum(gewichte.values()) or 1.0
         s = self.state
+        # Gewichte = wie stark jede Art aktuell im Bestand vertreten ist. Bei den vier
+        # Nicht-Birke-Arten bleibt das der fixe Ausgangsanteil (kein Umbau-Mechanismus im
+        # Modell); bei der Birke dagegen der tatsächliche, durch Sukzession wachsende
+        # Anteil (state["birke_anteil"]) - sonst zählt eine erfolgreich nachwachsende
+        # Birkenpopulation kaum zum Baumbestand, weil ihr Ausgangsgewicht in Mischwald/
+        # Fichtenmonokultur bei 0 startet (Fix nach Nutzer-Feedback, siehe
+        # Milestones-Dokument).
+        gewichte = dict(self._bestandsanteil)
+        gewichte["birke"] = s["birke_anteil"]
+        summe_gewichte = sum(gewichte.values()) or 1.0
         werte = {
             "fichte": s["fichte_vitalitaet"],
             "buche": s["buche_vitalitaet"],
             "eiche": s["eiche_vitalitaet"],
             "kiefer": s["kiefer_vitalitaet"],
-            "birke": s["birke_anteil"],
+            # Birke hat keinen eigenen Vitalitäts-Zerfall im Modell (nur einen
+            # Anteil/Sukzessions-Wert) - solange sie vorkommt, geht sie als "gesund" (100)
+            # gewichtet in den Durchschnitt ein.
+            "birke": 100.0 if s["birke_anteil"] > 0 else 0.0,
         }
         gewichtet = sum(werte[art] * gewichte[art] for art in BAUMARTEN)
-        basis = gewichtet / summe_gewichte
-        # Birken-Sukzession (Zuwachs über den Ausgangswert 0 hinaus) leicht mitzählen,
-        # damit erfolgreiche Wiederbewaldung den Gesamtwert nicht künstlich senkt.
-        birken_bonus = max(0.0, werte["birke"] - gewichte.get("birke", 0)) * 0.02
-        return _clamp(basis + birken_bonus)
+        return _clamp(gewichtet / summe_gewichte)
 
     def run(self):
         zeitreihe = {}
