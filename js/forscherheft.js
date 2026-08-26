@@ -24,6 +24,7 @@ const WaldsimForscherheft = (() => {
     "Hat die Maßnahme das Brandrisiko wirklich stark gesenkt? Was hat sich stattdessen sicher verändert?";
 
   let laufMitSnapshots = null; // wird von WaldsimAnalyse.starteReflexion() gesetzt
+  let frischGestempeltId = null; // Eintrags-ID für den Stempel-Effekt beim nächsten Übersicht-Render (Styleguide 7)
 
   function bucket(value) {
     if (value < 34) return "niedrig";
@@ -225,6 +226,7 @@ const WaldsimForscherheft = (() => {
     alle.unshift(eintrag);
     speichereAlle(alle);
     aktualisiereZaehler();
+    frischGestempeltId = eintrag.id;
   }
 
   // ---- Übersicht ----
@@ -244,11 +246,12 @@ const WaldsimForscherheft = (() => {
     const stempelNamen = eintrag.waelder.map((w) => w.waldtypName).join(" / ");
     const waelderHtml = eintrag.waelder.map(waldTeilHtml).join("");
     const text = exportText(data, eintrag);
+    const stempelKlasse = eintrag.id === frischGestempeltId ? "feldbuch-stempel feldbuch-stempel--frisch" : "feldbuch-stempel";
 
     return `
       <li class="forscherheft-eintrag">
         <div class="forscherheft-eintrag-kopf">
-          <div class="feldbuch-stempel">
+          <div class="${stempelKlasse}">
             <span class="feldbuch-stempel-zeile">${escapeHtml(stempelNamen)}</span>
             <span class="feldbuch-stempel-zeile">${escapeHtml(ereignisText(data, eintrag.ereignisse))}</span>
             <span class="feldbuch-stempel-datum">${formatDatum(eintrag.zeitpunkt)}</span>
@@ -285,6 +288,8 @@ const WaldsimForscherheft = (() => {
       alle.length === 0
         ? '<li class="form-hint">Noch keine gespeicherten Forscherheft-Seiten. Ein Durchlauf wird nach der Reflexionsfrage automatisch hier abgelegt.</li>'
         : alle.map((eintrag, index) => eintragHtml(data, eintrag, index)).join("");
+
+    frischGestempeltId = null;
   }
 
   async function zeigeUebersicht() {
