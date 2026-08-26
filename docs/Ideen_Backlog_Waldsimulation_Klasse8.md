@@ -38,6 +38,8 @@
 - Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht, aber bei den Szenario zusammen stellen (siehe Drag & Drop) und auch bei der Reflexion
 - Navigieren könnte mit kleinen schmalen Post-It Notizen sein, so wie man es auch in einem echten Buch machen würde
 - Im Netzwerk ansehen solle erst sichtar sein, wenn auch die Wissenschaftlering freigeschaltet ist
+- Nutze 'docs/eingang/Hintergrund.png' als hintergrund Bild für das Journal und passe die UI an
+- Nutze 'docs/eingang/Bockmarks-3.png' um Bookmarks als navigation zu verwenden
 
 ### Szenarios wo die Reihfolge egal ist
 
@@ -50,3 +52,13 @@
 ### Die Graphen sollen im Forscherheft angezeigt werden
 
 - Die bis zu drei gespeicherten Vergleichsgrahen sollent im Forscherheft darstellt werden.
+
+### Einfachere Auswahl
+- Anstelle von Wald 1 und Wald 2, einfach die drei Wälder zeigen und zwei davon auswählen. Einfach von links nach rechts für Wald 1 und 2 weil die Reihenfolge ja egal ist.
+
+### Überlegen, ob Brände auch simuliert werden sollten also ereigniss von Trokenheiten / Brandgefahr
+- Das muss aber noch diskutiert und abgewogen werden.
+
+### Netzwerk übersichtlicher gestalten
+- An der Seite sind icons von allen Tieren, pflanzen und co. Diese können an und abgewählt werden und es werden nur die angewählten im Graphen gezeigt
+- Die Linien müssen sich auch noch deutlicher Unterscheiden
