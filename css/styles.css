@@ -69,6 +69,19 @@ h1, h2, h3 {
   opacity: 0.85;
 }
 
+.forscherheft-link {
+  margin-top: 0.6rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--tinte);
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  min-height: 36px;
+  cursor: pointer;
+}
+
 .form-section {
   background: var(--karte-hintergrund);
   border: 1px solid var(--rindenbraun);
@@ -752,4 +765,160 @@ h1, h2, h3 {
   cursor: pointer;
   padding: 0.2rem 0.4rem;
   min-height: 32px;
+}
+
+/* ---- Reflexion (M7) ---- */
+
+.reflexion-fragen {
+  margin: 0 0 0.75rem;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+#reflexion-text {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem;
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  background: var(--papier);
+  color: var(--tinte);
+  resize: vertical;
+}
+
+/* ---- Digitales Forscherheft (M7) ---- */
+
+.forscherheft-liste {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.forscherheft-eintrag {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.forscherheft-eintrag-kopf {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.feldbuch-stempel {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  border: 2px solid var(--bernstein);
+  border-radius: 4px;
+  padding: 0.4rem 0.7rem;
+  transform: rotate(-2deg);
+  color: var(--bernstein);
+  font-family: Iowan Old Style, Georgia, serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+
+.feldbuch-stempel-zeile {
+  display: block;
+  text-align: center;
+}
+
+.feldbuch-stempel-datum {
+  display: block;
+  font-size: 0.62rem;
+  opacity: 0.85;
+  margin-top: 0.1rem;
+}
+
+.forscherheft-loeschen {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--bernstein);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  min-height: 36px;
+}
+
+.forscherheft-konfiguration {
+  font-size: 0.85rem;
+  margin: 0 0 0.6rem;
+}
+
+.forscherheft-waelder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.forscherheft-wald strong {
+  display: block;
+  margin: 0.2rem 0 0.15rem;
+}
+
+.forscherheft-hypothese,
+.forscherheft-kurzbeschreibung {
+  font-size: 0.8rem;
+  margin: 0 0 0.2rem;
+}
+
+.forscherheft-reflexion {
+  font-size: 0.85rem;
+  margin: 0.4rem 0;
+}
+
+.forscherheft-export-bereich {
+  margin-top: 0.6rem;
+}
+
+.forscherheft-export-text {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  background: var(--papier);
+  color: var(--tinte);
+}
+
+.forscherheft-export-aktionen {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.forscherheft-neue-sitzung-button {
+  display: block;
+  margin: 0.75rem auto 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--bernstein);
+  background: transparent;
+  border: 1px solid var(--bernstein);
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.forscherheft-neue-sitzung-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

@@ -25,6 +25,7 @@
       <header class="app-header">
         <h1>Waldökosystem-Simulation</h1>
         <p class="app-subtitle">Wähle zwei Wald-Plätze, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
+        <button type="button" id="forscherheft-oeffnen-button" class="forscherheft-link">📖 Forscherheft <span id="forscherheft-zaehler">(0)</span></button>
       </header>
 
       <section class="form-section" aria-labelledby="heading-waelder">
@@ -96,13 +97,43 @@
 
       <section class="form-section">
         <h2>Snapshot merken</h2>
-        <p class="form-hint">Bis zu 3 Kurven-Kombinationen merken – die dauerhafte Übernahme ins Forscherheft folgt in einer späteren Ausbaustufe.</p>
+        <p class="form-hint">Bis zu 3 Kurven-Kombinationen merken – landen bei der Reflexion mit im Forscherheft.</p>
         <button type="button" id="analyse-snapshot-button" class="secondary-button secondary-button--kompakt">Aktuelle Kombination merken</button>
         <p id="analyse-snapshot-hinweis" class="form-hint"></p>
         <ul id="analyse-snapshots" class="analyse-snapshots"></ul>
       </section>
 
+      <button type="button" id="analyse-weiter-button" class="play-button play-button--kompakt">Weiter zur Reflexion</button>
       <button type="button" id="analyse-back-button" class="secondary-button">Zurück zum Dashboard</button>
+    </section>
+
+    <section id="screen-reflexion" class="screen" hidden>
+      <header class="app-header">
+        <h1>Reflexion</h1>
+        <p class="app-subtitle" id="reflexion-subtitle"></p>
+      </header>
+
+      <section class="form-section">
+        <h2>Zum Nachdenken</h2>
+        <ul id="reflexion-fragen" class="reflexion-fragen"></ul>
+        <label for="reflexion-text" class="sr-only">Deine Reflexion</label>
+        <textarea id="reflexion-text" rows="5" placeholder="Was ist euch aufgefallen?"></textarea>
+      </section>
+
+      <button type="button" id="reflexion-speichern-button" class="play-button play-button--kompakt">Im Forscherheft speichern</button>
+      <button type="button" id="reflexion-zurueck-button" class="secondary-button">Zurück zur Analyse</button>
+    </section>
+
+    <section id="screen-forscherheft" class="screen" hidden>
+      <header class="app-header">
+        <h1>Digitales Forscherheft</h1>
+        <p class="app-subtitle" id="forscherheft-fortschritt"></p>
+      </header>
+
+      <ul id="forscherheft-liste" class="forscherheft-liste"></ul>
+
+      <button type="button" id="forscherheft-neuer-durchlauf-button" class="play-button play-button--kompakt">Neuer Durchlauf</button>
+      <button type="button" id="forscherheft-neue-sitzung-button" class="forscherheft-neue-sitzung-button">Neue Sitzung starten (alles löschen)</button>
     </section>
 
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
@@ -116,6 +147,7 @@
   <script src="./js/startScreen.js"></script>
   <script src="./js/dashboard.js"></script>
   <script src="./js/analyse.js"></script>
+  <script src="./js/forscherheft.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

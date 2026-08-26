@@ -5,10 +5,9 @@
  * Dashboard-Instrumente), kaskadenrelevante Kurven vorausgewählt/optisch
  * hervorgehoben, bis zu 3 Kurven-Kombinationen als Snapshot merkbar.
  *
- * Snapshots leben bewusst nur im Speicher dieses Durchlaufs: die
- * dauerhafte Übernahme ins Forscherheft ist Teil von M7 (Datenmodell v2,
- * Umsetzungsauftrag 2.4), das es als eigener Screen/Speicher noch nicht
- * gibt.
+ * „Weiter zur Reflexion" übergibt den Lauf inkl. gemerkter Snapshots an
+ * WaldsimForscherheft (M7), die daraus die gemeinsame Reflexionsfrage
+ * einholt und die Seite dauerhaft im Forscherheft speichert.
  */
 const WaldsimAnalyse = (() => {
   const { escapeHtml, showScreen } = WaldsimUI;
@@ -215,6 +214,10 @@ const WaldsimAnalyse = (() => {
 
     document.getElementById("analyse-back-button").addEventListener("click", () => {
       showScreen("screen-dashboard");
+    });
+
+    document.getElementById("analyse-weiter-button").addEventListener("click", () => {
+      WaldsimForscherheft.starteReflexion({ ...lauf, snapshots });
     });
   }
 

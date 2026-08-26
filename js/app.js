@@ -20,6 +20,8 @@ if ("serviceWorker" in navigator) {
   setStatus("Dieser Browser unterstützt keine Offline-Nutzung.");
 }
 
+WaldsimForscherheft.init();
+
 WaldsimStartScreen.init().catch((err) => {
   console.error("Start-Screen konnte nicht geladen werden:", err);
   setStatus("Die Inhalte konnten nicht geladen werden. Bitte Seite neu laden.");

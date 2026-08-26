@@ -1,6 +1,6 @@
 {
-  "version": "8922507eb290b4b2",
-  "cacheName": "waldsim-precache-8922507eb290b4b2",
+  "version": "bccb0b76ae1b2269",
+  "cacheName": "waldsim-precache-bccb0b76ae1b2269",
   "files": [
     "./",
     "./assets/icons/apple-touch-icon.png",
@@ -251,6 +251,7 @@
     "./js/app.js",
     "./js/dashboard.js",
     "./js/data.js",
+    "./js/forscherheft.js",
     "./js/icons.js",
     "./js/simulationConfig.js",
     "./js/startScreen.js",
