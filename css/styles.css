@@ -60,6 +60,14 @@ h1, h2, h3 {
   min-height: 1.2em;
 }
 
+.app-version-hinweis {
+  font-size: 0.75rem;
+  color: var(--tinte);
+  opacity: 0.55;
+  text-align: center;
+  margin: 0.25rem 0 0;
+}
+
 .app-header {
   text-align: center;
   margin-bottom: 1.5rem;

@@ -45,5 +45,17 @@ const WaldsimStorage = (() => {
     }
   }
 
-  return { isAvailable, get, set, remove };
+  // Loescht alle Waldsim-Eintraege (Forscherheft, Netzwerk-Freischaltung, ...)
+  // fuer einen kompletten Reset, z. B. zum Testen des Erststart-Zustands.
+  function clearAll() {
+    try {
+      Object.keys(window.localStorage)
+        .filter((key) => key.startsWith(PREFIX))
+        .forEach((key) => window.localStorage.removeItem(key));
+    } catch (err) {
+      /* ignorieren */
+    }
+  }
+
+  return { isAvailable, get, set, remove, clearAll };
 })();
