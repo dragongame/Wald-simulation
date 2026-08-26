@@ -58,13 +58,26 @@
       </section>
     </section>
 
-    <section id="screen-run-preview" class="screen" hidden>
+    <section id="screen-dashboard" class="screen" hidden>
       <header class="app-header">
-        <h1>Auswahl übernommen</h1>
-        <p class="app-subtitle">Das Live-Dashboard (Meilenstein M5) folgt als Nächstes. Hier schon: die aufgelöste Konfiguration und die vorab berechneten Start-/Endwerte.</p>
+        <h1>Live-Simulation</h1>
+        <p class="app-subtitle" id="dash-subtitle"></p>
       </header>
-      <div id="run-summary"></div>
-      <button type="button" id="back-button" class="secondary-button">Zurück zur Auswahl</button>
+
+      <div class="zeitsteuerung">
+        <button type="button" id="dash-play-pause" class="play-button play-button--kompakt">▶ Play</button>
+        <button type="button" id="dash-step" class="secondary-button secondary-button--kompakt">Einzelschritt ▶</button>
+        <div class="zeitachse">
+          <input type="range" id="dash-slider" min="0" max="20" value="0" step="1" aria-label="Jahr der Simulation">
+          <span id="dash-jahr-label" class="zeitachse-label">Jahr 0 von 20</span>
+        </div>
+      </div>
+
+      <div id="dash-abschluss" class="dash-abschluss" hidden></div>
+
+      <div class="dash-waelder" id="dash-waelder"></div>
+
+      <button type="button" id="dash-back-button" class="secondary-button">Zurück zur Auswahl</button>
     </section>
 
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
@@ -72,8 +85,11 @@
 
   <script src="./js/storage.js"></script>
   <script src="./js/data.js"></script>
+  <script src="./js/ui.js"></script>
+  <script src="./js/icons.js"></script>
   <script src="./js/simulationConfig.js"></script>
   <script src="./js/startScreen.js"></script>
+  <script src="./js/dashboard.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

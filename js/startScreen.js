@@ -5,13 +5,14 @@
  * Hypothese je Wald, Play-Sperre ohne Abweichung vom Ausgangszustand.
  *
  * Löst die Auswahl zur passenden vorab berechneten Zeitreihe auf
- * (WaldsimConfig) und zeigt sie in einer einfachen Vorschau - das eigentliche
- * Live-Dashboard folgt in M5.
+ * (WaldsimConfig) und übergibt sie an WaldsimDashboard (M5).
  */
 const WaldsimStartScreen = (() => {
   const WALD_EMOJI = { mischwald: "🌳", fichtenmonokultur: "🌲", kiefernwald: "🌲" };
   const STOERUNG_EMOJI = { borkenkaefer: "🐛", trockenheit: "🏜️", temperatur: "🌡️", sturm: "🌬️", totholzentnahme: "🪚" };
   const KATEGORIE_KURZ = { naturereignis: "Naturereignis", bewirtschaftungsmassnahme: "Bewirtschaftung" };
+
+  const { escapeHtml, kapitalisiere, spriteFrameHtml, showScreen } = WaldsimUI;
 
   let data = null;
   let lastResolved = null;
@@ -24,29 +25,9 @@ const WaldsimStartScreen = (() => {
     hypothesen: ["", ""],
   };
 
-  function escapeHtml(str) {
-    return str.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
-
-  function kapitalisiere(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
   function stoerungName(id) {
     const eintrag = data.stoerungen.ereignis_stoerungen.find((s) => s.id === id);
     return eintrag ? eintrag.name : id;
-  }
-
-  function spriteFrameHtml(src, alt, emoji, extraClass) {
-    return `
-      <span class="sprite-frame ${extraClass}">
-        <img src="${src}" alt="${escapeHtml(alt)}" loading="lazy">
-        <span class="sprite-fallback">
-          <span class="sprite-fallback-emoji" aria-hidden="true">${emoji}</span>
-          <span class="sprite-fallback-text">${escapeHtml(alt)}</span>
-        </span>
-      </span>
-    `;
   }
 
   function waldCardHtml(wt, slotIndex, checked, disabled) {
@@ -213,12 +194,6 @@ const WaldsimStartScreen = (() => {
     playHint.textContent = bereit ? "Bereit zum Start." : gruende[0];
   }
 
-  function showScreen(id) {
-    document.querySelectorAll(".screen").forEach((el) => {
-      el.hidden = el.id !== id;
-    });
-  }
-
   async function handlePlay() {
     const resolved = lastResolved;
     const dateien = state.wald.map((waldId) => WaldsimConfig.dateiname(waldId, resolved.konfigId, state.regler));
@@ -231,54 +206,13 @@ const WaldsimStartScreen = (() => {
     }
 
     const zeitreihen = await Promise.all(dateien.map((name) => WaldsimData.ladeZeitreihe(`simulationen/${name}`)));
-    showRunPreview(zeitreihen, resolved);
-  }
-
-  function showRunPreview(zeitreihen, resolved) {
-    const dashboardIndikatoren = data.indikatoren.filter((i) => i.dashboard_sichtbar);
-    const waldtypenById = Object.fromEntries(data.waldtypen.map((w) => [w.id, w]));
-
-    const ereignisText =
-      resolved.events.length === 0
-        ? "keine Ereignis-Störung"
-        : resolved.events.map((e) => `${stoerungName(e.typ)} (Jahr ${e.trigger_jahr})`).join(" + ");
-
-    const karten = [0, 1]
-      .map((i) => {
-        const wt = waldtypenById[state.wald[i]];
-        const zr = zeitreihen[i].zeitreihe;
-        const zeilen = dashboardIndikatoren
-          .map(
-            (ind) => `
-          <tr>
-            <td>${ind.name}</td>
-            <td>${Math.round(zr.jahr_0[ind.id])}</td>
-            <td>${Math.round(zr.jahr_20[ind.id])}</td>
-          </tr>
-        `
-          )
-          .join("");
-
-        return `
-        <article class="run-karte">
-          <h2>${wt.kurzname}</h2>
-          <p class="hypothese-recap"><strong>Hypothese:</strong> ${state.hypothesen[i] ? escapeHtml(state.hypothesen[i]) : "(keine angegeben)"}</p>
-          <table class="run-tabelle">
-            <caption class="sr-only">Indikatorwerte Jahr 0 und Jahr 20, Skala 0-100</caption>
-            <thead><tr><th scope="col">Indikator</th><th scope="col">Jahr 0</th><th scope="col">Jahr 20</th></tr></thead>
-            <tbody>${zeilen}</tbody>
-          </table>
-        </article>
-      `;
-      })
-      .join("");
-
-    document.getElementById("run-summary").innerHTML = `
-      <p class="run-konfiguration"><strong>Störung:</strong> ${ereignisText} · <strong>Wildverbiss-Regler:</strong> ${kapitalisiere(state.regler)}</p>
-      <div class="run-karten">${karten}</div>
-    `;
-
-    showScreen("screen-run-preview");
+    await WaldsimDashboard.start({
+      waldIds: [...state.wald],
+      hypothesen: [...state.hypothesen],
+      resolved,
+      regler: state.regler,
+      zeitreihen,
+    });
   }
 
   function wireEvents() {
@@ -340,8 +274,6 @@ const WaldsimStartScreen = (() => {
         document.getElementById("play-hint").textContent = "Fehler beim Laden der Simulation – bitte erneut versuchen.";
       }
     });
-
-    document.getElementById("back-button").addEventListener("click", () => showScreen("screen-start"));
   }
 
   async function init() {
@@ -371,5 +303,9 @@ const WaldsimStartScreen = (() => {
     showScreen("screen-start");
   }
 
-  return { init };
+  function zurueckZurAuswahl() {
+    showScreen("screen-start");
+  }
+
+  return { init, zurueckZurAuswahl };
 })();
