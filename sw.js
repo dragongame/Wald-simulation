@@ -20,7 +20,7 @@
  * Pfade ausschliesslich relativ zum Scope dieses Service Workers, damit die
  * App auch im GitHub-Pages-Unterordner funktioniert.
  */
-const SW_BUILD_VERSION = "8f0b085c6a013d82";
+const SW_BUILD_VERSION = "02aa9f1fb720036d";
 const MANIFEST_URL = "./sw-precache-manifest.json";
 const CACHE_PREFIX = "waldsim-precache-";
 

@@ -152,10 +152,23 @@ class Simulation:
         if self._ist_aktiv("trockenheit", jahr):
             intensitaet = 1.0 + (0.3 if temperatur_aktiv else 0.0)
             s["bodenfeuchte"] = _clamp(s["bodenfeuchte"] - 12 * intensitaet)
+
+            fichte_vor = s["fichte_vitalitaet"]
             s["fichte_vitalitaet"] = _clamp(
-                s["fichte_vitalitaet"] - 6 * self.res_trockenheit * intensitaet * (s["fichte_vitalitaet"] / 100)
+                fichte_vor - 6 * self.res_trockenheit * intensitaet * (fichte_vor / 100)
             )
-            s["buche_vitalitaet"] = _clamp(s["buche_vitalitaet"] - 1.5 * (s["buche_vitalitaet"] / 100))
+            buche_vor = s["buche_vitalitaet"]
+            s["buche_vitalitaet"] = _clamp(buche_vor - 1.5 * (buche_vor / 100))
+
+            # Trockengestresst absterbende Bäume werden zu Totholz - dieselbe
+            # Kopplung (Faktor 0.5 des tatsächlichen Vitalitätsverlusts) wie
+            # weiter unten beim Borkenkäfer. Vorher verschwand durch
+            # Trockenheit verlorene Vitalität spurlos, ohne jede
+            # Totholz-Wirkung (Fix nach Nutzer-Feedback, siehe Milestones-
+            # Dokument M8-Abschnitt).
+            fichte_verlust = fichte_vor - s["fichte_vitalitaet"]
+            buche_verlust = buche_vor - s["buche_vitalitaet"]
+            s["totholzmenge"] = _clamp(s["totholzmenge"] + (fichte_verlust + buche_verlust) * 0.5, hi=100)
         else:
             # langsame Erholung der Bodenfeuchte, wenn keine Trockenheit aktiv ist
             s["bodenfeuchte"] = _clamp(s["bodenfeuchte"] + 3)
@@ -216,7 +229,11 @@ class Simulation:
 
         # --- Temperatur: dauerhafter Hintergrundfaktor ---
         if temperatur_aktiv:
-            s["fichte_vitalitaet"] = _clamp(s["fichte_vitalitaet"] - 0.15 * (s["fichte_vitalitaet"] / 100))
+            fichte_vor = s["fichte_vitalitaet"]
+            s["fichte_vitalitaet"] = _clamp(fichte_vor - 0.15 * (fichte_vor / 100))
+            # Gleiche Totholz-Kopplung wie bei Trockenheit oben - klein, aber
+            # aus demselben Grund konsistent ergänzt.
+            s["totholzmenge"] = _clamp(s["totholzmenge"] + (fichte_vor - s["fichte_vitalitaet"]) * 0.5, hi=100)
             s["bodenfeuchte"] = _clamp(s["bodenfeuchte"] - 0.3)
             s["brandrisiko"] = _clamp(s["brandrisiko"] + 0.4)
 
