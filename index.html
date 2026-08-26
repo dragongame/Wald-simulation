@@ -28,6 +28,7 @@
         <button type="button" id="forscherheft-oeffnen-button" class="forscherheft-link">📖 Forscherheft <span id="forscherheft-zaehler">(0)</span></button>
         <button type="button" id="netzwerk-oeffnen-button" class="forscherheft-link">🔬 Wissenschaftler:in um Hilfe bitten</button>
         <button type="button" id="lexikon-oeffnen-button" class="forscherheft-link">📚 Arten-Lexikon</button>
+        <button type="button" id="lehrkraft-oeffnen-button" class="forscherheft-link">🍎 Für Lehrkräfte</button>
         <button type="button" id="app-reset-button" class="forscherheft-link">🔄 Zurücksetzen</button>
       </header>
 
@@ -204,6 +205,17 @@
       <button type="button" id="lexikon-zurueck-button" class="secondary-button">Zurück</button>
     </section>
 
+    <section id="screen-lehrkraft" class="screen" hidden>
+      <header class="app-header">
+        <h1>Für Lehrkräfte</h1>
+        <p class="app-subtitle" id="lehrkraft-hinweis"></p>
+      </header>
+
+      <ol id="lehrkraft-liste" class="lehrkraft-liste"></ol>
+
+      <button type="button" id="lehrkraft-zurueck-button" class="secondary-button">Zurück</button>
+    </section>
+
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
     <p class="app-version-hinweis" id="app-version-hinweis"></p>
   </main>
@@ -220,6 +232,7 @@
   <script src="./js/forscherheft.js"></script>
   <script src="./js/graph.js"></script>
   <script src="./js/lexikon.js"></script>
+  <script src="./js/lehrkraft.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

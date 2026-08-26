@@ -1,6 +1,6 @@
 {
-  "version": "d86428b9527ac00b",
-  "cacheName": "waldsim-precache-d86428b9527ac00b",
+  "version": "aa0a3567a4fc901b",
+  "cacheName": "waldsim-precache-aa0a3567a4fc901b",
   "files": [
     "./",
     "./assets/icons/apple-touch-icon.png",
@@ -62,6 +62,7 @@
     "./assets/sprites/zunderschwamm_portrait.png",
     "./css/styles.css",
     "./data/edges.json",
+    "./data/generated/lehrkraft_kombinationen.json",
     "./data/generated/simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-beide.json",
     "./data/generated/simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-keine.json",
     "./data/generated/simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-luchs.json",
@@ -338,6 +339,7 @@
     "./js/forscherheft.js",
     "./js/graph.js",
     "./js/icons.js",
+    "./js/lehrkraft.js",
     "./js/lexikon.js",
     "./js/simulationConfig.js",
     "./js/startScreen.js",

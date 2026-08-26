@@ -51,6 +51,7 @@ if ("serviceWorker" in navigator) {
 WaldsimForscherheft.init();
 WaldsimGraph.init();
 WaldsimLexikon.init();
+WaldsimLehrkraft.init();
 
 WaldsimStartScreen.init().catch((err) => {
   console.error("Start-Screen konnte nicht geladen werden:", err);

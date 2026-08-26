@@ -1361,3 +1361,44 @@ h1, h2, h3 {
   font-size: 0.75rem;
   line-height: 1.35;
 }
+
+/* ---- Für Lehrkräfte (M19) ---- */
+
+.lehrkraft-liste {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lehrkraft-eintrag {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+
+.lehrkraft-eintrag-kopf {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.lehrkraft-rang {
+  font-family: Iowan Old Style, Georgia, serif;
+  font-weight: bold;
+  color: var(--bernstein);
+  flex: 0 0 auto;
+}
+
+.lehrkraft-waelder {
+  font-weight: bold;
+}
+
+.lehrkraft-eintrag p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
