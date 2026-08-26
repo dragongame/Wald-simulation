@@ -11,6 +11,7 @@ const WaldsimStartScreen = (() => {
   const WALD_EMOJI = { mischwald: "🌳", fichtenmonokultur: "🌲", kiefernwald: "🌲" };
   const STOERUNG_EMOJI = { borkenkaefer: "🐛", trockenheit: "🏜️", temperatur: "🌡️", sturm: "🌬️", totholzentnahme: "🪚" };
   const KATEGORIE_KURZ = { naturereignis: "Naturereignis", bewirtschaftungsmassnahme: "Bewirtschaftung" };
+  const PRAEDATOR_EMOJI = { luchs: "🦊", wolf: "🐺" };
 
   const { escapeHtml, kapitalisiere, spriteFrameHtml, showScreen } = WaldsimUI;
 
@@ -143,20 +144,25 @@ const WaldsimStartScreen = (() => {
     // anwesend), siehe Milestones-Dokument. Wiederverwendet bewusst die
     // bestehenden .regler-segmente/.regler-segment-Klassen (funktionieren
     // unverändert mit type="checkbox" statt type="radio").
-    const luchsAktiv = state.regler === "beide" || state.regler === "luchs";
-    const wolfAktiv = state.regler === "beide" || state.regler === "wolf";
+    const aktivById = {
+      luchs: state.regler === "beide" || state.regler === "luchs",
+      wolf: state.regler === "beide" || state.regler === "wolf",
+    };
     container.innerHTML = `
       <div class="regler-control">
         ${spriteFrameHtml(`./assets/sprites/${regler.icon_sprite}`, regler.name, "🦌", "sprite-1-1 sprite-small")}
         <div class="regler-segmente" role="group" aria-label="${escapeHtml(regler.name)}">
-          <label class="regler-segment">
-            <input type="checkbox" name="praedator-luchs" ${luchsAktiv ? "checked" : ""}>
-            Luchs
-          </label>
-          <label class="regler-segment">
-            <input type="checkbox" name="praedator-wolf" ${wolfAktiv ? "checked" : ""}>
-            Wolf
-          </label>
+          ${regler.praedatoren
+            .map(
+              (p) => `
+            <label class="regler-segment">
+              <input type="checkbox" name="praedator-${p.id}" ${aktivById[p.id] ? "checked" : ""}>
+              ${spriteFrameHtml(`./assets/sprites/${p.id}_portrait.png`, p.name, PRAEDATOR_EMOJI[p.id] || "🐾", "sprite-1-1 sprite-small")}
+              <span>${escapeHtml(p.name)}</span>
+            </label>
+          `
+            )
+            .join("")}
         </div>
       </div>
     `;

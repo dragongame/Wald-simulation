@@ -37,6 +37,7 @@
 - Es sollte sich mehr wie ein Feldbuch anfühlen, also mehr so wie offene Seiten.
 - Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht, aber bei den Szenario zusammen stellen (siehe Drag & Drop) und auch bei der Reflexion
 - Navigieren könnte mit kleinen schmalen Post-It Notizen sein, so wie man es auch in einem echten Buch machen würde
+- Im Netzwerk ansehen solle erst sichtar sein, wenn auch die Wissenschaftlering freigeschaltet ist
 
 ### Szenarios wo die Reihfolge egal ist
 
@@ -46,3 +47,6 @@
 
 - Diese soll der Lehrkraft dienen gute Scenarios zu verteilen, wo deutliche Unterschide sichtbar sind.
 
+### Die Graphen sollen im Forscherheft angezeigt werden
+
+- Die bis zu drei gespeicherten Vergleichsgrahen sollent im Forscherheft darstellt werden.
