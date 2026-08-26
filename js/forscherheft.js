@@ -244,6 +244,45 @@ const WaldsimForscherheft = (() => {
     `;
   }
 
+  // Meilenstein M16: die gemerkten Kurven-Snapshots (seit M6/M7 als reine
+  // Kurvendaten im Eintrag vorhanden, siehe js/analyse.js `kurvenFuer()`)
+  // werden hier als echte Kurvengrafik gerendert statt nur als Textliste
+  // der Indikatornamen referenziert. Legende zippt `namen`/`indikatorIds`
+  // mit `kurven[0]` per Index - beide Arrays stammen aus derselben,
+  // stabil sortierten Filterung in js/analyse.js, die Reihenfolge ist
+  // also garantiert identisch.
+  function snapshotHtml(eintrag, snap) {
+    // Vor M16 gespeicherte Einträge haben noch keine `kurven`-Daten (nur
+    // indikatorIds/namen) - für diese bleibt es beim reinen Textnamen,
+    // da die Original-Zeitreihe zum Nachbau der Grafik nicht mehr vorliegt.
+    if (!snap.kurven) {
+      return `<p class="form-hint">Kurven-Kombination gemerkt (ohne Grafik, vor einem App-Update gespeichert): ${escapeHtml(snap.namen.join(", "))}</p>`;
+    }
+    const legendeHtml = snap.namen
+      .map(
+        (name, idx) =>
+          `<li><span class="analyse-farb-chip" style="background:${snap.kurven[0][idx].farbe}"></span>${escapeHtml(name)}</li>`
+      )
+      .join("");
+    const chartsHtml = eintrag.waelder
+      .map(
+        (w, i) => `
+          <article class="analyse-wald-panel">
+            <h2>${escapeHtml(w.waldtypName)}</h2>
+            ${WaldsimChart.svg(w.waldtypName, snap.kurven[i])}
+          </article>
+        `
+      )
+      .join("");
+
+    return `
+      <div class="forscherheft-snapshot">
+        <ul class="forscherheft-snapshot-legende">${legendeHtml}</ul>
+        <div class="analyse-charts">${chartsHtml}</div>
+      </div>
+    `;
+  }
+
   function eintragHtml(data, eintrag, index) {
     const stempelNamen = eintrag.waelder.map((w) => w.waldtypName).join(" / ");
     const waelderHtml = eintrag.waelder.map(waldTeilHtml).join("");
@@ -262,7 +301,7 @@ const WaldsimForscherheft = (() => {
         </div>
         <p class="forscherheft-konfiguration">Wildverbiss-Regler: ${kapitalisiere(eintrag.regler)}</p>
         <div class="forscherheft-waelder">${waelderHtml}</div>
-        ${eintrag.snapshots.length > 0 ? `<p class="form-hint">${eintrag.snapshots.length} Kurven-Snapshot(s) gemerkt: ${eintrag.snapshots.map((s) => escapeHtml(s.namen.join(", "))).join(" · ")}</p>` : ""}
+        ${eintrag.snapshots.length > 0 ? `<div class="forscherheft-snapshots">${eintrag.snapshots.map((s) => snapshotHtml(eintrag, s)).join("")}</div>` : ""}
         ${eintrag.reflexionstext ? `<p class="forscherheft-reflexion"><strong>Reflexion:</strong> ${escapeHtml(eintrag.reflexionstext)}</p>` : `<p class="form-hint">(keine Reflexion angegeben)</p>`}
         <button type="button" class="secondary-button secondary-button--kompakt forscherheft-netzwerk-button" data-index="${index}">🕸️ Im Netzwerk ansehen</button>
         <button type="button" class="secondary-button secondary-button--kompakt forscherheft-export-button" data-index="${index}">Als Text exportieren</button>

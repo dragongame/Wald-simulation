@@ -12,7 +12,6 @@
 const WaldsimAnalyse = (() => {
   const { escapeHtml, showScreen } = WaldsimUI;
 
-  const JAHRE_GESAMT = 20;
   const MAX_SNAPSHOTS = 3;
 
   // Kaskadenrelevante Indikatoren je Störung/Regler - kuratierte Zuordnung
@@ -42,53 +41,6 @@ const WaldsimAnalyse = (() => {
     "verjuengung_mischbaumarten", "reh_dichte", "rothirsch_dichte", "eiche_vitalitaet", "biodiversitaet",
     "eichelhaeher_indikator", "eichhoernchen_indikator",
   ];
-
-  // Feste Farb-/Strichzuordnung je Indikator (Reihenfolge aus
-  // data/indikatoren.json), damit Legende und beide Wald-Diagramme
-  // konsistent bleiben. Signalrot bleibt bewusst ausgespart (laut
-  // Styleguide reserviert für den Fichtenmonokultur-Kollaps im Dashboard).
-  const INDIKATOR_FARBEN = {
-    gesamtvitalitaet: "#4C6E4A",
-    borkenkaefer_dichte: "#B5651D",
-    totholzmenge: "#6B4A34",
-    kronendach: "#6E9B6B",
-    bodenfeuchte: "#5C7A8A",
-    biodiversitaet: "#6E5A63",
-    fichte_vitalitaet: "#2F5233",
-    buche_vitalitaet: "#A67C3D",
-    eiche_vitalitaet: "#7A8B3F",
-    kiefer_vitalitaet: "#C08A4E",
-    birke_anteil: "#B79A6B",
-    verjuengung_mischbaumarten: "#3D6B4F",
-    reh_dichte: "#8C6349",
-    rothirsch_dichte: "#6B4E3D",
-    brandrisiko: "#A8522E",
-    // Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten
-    // (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) - Paletten an
-    // Kategorie angelehnt: Sträucher bräunlich-grün, Pilze dunkel-holzig,
-    // Kräuter grasgrün, Prädatoren erdig-warm.
-    hasel_anteil: "#8A9B5E",
-    holunder_anteil: "#6F7D3F",
-    brombeere_anteil: "#7C4A5E",
-    zunderschwamm_indikator: "#5A4433",
-    blaeuepilz_indikator: "#4A5F7A",
-    hallimasch_indikator: "#8B5A2B",
-    brennnessel_indikator: "#4F7A3D",
-    eichelhaeher_indikator: "#5E7A9B",
-    buntspecht_indikator: "#8B4A3A",
-    ameisenbuntkaefer_indikator: "#9B6B2E",
-    buschwindroeschen_indikator: "#7FA0C4",
-    waldmeister_indikator: "#3F8B5C",
-    heidelbeere_indikator: "#5C4B8A",
-    eichhoernchen_indikator: "#C06B2E",
-    raupen_indikator: "#7A8B3F",
-    blattlaeuse_indikator: "#8FA85E",
-    habicht_indikator: "#6B5A4A",
-    sperber_indikator: "#8A7A6A",
-    kleinsaeuger_indikator: "#9B8A6B",
-    fuchs_indikator: "#C1732E",
-  };
-  const DASH_MUSTER = ["", "6 3", "2 3", "8 2 2 2"];
 
   const KATEGORIE_LABEL = {
     baumbestand: "Baumbestand",
@@ -126,43 +78,20 @@ const WaldsimAnalyse = (() => {
     return set;
   }
 
-  function punktePfad(zeitreihe, indikatorId) {
-    const punkte = [];
-    for (let jahr = 0; jahr <= JAHRE_GESAMT; jahr++) {
-      const x = 30 + (jahr / JAHRE_GESAMT) * 280;
-      const wert = zeitreihe[`jahr_${jahr}`][indikatorId] ?? 0;
-      const y = 150 - (wert / 100) * 140;
-      punkte.push(`${x.toFixed(1)},${y.toFixed(1)}`);
-    }
-    return punkte.join(" ");
+  function ausgewaehlteIndikatoren() {
+    return indikatoren.filter((ind) => ausgewaehlt.has(ind.id));
+  }
+
+  function kurvenFuer(zeitreihe) {
+    return ausgewaehlteIndikatoren().map((ind, idx) => ({
+      werte: WaldsimChart.werteAusZeitreihe(zeitreihe, ind.id),
+      farbe: ind.farbe,
+      dash: WaldsimChart.DASH_MUSTER[idx % WaldsimChart.DASH_MUSTER.length],
+    }));
   }
 
   function chartSvg(waldName, zeitreihe) {
-    const gitter = [0, 25, 50, 75, 100]
-      .map((v) => {
-        const y = 150 - (v / 100) * 140;
-        return `<line x1="30" y1="${y}" x2="310" y2="${y}" class="analyse-gitter"/><text x="26" y="${y + 3}" class="analyse-achsentext" text-anchor="end">${v}</text>`;
-      })
-      .join("");
-    const xAchse = [0, 5, 10, 15, 20]
-      .map((jahr) => {
-        const x = 30 + (jahr / JAHRE_GESAMT) * 280;
-        return `<text x="${x}" y="168" class="analyse-achsentext" text-anchor="middle">${jahr}</text>`;
-      })
-      .join("");
-    const linien = indikatoren
-      .filter((ind) => ausgewaehlt.has(ind.id))
-      .map(
-        (ind, idx) =>
-          `<polyline points="${punktePfad(zeitreihe, ind.id)}" class="analyse-linie" style="stroke:${ind.farbe}" stroke-dasharray="${DASH_MUSTER[idx % DASH_MUSTER.length]}"/>`
-      )
-      .join("");
-
-    return `
-      <svg viewBox="0 0 320 180" class="analyse-chart" role="img" aria-label="Kurvendiagramm ${escapeHtml(waldName)}, Jahr 0 bis 20, Skala 0 bis 100">
-        ${gitter}${xAchse}${linien}
-      </svg>
-    `;
+    return WaldsimChart.svg(waldName, kurvenFuer(zeitreihe));
   }
 
   function renderCharts() {
@@ -247,8 +176,15 @@ const WaldsimAnalyse = (() => {
 
     document.getElementById("analyse-snapshot-button").addEventListener("click", () => {
       if (snapshots.length >= MAX_SNAPSHOTS || ausgewaehlt.size === 0) return;
-      const namen = indikatoren.filter((ind) => ausgewaehlt.has(ind.id)).map((ind) => ind.name);
-      snapshots.push({ indikatorIds: Array.from(ausgewaehlt), namen });
+      const ausgewaehlt_ = ausgewaehlteIndikatoren();
+      snapshots.push({
+        indikatorIds: ausgewaehlt_.map((ind) => ind.id),
+        namen: ausgewaehlt_.map((ind) => ind.name),
+        // Kurvendaten direkt mitgespeichert (nicht nur die IDs), damit M16
+        // (Forscherheft) den Snapshot später ohne Zugriff auf die
+        // Original-Zeitreihe als tatsächliche Kurvengrafik nachbauen kann.
+        kurven: [0, 1].map((i) => kurvenFuer(lauf.zeitreihen[i].zeitreihe)),
+      });
       renderSnapshots();
     });
 
@@ -280,7 +216,7 @@ const WaldsimAnalyse = (() => {
     const data = await WaldsimData.load();
 
     lauf = neuerLauf;
-    indikatoren = data.indikatoren.map((ind) => ({ ...ind, farbe: INDIKATOR_FARBEN[ind.id] || "#888888" }));
+    indikatoren = data.indikatoren.map((ind) => ({ ...ind, farbe: WaldsimChart.farbeFuer(ind.id) }));
     kaskadenrelevant = ermittleKaskadenrelevant(lauf.resolved, lauf.regler);
     ausgewaehlt = new Set(kaskadenrelevant);
     snapshots = [];
