@@ -63,6 +63,56 @@ const WaldsimDashboard = (() => {
     ],
   };
 
+  // Meilenstein M12: Dashboard-Kacheln für die 20 Arten-Indikatoren aus der
+  // Analyse-Erweiterung (siehe Milestones-Dokument, Erweiterung 2026-08-26),
+  // die bis hierhin nur als Kurve im Analyse-Screen wählbar waren. Jede Art
+  // hat laut data/nodes.json genau eine Sprite-Zustandsvariante
+  // ("portrait", kein Crossfade über Schwellenwerte wie bei der Fichte).
+  // kleinsaeuger_indikator bleibt bewusst ausgenommen: rein strukturelle
+  // Hilfsgröße ohne eigenen Lexikon-Knoten/Sprite (siehe indikatoren.json).
+  const WEITERE_ARTEN = [
+    { id: "hasel", indikator: "hasel_anteil", name: "Hasel", kategorie: "strauch" },
+    { id: "holunder", indikator: "holunder_anteil", name: "Schwarzer Holunder", kategorie: "strauch" },
+    { id: "brombeere", indikator: "brombeere_anteil", name: "Brombeere", kategorie: "strauch" },
+    { id: "zunderschwamm", indikator: "zunderschwamm_indikator", name: "Zunderschwamm", kategorie: "pilz" },
+    { id: "blaeuepilz", indikator: "blaeuepilz_indikator", name: "Bläuepilz", kategorie: "pilz" },
+    { id: "hallimasch", indikator: "hallimasch_indikator", name: "Hallimasch", kategorie: "pilz" },
+    { id: "brennnessel", indikator: "brennnessel_indikator", name: "Brennnessel", kategorie: "kraut" },
+    { id: "buschwindroeschen", indikator: "buschwindroeschen_indikator", name: "Buschwindröschen", kategorie: "kraut" },
+    { id: "waldmeister", indikator: "waldmeister_indikator", name: "Waldmeister", kategorie: "kraut" },
+    { id: "heidelbeere", indikator: "heidelbeere_indikator", name: "Heidelbeere", kategorie: "kraut" },
+    { id: "eichelhaeher", indikator: "eichelhaeher_indikator", name: "Eichelhäher", kategorie: "verbreiter" },
+    { id: "eichhoernchen", indikator: "eichhoernchen_indikator", name: "Eichhörnchen", kategorie: "herbivor" },
+    { id: "raupen", indikator: "raupen_indikator", name: "Schmetterlingsraupen", kategorie: "herbivor" },
+    { id: "blattlaeuse", indikator: "blattlaeuse_indikator", name: "Blattläuse", kategorie: "herbivor" },
+    { id: "buntspecht", indikator: "buntspecht_indikator", name: "Buntspecht", kategorie: "praedator" },
+    { id: "ameisenbuntkaefer", indikator: "ameisenbuntkaefer_indikator", name: "Ameisenbuntkäfer", kategorie: "praedator" },
+    { id: "habicht", indikator: "habicht_indikator", name: "Habicht", kategorie: "praedator" },
+    { id: "sperber", indikator: "sperber_indikator", name: "Sperber", kategorie: "praedator" },
+    { id: "fuchs", indikator: "fuchs_indikator", name: "Fuchs", kategorie: "praedator" },
+  ].map((art) => ({ ...art, zustaende: [{ min: 0, src: `${art.id}_portrait.png` }] }));
+
+  // Gleiche Kategorie-Label/Emoji-Konvention wie js/lexikon.js und
+  // js/graph.js (dort jeweils eigene, screen-lokale Konstante statt
+  // geteiltem Modul - hier fortgeführt).
+  const WEITERE_ARTEN_KATEGORIE_LABEL = {
+    strauch: "Sträucher",
+    pilz: "Pilze",
+    kraut: "Krautschicht",
+    verbreiter: "Samenverbreiter",
+    herbivor: "Pflanzenfresser",
+    praedator: "Prädatoren",
+  };
+  const WEITERE_ARTEN_KATEGORIE_EMOJI = {
+    strauch: "🌿",
+    pilz: "🍄",
+    kraut: "🌾",
+    verbreiter: "🐦",
+    herbivor: "🦌",
+    praedator: "🦊",
+  };
+  const WEITERE_ARTEN_KATEGORIE_REIHENFOLGE = ["strauch", "pilz", "kraut", "verbreiter", "herbivor", "praedator"];
+
   const INSTRUMENTE_META = [
     { id: "gesamtvitalitaet", farbrolle: "moos", richtung: "hochGut", icon: "baum" },
     { id: "borkenkaefer_dichte", farbrolle: "bernstein", richtung: "hochWarnung", icon: "kaefer" },
@@ -95,8 +145,16 @@ const WaldsimDashboard = (() => {
     return art.zustaende.find((z) => value >= z.min) || art.zustaende[art.zustaende.length - 1];
   }
 
-  function ermittleRelevanteArten(zeitreihe) {
-    return ARTEN.filter((art) => Object.keys(zeitreihe).some((jahrKey) => (zeitreihe[jahrKey][art.indikator] || 0) > 0));
+  function ermittleRelevanteArten(zeitreihe, artenListe = ARTEN) {
+    return artenListe.filter((art) => Object.keys(zeitreihe).some((jahrKey) => (zeitreihe[jahrKey][art.indikator] || 0) > 0));
+  }
+
+  function gruppiereWeitereArten(artenRelevant) {
+    return WEITERE_ARTEN_KATEGORIE_REIHENFOLGE.map((kategorie) => ({
+      kategorie,
+      label: WEITERE_ARTEN_KATEGORIE_LABEL[kategorie],
+      arten: artenRelevant.filter((art) => art.kategorie === kategorie),
+    })).filter((gruppe) => gruppe.arten.length > 0);
   }
 
   function stoerungName(data, id) {
@@ -111,9 +169,9 @@ const WaldsimDashboard = (() => {
     return resolved.events.map((e) => `${stoerungName(data, e.typ)} (Jahr ${e.trigger_jahr})`).join(" + ");
   }
 
-  function speciesSpriteHtml(id, name, emoji) {
+  function speciesSpriteHtml(id, name, emoji, klein) {
     return `
-      <div class="art-sprite" id="${id}">
+      <div class="art-sprite${klein ? " art-sprite--klein" : ""}" id="${id}">
         <div class="sprite-frame sprite-1-1">
           <img class="art-sprite-layer" alt="">
           <img class="art-sprite-layer" alt="">
@@ -124,6 +182,30 @@ const WaldsimDashboard = (() => {
         </div>
         <span class="art-sprite-name">${escapeHtml(name)}</span>
       </div>
+    `;
+  }
+
+  function weitereArtenHtml(i, weitereArtenRelevant) {
+    if (weitereArtenRelevant.length === 0) return "";
+    const gruppen = gruppiereWeitereArten(weitereArtenRelevant);
+    const gruppenHtml = gruppen
+      .map((gruppe) => {
+        const kachelnHtml = gruppe.arten
+          .map((art) => speciesSpriteHtml(`w${i}-weitere-${art.id}`, art.name, WEITERE_ARTEN_KATEGORIE_EMOJI[gruppe.kategorie], true))
+          .join("");
+        return `
+          <div class="weitere-arten-gruppe">
+            <h3>${escapeHtml(gruppe.label)}</h3>
+            <div class="art-reihe art-reihe--klein">${kachelnHtml}</div>
+          </div>
+        `;
+      })
+      .join("");
+    return `
+      <details class="weitere-arten-details">
+        <summary>Weitere Arten anzeigen (${weitereArtenRelevant.length})</summary>
+        <div class="weitere-arten-inhalt">${gruppenHtml}</div>
+      </details>
     `;
   }
 
@@ -140,7 +222,7 @@ const WaldsimDashboard = (() => {
     `;
   }
 
-  function waldPanelHtml(i, wt, hypothese, artenRelevant, instrumente) {
+  function waldPanelHtml(i, wt, hypothese, artenRelevant, instrumente, weitereArtenRelevant) {
     const artenHtml = artenRelevant.map((art) => speciesSpriteHtml(`w${i}-art-${art.id}`, art.name, art.emoji)).join("");
     const kaeferHtml = speciesSpriteHtml(`w${i}-borkenkaefer`, "Borkenkäfer", "🐛");
     const totholzHtml = speciesSpriteHtml(`w${i}-totholz`, "Totholz", "🪵");
@@ -152,6 +234,7 @@ const WaldsimDashboard = (() => {
         <p class="hypothese-recap"><strong>Hypothese:</strong> ${hypothese ? escapeHtml(hypothese) : "(keine angegeben)"}</p>
         <div class="art-reihe">${artenHtml}${kaeferHtml}${totholzHtml}</div>
         <div class="instrumente-grid">${instrumenteHtml}</div>
+        ${weitereArtenHtml(i, weitereArtenRelevant)}
       </article>
     `;
   }
@@ -174,14 +257,19 @@ const WaldsimDashboard = (() => {
     });
   }
 
-  function updateArtenFuerWald(i, zr, artenRelevant) {
-    artenRelevant.forEach((art) => {
+  function updateArtenListe(i, zr, artenListe, idPraefix) {
+    artenListe.forEach((art) => {
       const value = zr[art.indikator] || 0;
       const zustand = zustandFuer(art, value);
-      const container = document.getElementById(`w${i}-art-${art.id}`);
+      const container = document.getElementById(`w${i}-${idPraefix}-${art.id}`);
       updateSpeciesSprite(container, zustand.src, `${art.name}: ${bucket(value)}`);
       if (container) container.style.opacity = value > 0 ? "1" : "0.18";
     });
+  }
+
+  function updateArtenFuerWald(i, zr, artenRelevant, weitereArtenRelevant) {
+    updateArtenListe(i, zr, artenRelevant, "art");
+    updateArtenListe(i, zr, weitereArtenRelevant, "weitere");
 
     const dichte = zr.borkenkaefer_dichte || 0;
     const kaeferContainer = document.getElementById(`w${i}-borkenkaefer`);
@@ -231,7 +319,7 @@ const WaldsimDashboard = (() => {
 
     [0, 1].forEach((i) => {
       const zr = lauf.zeitreihen[i].zeitreihe[`jahr_${jahr}`];
-      updateArtenFuerWald(i, zr, lauf.artenRelevant[i]);
+      updateArtenFuerWald(i, zr, lauf.artenRelevant[i], lauf.weitereArtenRelevant[i]);
       updateInstrumenteFuerWald(i, zr, lauf.instrumente);
     });
 
@@ -316,6 +404,7 @@ const WaldsimDashboard = (() => {
       ...neuerLauf,
       waldtypen: neuerLauf.waldIds.map((id) => waldtypenById[id]),
       artenRelevant: neuerLauf.zeitreihen.map((z) => ermittleRelevanteArten(z.zeitreihe)),
+      weitereArtenRelevant: neuerLauf.zeitreihen.map((z) => ermittleRelevanteArten(z.zeitreihe, WEITERE_ARTEN)),
       instrumente: INSTRUMENTE_META.map((meta) => ({ ...meta, label: indikatorenById[meta.id].name })),
     };
 
@@ -323,7 +412,7 @@ const WaldsimDashboard = (() => {
       `${beschreibeEreignisse(data, lauf.resolved)} · Wildverbiss-Regler: ${kapitalisiere(lauf.regler)}`;
 
     document.getElementById("dash-waelder").innerHTML = [0, 1]
-      .map((i) => waldPanelHtml(i, lauf.waldtypen[i], lauf.hypothesen[i], lauf.artenRelevant[i], lauf.instrumente))
+      .map((i) => waldPanelHtml(i, lauf.waldtypen[i], lauf.hypothesen[i], lauf.artenRelevant[i], lauf.instrumente, lauf.weitereArtenRelevant[i]))
       .join("");
 
     wireEvents();

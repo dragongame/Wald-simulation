@@ -660,6 +660,55 @@ h1, h2, h3 {
   opacity: 0.85;
 }
 
+/* ---- Weitere Arten (M12), einklappbar je Wald-Platz ---- */
+
+.weitere-arten-details {
+  margin-top: 1rem;
+  border-top: 1px solid var(--rindenbraun);
+  padding-top: 0.6rem;
+}
+
+.weitere-arten-details summary {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--tinte);
+}
+
+.weitere-arten-inhalt {
+  margin-top: 0.6rem;
+}
+
+.weitere-arten-gruppe {
+  margin-bottom: 0.7rem;
+}
+
+.weitere-arten-gruppe:last-child {
+  margin-bottom: 0;
+}
+
+.weitere-arten-gruppe h3 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--moosgruen);
+  opacity: 0.75;
+}
+
+.art-reihe--klein {
+  margin-bottom: 0;
+}
+
+.art-sprite--klein {
+  width: 3rem;
+}
+
+.art-sprite--klein .art-sprite-name {
+  font-size: 0.55rem;
+}
+
 /* ---- Analyse-Screen (M6) ---- */
 
 .analyse-indikatoren-liste {
