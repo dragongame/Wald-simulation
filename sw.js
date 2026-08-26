@@ -1,0 +1,76 @@
+/**
+ * Service Worker: cached beim Install-Event alle in sw-precache-manifest.json
+ * gelisteten Dateien fuer vollstaendigen Offline-Betrieb nach dem ersten
+ * Laden (Technikdokument 5.2). Der Cache-Name enthaelt einen aus dem Inhalt
+ * aller gecachten Dateien abgeleiteten Hash (siehe
+ * scripts/pwa/build_precache_manifest.py); aendert sich irgendeine gecachte
+ * Datei, aendert sich automatisch der Cache-Name, wodurch beim naechsten
+ * Laden zuverlaessig eine neue Version erkannt und der alte Cache geloescht
+ * wird (skipWaiting/clients.claim).
+ *
+ * Pfade ausschliesslich relativ zum Scope dieses Service Workers, damit die
+ * App auch im GitHub-Pages-Unterordner funktioniert.
+ */
+const MANIFEST_URL = "./sw-precache-manifest.json";
+const CACHE_PREFIX = "waldsim-precache-";
+
+async function loadManifest() {
+  const response = await fetch(MANIFEST_URL, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Precache-Manifest konnte nicht geladen werden: ${response.status}`);
+  }
+  return response.json();
+}
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      const manifest = await loadManifest();
+      const cache = await caches.open(manifest.cacheName);
+      await cache.addAll(manifest.files);
+      await self.skipWaiting();
+    })()
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const manifest = await loadManifest();
+      const keys = await caches.keys();
+      await Promise.all(
+        keys
+          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== manifest.cacheName)
+          .map((key) => caches.delete(key))
+      );
+      await self.clients.claim();
+    })()
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+
+  event.respondWith(
+    (async () => {
+      const cached = await caches.match(event.request);
+      if (cached) {
+        return cached;
+      }
+
+      try {
+        return await fetch(event.request);
+      } catch (err) {
+        if (event.request.mode === "navigate") {
+          const fallback = await caches.match("./");
+          if (fallback) {
+            return fallback;
+          }
+        }
+        throw err;
+      }
+    })()
+  );
+});
