@@ -27,6 +27,7 @@
         <p class="app-subtitle">Wähle zwei Wald-Plätze, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
         <button type="button" id="forscherheft-oeffnen-button" class="forscherheft-link">📖 Forscherheft <span id="forscherheft-zaehler">(0)</span></button>
         <button type="button" id="netzwerk-oeffnen-button" class="forscherheft-link">🔬 Wissenschaftler:in um Hilfe bitten</button>
+        <button type="button" id="lexikon-oeffnen-button" class="forscherheft-link">📚 Arten-Lexikon</button>
       </header>
 
       <section class="form-section" aria-labelledby="heading-waelder">
@@ -191,6 +192,17 @@
       <button type="button" id="graph-zurueck-button" class="secondary-button">Zurück</button>
     </section>
 
+    <section id="screen-lexikon" class="screen" hidden>
+      <header class="app-header">
+        <h1>Arten-Lexikon</h1>
+        <p class="app-subtitle">Alle Arten und Faktoren aus der Simulation, nach Kategorie sortiert.</p>
+      </header>
+
+      <div id="lexikon-gruppen"></div>
+
+      <button type="button" id="lexikon-zurueck-button" class="secondary-button">Zurück</button>
+    </section>
+
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
   </main>
 
@@ -204,6 +216,7 @@
   <script src="./js/analyse.js"></script>
   <script src="./js/forscherheft.js"></script>
   <script src="./js/graph.js"></script>
+  <script src="./js/lexikon.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

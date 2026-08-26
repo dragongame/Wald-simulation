@@ -1193,3 +1193,56 @@ h1, h2, h3 {
   border-top: 1px dashed var(--rindenbraun);
   opacity: 0.85;
 }
+
+/* ---- Arten-Lexikon (M9) ---- */
+
+.lexikon-gruppe {
+  margin-bottom: 1.5rem;
+}
+
+.lexikon-gruppe h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--moosgruen);
+}
+
+.lexikon-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+}
+
+.lexikon-karte {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 10px;
+  padding: 0.6rem;
+}
+
+.lexikon-karte .sprite-frame {
+  width: 3.2rem;
+  height: 3.2rem;
+  margin: 0 auto 0.4rem;
+  border-radius: 50%;
+}
+
+.lexikon-karte h3 {
+  font-size: 0.85rem;
+  margin: 0 0 0.15rem;
+  text-align: center;
+}
+
+.lexikon-wiss {
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.lexikon-karte ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
