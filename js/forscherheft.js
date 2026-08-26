@@ -158,6 +158,13 @@ const WaldsimForscherheft = (() => {
         return;
       }
 
+      const netzwerkButton = event.target.closest(".forscherheft-netzwerk-button");
+      if (netzwerkButton) {
+        const eintrag = ladeAlle()[Number(netzwerkButton.dataset.index)];
+        WaldsimGraph.oeffneFuerEintrag(eintrag);
+        return;
+      }
+
       const exportButton = event.target.closest(".forscherheft-export-button");
       if (exportButton) {
         const bereich = document.getElementById(`fb-export-${exportButton.dataset.index}`);
@@ -252,6 +259,7 @@ const WaldsimForscherheft = (() => {
         <div class="forscherheft-waelder">${waelderHtml}</div>
         ${eintrag.snapshots.length > 0 ? `<p class="form-hint">${eintrag.snapshots.length} Kurven-Snapshot(s) gemerkt: ${eintrag.snapshots.map((s) => escapeHtml(s.namen.join(", "))).join(" · ")}</p>` : ""}
         ${eintrag.reflexionstext ? `<p class="forscherheft-reflexion"><strong>Reflexion:</strong> ${escapeHtml(eintrag.reflexionstext)}</p>` : `<p class="form-hint">(keine Reflexion angegeben)</p>`}
+        <button type="button" class="secondary-button secondary-button--kompakt forscherheft-netzwerk-button" data-index="${index}">🕸️ Im Netzwerk ansehen</button>
         <button type="button" class="secondary-button secondary-button--kompakt forscherheft-export-button" data-index="${index}">Als Text exportieren</button>
         <div class="forscherheft-export-bereich" id="fb-export-${index}" hidden>
           <textarea id="fb-export-text-${index}" class="forscherheft-export-text" readonly rows="8">${escapeHtml(text)}</textarea>

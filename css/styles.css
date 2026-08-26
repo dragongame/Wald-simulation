@@ -7,6 +7,13 @@
   --himmelblau: #5C7A8A;
   --signalrot: #9A3324;
   --karte-hintergrund: #FFFDF7;
+  /* Netzwerk-Graph (M8): Zersetzung aus Styleguide Abschnitt 5 uebernommen.
+     Bewirtschaftung/Strukturell sind dort (vor Szenario 5/6) noch nicht
+     definiert - neue, von allen fuenf bestehenden Kantenfarben klar
+     unterscheidbare Ergaenzung, siehe Milestones-Dokument M8. */
+  --zersetzung: #6E5A63;
+  --bewirtschaftung: #B8901F;
+  --strukturell: #A85C7C;
 }
 
 * {
@@ -921,4 +928,268 @@ h1, h2, h3 {
 .forscherheft-neue-sitzung-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* ---- Netzwerk-Sperre & Brief (M8) ---- */
+
+.netzwerk-name-eingabe {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  background: var(--papier);
+  color: var(--tinte);
+  min-height: 44px;
+}
+
+.brief-seite {
+  font-family: Iowan Old Style, Georgia, "Segoe UI", serif;
+}
+
+.brief-anrede {
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+#brief-text p {
+  margin: 0 0 0.75rem;
+  line-height: 1.55;
+}
+
+.brief-gruss {
+  margin: 1rem 0 0.1rem;
+}
+
+.brief-unterschrift {
+  margin: 0;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ---- Netzwerk-Graph (M8) ---- */
+
+.graph-legende {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.graph-legende-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+}
+
+.graph-legende-swatch {
+  width: 2.4rem;
+  height: 0.85rem;
+  flex: 0 0 auto;
+}
+
+.graph-steuerung {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.6rem;
+}
+
+.graph-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.graph-seiten {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.graph-seiten--doppelseite {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.graph-seiten--doppelseite .graph-seite {
+  flex: 1 1 20rem;
+  min-width: 18rem;
+}
+
+.graph-seiten--doppelseite .graph-seite:first-child {
+  border-right: 2px dashed var(--rindenbraun);
+}
+
+.graph-seite {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.graph-seite h2 {
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+}
+
+.graph-seite-meta {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+.graph-canvas-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+
+.graph-canvas {
+  position: relative;
+}
+
+.graph-kanten {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.kante {
+  cursor: pointer;
+}
+
+.kante-linie {
+  opacity: 0.8;
+}
+
+.kante-tinte {
+  fill: none;
+  stroke: var(--bernstein);
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: tinte-ziehen 0.7s ease forwards;
+  animation-delay: var(--verzoegerung, 0s);
+}
+
+@keyframes tinte-ziehen {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.graph-knoten {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  font-family: inherit;
+  background: var(--papier);
+  border: 1.5px solid var(--rindenbraun);
+  border-radius: 8px;
+  padding: 0.3rem 0.25rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.graph-knoten.ist-gruppe {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+.graph-knoten .sprite-frame {
+  width: 1.9rem;
+  height: 1.9rem;
+  margin: 0 0 0.15rem;
+  border-radius: 50%;
+}
+
+.graph-knoten-emoji {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.graph-knoten-name {
+  font-size: 0.58rem;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.graph-knoten.ist-kaskade {
+  animation: knoten-aufleuchten 0.7s ease forwards;
+  animation-delay: var(--verzoegerung, 0s);
+}
+
+@keyframes knoten-aufleuchten {
+  0% {
+    border-color: var(--rindenbraun);
+    box-shadow: none;
+  }
+  60% {
+    border-color: var(--bernstein);
+    box-shadow: 0 0 0 3px rgba(181, 101, 29, 0.25);
+  }
+  100% {
+    border-color: var(--bernstein);
+    box-shadow: 0 0 0 2px rgba(181, 101, 29, 0.18);
+  }
+}
+
+.graph-knoten.ist-ausgewaehlt {
+  border-color: var(--moosgruen);
+  box-shadow: 0 0 0 2px rgba(76, 110, 74, 0.3);
+}
+
+.graph-steckbrief {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--moosgruen);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.graph-steckbrief h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+}
+
+.graph-steckbrief ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.graph-steckbrief-wiss {
+  margin: 0 0 0.4rem;
+  opacity: 0.7;
+}
+
+.graph-steckbrief-hinweis {
+  margin: 0.5rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--rindenbraun);
+  opacity: 0.85;
 }

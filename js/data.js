@@ -21,11 +21,17 @@ const WaldsimData = (() => {
         fetchJson("./data/stoerungen.json"),
         fetchJson("./data/generated/simulationen_index.json"),
         fetchJson("./data/indikatoren.json"),
-      ]).then(([waldtypenDatei, stoerungen, simulationenIndex, indikatorenDatei]) => ({
+        fetchJson("./data/nodes.json"),
+        fetchJson("./data/edges.json"),
+        fetchJson("./data/rachel_carson_brief.json"),
+      ]).then(([waldtypenDatei, stoerungen, simulationenIndex, indikatorenDatei, nodesDatei, edgesDatei, brief]) => ({
         waldtypen: waldtypenDatei.waldtypen,
         stoerungen,
         simulationenIndex,
         indikatoren: indikatorenDatei.indikatoren,
+        knoten: nodesDatei.knoten,
+        kanten: edgesDatei.kanten,
+        brief,
       }));
     }
     return cache;

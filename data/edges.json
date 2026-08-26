@@ -13,7 +13,7 @@
       "bewirtschaftung": "Mensch entnimmt Totholz (Szenario 5) - eigener Kantentyp laut Wissensbasis 3.1, Styleguide (vor Szenario 5/6 verfasst) definiert dafür noch keine Farbe/Symbol.",
       "strukturell": "Verbiss verhindert/entwertet Verjüngung (Szenario 6) - ebenfalls kein Styleguide-Eintrag."
     },
-    "todo_m8": "Für die beiden neuen Kategorien 'bewirtschaftung' und 'strukturell' müssen bei der Graph-Umsetzung (Milestone M8) noch Farbe + Symbol festgelegt werden (Styleguide Abschnitt 5 kennt nur die ursprünglichen 5 Typen aus Szenario 1-4).",
+    "geloest_m8": "Farbe + Symbol für 'bewirtschaftung'/'strukturell' wurden bei der Graph-Umsetzung (Milestone M8) ergänzt: --bewirtschaftung (#B8901F, Säge-Symbol) und --strukturell (#A85C7C, Huf-Symbol) in css/styles.css, Symbol-Pfade 'saege'/'huf' in js/icons.js, Zuordnung in js/graph.js (KANTE_STYLE). Siehe Milestones-Dokument M8.",
     "generisches_ziel_hinweis": "'ziel_kategorie' statt 'ziel' wird verwendet, wenn die Wissensbasis nur eine generische Gruppe statt einer konkreten Art nennt (z. B. 'Kraut', 'Vögel', 'Kleinsäuger') - diese Gruppen sind keine eigenen Graph-Knoten.",
     "ausgelassen_2_10_6": "'Luchs/Wolf (fehlend/selten) -> Reh/Rothirsch: reguliert nicht' ist bewusst KEINE Kante (Umsetzungsauftrag 2.10.6), sondern Kontexttext auf den Knoten luchs/wolf (Feld 'kontext_abwesenheit' in data/nodes.json)."
   },

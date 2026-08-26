@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "beschreibung": "Editierbarer Content-Baustein für die Rachel-Carson-Freischaltmechanik (Milestone M8, Umsetzungsauftrag 2.3, User Stories 3.3/3.6). Von einer Lehrkraft ohne Codeänderung anpassbar: Text hier bearbeiten, App neu laden.",
+    "gueltige_namen_hinweis": "Liste der Namen, die den Netzwerk-Graphen freischalten. Eingabe wird tolerant geprüft (Groß-/Kleinschreibung und Leerzeichen werden ignoriert). Bewusst als Liste (nicht einzelner String), falls später weitere Wissenschaftler:innen ergänzt werden sollen (User Stories 3.6)."
+  },
+  "gueltige_namen": [
+    "Rachel Carson"
+  ],
+  "fiktionshinweis": "Ein fiktiver Brief im Stil der US-amerikanischen Meeresbiologin und Sachbuchautorin Rachel Carson (1907–1964), verfasst für dieses Lernspiel. Diese Nachricht hat sie nie wirklich geschrieben.",
+  "anrede": "Liebe Forscherinnen und Forscher,",
+  "absaetze": [
+    "ihr habt in den letzten Wochen etwas getan, das die wenigsten Menschen je tun: Ihr habt einem Wald beim Reagieren zugesehen. Wieder und wieder. Mit unterschiedlichen Störungen, unterschiedlichen Bäumen, unterschiedlichem Ausgang.",
+    "Was ihr dabei beobachtet habt, war nie nur eine Zahl, die steigt oder fällt. Jede Veränderung, die ihr gemessen habt, hängt mit einem Dutzend anderer Veränderungen zusammen, die ihr nicht direkt gemessen habt. Genau das habe ich einmal 'Web of Life' genannt, das Netz des Lebens: Wer an einem Faden zieht, spürt das ganze Netz.",
+    "Jetzt bekommt ihr Zugang zu genau diesem Netz. Der Graph, der sich vor euch öffnet, zeigt die Karteikarten aller Arten und Faktoren aus eurer Simulation, verbunden durch Linien. Jede Linie ist eine Beziehung: Wer frisst wen, wer lebt mit wem zusammen, wer konkurriert um Licht, wer zersetzt wessen Totholz. Farbe und Symbol auf der Linie verraten euch, um welche Art von Beziehung es sich handelt.",
+    "Am wichtigsten: Der Pfad, der sich in eurem letzten Durchlauf tatsächlich nachgezogen hat, erscheint als eingefärbte Spur, so wie ein Tintenstrich in einem Feldbuch. Folgt dieser Spur, Knoten für Knoten. Fragt euch bei jedem Schritt: Warum genau diese Verbindung? Was wäre passiert, wenn dieser eine Faden gefehlt hätte?",
+    "Ich selbst muss jetzt wieder auf Forschungsreise gehen, es gibt noch so viel im Watt und an den Küsten zu entdecken. Ihr braucht mich für den Rest eures Weges auch nicht mehr: Alles, was ihr wissen müsst, liegt jetzt vor euch im Netz. Schaut genau hin."
+  ],
+  "grussformel": "Mit den besten Wünschen für eure weitere Forschung,",
+  "unterschrift": "Rachel Carson"
+}

@@ -1,6 +1,6 @@
 {
-  "version": "bccb0b76ae1b2269",
-  "cacheName": "waldsim-precache-bccb0b76ae1b2269",
+  "version": "8681185927bbc9fa",
+  "cacheName": "waldsim-precache-8681185927bbc9fa",
   "files": [
     "./",
     "./assets/icons/apple-touch-icon.png",
@@ -244,6 +244,7 @@
     "./data/generated/simulationen_index.json",
     "./data/indikatoren.json",
     "./data/nodes.json",
+    "./data/rachel_carson_brief.json",
     "./data/stoerungen.json",
     "./data/waldtypen.json",
     "./index.html",
@@ -252,6 +253,7 @@
     "./js/dashboard.js",
     "./js/data.js",
     "./js/forscherheft.js",
+    "./js/graph.js",
     "./js/icons.js",
     "./js/simulationConfig.js",
     "./js/startScreen.js",

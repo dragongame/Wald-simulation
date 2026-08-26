@@ -26,6 +26,7 @@
         <h1>Waldökosystem-Simulation</h1>
         <p class="app-subtitle">Wähle zwei Wald-Plätze, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
         <button type="button" id="forscherheft-oeffnen-button" class="forscherheft-link">📖 Forscherheft <span id="forscherheft-zaehler">(0)</span></button>
+        <button type="button" id="netzwerk-oeffnen-button" class="forscherheft-link">🔬 Wissenschaftler:in um Hilfe bitten</button>
       </header>
 
       <section class="form-section" aria-labelledby="heading-waelder">
@@ -136,6 +137,60 @@
       <button type="button" id="forscherheft-neue-sitzung-button" class="forscherheft-neue-sitzung-button">Neue Sitzung starten (alles löschen)</button>
     </section>
 
+    <section id="screen-netzwerk-sperre" class="screen" hidden>
+      <header class="app-header">
+        <h1>Netzwerk-Graph</h1>
+        <p class="app-subtitle">Noch gesperrt.</p>
+      </header>
+      <section class="form-section">
+        <p>Das Beziehungsnetzwerk hinter der Simulation ist noch gesperrt. Eure Lehrkraft kennt den Namen, der es freischaltet.</p>
+        <label for="netzwerk-name-eingabe" class="sr-only">Name eingeben</label>
+        <input type="text" id="netzwerk-name-eingabe" class="netzwerk-name-eingabe" placeholder="Name eingeben …" autocomplete="off">
+        <button type="button" id="netzwerk-freischalten-button" class="play-button play-button--kompakt">Freischalten</button>
+        <p id="netzwerk-sperre-hinweis" class="play-hint" role="status"></p>
+      </section>
+      <button type="button" id="netzwerk-sperre-zurueck-button" class="secondary-button">Zurück</button>
+    </section>
+
+    <section id="screen-brief" class="screen" hidden>
+      <header class="app-header">
+        <h1>Ein Brief</h1>
+        <p class="app-subtitle" id="brief-fiktionshinweis"></p>
+      </header>
+      <section class="form-section brief-seite">
+        <p class="brief-anrede" id="brief-anrede"></p>
+        <div id="brief-text"></div>
+        <p class="brief-gruss" id="brief-gruss"></p>
+        <p class="brief-unterschrift" id="brief-unterschrift"></p>
+      </section>
+      <button type="button" id="brief-weiter-button" class="play-button play-button--kompakt">Weiter zum Netzwerk-Graph</button>
+    </section>
+
+    <section id="screen-graph" class="screen" hidden>
+      <header class="app-header">
+        <h1>Netzwerk-Graph</h1>
+        <p class="app-subtitle" id="graph-subtitle"></p>
+      </header>
+
+      <ul id="graph-legende" class="graph-legende"></ul>
+
+      <div id="graph-steuerung" class="graph-steuerung" hidden>
+        <label class="graph-toggle">
+          <input type="checkbox" id="graph-vollstaendig-toggle">
+          Vollständiges Netzwerk anzeigen
+        </label>
+      </div>
+
+      <div id="graph-seiten" class="graph-seiten"></div>
+
+      <button type="button" id="graph-kaskade-replay-button" class="secondary-button secondary-button--kompakt" hidden>Kaskadenpfad erneut abspielen</button>
+
+      <div id="graph-steckbrief" class="graph-steckbrief" hidden></div>
+
+      <button type="button" id="graph-brief-erneut-button" class="secondary-button secondary-button--kompakt">Brief von Rachel Carson erneut lesen</button>
+      <button type="button" id="graph-zurueck-button" class="secondary-button">Zurück</button>
+    </section>
+
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
   </main>
 
@@ -148,6 +203,7 @@
   <script src="./js/dashboard.js"></script>
   <script src="./js/analyse.js"></script>
   <script src="./js/forscherheft.js"></script>
+  <script src="./js/graph.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>
