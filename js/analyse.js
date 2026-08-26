@@ -20,13 +20,28 @@ const WaldsimAnalyse = (() => {
   // Buntspecht/Hallimasch keinen eigenen numerischen Indikator haben,
   // siehe Milestones-Dokument M6-Umsetzungsentscheidung).
   const KASKADE_JE_STOERUNG = {
-    borkenkaefer: ["fichte_vitalitaet", "borkenkaefer_dichte", "totholzmenge", "gesamtvitalitaet"],
-    trockenheit: ["bodenfeuchte", "fichte_vitalitaet", "borkenkaefer_dichte", "gesamtvitalitaet"],
+    borkenkaefer: [
+      "fichte_vitalitaet", "borkenkaefer_dichte", "totholzmenge", "gesamtvitalitaet",
+      "blaeuepilz_indikator", "buntspecht_indikator", "ameisenbuntkaefer_indikator",
+    ],
+    trockenheit: [
+      "bodenfeuchte", "fichte_vitalitaet", "borkenkaefer_dichte", "gesamtvitalitaet",
+      "hallimasch_indikator", "blattlaeuse_indikator",
+    ],
     temperatur: ["borkenkaefer_dichte", "fichte_vitalitaet", "gesamtvitalitaet"],
-    sturm: ["fichte_vitalitaet", "birke_anteil", "totholzmenge", "borkenkaefer_dichte"],
-    totholzentnahme: ["totholzmenge", "biodiversitaet", "brandrisiko"],
+    sturm: [
+      "fichte_vitalitaet", "birke_anteil", "totholzmenge", "borkenkaefer_dichte",
+      "hasel_anteil", "holunder_anteil", "brombeere_anteil", "eichelhaeher_indikator",
+    ],
+    totholzentnahme: [
+      "totholzmenge", "biodiversitaet", "brandrisiko",
+      "hallimasch_indikator", "zunderschwamm_indikator", "buntspecht_indikator", "ameisenbuntkaefer_indikator",
+    ],
   };
-  const KASKADE_WILDVERBISS = ["verjuengung_mischbaumarten", "wilddichte", "eiche_vitalitaet", "biodiversitaet"];
+  const KASKADE_WILDVERBISS = [
+    "verjuengung_mischbaumarten", "wilddichte", "eiche_vitalitaet", "biodiversitaet",
+    "eichelhaeher_indikator", "eichhoernchen_indikator",
+  ];
 
   // Feste Farb-/Strichzuordnung je Indikator (Reihenfolge aus
   // data/indikatoren.json), damit Legende und beide Wald-Diagramme
@@ -47,6 +62,30 @@ const WaldsimAnalyse = (() => {
     verjuengung_mischbaumarten: "#3D6B4F",
     wilddichte: "#8C6349",
     brandrisiko: "#A8522E",
+    // Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten
+    // (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) - Paletten an
+    // Kategorie angelehnt: Sträucher bräunlich-grün, Pilze dunkel-holzig,
+    // Kräuter grasgrün, Prädatoren erdig-warm.
+    hasel_anteil: "#8A9B5E",
+    holunder_anteil: "#6F7D3F",
+    brombeere_anteil: "#7C4A5E",
+    zunderschwamm_indikator: "#5A4433",
+    blaeuepilz_indikator: "#4A5F7A",
+    hallimasch_indikator: "#8B5A2B",
+    brennnessel_indikator: "#4F7A3D",
+    eichelhaeher_indikator: "#5E7A9B",
+    buntspecht_indikator: "#8B4A3A",
+    ameisenbuntkaefer_indikator: "#9B6B2E",
+    buschwindroeschen_indikator: "#7FA0C4",
+    waldmeister_indikator: "#3F8B5C",
+    heidelbeere_indikator: "#5C4B8A",
+    eichhoernchen_indikator: "#C06B2E",
+    raupen_indikator: "#7A8B3F",
+    blattlaeuse_indikator: "#8FA85E",
+    habicht_indikator: "#6B5A4A",
+    sperber_indikator: "#8A7A6A",
+    kleinsaeuger_indikator: "#9B8A6B",
+    fuchs_indikator: "#C1732E",
   };
   const DASH_MUSTER = ["", "6 3", "2 3", "8 2 2 2"];
 
@@ -58,10 +97,17 @@ const WaldsimAnalyse = (() => {
     biodiversitaet: "Biodiversität",
     wildverbiss: "Wildverbiss",
     szenario5: "Totholzentnahme",
+    strauch: "Sträucher",
+    pilz: "Pilze",
+    kraut: "Krautschicht",
+    verbreiter: "Samenverbreiter",
+    herbivor: "Pflanzenfresser",
+    praedator: "Prädatoren",
+    kleinsaeuger: "Sonstige Tiergruppen",
   };
 
   let lauf = null;
-  let indikatoren = []; // alle 14, in fester Reihenfolge + Farbe/Dash
+  let indikatoren = []; // alle 34, in fester Reihenfolge + Farbe/Dash
   let kaskadenrelevant = new Set();
   let ausgewaehlt = new Set();
   let snapshots = [];

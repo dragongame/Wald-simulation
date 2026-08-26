@@ -109,6 +109,70 @@ class Simulation:
             "brandrisiko": float(BASIS_BRANDRISIKO[self.wid]),
         }
         self._anfangsfichte = self.state["fichte_vitalitaet"]
+
+        # --- Neue Arten-Indikatoren (Analyse-Screen-Erweiterung, siehe
+        # docs/Wissensbasis_Erweiterung_weitere_Arten.md): Startwerte konsistent
+        # zu den Formeln in _schritt() berechnet, damit es beim Übergang von
+        # jahr_0 zu jahr_1 keinen künstlichen Sprung gibt. Mehrere Formeln sind
+        # als "Annahme, mit Lehrkraft abzugleichen" markiert (siehe Kommentare
+        # in _schritt()) - fachlich plausibel, aber nicht 1:1 aus einer Quelle
+        # abgeleitet.
+        eiche_init = self.state["eiche_vitalitaet"]
+        buche_init = self.state["buche_vitalitaet"]
+        eichhoernchen_init = (self.state["fichte_vitalitaet"] + buche_init + eiche_init) / 3
+        kleinsaeuger_init = (buche_init + eiche_init) / 2
+        waldmeister_gewicht_init = 1.0 if self.wid == "mischwald" else 0.2
+        heidelbeere_gewicht_init = 1.0 if self.wid in ("fichtenmonokultur", "kiefernwald") else 0.3
+        self.state.update({
+            "hasel_anteil": 0.0,
+            "holunder_anteil": 0.0,
+            "brombeere_anteil": 0.0,
+            "zunderschwamm_indikator": 0.9 * BASIS_TOTHOLZ[self.wid],
+            "blaeuepilz_indikator": 0.0,
+            "hallimasch_indikator": 0.7 * BASIS_TOTHOLZ[self.wid],
+            "brennnessel_indikator": 0.0,
+            "eichelhaeher_indikator": (eiche_init + buche_init) / 2,
+            "buntspecht_indikator": 0.8 * BASIS_TOTHOLZ[self.wid],
+            "ameisenbuntkaefer_indikator": 0.8 * BASIS_TOTHOLZ[self.wid],
+            # Annahme, mit Lehrkraft abzugleichen: Buschwindröschen ist real an
+            # den saisonalen Licht-Dunkel-Wechsel vor Laubaustrieb gebunden,
+            # nicht per se an dauerhaften Kronendachverlust (Schritt-0-Caveat,
+            # siehe Wissensbasis-Ergänzung) - hier trotzdem als didaktische
+            # Näherung an den Kronendach-Verlust gekoppelt.
+            "buschwindroeschen_indikator": 40.0,
+            "waldmeister_indikator": 100.0 * waldmeister_gewicht_init,
+            # Annahme, mit Lehrkraft abzugleichen: Heidelbeere-Reaktion auf
+            # akute Störung ist in der Recherche nicht belegt, bewusst nahezu
+            # konstant gehalten.
+            "heidelbeere_indikator": 60.0 * heidelbeere_gewicht_init,
+            # Annahme, mit Lehrkraft abzugleichen: didaktisch verkürzter
+            # Mastjahr-Rhythmus (real 6-10 Jahre).
+            "eichhoernchen_indikator": eichhoernchen_init,
+            # Annahme, mit Lehrkraft abzugleichen: kein belegter
+            # Einzelursache-Mechanismus wie beim Borkenkäfer, nur additive
+            # Näherung.
+            "raupen_indikator": 20.0,
+            "blattlaeuse_indikator": 0.0,
+            # Annahme, mit Lehrkraft abzugleichen: 2-Jahres-Verzögerung ist eine
+            # allgemeine Prädations-Größenordnung, nicht Habicht/Eichhörnchen-
+            # spezifisch belegt.
+            "habicht_indikator": eichhoernchen_init,
+            "sperber_indikator": 0.6 * eichhoernchen_init,
+            # Strukturelle Lücke, keine Recherche-Grundlage im engeren Sinn:
+            # "Kleinsäuger" ist im Datenmodell nur ein generischer, nie
+            # simulierter Gruppenknoten. Kopplung an Mastjahr-Nahrungsangebot
+            # (Buche/Eiche) ist Schritt-0-recherchiert (siehe Wissensbasis-
+            # Ergänzung), aber die Existenz dieses Indikators selbst wurde für
+            # den Fuchs erfunden.
+            "kleinsaeuger_indikator": kleinsaeuger_init,
+            # Strukturelle Lücke: kein direkter Waldstörungsbezug belegbar
+            # (Schritt-0-Recherche), Kopplung bleibt schwach/indirekt.
+            "fuchs_indikator": 0.7 * kleinsaeuger_init,
+        })
+        self._eichhoernchen_historie = [eichhoernchen_init]
+        self._totholz_vorjahr = float(BASIS_TOTHOLZ[self.wid])
+        self._borkenkaefer_vorjahr = 0.0
+
         # Einmal-Effekte (Sturm-Schlag, Käfer-Erstbefall, Entnahme-Schritt) müssen exakt
         # beim ersten aktiven _schritt()-Aufruf feuern, unabhängig davon, ob trigger_jahr
         # 0 oder 1 ist (die Jahresschleife selbst beginnt immer erst bei Jahr 1, siehe
@@ -149,6 +213,12 @@ class Simulation:
     def _schritt(self, jahr):
         s = self.state
         temperatur_aktiv = self._ist_aktiv("temperatur", jahr)
+
+        # Bläuepilz: 1 Jahr Verzögerung zur Borkenkäferdichte (Symbiose-
+        # Partner, gelangt erst nach Befall in den Baum) - muss vor dem
+        # Borkenkäfer-Block dieses Jahres stehen, damit hier noch der
+        # Vorjahreswert verwendet wird.
+        s["blaeuepilz_indikator"] = self._borkenkaefer_vorjahr
 
         # --- Sturm: einmaliger Schlag im Trigger-Jahr ---
         seit_sturm = self._jahre_seit_trigger("sturm", jahr)
@@ -207,6 +277,18 @@ class Simulation:
                 s["borkenkaefer_dichte"] = _clamp(8 * wirt_verfuegbar, lo=0)
             else:
                 s["borkenkaefer_dichte"] = _clamp(s["borkenkaefer_dichte"] * reproduktionsfaktor * (0.3 + 0.7 * wirt_verfuegbar))
+            # Buntspecht/Ameisenbuntkäfer: leichte, sättigende Dämpfung nur bei
+            # niedriger Käferdichte - wirken laut Wissensbasis-Ergänzung nicht
+            # gegen eine Massenvermehrung, bewusst klein gehalten (nicht
+            # überzeichnen). Nutzen den Bestand des Vorjahres, da dieser
+            # Schritt vor der eigenen Neuberechnung von buntspecht_indikator/
+            # ameisenbuntkaefer_indikator (am Ende von _schritt) läuft.
+            if s["borkenkaefer_dichte"] < 30:
+                s["borkenkaefer_dichte"] = _clamp(
+                    s["borkenkaefer_dichte"]
+                    - 0.02 * s["buntspecht_indikator"]
+                    - 0.035 * s["ameisenbuntkaefer_indikator"]
+                )
             schaden = s["borkenkaefer_dichte"] * 0.12 * self.res_borkenkaefer
             s["fichte_vitalitaet"] = _clamp(s["fichte_vitalitaet"] - schaden)
             s["totholzmenge"] = _clamp(s["totholzmenge"] + schaden * 0.5, hi=100)
@@ -220,6 +302,11 @@ class Simulation:
             if not self._entnahme_ausgeloest:
                 self._entnahme_ausgeloest = True
                 s["totholzmenge"] = _clamp(s["totholzmenge"] * 0.4)
+                # Hallimasch reagiert sonst (Glättung) zu träge auf den
+                # abrupten Totholz-Einbruch - Zunderschwamm/Buntspecht/
+                # Ameisenbuntkäfer brauchen keinen Extra-Schritt, da sie
+                # direkt proportional zu totholzmenge berechnet werden.
+                s["hallimasch_indikator"] = _clamp(s["hallimasch_indikator"] * 0.4)
                 s["brandrisiko"] = _clamp(s["brandrisiko"] - 4 * self.res_feuer)
             else:
                 s["totholzmenge"] = _clamp(s["totholzmenge"] * 0.97)
@@ -267,6 +354,125 @@ class Simulation:
             BASIS_BIODIVERSITAET[self.wid] - akuter_schaden * 0.15 + totholz_bonus - verjuengung_malus
         )
         s["biodiversitaet"] = _clamp(s["biodiversitaet"] + (ziel_biodiv - s["biodiversitaet"]) * 0.25)
+
+        # --- Neue Arten-Indikatoren (Analyse-Screen-Erweiterung, siehe
+        # docs/Wissensbasis_Erweiterung_weitere_Arten.md): reine additive
+        # Ergänzungen für den Analyse-Screen, fließen NICHT in
+        # _gesamtvitalitaet() ein. Bewusst am Ende von _schritt() platziert,
+        # damit sie die für dieses Jahr bereits fertig berechneten Werte
+        # (kronendach, totholzmenge, bodenfeuchte, Baum-Vitalitäten)
+        # verwenden. Ausnahme von "rein additiv": Brombeere dämpft
+        # verjuengung_mischbaumarten zusätzlich leicht (siehe dort).
+
+        # Sträucher: Pionierwachstum auf Kronendach-Lücken, analog birke_anteil.
+        s["hasel_anteil"] = _clamp(s["hasel_anteil"] + 0.045 * luecke, hi=18)
+        totholz_zuwachs = max(0.0, s["totholzmenge"] - self._totholz_vorjahr)
+        s["holunder_anteil"] = _clamp(
+            s["holunder_anteil"] + 0.045 * luecke + 0.15 * totholz_zuwachs, hi=18
+        )
+        s["brombeere_anteil"] = _clamp(
+            s["brombeere_anteil"] + 0.09 * luecke - 0.02 * (s["kronendach"] / 100) * s["brombeere_anteil"],
+            hi=35,
+        )
+        # Annahme, mit Lehrkraft abzugleichen: zusätzlicher Verjüngungs-Malus
+        # durch dichte Brombeere, über den bereits modellierten Wildverbiss
+        # hinaus (siehe Wissensbasis-Ergänzung, Abschnitt Sträucher).
+        s["verjuengung_mischbaumarten"] = _clamp(s["verjuengung_mischbaumarten"] - 0.01 * s["brombeere_anteil"])
+
+        # Pilze: Zunderschwamm/Hallimasch folgen der Totholzmenge (Hallimasch
+        # zusätzlich mit Trockenheits-Bonus), Brennnessel dem Totholz-Zuwachs
+        # über den Waldtyp-Basiswert hinaus.
+        s["zunderschwamm_indikator"] = _clamp(s["totholzmenge"] * 0.9)
+        trockenheit_aktiv_jetzt = self._ist_aktiv("trockenheit", jahr)
+        ziel_hallimasch = _clamp(s["totholzmenge"] * 0.7 + (15 if trockenheit_aktiv_jetzt else 0))
+        s["hallimasch_indikator"] = _clamp(
+            s["hallimasch_indikator"] + (ziel_hallimasch - s["hallimasch_indikator"]) * 0.3
+        )
+        ziel_brennnessel = _clamp((s["totholzmenge"] - BASIS_TOTHOLZ[self.wid]) * 1.2)
+        s["brennnessel_indikator"] = _clamp(
+            s["brennnessel_indikator"] + (ziel_brennnessel - s["brennnessel_indikator"]) * 0.2
+        )
+
+        # Eichelhäher: direkt an mittlere Eiche-/Buche-Vitalität gekoppelt
+        # (Nahrungs-/Samenangebot), ohne Trägheit.
+        s["eichelhaeher_indikator"] = _clamp((s["eiche_vitalitaet"] + s["buche_vitalitaet"]) / 2)
+
+        # Buntspecht/Ameisenbuntkäfer: direkt proportional zur Totholzmenge
+        # (Bruthöhlen/Habitat); die Dämpfung auf borkenkaefer_dichte steht
+        # oben im Borkenkäfer-Block.
+        s["buntspecht_indikator"] = _clamp(s["totholzmenge"] * 0.8)
+        s["ameisenbuntkaefer_indikator"] = _clamp(s["totholzmenge"] * 0.8)
+
+        # Kräuter: Buschwindröschen (Annahme, s. o.) reagiert sehr träge
+        # gegenläufig zum Kronendach, gedeckelt durch Bodenfeuchte. Waldmeister
+        # reagiert gegenläufig dazu proportional zum Kronendach, nur im
+        # Mischwald voll gewichtet (Waldmeister-Buchenwald-Bindung). Heidelbeere
+        # (Annahme, s. o.) bleibt nahezu konstant, nur bei starkem, anhaltendem
+        # Kronendachverlust in Nadelwald-Typen leicht rückläufig.
+        ziel_buschwindroeschen = _clamp((40 + (100 - s["kronendach"]) * 0.6) * (s["bodenfeuchte"] / 100))
+        s["buschwindroeschen_indikator"] = _clamp(
+            s["buschwindroeschen_indikator"] + (ziel_buschwindroeschen - s["buschwindroeschen_indikator"]) * 0.08
+        )
+        waldmeister_gewicht = 1.0 if self.wid == "mischwald" else 0.2
+        s["waldmeister_indikator"] = _clamp(s["kronendach"] * waldmeister_gewicht)
+        heidelbeere_gewicht = 1.0 if self.wid in ("fichtenmonokultur", "kiefernwald") else 0.3
+        ziel_heidelbeere = _clamp(60 * heidelbeere_gewicht - max(0.0, 60 - s["kronendach"]) * 0.15)
+        s["heidelbeere_indikator"] = _clamp(
+            s["heidelbeere_indikator"] + (ziel_heidelbeere - s["heidelbeere_indikator"]) * 0.05
+        )
+
+        # Eichhörnchen (Annahme, didaktisch verkürzter Mastjahr-Rhythmus, s. o.):
+        # träge Glättung Richtung mittlerer Baum-Vitalität.
+        ziel_eichhoernchen = (s["fichte_vitalitaet"] + s["buche_vitalitaet"] + s["eiche_vitalitaet"]) / 3
+        s["eichhoernchen_indikator"] = _clamp(
+            s["eichhoernchen_indikator"] + (ziel_eichhoernchen - s["eichhoernchen_indikator"]) * 0.15
+        )
+
+        # Raupen (Annahme, kein Einzelursache-Mechanismus belegt, s. o.):
+        # einfacher additiver Bonus bei Trockenheit/Wärme. Blattläuse enger an
+        # geschwächte Fichte gekoppelt (Fichtenröhrenlaus-Mechanismus, laut
+        # Schritt-0-Recherche fast identisch zum Borkenkäfer: Trockenstress
+        # schwächt die Harzabwehr).
+        raupen_bonus = (12 if trockenheit_aktiv_jetzt else 0) + (8 if temperatur_aktiv else 0)
+        ziel_raupen = _clamp(20 + raupen_bonus)
+        s["raupen_indikator"] = _clamp(s["raupen_indikator"] + (ziel_raupen - s["raupen_indikator"]) * 0.3)
+        # Verlust relativ zum Ausgangswert (self._anfangsfichte), nicht relativ
+        # zu 100 - sonst würde "keine Fichte im Waldtyp vorhanden"
+        # (fichte_vitalitaet dauerhaft 0) fälschlich als "Fichte komplett
+        # geschwächt" interpretiert (derselbe Fehlertyp wie der Fichte-Sprite-
+        # Bug aus der vorherigen Session, siehe Milestones-Dokument).
+        ziel_blattlaeuse = _clamp(
+            (self._anfangsfichte - s["fichte_vitalitaet"]) * 0.3 + (15 if trockenheit_aktiv_jetzt else 0)
+        )
+        s["blattlaeuse_indikator"] = _clamp(
+            s["blattlaeuse_indikator"] + (ziel_blattlaeuse - s["blattlaeuse_indikator"]) * 0.3
+        )
+
+        # Habicht/Sperber (Annahme, allgemeine Prädations-Verzögerung nicht
+        # art-spezifisch belegt, s. o.): folgen dem Eichhörnchen-Bestand von
+        # vor 2 Jahren, Sperber zusätzlich gedämpft (schwächere/unsicherere
+        # Kopplung, jagt laut Wissensbasis vor allem nicht simulierte
+        # Kleinvögel).
+        self._eichhoernchen_historie.append(s["eichhoernchen_indikator"])
+        verzoegert = self._eichhoernchen_historie[jahr - 2] if jahr >= 2 else self._eichhoernchen_historie[0]
+        s["habicht_indikator"] = _clamp(s["habicht_indikator"] + (verzoegert - s["habicht_indikator"]) * 0.4)
+        s["sperber_indikator"] = _clamp(s["sperber_indikator"] + (verzoegert * 0.6 - s["sperber_indikator"]) * 0.4)
+
+        # Kleinsäuger (strukturelle Lücke: als Voraussetzung für den Fuchs
+        # erfunden, s. o.) folgen dem Mastjahr-Nahrungsangebot (Buche/Eiche).
+        # Fuchs (strukturelle Lücke, kein direkter Störungsbezug belegbar)
+        # folgt schwach/gedämpft dem Kleinsäuger-Bestand.
+        ziel_kleinsaeuger = _clamp((s["buche_vitalitaet"] + s["eiche_vitalitaet"]) / 2)
+        s["kleinsaeuger_indikator"] = _clamp(
+            s["kleinsaeuger_indikator"] + (ziel_kleinsaeuger - s["kleinsaeuger_indikator"]) * 0.25
+        )
+        s["fuchs_indikator"] = _clamp(
+            s["fuchs_indikator"] + (s["kleinsaeuger_indikator"] * 0.7 - s["fuchs_indikator"]) * 0.15
+        )
+
+        # Vorjahreswerte für die Verzögerungs-Kopplungen oben (nächstes Jahr).
+        self._totholz_vorjahr = s["totholzmenge"]
+        self._borkenkaefer_vorjahr = s["borkenkaefer_dichte"]
 
     def _gesamtvitalitaet(self):
         s = self.state
