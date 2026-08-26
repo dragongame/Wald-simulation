@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Erzeugt sw-precache-manifest.json: Liste aller zur Laufzeit benoetigten
-Dateien + ein aus deren Inhalt abgeleiteter Versions-Hash.
+"""Erzeugt sw-precache-manifest.json (Dateiliste + Versions-Hash) UND sw.js
+(aus scripts/pwa/sw.template.js, mit eingesetzter Versionsnummer).
 
-Der Service Worker (sw.js) laedt diese Datei beim Install-Event, cached alle
+Der Service Worker cached beim Install-Event alle in der Manifest-Datei
 gelisteten Dateien und benennt den Cache nach dem Hash. Aendert sich auch nur
 eine Datei, aendert sich der Hash automatisch -> neuer Cache-Name -> der
-Service Worker erkennt beim naechsten Laden zuverlaessig eine neue Version
-und loescht den alten Cache (siehe Technikdokument 5.2, "versionierte
-Cache-Strategie"). Manuelles Versions-Hochzaehlen, das leicht vergessen
-werden kann, entfaellt dadurch.
+Service Worker loescht beim naechsten Update den alten Cache (siehe
+Technikdokument 5.2, "versionierte Cache-Strategie").
+
+WICHTIG: Damit der Browser dieses Update ueberhaupt bemerkt, muss sich sw.js
+selbst (Byte-fuer-Byte) aendern - das ist die einzige Grundlage, auf der
+Browser ein Service-Worker-Update erkennen, unabhaengig vom Inhalt der
+Manifest-Datei. Deshalb wird sw.js hier aus einem Template MIT eingesetzter
+Versionsnummer neu geschrieben statt als statische Datei gepflegt (sw.js
+NIE direkt editieren, siehe scripts/pwa/sw.template.js).
 
 Aufruf: python3 scripts/pwa/build_precache_manifest.py
 Muss nach jeder Aenderung an gecachten Dateien erneut ausgefuehrt und
@@ -21,21 +26,25 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 OUT_FILE = ROOT / "sw-precache-manifest.json"
+SW_TEMPLATE_FILE = ROOT / "scripts" / "pwa" / "sw.template.js"
+SW_OUT_FILE = ROOT / "sw.js"
 
 # Einzeldateien direkt im Projekt-Root, die die App-Shell bilden.
 SHELL_FILES = [
     "index.html",
     "manifest.json",
-    "css/styles.css",
-    "js/app.js",
-    "js/storage.js",
 ]
 
 # Verzeichnisse, deren Inhalt vollstaendig fuer den Offline-Betrieb benoetigt
-# wird (Bilder, Icons, Inhaltsdaten, vorab berechnete Simulationen).
+# wird (Bilder, Icons, Inhaltsdaten, vorab berechnete Simulationen, CSS/JS).
+# Bewusst verzeichnisbasiert statt einzelne Dateien aufzulisten, damit eine
+# neu hinzugefuegte JS-/CSS-Datei nicht manuell nachgetragen werden muss -
+# genau das wurde vorher vergessen und fehlte dadurch im Offline-Cache.
 ASSET_DIRS = [
     "assets/icons",
     "assets/sprites",
+    "css",
+    "js",
     "data",
 ]
 
@@ -82,6 +91,12 @@ def main() -> None:
     }
     OUT_FILE.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"geschrieben: {OUT_FILE} ({len(manifest['files'])} Dateien, Version {version})")
+
+    sw_template = SW_TEMPLATE_FILE.read_text(encoding="utf-8")
+    if "__SW_VERSION__" not in sw_template:
+        raise RuntimeError(f"{SW_TEMPLATE_FILE} enthaelt keinen __SW_VERSION__-Platzhalter mehr")
+    SW_OUT_FILE.write_text(sw_template.replace("__SW_VERSION__", version), encoding="utf-8")
+    print(f"geschrieben: {SW_OUT_FILE} (Version {version})")
 
 
 if __name__ == "__main__":

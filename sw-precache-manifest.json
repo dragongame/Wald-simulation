@@ -1,6 +1,6 @@
 {
-  "version": "cd00b108b2965bfc",
-  "cacheName": "waldsim-precache-cd00b108b2965bfc",
+  "version": "8922507eb290b4b2",
+  "cacheName": "waldsim-precache-8922507eb290b4b2",
   "files": [
     "./",
     "./assets/icons/apple-touch-icon.png",
@@ -247,8 +247,15 @@
     "./data/stoerungen.json",
     "./data/waldtypen.json",
     "./index.html",
+    "./js/analyse.js",
     "./js/app.js",
+    "./js/dashboard.js",
+    "./js/data.js",
+    "./js/icons.js",
+    "./js/simulationConfig.js",
+    "./js/startScreen.js",
     "./js/storage.js",
+    "./js/ui.js",
     "./manifest.json"
   ]
 }
