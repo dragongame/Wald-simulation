@@ -20,10 +20,60 @@
 </head>
 <body>
   <main id="app">
+
+    <section id="screen-start" class="screen" hidden>
+      <header class="app-header">
+        <h1>Waldökosystem-Simulation</h1>
+        <p class="app-subtitle">Wähle zwei Wald-Plätze, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
+      </header>
+
+      <section class="form-section" aria-labelledby="heading-waelder">
+        <h2 id="heading-waelder">1 · Zwei Wald-Plätze wählen</h2>
+        <p class="form-hint">Die beiden Plätze müssen unterschiedliche Waldtypen sein.</p>
+        <div class="wald-slots" id="wald-slots"></div>
+      </section>
+
+      <section class="form-section" aria-labelledby="heading-stoerungen">
+        <h2 id="heading-stoerungen">2 · Störung wählen (0–2)</h2>
+        <p class="form-hint">Naturereignis oder Bewirtschaftungsmaßnahme – frei kombinierbar, maximal zwei gleichzeitig.</p>
+        <div class="stoerungs-liste" id="stoerungs-liste"></div>
+        <div id="reihenfolge-auswahl" class="reihenfolge-auswahl" hidden></div>
+      </section>
+
+      <section class="form-section" aria-labelledby="heading-regler">
+        <h2 id="heading-regler">3 · Prädator-Beute-Regulation / Wilddichte</h2>
+        <p class="form-hint">Strukturelles Ungleichgewicht, unabhängig von der Störungsauswahl. Standard: niedrig (kaum Effekt).</p>
+        <div id="regler-control"></div>
+      </section>
+
+      <section class="form-section" aria-labelledby="heading-hypothese">
+        <h2 id="heading-hypothese">4 · Hypothese je Wald</h2>
+        <p class="form-hint">Was denkst du, wird passieren?</p>
+        <div class="hypothesen" id="hypothesen"></div>
+      </section>
+
+      <section class="form-section play-section">
+        <button type="button" id="play-button" class="play-button" disabled>Simulation starten</button>
+        <p id="play-hint" class="play-hint" role="status"></p>
+      </section>
+    </section>
+
+    <section id="screen-run-preview" class="screen" hidden>
+      <header class="app-header">
+        <h1>Auswahl übernommen</h1>
+        <p class="app-subtitle">Das Live-Dashboard (Meilenstein M5) folgt als Nächstes. Hier schon: die aufgelöste Konfiguration und die vorab berechneten Start-/Endwerte.</p>
+      </header>
+      <div id="run-summary"></div>
+      <button type="button" id="back-button" class="secondary-button">Zurück zur Auswahl</button>
+    </section>
+
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
   </main>
 
   <script src="./js/storage.js"></script>
+  <script src="./js/data.js"></script>
+  <script src="./js/simulationConfig.js"></script>
+  <script src="./js/startScreen.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

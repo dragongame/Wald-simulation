@@ -6,6 +6,7 @@
   --bernstein: #B5651D;
   --himmelblau: #5C7A8A;
   --signalrot: #9A3324;
+  --karte-hintergrund: #FFFDF7;
 }
 
 * {
@@ -15,26 +16,469 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
   background: var(--papier);
   color: var(--tinte);
-  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, "SF Pro", "Segoe UI", Roboto, sans-serif;
   -webkit-text-size-adjust: 100%;
+  line-height: 1.4;
+}
+
+h1, h2, h3 {
+  font-family: Iowan Old Style, Georgia, "Segoe UI", serif;
+  line-height: 1.2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 #app {
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  text-align: center;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
 }
 
 .app-status {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--bernstein);
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.app-subtitle {
+  margin: 0;
   color: var(--tinte);
+  opacity: 0.85;
+}
+
+.form-section {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 1rem 1.1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-section h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+}
+
+.form-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--tinte);
+  opacity: 0.75;
+}
+
+/* ---- Sprite-Kacheln mit Fallback (Bild fehlt -> Emoji + Label statt kaputtem Icon) ---- */
+
+.sprite-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: var(--papier);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.sprite-frame.sprite-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.sprite-frame.sprite-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+.sprite-frame.sprite-small {
+  max-width: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sprite-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sprite-frame .sprite-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.sprite-frame .sprite-fallback-emoji {
+  font-size: 1.6rem;
+}
+
+.sprite-frame .sprite-fallback-text {
+  font-size: 0.65rem;
+  color: var(--tinte);
+  opacity: 0.7;
+}
+
+.sprite-frame.sprite-missing img {
+  display: none;
+}
+
+.sprite-frame.sprite-missing .sprite-fallback {
+  display: flex;
+}
+
+/* ---- Wald-Plätze ---- */
+
+.wald-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.wald-slot h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+
+.wald-card-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.wald-card {
+  display: block;
+  cursor: pointer;
+  border: 2px solid var(--rindenbraun);
+  border-radius: 10px;
+  padding: 0.4rem;
+  min-height: 44px;
+}
+
+.wald-card:has(input:checked) {
+  border-color: var(--moosgruen);
+  background: rgba(76, 110, 74, 0.12);
+}
+
+.wald-card.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.wald-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wald-card-name {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.wald-card-note {
+  display: block;
+  font-size: 0.65rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.wald-beschreibung {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+}
+
+/* ---- Störungen ---- */
+
+.stoerungs-gruppe {
+  margin-bottom: 0.9rem;
+}
+
+.stoerungs-gruppe:last-child {
+  margin-bottom: 0;
+}
+
+.stoerungs-gruppe-titel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--moosgruen);
+}
+
+.stoerungs-gruppe-titel.kategorie-bewirtschaftungsmassnahme {
+  border-left-color: var(--bernstein);
+}
+
+.stoerungs-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.6rem;
+}
+
+.stoerung-card {
+  display: block;
+  cursor: pointer;
+  border: 2px solid var(--moosgruen);
+  border-radius: 10px;
+  padding: 0.5rem;
+  min-height: 44px;
+}
+
+.stoerung-card.kategorie-bewirtschaftungsmassnahme {
+  border-color: var(--bernstein);
+  border-style: dashed;
+}
+
+.stoerung-card:has(input:checked) {
+  background: rgba(76, 110, 74, 0.14);
+}
+
+.stoerung-card.kategorie-bewirtschaftungsmassnahme:has(input:checked) {
+  background: rgba(181, 101, 29, 0.14);
+}
+
+.stoerung-card.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.stoerung-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stoerung-card-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.stoerung-card-kategorie-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  opacity: 0.7;
+  margin: 0.1rem 0 0.25rem;
+}
+
+.stoerung-card-beschreibung {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* ---- Reihenfolge-Auswahl ---- */
+
+.reihenfolge-auswahl {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--rindenbraun);
+}
+
+.reihenfolge-optionen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reihenfolge-option {
+  display: block;
+  cursor: pointer;
+  border: 2px solid var(--himmelblau);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.85rem;
+  min-height: 44px;
+}
+
+.reihenfolge-option:has(input:checked) {
+  background: rgba(92, 122, 138, 0.16);
+}
+
+/* ---- Wildverbiss-Regler ---- */
+
+.regler-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.regler-segmente {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 12rem;
+}
+
+.regler-segment {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid var(--rindenbraun);
+  border-radius: 8px;
+  padding: 0.6rem 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 44px;
+}
+
+.regler-segment:has(input:checked) {
+  background: rgba(181, 101, 29, 0.18);
+  border-color: var(--bernstein);
+}
+
+.regler-segment input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- Hypothesen ---- */
+
+.hypothesen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+
+.hypothese-feld label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.hypothese-feld textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  background: var(--papier);
+  color: var(--tinte);
+  resize: vertical;
+}
+
+/* ---- Play-Button ---- */
+
+.play-section {
+  text-align: center;
+}
+
+.play-button {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--papier);
+  background: var(--moosgruen);
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.2rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.play-button:disabled {
+  background: var(--rindenbraun);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.play-hint {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.secondary-button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--tinte);
+  background: transparent;
+  border: 1px solid var(--rindenbraun);
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  min-height: 44px;
+  cursor: pointer;
+  display: block;
+  margin: 1.5rem auto 0;
+}
+
+/* ---- Ergebnis-Vorschau ---- */
+
+.run-konfiguration {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.run-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.run-karte {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.run-karte h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.hypothese-recap {
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+.run-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.run-tabelle th,
+.run-tabelle td {
+  text-align: left;
+  padding: 0.3rem 0.4rem;
+  border-bottom: 1px solid var(--papier);
+}
+
+.run-tabelle th {
+  border-bottom: 2px solid var(--rindenbraun);
 }

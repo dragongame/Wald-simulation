@@ -10,12 +10,17 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("./sw.js")
-      .then(() => setStatus("Waldökosystem-Simulation – Grundgerüst bereit. Inhalte folgen in den nächsten Ausbaustufen."))
+      .then(() => setStatus(""))
       .catch((err) => {
         console.error("Service Worker Registrierung fehlgeschlagen:", err);
-        setStatus("Waldökosystem-Simulation – Offline-Modus konnte nicht eingerichtet werden.");
+        setStatus("Offline-Modus konnte nicht eingerichtet werden – für den ersten Start ist eine Internetverbindung nötig.");
       });
   });
 } else {
-  setStatus("Waldökosystem-Simulation – dieser Browser unterstützt keine Offline-Nutzung.");
+  setStatus("Dieser Browser unterstützt keine Offline-Nutzung.");
 }
+
+WaldsimStartScreen.init().catch((err) => {
+  console.error("Start-Screen konnte nicht geladen werden:", err);
+  setStatus("Die Inhalte konnten nicht geladen werden. Bitte Seite neu laden.");
+});
