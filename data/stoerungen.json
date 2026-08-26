@@ -166,7 +166,8 @@
         "borkenkaefer"
       ],
       "abstand_jahre": 0,
-      "reihenfolge_waehlbar": true,
+      "reihenfolge_waehlbar": false,
+      "reihenfolge_waehlbar_hinweis": "Seit 2026-08-26 auf false (vorher true) - bei abstand_jahre=0 triggern beide Ereignisse gleichzeitig in Jahr 0, das Berechnungsmodul (model.py) liefert für beide Reihenfolgen identische Zeitreihen (verifiziert: data/generated/simulationen/*__borkenkaefer-dann-trockenheit__* und *__trockenheit-dann-borkenkaefer__* sind für alle 3 Waldtypen bis auf die reine Reihenfolge-Angabe in konfiguration.ereignisse byte-identisch). Die UI fragt die Reihenfolge deshalb nicht mehr ab (Backlog-Idee 'Szenarios wo die Reihenfolge egal ist', Milestone M13) - anders als bei sturm+borkenkaefer/sturm+trockenheit (abstand_jahre=1), wo die Reihenfolge die Kaskade tatsächlich verändert und weiterhin abgefragt wird.",
       "annahme": false,
       "beschreibung": "Unmittelbares Zusammenwirken innerhalb derselben Vegetationsperiode (Wissensbasis, Szenario 2)."
     },
