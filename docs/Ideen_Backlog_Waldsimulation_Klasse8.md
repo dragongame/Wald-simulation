@@ -17,4 +17,29 @@
 
 ## Eigene Einträge
 
-*(hier weiter ergänzen)*
+### Mehr Tiere und Pflanzen bei der Simulation anzeigen
+
+- So ist es klarer wer/was im Wald lebt und ggf. mehr oder weniger wird.
+
+### Instrument Verbesserung
+
+- Die Anzahl oder relative Anzahl könnte in Form eines Radialdiagrams/Tachos angezeigt werden. Mit dem Tier/Baum in der Mitte.
+
+### Drag & Drop
+
+- Anstelle zum Beispiel die Wälder per Klick auszuählen, könnten diese in das Buch gezogen werden.
+
+### Mehr Feldbuch feeling
+
+- Es sollte sich mehr wie ein Feldbuch anfühlen, also mehr so wie offene Seiten.
+- Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht, aber bei den Szenario zusammen stellen (siehe Drag & Drop) und auch bei der Reflexion
+- Navigieren könnte mit kleinen schmalen Post-It Notizen sein, so wie man es auch in einem echten Buch machen würde
+
+### Szenarios wo die Reihfolge egal ist
+
+- Die Reihenfolge selection sollte nur entscheiden sein, wenn die ereignisse nicht im gleichen Jahr passieren.
+
+### Erstelle eine Liste den Interesantesten 2er Kombinationen
+
+- Diese soll der Lehrkraft dienen gute Scenarios zu verteilen, wo deutliche Unterschide sichtbar sind.
+
