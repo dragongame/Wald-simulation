@@ -33,7 +33,9 @@ const WaldsimForscherheft = (() => {
   }
 
   function endzustandBild(waldtypId, regler, zr20) {
-    if (waldtypId === "mischwald" && regler !== "niedrig" && zr20.verjuengung_mischbaumarten < 50 && zr20.gesamtvitalitaet >= 60) {
+    // "beide" (Wolf + Luchs anwesend) ist seit 2026-08-26 der Ausgangszustand
+    // ohne Effekt, ersetzt das frühere "niedrig" (siehe Milestones-Dokument).
+    if (waldtypId === "mischwald" && regler !== "beide" && zr20.verjuengung_mischbaumarten < 50 && zr20.gesamtvitalitaet >= 60) {
       return "wald_mischwald_verarmt_reinbestand.png";
     }
     const stufe = zr20.gesamtvitalitaet >= 67 ? "stabil" : zr20.gesamtvitalitaet >= 34 ? "geschaedigt" : "kollabiert";

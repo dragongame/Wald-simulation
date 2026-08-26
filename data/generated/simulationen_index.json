@@ -1,23 +1,29 @@
 {
   "_meta": {
     "beschreibung": "Index aller vorab berechneten 20-Jahres-Verläufe (siehe Umsetzungsauftrag 2.11). Die Laufzeit-App nutzt diesen Index, um zu einer gewählten Waldtyp/Störungs/Regler-Kombination die passende Datei aufzulösen.",
-    "anzahl": 195
+    "anzahl": 261
   },
   "eintraege": [
     {
-      "datei": "simulationen/mischwald__keine__regler-mittel.json",
+      "datei": "simulationen/mischwald__keine__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__keine__regler-hoch.json",
+      "datei": "simulationen/mischwald__keine__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/mischwald__keine__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__borkenkaefer__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -25,10 +31,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/mischwald__borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -36,10 +42,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/mischwald__borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -47,10 +53,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit__regler-niedrig.json",
+      "datei": "simulationen/mischwald__borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__trockenheit__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -58,10 +75,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit__regler-mittel.json",
+      "datei": "simulationen/mischwald__trockenheit__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -69,10 +86,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit__regler-hoch.json",
+      "datei": "simulationen/mischwald__trockenheit__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -80,10 +97,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__temperatur__regler-niedrig.json",
+      "datei": "simulationen/mischwald__trockenheit__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__temperatur__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -91,10 +119,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__temperatur__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -102,10 +130,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__temperatur__regler-hoch.json",
+      "datei": "simulationen/mischwald__temperatur__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -113,10 +141,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__sturm__regler-niedrig.json",
+      "datei": "simulationen/mischwald__temperatur__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__sturm__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -124,10 +163,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__sturm__regler-mittel.json",
+      "datei": "simulationen/mischwald__sturm__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -135,10 +174,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__sturm__regler-hoch.json",
+      "datei": "simulationen/mischwald__sturm__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -146,10 +185,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/mischwald__sturm__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__totholzentnahme__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -157,10 +207,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/mischwald__totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -168,10 +218,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/mischwald__totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -179,10 +229,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/mischwald__totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -194,10 +255,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -209,10 +270,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -224,10 +285,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -239,10 +315,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -254,10 +330,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -269,10 +345,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -284,10 +375,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -299,10 +390,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -314,10 +405,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -329,10 +435,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -344,10 +450,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -359,10 +465,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -374,10 +495,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -389,10 +510,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -404,10 +525,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -419,10 +555,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -434,10 +570,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -449,10 +585,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -464,10 +615,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -479,10 +630,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -494,10 +645,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -509,10 +675,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -524,10 +690,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -539,10 +705,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -554,10 +735,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -569,10 +750,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -584,10 +765,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -599,10 +795,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -614,10 +810,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -629,10 +825,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -644,10 +855,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -659,10 +870,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -674,10 +885,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -689,10 +915,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -704,10 +930,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -719,10 +945,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -734,10 +975,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -749,10 +990,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -764,10 +1005,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+trockenheit__regler-niedrig.json",
+      "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -779,10 +1035,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+trockenheit__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -794,10 +1050,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+trockenheit__regler-hoch.json",
+      "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -809,10 +1065,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+sturm__regler-niedrig.json",
+      "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -824,10 +1095,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+sturm__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -839,10 +1110,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+sturm__regler-hoch.json",
+      "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -854,10 +1125,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-beide.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -869,10 +1155,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -884,10 +1170,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/mischwald__temperatur+totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "ereignisse": [
         {
@@ -899,22 +1185,43 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__keine__regler-mittel.json",
+      "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__keine__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__keine__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__keine__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__keine__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -922,10 +1229,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -933,10 +1240,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -944,10 +1251,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -955,10 +1273,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -966,10 +1284,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -977,10 +1295,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -988,10 +1317,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -999,10 +1328,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1010,10 +1339,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1021,10 +1361,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1032,10 +1372,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1043,10 +1383,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1054,10 +1405,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1065,10 +1416,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1076,10 +1427,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1091,10 +1453,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1106,10 +1468,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1121,10 +1483,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1136,10 +1513,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1151,10 +1528,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1166,10 +1543,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1181,10 +1573,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1196,10 +1588,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1211,10 +1603,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1226,10 +1633,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1241,10 +1648,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1256,10 +1663,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1271,10 +1693,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1286,10 +1708,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1301,10 +1723,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1316,10 +1753,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1331,10 +1768,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1346,10 +1783,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1361,10 +1813,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1376,10 +1828,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1391,10 +1843,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1406,10 +1873,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1421,10 +1888,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1436,10 +1903,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1451,10 +1933,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1466,10 +1948,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1481,10 +1963,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1496,10 +1993,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1511,10 +2008,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1526,10 +2023,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1541,10 +2053,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1556,10 +2068,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1571,10 +2083,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1586,10 +2113,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1601,10 +2128,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1616,10 +2143,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1631,10 +2173,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1646,10 +2188,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1661,10 +2203,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1676,10 +2233,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1691,10 +2248,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1706,10 +2263,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1721,10 +2293,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1736,10 +2308,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1751,10 +2323,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-beide.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1766,10 +2353,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1781,10 +2368,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "ereignisse": [
         {
@@ -1796,22 +2383,43 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__keine__regler-mittel.json",
+      "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "fichtenmonokultur",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__keine__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__keine__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__keine__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__keine__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1819,10 +2427,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1830,10 +2438,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1841,10 +2449,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__trockenheit__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1852,10 +2471,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__trockenheit__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1863,10 +2482,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__trockenheit__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1874,10 +2493,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__trockenheit__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1885,10 +2515,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__temperatur__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1896,10 +2526,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__temperatur__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1907,10 +2537,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__temperatur__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__sturm__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1918,10 +2559,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__sturm__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1929,10 +2570,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__sturm__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1940,10 +2581,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__sturm__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1951,10 +2603,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1962,10 +2614,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1973,10 +2625,21 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -1988,10 +2651,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2003,10 +2666,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2018,10 +2681,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2033,10 +2711,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2048,10 +2726,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2063,10 +2741,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2078,10 +2771,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2093,10 +2786,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2108,10 +2801,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2123,10 +2831,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2138,10 +2846,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2153,10 +2861,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2168,10 +2891,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2183,10 +2906,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2198,10 +2921,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2213,10 +2951,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2228,10 +2966,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2243,10 +2981,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2258,10 +3011,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2273,10 +3026,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2288,10 +3041,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2303,10 +3071,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2318,10 +3086,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2333,10 +3101,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2348,10 +3131,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2363,10 +3146,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2378,10 +3161,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2393,10 +3191,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2408,10 +3206,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2423,10 +3221,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2438,10 +3251,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2453,10 +3266,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2468,10 +3281,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2483,10 +3311,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2498,10 +3326,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2513,10 +3341,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2528,10 +3371,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2543,10 +3386,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2558,10 +3401,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+trockenheit__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2573,10 +3431,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+trockenheit__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2588,10 +3446,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+trockenheit__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2603,10 +3461,25 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+sturm__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2618,10 +3491,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+sturm__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2633,10 +3506,10 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+sturm__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2648,10 +3521,25 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__regler-niedrig.json",
+      "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "keine"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-beide.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2663,10 +3551,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "niedrig"
+      "wildverbiss_regler": "beide"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__regler-mittel.json",
+      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2678,10 +3566,10 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "mittel"
+      "wildverbiss_regler": "luchs"
     },
     {
-      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__regler-hoch.json",
+      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "ereignisse": [
         {
@@ -2693,7 +3581,22 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "hoch"
+      "wildverbiss_regler": "wolf"
+    },
+    {
+      "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-keine.json",
+      "waldtyp": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "keine"
     }
   ]
 }

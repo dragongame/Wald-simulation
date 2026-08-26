@@ -120,17 +120,17 @@
     "kategorie": "strukturelles_ungleichgewicht",
     "icon_sprite": "stoerung_wildverbiss.png",
     "icon_hinweis": "In Fehlende_Grafiken_Bekannt ursprünglich nicht vorgesehen; während der Umsetzung ergänzt, siehe Fehlende_Grafiken_Laufend_Waldsimulation_Klasse8.md.",
-    "typ": "unabhaengiger_regler",
+    "typ": "praedatoren_schalter",
+    "typ_hinweis": "Ersetzt seit 2026-08-26 den ursprünglichen 3-Stufen-Regler (niedrig/mittel/hoch, siehe Milestones-Dokument) durch zwei unabhängige Schalter für die tatsächliche Ursache (Wolf/Luchs anwesend) statt nur ihrer abstrahierten Wirkung. Nutzer-Entscheidung, macht Reh und Rothirsch erstmals zu getrennt simulierten Bestandsgrößen (reh_dichte/rothirsch_dichte statt einem gemeinsamen wilddichte-Indikator), da Luchs/Wolf laut Wissensbasis unterschiedlich stark auf beide Arten wirken.",
     "kurzbeschreibung": "Fehlen große Beutegreifer (Luchs, Wolf) oder wird zu wenig gejagt, steigt die Reh-/Rothirschdichte über das für die Verjüngung tragbare Maß - eine schleichende, chronische Störung ohne einzelnes Auslöse-Ereignis.",
-    "stufen": [
-      "niedrig",
-      "mittel",
-      "hoch"
+    "praedatoren": [
+      { "id": "luchs", "name": "Luchs", "standardwert": true },
+      { "id": "wolf", "name": "Wolf", "standardwert": true }
     ],
-    "anzahl_stufen": 3,
-    "standardwert": "niedrig",
-    "standardwert_hinweis": "niedrig = kein/kaum Effekt (funktionierende Regulation, Kontrastfall Luchs/Wolf).",
-    "bewusst_diskret_hinweis": "Bewusst nur 3 feste Stufen statt stufenlos, damit alle Parameter für die Build-Time-Vorabsimulation diskret/endlich bleiben (Umsetzungsauftrag 2.11).",
+    "code_werte": ["beide", "luchs", "wolf", "keine"],
+    "code_werte_hinweis": "Vier Kombinationen aus den zwei unabhängigen Schaltern (Luchs an/aus × Wolf an/aus), als einzelner String-Code für Dateinamen/UI-Zustand (siehe js/simulationConfig.js, scripts/simulation/build_simulationen.py).",
+    "standardwert": "beide",
+    "standardwert_hinweis": "beide = Ausgangszustand, kein/kaum Effekt (funktionierende Regulation). Entfernen eines oder beider Prädatoren ist die vom Nutzer gewählte Abweichung, die Schalenwild-Überpopulation auslöst - entspricht inhaltlich dem früheren 'niedrig'.",
     "relevante_knoten": [
       "reh",
       "rothirsch",
@@ -142,7 +142,7 @@
     ],
     "relevantester_waldtyp": "mischwald",
     "isoliert_spielbar": true,
-    "isoliert_spielbar_hinweis": "Bei 0 Ereignis-Störungen + Regler != niedrig zeigt sich im Mischwald die rein schleichende Verarmung der Baumartenvielfalt ohne akutes Ereignis (pädagogisch explizit gewollt, Wissensbasis Szenario 6).",
+    "isoliert_spielbar_hinweis": "Bei 0 Ereignis-Störungen + mindestens einem fehlenden Prädator zeigt sich im Mischwald die rein schleichende Verarmung der Baumartenvielfalt ohne akutes Ereignis (pädagogisch explizit gewollt, Wissensbasis Szenario 6).",
     "zeitverhalten": {
       "beschreibung": "Reine Encoding-Logik im Berechnungsmodul (M2), keine gesonderte UI: Effekt auf Verjüngung/Baumartenvielfalt ist in der ersten Hälfte der 20 Jahre kaum sichtbar, nimmt in der zweiten Hälfte zu.",
       "sichtbar_ab_jahr_ungefaehr": 10
@@ -231,14 +231,16 @@
   },
   "kombinatorik": {
     "beschreibung": "Erwartete Gesamtzahl vorab zu berechnender 20-Jahres-Verläufe für die Build-Time-Vorabsimulation (M2) - siehe Umsetzungsauftrag 2.11. Wird dort NICHT berechnet, sondern nur als Prüfsumme für das Build-Skript dokumentiert.",
+    "kombinatorik_aenderung_hinweis": "Seit 2026-08-26 (Nutzer-Entscheidung, Ersetzung des 3-Stufen-Wildverbiss-Reglers durch den Wolf/Luchs-Schalter, siehe Milestones-Dokument) 4 statt 3 Kombinationen auf dieser Achse - Gesamtzahl dadurch von 195 auf 261 gestiegen. Weicht vom in docs/Umsetzungsauftrag_Waldsimulation_Klasse8_fuer_Claude_Code.md dokumentierten Akzeptanzkriterium '195 Kombinationen' ab; dort noch nicht nachgezogen (Rang-1-Quelldokument, nur nach expliziter Rücksprache zu ändern).",
     "ereignis_auswahlzustaende": 22,
     "ereignis_auswahlzustaende_erklaerung": "0 Ereignisse (1) + 5 einzelne (5) + 16 Zweierkombinationen (Temperatur-Paare ohne Reihenfolge gezählt) = 22.",
-    "regler_stufen": 3,
+    "praedatoren_kombinationen": 4,
+    "praedatoren_kombinationen_erklaerung": "Luchs an/aus × Wolf an/aus = 4 Kombinationen (beide/nur-luchs/nur-wolf/keine), ersetzt die früheren 3 Regler-Stufen.",
     "ungueltige_kombination_nichts_gewaehlt": 1,
-    "konfigurationen_pro_waldtyp": 65,
-    "konfigurationen_pro_waldtyp_formel": "22 * 3 - 1 = 65",
+    "konfigurationen_pro_waldtyp": 87,
+    "konfigurationen_pro_waldtyp_formel": "22 * 4 - 1 = 87",
     "waldtypen": 3,
-    "gesamt_zeitreihen": 195,
-    "gesamt_zeitreihen_formel": "65 * 3 = 195"
+    "gesamt_zeitreihen": 261,
+    "gesamt_zeitreihen_formel": "87 * 3 = 261"
   }
 }

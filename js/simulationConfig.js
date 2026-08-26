@@ -93,12 +93,14 @@ const WaldsimConfig = (() => {
     };
   }
 
-  function dateiname(waldtypId, konfigId, reglerId) {
-    return `${waldtypId}__${konfigId}__regler-${reglerId}.json`;
+  function dateiname(waldtypId, konfigId, praedatorenCode) {
+    return `${waldtypId}__${konfigId}__praedatoren-${praedatorenCode}.json`;
   }
 
-  function istGueltigeAbweichung(gewaehlteEreignisse, regler) {
-    return gewaehlteEreignisse.length > 0 || regler !== "niedrig";
+  function istGueltigeAbweichung(gewaehlteEreignisse, praedatorenCode) {
+    // "beide" (Wolf + Luchs anwesend) ist der Ausgangszustand ohne Effekt -
+    // entspricht dem früheren "niedrig" (siehe Milestones-Dokument).
+    return gewaehlteEreignisse.length > 0 || praedatorenCode !== "beide";
   }
 
   return { resolveEreignisKonfiguration, dateiname, istGueltigeAbweichung, EVENT_ORDER };

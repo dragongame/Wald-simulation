@@ -191,7 +191,9 @@ const WaldsimGraph = (() => {
       const eintrag = data.stoerungen.ereignis_stoerungen.find((s) => s.id === e.typ);
       (eintrag && eintrag.relevante_knoten ? eintrag.relevante_knoten : []).forEach((id) => set.add(id));
     });
-    if (kontext.regler && kontext.regler !== "niedrig") {
+    // "beide" (Wolf + Luchs anwesend) ist seit 2026-08-26 der Ausgangszustand
+    // ohne Effekt, ersetzt das frühere "niedrig" (siehe Milestones-Dokument).
+    if (kontext.regler && kontext.regler !== "beide") {
       data.stoerungen.wildverbiss_regler.relevante_knoten.forEach((id) => set.add(id));
     }
     return set;
@@ -236,7 +238,9 @@ const WaldsimGraph = (() => {
   function ermittleStartknoten(kontext) {
     const sortiert = [...kontext.ereignisse].sort((a, b) => a.trigger_jahr - b.trigger_jahr);
     const start = sortiert.map((e) => STARTKNOTEN_JE_STOERUNG[e.typ]).filter(Boolean);
-    if (kontext.regler && kontext.regler !== "niedrig") {
+    // "beide" (Wolf + Luchs anwesend) ist seit 2026-08-26 der Ausgangszustand
+    // ohne Effekt, ersetzt das frühere "niedrig" (siehe Milestones-Dokument).
+    if (kontext.regler && kontext.regler !== "beide") {
       start.push(STARTKNOTEN_WILDVERBISS);
     }
     return start;

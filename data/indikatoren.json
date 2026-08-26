@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "beschreibung": "Metadaten der Indikatoren, die das Build-Time-Simulationsmodul (M2) je Jahr (0-20) berechnet. Ursprünglich 14 (Umsetzungsauftrag 2.11: 'ca. 15 Indikatoren'), seit der Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) 34. dashboard_sichtbar=true markiert weiterhin die 6 ursprünglichen Feldmessinstrumente aus Technikdokument 4.2 (Live-Dashboard, Phase 1) - die 20 neuen Indikatoren sind bewusst nur im Analyse-Screen frei kombinierbar (Umsetzungsauftrag 2.5, User Stories 3.7), nicht im Dashboard sichtbar.",
+    "beschreibung": "Metadaten der Indikatoren, die das Build-Time-Simulationsmodul (M2) je Jahr (0-20) berechnet. Ursprünglich 14 (Umsetzungsauftrag 2.11: 'ca. 15 Indikatoren'), seit der Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) 35. dashboard_sichtbar=true markiert weiterhin die 6 ursprünglichen Feldmessinstrumente aus Technikdokument 4.2 (Live-Dashboard, Phase 1) - die 20 neuen Arten-Indikatoren sind bewusst nur im Analyse-Screen frei kombinierbar (Umsetzungsauftrag 2.5, User Stories 3.7), nicht im Dashboard sichtbar. Seit 2026-08-26 zusätzlich reh_dichte/rothirsch_dichte statt eines gemeinsamen wilddichte-Indikators (Ersetzung des 3-Stufen-Wildverbiss-Reglers durch einen Wolf/Luchs-Schalter, siehe Milestones-Dokument).",
     "skala": "Alle Indikatoren sind auf 0-100 normiert (0 = Minimum/Ausfall, 100 = Maximum/Ausgangszustand), UI darf sie zusätzlich in niedrig/mittel/hoch bündeln (Technikdokument 4.2).",
     "quelle_abschnitt": "Umsetzungsauftrag Abschnitt 2.11 (\"ca. 15 Indikatoren\"); Technikdokument 4.2 (6 Dashboard-Instrumente)"
   },
@@ -35,8 +35,10 @@
       "beschreibung": "Anteil der Birke; kann durch Sukzession nach Störung ansteigen, auch wenn der Ausgangswert 0 ist." },
     { "id": "verjuengung_mischbaumarten", "name": "Verjüngung Mischbaumarten", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
       "beschreibung": "Erfolg der Naturverjüngung von Mischbaumarten (v. a. Eiche); zentraler Indikator für Szenario 6, siehe Umsetzungsauftrag 4.4 Beispiel-JSON." },
-    { "id": "wilddichte", "name": "Wilddichte (Reh/Rothirsch)", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
-      "beschreibung": "Relative Reh-/Rothirschdichte, gesteuert durch den Wildverbiss-Regler." },
+    { "id": "reh_dichte", "name": "Rehdichte", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
+      "beschreibung": "Relative Rehdichte; sinkt bei anwesendem Luchs stark, bei anwesendem Wolf mittelstark (getrennt von Rothirsch simuliert seit 2026-08-26, ersetzt den früheren gemeinsamen Wilddichte-Indikator)." },
+    { "id": "rothirsch_dichte", "name": "Rothirschdichte", "kategorie": "wildverbiss", "dashboard_sichtbar": false,
+      "beschreibung": "Relative Rothirschdichte; sinkt bei anwesendem Wolf mittelstark, bei anwesendem Luchs nur schwach (Luchs ist laut Recherche ein Reh-Spezialist, siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md, Abschnitt Nachrecherche)." },
     { "id": "brandrisiko", "name": "Waldbrandrisiko", "kategorie": "szenario5", "dashboard_sichtbar": false,
       "beschreibung": "Relatives Waldbrandrisiko; laut Wissensbasis bewusst nur schwach von der Totholzentnahme beeinflusst, Haupttreiber bleibt Witterung (Trockenheit/Temperatur)." },
 

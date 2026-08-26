@@ -39,7 +39,7 @@ const WaldsimAnalyse = (() => {
     ],
   };
   const KASKADE_WILDVERBISS = [
-    "verjuengung_mischbaumarten", "wilddichte", "eiche_vitalitaet", "biodiversitaet",
+    "verjuengung_mischbaumarten", "reh_dichte", "rothirsch_dichte", "eiche_vitalitaet", "biodiversitaet",
     "eichelhaeher_indikator", "eichhoernchen_indikator",
   ];
 
@@ -60,7 +60,8 @@ const WaldsimAnalyse = (() => {
     kiefer_vitalitaet: "#C08A4E",
     birke_anteil: "#B79A6B",
     verjuengung_mischbaumarten: "#3D6B4F",
-    wilddichte: "#8C6349",
+    reh_dichte: "#8C6349",
+    rothirsch_dichte: "#6B4E3D",
     brandrisiko: "#A8522E",
     // Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten
     // (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) - Paletten an
@@ -107,7 +108,7 @@ const WaldsimAnalyse = (() => {
   };
 
   let lauf = null;
-  let indikatoren = []; // alle 34, in fester Reihenfolge + Farbe/Dash
+  let indikatoren = []; // alle 35, in fester Reihenfolge + Farbe/Dash
   let kaskadenrelevant = new Set();
   let ausgewaehlt = new Set();
   let snapshots = [];

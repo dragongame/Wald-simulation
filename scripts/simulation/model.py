@@ -28,7 +28,23 @@ BASIS_TOTHOLZ = {"mischwald": 15, "fichtenmonokultur": 5, "kiefernwald": 10}
 BASIS_BIODIVERSITAET = {"mischwald": 80, "fichtenmonokultur": 30, "kiefernwald": 40}
 BASIS_BRANDRISIKO = {"mischwald": 15, "fichtenmonokultur": 40, "kiefernwald": 70}
 
-WILD_ZIEL = {"niedrig": 15, "mittel": 45, "hoch": 80}
+# Reh/Rothirsch-Zieldichte ohne Prädatoren (Ausgangswert 80 = reale
+# Überpopulations-Situation, wie sie heute in weiten Teilen Deutschlands
+# ohne Luchs/Wolf vorherrscht - siehe Wissensbasis-Ergänzung, Abschnitt
+# "Nachrecherche" Punkt 7: reale Dichte-Spannen bestätigen die Richtung,
+# der 0-100-Wert selbst bleibt eine didaktische Skala). LUCHS_REDUKTION/
+# WOLF_REDUKTION sind mit echten Beutespektrum-Zahlen unterlegt (KORA-
+# Radiotelemetrie bzw. DBBW/Senckenberg-Kotprobenanalyse, siehe dort Punkt
+# 6): der Luchs ist ein Reh-Spezialist (Rothirsch taucht in den Studien
+# praktisch nicht als Beute auf), der Wolf nimmt deutlich mehr Rothirsch,
+# aber laut Diätanteilen klar seltener als Reh. Diätanteile sind kein
+# direktes Maß für Regulationswirkung pro Kopf - die Übertragung auf
+# Reduktionsfaktoren bleibt eine Modellierungs-Annahme, jetzt aber mit
+# echter Zahlengrundlage statt freier Schätzung.
+REH_ZIEL_BASIS = 80.0
+ROTHIRSCH_ZIEL_BASIS = 80.0
+LUCHS_REDUKTION = {"reh": 0.80, "rothirsch": 0.10}
+WOLF_REDUKTION = {"reh": 0.55, "rothirsch": 0.30}
 WILDVERBISS_WALDTYP_MULTIPLIKATOR = {"mischwald": 1.0, "fichtenmonokultur": 0.2, "kiefernwald": 0.3}
 
 BAUMARTEN = ["fichte", "buche", "eiche", "kiefer", "birke"]
@@ -68,11 +84,16 @@ def _clamp(x, lo=0.0, hi=100.0):
 class Simulation:
     """Führt eine einzelne Waldtyp x Konfiguration-Simulation über 21 Jahre aus."""
 
-    def __init__(self, waldtyp, konfiguration, wildverbiss_stufe):
+    def __init__(self, waldtyp, konfiguration, wolf_aktiv, luchs_aktiv):
         self.waldtyp = waldtyp  # dict aus data/waldtypen.json
         self.wid = waldtyp["id"]
         self.konfiguration = konfiguration  # Liste von {"typ", "trigger_jahr", "dauerhaft"}
-        self.wildverbiss_stufe = wildverbiss_stufe
+        # Ersetzt den früheren 3-Stufen-Wildverbiss-Regler (niedrig/mittel/
+        # hoch) durch die tatsächliche Ursache: Anwesenheit von Wolf/Luchs.
+        # Ausgangszustand (kein deviation) = beide Prädatoren aktiv, siehe
+        # Milestones-Dokument.
+        self.wolf_aktiv = wolf_aktiv
+        self.luchs_aktiv = luchs_aktiv
 
         rf = waldtyp["resilienzfaktoren"]
         self.res_borkenkaefer = _resilienz_faktor(rf.get("borkenkaefer"))
@@ -105,7 +126,8 @@ class Simulation:
             "bodenfeuchte": 100.0,
             "biodiversitaet": float(BASIS_BIODIVERSITAET[self.wid]),
             "verjuengung_mischbaumarten": 100.0,
-            "wilddichte": self._wild_start(),
+            "reh_dichte": self._wild_start(),
+            "rothirsch_dichte": self._wild_start(),
             "brandrisiko": float(BASIS_BRANDRISIKO[self.wid]),
         }
         self._anfangsfichte = self.state["fichte_vitalitaet"]
@@ -312,16 +334,35 @@ class Simulation:
                 s["totholzmenge"] = _clamp(s["totholzmenge"] * 0.97)
             s["biodiversitaet"] = _clamp(s["biodiversitaet"] - 0.9)
 
-        # --- Wildverbiss-Regler: unabhängig, gradueller Anstieg ---
-        ziel = WILD_ZIEL[self.wildverbiss_stufe]
-        s["wilddichte"] = _clamp(s["wilddichte"] + (ziel - s["wilddichte"]) * 0.3)
+        # --- Wolf/Luchs: unabhängig, gradueller Anstieg der Reh-/Rothirsch-
+        # dichte in Richtung des durch die aktiven Prädatoren gesenkten
+        # Zielwerts (siehe Konstanten oben). Ersetzt den früheren 3-Stufen-
+        # Wildverbiss-Regler 1:1 an dieser Stelle im Modell.
+        ziel_reh = REH_ZIEL_BASIS
+        ziel_rothirsch = ROTHIRSCH_ZIEL_BASIS
+        if self.luchs_aktiv:
+            ziel_reh *= 1 - LUCHS_REDUKTION["reh"]
+            ziel_rothirsch *= 1 - LUCHS_REDUKTION["rothirsch"]
+        if self.wolf_aktiv:
+            ziel_reh *= 1 - WOLF_REDUKTION["reh"]
+            ziel_rothirsch *= 1 - WOLF_REDUKTION["rothirsch"]
+        s["reh_dichte"] = _clamp(s["reh_dichte"] + (ziel_reh - s["reh_dichte"]) * 0.3)
+        s["rothirsch_dichte"] = _clamp(s["rothirsch_dichte"] + (ziel_rothirsch - s["rothirsch_dichte"]) * 0.3)
+
         wv_multiplikator = WILDVERBISS_WALDTYP_MULTIPLIKATOR[self.wid]
-        basis_rate = {"niedrig": 0.05, "mittel": 1.1, "hoch": 2.3}[self.wildverbiss_stufe]
+        mittlere_wilddichte = (s["reh_dichte"] + s["rothirsch_dichte"]) / 2
+        # Linear an die drei früheren Regler-Referenzpunkte angenähert
+        # (niedrig=15->0.05, mittel=45->1.1, hoch=80->2.3), jetzt aber aus der
+        # kontinuierlichen Dichte abgeleitet statt aus einer Stufen-Tabelle.
+        basis_rate = max(0.0, (mittlere_wilddichte - 15) * 0.033)
         ramp = 0.2 if jahr <= 10 else 1.0
         s["verjuengung_mischbaumarten"] = _clamp(
             s["verjuengung_mischbaumarten"] - basis_rate * wv_multiplikator * ramp
         )
-        if self.wildverbiss_stufe != "niedrig":
+        # Zusatzeffekt auf Eiche entfällt nur im Ausgangszustand (beide
+        # Prädatoren aktiv = funktionierende Regulation, entspricht dem
+        # früheren "niedrig").
+        if not (self.wolf_aktiv and self.luchs_aktiv):
             s["eiche_vitalitaet"] = _clamp(
                 s["eiche_vitalitaet"] - basis_rate * wv_multiplikator * ramp * 0.15 * (s["eiche_vitalitaet"] / 100)
             )
@@ -514,9 +555,9 @@ class Simulation:
         return out
 
 
-def simuliere(waldtyp, konfiguration, wildverbiss_stufe):
+def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv):
     """Öffentliche Schnittstelle: liefert die 21-Jahre-Zeitreihe (jahr_0..jahr_20)
-    aller Indikatoren für einen Waldtyp x Konfiguration x Regler-Stufe.
+    aller Indikatoren für einen Waldtyp x Konfiguration x Wolf/Luchs-Anwesenheit.
     """
-    sim = Simulation(waldtyp, konfiguration, wildverbiss_stufe)
+    sim = Simulation(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv)
     return sim.run()

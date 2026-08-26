@@ -21,7 +21,7 @@ const WaldsimStartScreen = (() => {
     wald: [null, null],
     ereignisse: [],
     reihenfolge: null,
-    regler: "niedrig",
+    regler: "beide", // Ausgangszustand: Luchs + Wolf anwesend, kein Effekt
     hypothesen: ["", ""],
   };
 
@@ -128,23 +128,35 @@ const WaldsimStartScreen = (() => {
     `;
   }
 
+  function reglerCodeAus(luchsAktiv, wolfAktiv) {
+    if (luchsAktiv && wolfAktiv) return "beide";
+    if (luchsAktiv) return "luchs";
+    if (wolfAktiv) return "wolf";
+    return "keine";
+  }
+
   function renderRegler() {
     const container = document.getElementById("regler-control");
     const regler = data.stoerungen.wildverbiss_regler;
+    // Ersetzt seit 2026-08-26 den früheren 3-Stufen-Regler durch zwei
+    // unabhängige Schalter für die tatsächliche Ursache (Wolf/Luchs
+    // anwesend), siehe Milestones-Dokument. Wiederverwendet bewusst die
+    // bestehenden .regler-segmente/.regler-segment-Klassen (funktionieren
+    // unverändert mit type="checkbox" statt type="radio").
+    const luchsAktiv = state.regler === "beide" || state.regler === "luchs";
+    const wolfAktiv = state.regler === "beide" || state.regler === "wolf";
     container.innerHTML = `
       <div class="regler-control">
         ${spriteFrameHtml(`./assets/sprites/${regler.icon_sprite}`, regler.name, "🦌", "sprite-1-1 sprite-small")}
-        <div class="regler-segmente" role="radiogroup" aria-label="${escapeHtml(regler.name)}">
-          ${regler.stufen
-            .map(
-              (s) => `
-            <label class="regler-segment">
-              <input type="radio" name="regler" value="${s}" ${state.regler === s ? "checked" : ""}>
-              ${kapitalisiere(s)}
-            </label>
-          `
-            )
-            .join("")}
+        <div class="regler-segmente" role="group" aria-label="${escapeHtml(regler.name)}">
+          <label class="regler-segment">
+            <input type="checkbox" name="praedator-luchs" ${luchsAktiv ? "checked" : ""}>
+            Luchs
+          </label>
+          <label class="regler-segment">
+            <input type="checkbox" name="praedator-wolf" ${wolfAktiv ? "checked" : ""}>
+            Wolf
+          </label>
         </div>
       </div>
     `;
@@ -186,7 +198,7 @@ const WaldsimStartScreen = (() => {
     }
 
     if (!WaldsimConfig.istGueltigeAbweichung(state.ereignisse, state.regler)) {
-      gruende.push("Wähle mindestens eine Störung oder stelle den Regler auf mittel/hoch.");
+      gruende.push("Wähle mindestens eine Störung oder entferne Luchs und/oder Wolf.");
     }
 
     const bereit = gruende.length === 0;
@@ -254,8 +266,10 @@ const WaldsimStartScreen = (() => {
         return;
       }
 
-      if (target.matches('input[name="regler"]')) {
-        state.regler = target.value;
+      if (target.matches('input[name="praedator-luchs"]') || target.matches('input[name="praedator-wolf"]')) {
+        const luchsBox = screenStart.querySelector('input[name="praedator-luchs"]');
+        const wolfBox = screenStart.querySelector('input[name="praedator-wolf"]');
+        state.regler = reglerCodeAus(luchsBox.checked, wolfBox.checked);
         updatePlayState();
       }
     });

@@ -74,7 +74,16 @@ def baue_ereignis_konfigurationen(stoerungen):
 def main():
     waldtypen = lade("waldtypen.json")["waldtypen"]
     stoerungen = lade("stoerungen.json")
-    regler_stufen = stoerungen["wildverbiss_regler"]["stufen"]
+    # Ersetzt den früheren 3-Stufen-Wildverbiss-Regler durch 4 Kombinationen
+    # aus Luchs an/aus × Wolf an/aus (Nutzer-Entscheidung 2026-08-26, siehe
+    # Milestones-Dokument). "beide" ist der Ausgangszustand (kein deviation,
+    # entspricht dem früheren "niedrig").
+    praedatoren_kombinationen = [
+        ("beide", True, True),
+        ("luchs", False, True),
+        ("wolf", True, False),
+        ("keine", False, False),
+    ]
 
     ereignis_konfigs = baue_ereignis_konfigurationen(stoerungen)
     erwartete_ereigniszustaende = stoerungen["kombinatorik"]["ereignis_auswahlzustaende"]
@@ -91,19 +100,19 @@ def main():
     anzahl = 0
     for waldtyp in waldtypen:
         for konfig_id, events in ereignis_konfigs:
-            for regler in regler_stufen:
-                if konfig_id == "keine" and regler == "niedrig":
+            for praedatoren_code, wolf_aktiv, luchs_aktiv in praedatoren_kombinationen:
+                if konfig_id == "keine" and praedatoren_code == "beide":
                     continue  # ungültig: keine Abweichung vom Ausgangszustand (2.10.2/3.2)
 
-                zeitreihe = simuliere(waldtyp, events, regler)
+                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv)
 
-                dateiname = f"{waldtyp['id']}__{konfig_id}__regler-{regler}.json"
+                dateiname = f"{waldtyp['id']}__{konfig_id}__praedatoren-{praedatoren_code}.json"
                 out_path = OUT_DIR / dateiname
                 payload = {
                     "konfiguration": {
                         "waldtyp": waldtyp["id"],
                         "ereignisse": events,
-                        "wildverbiss_regler": regler,
+                        "wildverbiss_regler": praedatoren_code,
                     },
                     "zeitreihe": zeitreihe,
                 }
