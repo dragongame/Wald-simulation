@@ -631,3 +631,125 @@ h1, h2, h3 {
   margin-top: 0.2rem;
   opacity: 0.85;
 }
+
+/* ---- Analyse-Screen (M6) ---- */
+
+.analyse-indikatoren-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+}
+
+.analyse-indikator-gruppe h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+  opacity: 0.75;
+}
+
+.analyse-indikator-zeile {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.2rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  min-height: 32px;
+  border-radius: 6px;
+}
+
+.analyse-indikator-zeile.ist-kaskadenrelevant {
+  background: rgba(181, 101, 29, 0.1);
+}
+
+.analyse-farb-chip {
+  flex: 0 0 auto;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 1px solid var(--tinte);
+}
+
+.analyse-indikator-name {
+  flex: 1;
+}
+
+.analyse-kaskaden-badge {
+  color: var(--bernstein);
+  font-size: 0.8rem;
+}
+
+.analyse-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.analyse-wald-panel {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.analyse-wald-panel h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.analyse-chart {
+  width: 100%;
+  height: auto;
+}
+
+.analyse-gitter {
+  stroke: var(--rindenbraun);
+  stroke-width: 0.5;
+  opacity: 0.35;
+}
+
+.analyse-achsentext {
+  font-size: 6px;
+  fill: var(--tinte);
+  opacity: 0.7;
+}
+
+.analyse-linie {
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.analyse-snapshots {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.analyse-snapshot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--papier);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.analyse-snapshot-entfernen {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--bernstein);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  min-height: 32px;
+}

@@ -80,6 +80,31 @@
       <button type="button" id="dash-back-button" class="secondary-button">Zurück zur Auswahl</button>
     </section>
 
+    <section id="screen-analyse" class="screen" hidden>
+      <header class="app-header">
+        <h1>Kurven-Analyse</h1>
+        <p class="app-subtitle" id="analyse-subtitle"></p>
+      </header>
+
+      <section class="form-section">
+        <h2>Indikatoren wählen</h2>
+        <p class="form-hint">Kaskadenrelevante Kurven (★) sind vorausgewählt – frei weitere dazu- oder abwählen.</p>
+        <div id="analyse-indikatoren-liste" class="analyse-indikatoren-liste"></div>
+      </section>
+
+      <div class="analyse-charts" id="analyse-charts"></div>
+
+      <section class="form-section">
+        <h2>Snapshot merken</h2>
+        <p class="form-hint">Bis zu 3 Kurven-Kombinationen merken – die dauerhafte Übernahme ins Forscherheft folgt in einer späteren Ausbaustufe.</p>
+        <button type="button" id="analyse-snapshot-button" class="secondary-button secondary-button--kompakt">Aktuelle Kombination merken</button>
+        <p id="analyse-snapshot-hinweis" class="form-hint"></p>
+        <ul id="analyse-snapshots" class="analyse-snapshots"></ul>
+      </section>
+
+      <button type="button" id="analyse-back-button" class="secondary-button">Zurück zum Dashboard</button>
+    </section>
+
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
   </main>
 
@@ -90,6 +115,7 @@
   <script src="./js/simulationConfig.js"></script>
   <script src="./js/startScreen.js"></script>
   <script src="./js/dashboard.js"></script>
+  <script src="./js/analyse.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

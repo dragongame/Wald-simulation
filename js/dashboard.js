@@ -5,9 +5,9 @@
  * die 6 Dashboard-Indikatoren, Art-Sprites mit Zustandswechsel per
  * Crossfade, zwei Wald-Plätze nebeneinander im Vergleich.
  *
- * Bewusst NICHT Teil dieses Meilensteins: der Analyse-Screen mit frei
- * kombinierbaren Kurven (M6) und die Reflexionsfrage/das Forscherheft (M7,
- * Umsetzungsauftrag 2.4/2.5) - siehe Abschluss-Hinweis am Ende eines Laufs.
+ * Bei Jahr 20 führt ein Button im Abschluss-Hinweis zum Analyse-Screen
+ * (WaldsimAnalyse, M6). Die Reflexionsfrage/das Forscherheft (M7,
+ * Umsetzungsauftrag 2.4) sind bewusst noch nicht Teil dieses Ablaufs.
  */
 const WaldsimDashboard = (() => {
   const { escapeHtml, kapitalisiere, showScreen } = WaldsimUI;
@@ -219,7 +219,8 @@ const WaldsimDashboard = (() => {
     return `
       <p><strong>Durchlauf abgeschlossen (Jahr ${JAHRE_GESAMT}).</strong> Vergleiche die Endwerte mit euren Hypothesen:</p>
       <ul>${zeilen}</ul>
-      <p class="form-hint">Die ausführliche Kurven-Analyse und die Reflexionsfrage folgen in einer späteren Ausbaustufe.</p>
+      <button type="button" id="dash-zur-analyse-button" class="secondary-button secondary-button--kompakt">Zur Kurven-Analyse</button>
+      <p class="form-hint">Die Reflexionsfrage folgt in einer späteren Ausbaustufe (Forscherheft).</p>
     `;
   }
 
@@ -294,6 +295,12 @@ const WaldsimDashboard = (() => {
     document.getElementById("dash-back-button").addEventListener("click", () => {
       pause();
       WaldsimStartScreen.zurueckZurAuswahl();
+    });
+
+    document.getElementById("dash-abschluss").addEventListener("click", (event) => {
+      if (event.target.id === "dash-zur-analyse-button") {
+        WaldsimAnalyse.start(lauf);
+      }
     });
   }
 
