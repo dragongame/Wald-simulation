@@ -1,8 +1,13 @@
 /**
  * Start & Auswahl (Meilenstein M4, Umsetzungsauftrag 2.1/2.2/2.10, 3.2):
- * zwei Pflicht-Wald-Plätze mit zwingend unterschiedlichen Waldtypen, freie
+ * zwei Pflicht-Wälder mit zwingend unterschiedlichen Waldtypen, freie
  * Auswahl von 0-2 Ereignis-Störungen, unabhängiger Wildverbiss-Regler,
  * Hypothese je Wald, Play-Sperre ohne Abweichung vom Ausgangszustand.
+ *
+ * Seit M14: alle drei Waldtypen stehen nebeneinander; die Reihenfolge der
+ * Anwahl (erster Klick, zweiter Klick) bestimmt automatisch Wald 1/Wald 2
+ * statt fester Plätze. `state.wald` ist dadurch ein dynamisches Array
+ * (Länge 0-2) statt eines Paars fester Slots.
  *
  * Löst die Auswahl zur passenden vorab berechneten Zeitreihe auf
  * (WaldsimConfig) und übergibt sie an WaldsimDashboard (M5).
@@ -19,7 +24,7 @@ const WaldsimStartScreen = (() => {
   let lastResolved = null;
 
   const state = {
-    wald: [null, null],
+    wald: [],
     ereignisse: [],
     reihenfolge: null,
     regler: "beide", // Ausgangszustand: Luchs + Wolf anwesend, kein Effekt
@@ -31,13 +36,27 @@ const WaldsimStartScreen = (() => {
     return eintrag ? eintrag.name : id;
   }
 
-  function waldCardHtml(wt, slotIndex, checked, disabled) {
+  function toggleWald(id) {
+    const idx = state.wald.indexOf(id);
+    if (idx !== -1) {
+      state.wald.splice(idx, 1);
+    } else if (state.wald.length >= 2) {
+      state.wald.shift();
+      state.wald.push(id);
+    } else {
+      state.wald.push(id);
+    }
+  }
+
+  function waldCardHtml(wt) {
+    const slotIndex = state.wald.indexOf(wt.id);
+    const checked = slotIndex !== -1;
     return `
-      <label class="wald-card ${disabled ? "is-disabled" : ""}">
-        <input type="radio" name="wald-slot-${slotIndex}" value="${wt.id}" data-slot="${slotIndex}" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""}>
+      <label class="wald-card">
+        <input type="checkbox" value="${wt.id}" ${checked ? "checked" : ""}>
         ${spriteFrameHtml(`./assets/sprites/${wt.startbildschirm_kartenbild}`, wt.langname, WALD_EMOJI[wt.id] || "🌲", "sprite-16-9")}
         <span class="wald-card-name">${wt.kurzname}</span>
-        ${disabled ? `<span class="wald-card-note">bereits bei Wald ${slotIndex === 0 ? 2 : 1} gewählt</span>` : ""}
+        ${checked ? `<span class="wald-card-rolle">Wald ${slotIndex + 1}</span>` : ""}
       </label>
     `;
   }
@@ -46,22 +65,15 @@ const WaldsimStartScreen = (() => {
     const container = document.getElementById("wald-slots");
     const waldtypenById = Object.fromEntries(data.waldtypen.map((w) => [w.id, w]));
 
-    container.innerHTML = [0, 1].map((slotIndex) => {
-      const selected = state.wald[slotIndex];
-      const otherSelected = state.wald[1 - slotIndex];
-      const cards = data.waldtypen
-        .map((wt) => waldCardHtml(wt, slotIndex, selected === wt.id, otherSelected === wt.id && selected !== wt.id))
-        .join("");
-      const beschreibung = selected ? `<p class="wald-beschreibung">${escapeHtml(waldtypenById[selected].kurzbeschreibung)}</p>` : "";
+    const cards = data.waldtypen.map((wt) => waldCardHtml(wt)).join("");
+    const beschreibungen = state.wald
+      .map((id, i) => `<p class="wald-beschreibung"><strong>Wald ${i + 1}: ${escapeHtml(waldtypenById[id].kurzname)}.</strong> ${escapeHtml(waldtypenById[id].kurzbeschreibung)}</p>`)
+      .join("");
 
-      return `
-        <div class="wald-slot">
-          <h3>Wald ${slotIndex + 1}</h3>
-          <div class="wald-card-group" role="radiogroup" aria-label="Waldtyp für Wald ${slotIndex + 1}">${cards}</div>
-          ${beschreibung}
-        </div>
-      `;
-    }).join("");
+    container.innerHTML = `
+      <div class="wald-card-group" role="group" aria-label="Waldtypen auswählen">${cards}</div>
+      ${beschreibungen}
+    `;
   }
 
   function stoerungCardHtml(s, checked, disabled) {
@@ -188,15 +200,12 @@ const WaldsimStartScreen = (() => {
     const playButton = document.getElementById("play-button");
     const playHint = document.getElementById("play-hint");
 
-    const [w0, w1] = state.wald;
     const resolved = WaldsimConfig.resolveEreignisKonfiguration(data.stoerungen, state.ereignisse, state.reihenfolge);
     lastResolved = resolved;
 
     const gruende = [];
-    if (!w0 || !w1) {
-      gruende.push("Wähle für beide Wald-Plätze einen Waldtyp.");
-    } else if (w0 === w1) {
-      gruende.push("Die beiden Wald-Plätze müssen unterschiedliche Waldtypen sein.");
+    if (state.wald.length < 2) {
+      gruende.push("Wähle zwei unterschiedliche Waldtypen aus.");
     }
 
     if (resolved.brauchtReihenfolge) {
@@ -239,8 +248,8 @@ const WaldsimStartScreen = (() => {
     screenStart.addEventListener("change", (event) => {
       const target = event.target;
 
-      if (target.matches('.wald-card input[type="radio"]')) {
-        state.wald[Number(target.dataset.slot)] = target.value;
+      if (target.matches('.wald-card input[type="checkbox"]')) {
+        toggleWald(target.value);
         renderWaldSlots();
         renderHypothesen();
         updatePlayState();

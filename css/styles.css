@@ -184,14 +184,9 @@ h1, h2, h3 {
 /* ---- Wald-Plätze ---- */
 
 .wald-slots {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1rem;
-}
-
-.wald-slot h3 {
-  font-size: 0.95rem;
-  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .wald-card-group {
@@ -214,11 +209,6 @@ h1, h2, h3 {
   background: rgba(76, 110, 74, 0.12);
 }
 
-.wald-card.is-disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 .wald-card input {
   position: absolute;
   opacity: 0;
@@ -232,11 +222,16 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.wald-card-note {
+.wald-card-rolle {
   display: block;
+  margin: 0.25rem auto 0;
+  width: fit-content;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--moosgruen);
+  color: #fff;
   font-size: 0.65rem;
-  text-align: center;
-  opacity: 0.7;
+  font-weight: 600;
 }
 
 .wald-beschreibung {

@@ -18,3 +18,8 @@
 - Neue Störungsart mit eigener fachlicher/didaktischer Abwägung (kein kleiner Fix wie z. B. eine reine UI-Änderung) – erst nach Rücksprache in einen Milestone überführen.
 
 ---
+
+## Verbesserungen
+
+### Bei den legenden auch gleich den Linien typen (gestrichelt, durchgezogen, etc.) mit anzeigen
+- Aktuell ist oft nicht klar welche Linie wozu gehört bei den Analyse Graphen
