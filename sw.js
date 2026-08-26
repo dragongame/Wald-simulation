@@ -20,7 +20,7 @@
  * Pfade ausschliesslich relativ zum Scope dieses Service Workers, damit die
  * App auch im GitHub-Pages-Unterordner funktioniert.
  */
-const SW_BUILD_VERSION = "8681185927bbc9fa";
+const SW_BUILD_VERSION = "8f0b085c6a013d82";
 const MANIFEST_URL = "./sw-precache-manifest.json";
 const CACHE_PREFIX = "waldsim-precache-";
 
@@ -71,7 +71,13 @@ self.addEventListener("fetch", (event) => {
       }
 
       try {
-        return await fetch(event.request);
+        // event.request NIE direkt an fetch() weiterreichen: bei einer
+        // Top-Level-Navigation (Seite laden/neu laden) hat event.request
+        // den Modus "navigate" - fetch() wirft dafuer sofort einen
+        // TypeError ("'navigate' mode is not allowed"), was Folgefehler bei
+        // parallel nachgeladenen Skripten/Bildern ausloesen kann. Ueber die
+        // reine URL erneut anfragen umgeht das zuverlaessig.
+        return await fetch(event.request.url);
       } catch (err) {
         if (event.request.mode === "navigate") {
           const fallback = await caches.match("./");
