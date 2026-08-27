@@ -19,6 +19,12 @@
  * relevanten Kanten ab einem je Störung kuratierten Startknoten ermittelt
  * und als "Tinten-Spur" hervorgehoben (Styleguide Abschnitt 5) - siehe
  * Milestones-Dokument für die Begründung dieser UI-Entscheidung.
+ *
+ * Seit M15: Sidebar mit an-/abwählbaren Art-Icons (gruppiert nach Kategorie,
+ * inkl. Sammelgruppen-Pseudoknoten) filtert zusätzlich zur Vollständig-/
+ * Kaskade-Teilmenge, welche Knoten/Kanten gezeichnet werden
+ * (sichtbareMenge() = basisMenge() ∩ nicht-ausgeblendet). Kanten sind
+ * zusätzlich zu Farbe/Symbol per Strichmuster unterscheidbar (KANTE_STYLE.dash).
  */
 const WaldsimGraph = (() => {
   const { escapeHtml, kapitalisiere, spriteFrameHtml, showScreen } = WaldsimUI;
@@ -57,6 +63,21 @@ const WaldsimGraph = (() => {
   };
   const KNOTEN_EMOJI_AUSNAHMEN = { licht: "☀️", wasser: "💧", temperatur: "🌡️", borkenkaefer: "🐛" };
 
+  // Gruppierung/Reihenfolge der Filter-Sidebar (M15) - dieselben Kategorien
+  // wie KATEGORIE_ZEILE, nur mit sprechbarem Label statt Zeilen-Index.
+  const KATEGORIE_LABEL = {
+    abiotisch: "Abiotische Faktoren",
+    baum: "Bäume",
+    strauch: "Sträucher",
+    kraut: "Kräuter",
+    pilz: "Pilze",
+    destruent: "Destruenten",
+    anthropogen: "Mensch",
+    herbivor: "Pflanzenfresser",
+    verbreiter: "Verbreiter",
+    praedator: "Prädatoren",
+  };
+
   // "ziel_kategorie" aus data/edges.json steht für eine generische Gruppe
   // ohne eigenen Knoten (siehe dortiges _meta.generisches_ziel_hinweis).
   // Für den Graphen braucht jede Kante trotzdem ein Ziel - deshalb kleine,
@@ -72,14 +93,18 @@ const WaldsimGraph = (() => {
   // Beziehungstypen. "bewirtschaftung"/"strukturell" (Szenario 5/6) lösen den
   // in data/edges.json dokumentierten M8-TODO auf - neue Farben, die sich
   // klar von den bestehenven fünf unterscheiden, neue Symbole in js/icons.js.
+  // "dash" (M15, eigene UI-Entscheidung, kein Quelldokument-Bezug): zusätzlich
+  // zu Farbe+Symbol ein eigenes Strichmuster je Beziehungstyp, damit Kanten
+  // nicht allein über Farbe unterscheidbar sind (gleiches Prinzip wie bei den
+  // Dashboard-Instrumenten, Umsetzungsauftrag/Styleguide "nie Farbe allein").
   const KANTE_STYLE = {
-    fraess: { farbe: "var(--bernstein)", icon: "biss", label: "Fraß (trophisch)" },
-    symbiose: { farbe: "var(--moosgruen)", icon: "ringe", label: "Symbiose" },
-    konkurrenz: { farbe: "var(--rindenbraun)", icon: "kronen", label: "Konkurrenz" },
-    zersetzung: { farbe: "var(--zersetzung)", icon: "spirale", label: "Zersetzung" },
-    abiotisch: { farbe: "var(--himmelblau)", icon: "regen", label: "Abiotische Kopplung" },
-    bewirtschaftung: { farbe: "var(--bewirtschaftung)", icon: "saege", label: "Bewirtschaftung (Totholzentnahme)" },
-    strukturell: { farbe: "var(--strukturell)", icon: "huf", label: "Strukturelles Ungleichgewicht (Wildverbiss)" },
+    fraess: { farbe: "var(--bernstein)", icon: "biss", label: "Fraß (trophisch)", dash: null },
+    symbiose: { farbe: "var(--moosgruen)", icon: "ringe", label: "Symbiose", dash: "1 6" },
+    konkurrenz: { farbe: "var(--rindenbraun)", icon: "kronen", label: "Konkurrenz", dash: "9 5" },
+    zersetzung: { farbe: "var(--zersetzung)", icon: "spirale", label: "Zersetzung", dash: "1 4 7 4" },
+    abiotisch: { farbe: "var(--himmelblau)", icon: "regen", label: "Abiotische Kopplung", dash: "4 4" },
+    bewirtschaftung: { farbe: "var(--bewirtschaftung)", icon: "saege", label: "Bewirtschaftung (Totholzentnahme)", dash: "14 5" },
+    strukturell: { farbe: "var(--strukturell)", icon: "huf", label: "Strukturelles Ungleichgewicht (Wildverbiss)", dash: "1 3 1 3 8 3" },
   };
   const ABIOTISCH_ICON_JE_QUELLE = { licht: "sonne", wasser: "regen", temperatur: "thermometer" };
 
@@ -119,6 +144,10 @@ const WaldsimGraph = (() => {
   let aktuelleKaskade = { relevanteSet: null, relevanteKanten: [], kaskadenKanten: [], kaskadenKnotenReihenfolge: [] };
   let aktuellVollstaendig = true;
   let wired = false;
+  // Sidebar-Filter (M15): pro Graph-Aufruf zurückgesetzte Menge ausgeblendeter
+  // Knoten-IDs (inkl. "gruppe_<id>" für die Sammelgruppen), wirkt zusätzlich
+  // zur Vollständig/Kaskade-Teilmenge aus sichtbareMenge().
+  let ausgeblendeteKnoten = new Set();
 
   // ---- Freischaltung ----
 
@@ -267,7 +296,7 @@ const WaldsimGraph = (() => {
     return { relevanteSet, relevanteKanten, kaskadenKanten, kaskadenKnotenReihenfolge };
   }
 
-  function sichtbareMenge() {
+  function basisMenge() {
     if (!aktuellerKontext || aktuellVollstaendig || !aktuelleKaskade.relevanteSet || aktuelleKaskade.relevanteSet.size === 0) {
       const knotenIds = new Set(data.knoten.map((k) => k.id));
       const kanten = data.kanten.map((k) => ({ ...k, zielId: kanteZielId(k) }));
@@ -277,6 +306,15 @@ const WaldsimGraph = (() => {
       return { knoten: knotenIds, kanten };
     }
     return { knoten: aktuelleKaskade.relevanteSet, kanten: aktuelleKaskade.relevanteKanten };
+  }
+
+  function sichtbareMenge() {
+    const basis = basisMenge();
+    if (ausgeblendeteKnoten.size === 0) return basis;
+
+    const knoten = new Set([...basis.knoten].filter((id) => !ausgeblendeteKnoten.has(id)));
+    const kanten = basis.kanten.filter((k) => knoten.has(k.quelle) && knoten.has(k.zielId));
+    return { knoten, kanten };
   }
 
   // ---- Layout ----
@@ -372,7 +410,7 @@ const WaldsimGraph = (() => {
 
     return `
       <g class="kante ${istKaskade ? "ist-kaskade" : ""}" data-typ="${escapeHtml(kante.typ)}" data-staerke="${kante.staerke || ""}" data-beschreibung="${escapeHtml(kante.beschreibung || "")}" data-quelle-name="${escapeHtml(quelleName)}" data-ziel-name="${escapeHtml(zielName)}">
-        <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="kante-linie" style="stroke:${stil.farbe}; stroke-width:${breite}"></line>
+        <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="kante-linie" style="stroke:${stil.farbe}; stroke-width:${breite}; stroke-dasharray:${stil.dash || "none"}"></line>
         ${istKaskade ? `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" pathLength="1" class="kante-tinte" style="--verzoegerung:${(idx * ANIMATION_STEP).toFixed(2)}s"></line>` : ""}
         <g class="kante-symbol" style="color:${stil.farbe}">${WaldsimIcons.inline(iconId, mx, my, 14)}</g>
       </g>
@@ -385,7 +423,7 @@ const WaldsimGraph = (() => {
         (stil) => `
         <li class="graph-legende-item">
           <svg class="graph-legende-swatch" viewBox="0 0 40 14" aria-hidden="true">
-            <line x1="2" y1="7" x2="38" y2="7" style="stroke:${stil.farbe}; stroke-width:2.4"></line>
+            <line x1="2" y1="7" x2="38" y2="7" style="stroke:${stil.farbe}; stroke-width:2.4; stroke-dasharray:${stil.dash || "none"}; stroke-linecap:round"></line>
             <g style="color:${stil.farbe}">${WaldsimIcons.inline(stil.icon, 20, 7, 12)}</g>
           </svg>
           <span>${escapeHtml(stil.label)}</span>
@@ -393,6 +431,65 @@ const WaldsimGraph = (() => {
       `
       )
       .join("");
+  }
+
+  // ---- Sidebar-Filter (M15) ----
+
+  function filterChipHtml(id, name, emoji) {
+    const aktiv = !ausgeblendeteKnoten.has(id);
+    return `
+      <button type="button" class="graph-filter-chip ${aktiv ? "" : "ist-ausgeblendet"}" data-filter-knoten="${id}" aria-pressed="${aktiv}" title="${escapeHtml(name)}">
+        <span aria-hidden="true">${emoji}</span>
+      </button>
+    `;
+  }
+
+  function filterSidebarHtml() {
+    const proKategorie = new Map();
+    data.knoten.forEach((k) => {
+      if (!proKategorie.has(k.kategorie)) proKategorie.set(k.kategorie, []);
+      proKategorie.get(k.kategorie).push(k);
+    });
+
+    const kategorienHtml = Object.keys(KATEGORIE_LABEL)
+      .filter((kat) => proKategorie.has(kat))
+      .map((kat) => {
+        const chips = proKategorie.get(kat).map((k) => filterChipHtml(k.id, k.name, emojiFuer(k))).join("");
+        return `<div class="graph-filter-gruppe"><h3>${escapeHtml(KATEGORIE_LABEL[kat])}</h3><div class="graph-filter-chips">${chips}</div></div>`;
+      })
+      .join("");
+
+    const sammelgruppenChips = Object.entries(GRUPPEN_KNOTEN)
+      .map(([id, g]) => filterChipHtml(`gruppe_${id}`, g.name, g.emoji))
+      .join("");
+
+    return `
+      ${kategorienHtml}
+      <div class="graph-filter-gruppe">
+        <h3>Sammelgruppen</h3>
+        <div class="graph-filter-chips">${sammelgruppenChips}</div>
+      </div>
+    `;
+  }
+
+  function renderFilterSidebar() {
+    document.getElementById("graph-filter-liste").innerHTML = filterSidebarHtml();
+  }
+
+  function toggleFilterKnoten(id) {
+    if (ausgeblendeteKnoten.has(id)) {
+      ausgeblendeteKnoten.delete(id);
+    } else {
+      ausgeblendeteKnoten.add(id);
+    }
+    renderFilterSidebar();
+    renderSeiten();
+  }
+
+  function alleFilterAnzeigen() {
+    ausgeblendeteKnoten.clear();
+    renderFilterSidebar();
+    renderSeiten();
   }
 
   function einzelSeiteHtml(ueberschrift, untertitel, sichtbareIds, sichtbareKanten, layout, knotenById, kaskadeKantenIndex) {
@@ -537,6 +634,7 @@ const WaldsimGraph = (() => {
 
   function zeigeGraph(kontext) {
     aktuellerKontext = kontext;
+    ausgeblendeteKnoten = new Set();
     aktuelleKaskade = baueKaskade(kontext);
     const hatTeilmenge = !!(aktuelleKaskade.relevanteSet && aktuelleKaskade.relevanteSet.size > 0);
     aktuellVollstaendig = !kontext || !hatTeilmenge;
@@ -552,6 +650,7 @@ const WaldsimGraph = (() => {
 
     document.getElementById("graph-steckbrief").hidden = true;
     document.getElementById("graph-legende").innerHTML = legendeHtml();
+    renderFilterSidebar();
 
     renderSeiten();
     showScreen("screen-graph");
@@ -615,6 +714,12 @@ const WaldsimGraph = (() => {
     });
 
     document.getElementById("graph-kaskade-replay-button").addEventListener("click", spieleKaskadeAb);
+
+    document.getElementById("graph-filter-alle-button").addEventListener("click", alleFilterAnzeigen);
+    document.getElementById("graph-filter-liste").addEventListener("click", (event) => {
+      const chip = event.target.closest(".graph-filter-chip");
+      if (chip) toggleFilterKnoten(chip.dataset.filterKnoten);
+    });
 
     document.getElementById("graph-seiten").addEventListener("click", (event) => {
       const knotenButton = event.target.closest(".graph-knoten");

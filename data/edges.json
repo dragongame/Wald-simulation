@@ -1,7 +1,7 @@
 {
   "_meta": {
     "beschreibung": "Kanten-Stammdaten des Netzwerk-Graphen (single source of truth), abgeleitet aus Wissensbasis Abschnitt 3.2 + 4 (Szenario 5/6) unter Anwendung der Kanten-Transformationsregel (Umsetzungsauftrag 2.7/4.2).",
-    "anzahl_kanten": 59,
+    "anzahl_kanten": 62,
     "typ_kategorien_styleguide": [
       "fraess",
       "symbiose",
@@ -666,6 +666,39 @@
       "beschreibung": "Frisst gekeimte Jungpflanzen, bevor die Samenverbreitung wirksam wird; Stärke skaliert mit der Wildverbiss-Regler-Stufe",
       "quelle_abschnitt": "Umsetzungsauftrag Abschnitt 4.3 / Wissensbasis Szenario 6",
       "hinweis": null
+    },
+    {
+      "quelle": "licht",
+      "ziel": "waldmeister",
+      "ziel_kategorie": null,
+      "typ": "limitiert",
+      "kategorie": "abiotisch",
+      "staerke": "mittel",
+      "beschreibung": "Schattenpflanze des geschlossenen, nährstoffreichen Buchenwalds; Kronendachverlust (mehr Licht, Austrocknung) schadet eher als er nützt - gegenläufig zum Buschwindröschen",
+      "quelle_abschnitt": "Wissensbasis Abschnitt 3.2 / Wissensbasis_Erweiterung_weitere_Arten.md Abschnitt 'Waldmeister'",
+      "hinweis": "Nur im Mischwald relevant (Waldmeister-Buchenwald ist waldtypspezifisch); Reaktion auf abrupten Störungs-Kronendachverlust ist Annahme, mit Lehrkraft abzugleichen."
+    },
+    {
+      "quelle": "totholz",
+      "ziel": "brennnessel",
+      "ziel_kategorie": null,
+      "typ": "setzt Nährstoffe frei für",
+      "kategorie": "zersetzung",
+      "staerke": "mittel",
+      "beschreibung": "Stickstoffzeiger; Totholz-Zersetzung nach Baumsterben (Borkenkäfer/Sturm/Trockenheit) setzt Nährstoffe frei und begünstigt sie, mit 1-2 Jahren Verzögerung",
+      "quelle_abschnitt": "Wissensbasis Abschnitt 3.2 / Wissensbasis_Erweiterung_weitere_Arten.md Abschnitt 'Brennnessel'",
+      "hinweis": null
+    },
+    {
+      "quelle": "licht",
+      "ziel": "heidelbeere",
+      "ziel_kategorie": null,
+      "typ": "limitiert",
+      "kategorie": "abiotisch",
+      "staerke": "schwach",
+      "beschreibung": "Halbschattenpflanze saurer Nadelwald-Standorte; reagiert nur schwach und erst bei starkem, anhaltendem Kronendachverlust empfindlich (z. B. Borkenkäfer-Kollaps in der Fichtenmonokultur)",
+      "quelle_abschnitt": "Wissensbasis Abschnitt 3.2 / Wissensbasis_Erweiterung_weitere_Arten.md Abschnitt 'Heidelbeere'",
+      "hinweis": "Hauptsächlich waldtyp-gebunden (Kiefernwald/Fichtenmonokultur), nur schwache Kronendach-Kopplung; laut Quelldokument die unsicherste der drei Kräuter-Kopplungen, mit Lehrkraft abzugleichen."
     }
   ]
 }

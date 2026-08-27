@@ -184,11 +184,23 @@
         </label>
       </div>
 
-      <div id="graph-seiten" class="graph-seiten"></div>
+      <div class="graph-layout">
+        <aside class="graph-filter-sidebar" aria-label="Arten im Graphen filtern">
+          <div class="graph-filter-kopf">
+            <h2>Arten filtern</h2>
+            <button type="button" id="graph-filter-alle-button" class="graph-filter-alle-button">Alle anzeigen</button>
+          </div>
+          <div id="graph-filter-liste" class="graph-filter-liste"></div>
+        </aside>
 
-      <button type="button" id="graph-kaskade-replay-button" class="secondary-button secondary-button--kompakt" hidden>Kaskadenpfad erneut abspielen</button>
+        <div class="graph-hauptbereich">
+          <div id="graph-seiten" class="graph-seiten"></div>
 
-      <div id="graph-steckbrief" class="graph-steckbrief" hidden></div>
+          <button type="button" id="graph-kaskade-replay-button" class="secondary-button secondary-button--kompakt" hidden>Kaskadenpfad erneut abspielen</button>
+
+          <div id="graph-steckbrief" class="graph-steckbrief" hidden></div>
+        </div>
+      </div>
 
       <button type="button" id="graph-brief-erneut-button" class="secondary-button secondary-button--kompakt">Brief von Rachel Carson erneut lesen</button>
       <button type="button" id="graph-zurueck-button" class="secondary-button">Zurück</button>
