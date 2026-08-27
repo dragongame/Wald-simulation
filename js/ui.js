@@ -32,6 +32,11 @@ const WaldsimUI = (() => {
     document.querySelectorAll(".screen").forEach((el) => {
       el.hidden = el.id !== id;
     });
+    // Feldbuch-Navigation (M20) haengt sich hier zentral ein, statt dass
+    // jeder Aufrufer sie einzeln benachrichtigen muesste. typeof-Check statt
+    // window.WaldsimNav, da "const"-Deklarationen oberster Ebene keine
+    // window-Property erzeugen.
+    if (typeof WaldsimNav !== "undefined") WaldsimNav.updateActiveState(id);
   }
 
   return { escapeHtml, kapitalisiere, spriteFrameHtml, showScreen };

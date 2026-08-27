@@ -21,15 +21,37 @@
 <body>
   <main id="app">
 
-    <section id="screen-start" class="screen" hidden>
+    <nav id="feldbuch-nav" class="feldbuch-nav" aria-label="Hauptnavigation">
+      <div class="feldbuch-nav-indikator" id="feldbuch-nav-indikator" aria-hidden="true"></div>
+      <div class="feldbuch-nav-tabs">
+        <button type="button" id="nav-start-button" class="post-it post-it--start" data-nav-target="screen-start" aria-current="false">
+          <span class="post-it-icon" aria-hidden="true">🧭</span>
+          <span class="post-it-label">Start</span>
+        </button>
+        <button type="button" id="forscherheft-oeffnen-button" class="post-it post-it--forscherheft" data-nav-target="screen-forscherheft" aria-current="false">
+          <span class="post-it-icon" aria-hidden="true">📖</span>
+          <span class="post-it-label">Forscherheft</span>
+          <span class="post-it-badge" id="forscherheft-zaehler" aria-hidden="true">0</span>
+        </button>
+        <button type="button" id="netzwerk-oeffnen-button" class="post-it post-it--netzwerk" data-nav-target="screen-graph" aria-current="false">
+          <span class="post-it-icon" id="netzwerk-tab-icon" aria-hidden="true">🔬</span>
+          <span class="post-it-label">Netzwerk</span>
+        </button>
+        <button type="button" id="lehrkraft-oeffnen-button" class="post-it post-it--lehrkraft" data-nav-target="screen-lehrkraft" aria-current="false">
+          <span class="post-it-icon" aria-hidden="true">🍎</span>
+          <span class="post-it-label">Lehrkräfte</span>
+        </button>
+        <button type="button" id="lexikon-oeffnen-button" class="post-it post-it--lexikon" data-nav-target="screen-lexikon" aria-current="false">
+          <span class="post-it-icon" aria-hidden="true">📚</span>
+          <span class="post-it-label">Lexikon</span>
+        </button>
+      </div>
+    </nav>
+
+    <section id="screen-start" class="screen feldbuch-seite" hidden>
       <header class="app-header">
         <h1>Waldökosystem-Simulation</h1>
         <p class="app-subtitle">Wähle zwei Waldtypen, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
-        <button type="button" id="forscherheft-oeffnen-button" class="forscherheft-link">📖 Forscherheft <span id="forscherheft-zaehler">(0)</span></button>
-        <button type="button" id="netzwerk-oeffnen-button" class="forscherheft-link">🔬 Wissenschaftler:in um Hilfe bitten</button>
-        <button type="button" id="lexikon-oeffnen-button" class="forscherheft-link">📚 Arten-Lexikon</button>
-        <button type="button" id="lehrkraft-oeffnen-button" class="forscherheft-link">🍎 Für Lehrkräfte</button>
-        <button type="button" id="app-reset-button" class="forscherheft-link">🔄 Zurücksetzen</button>
       </header>
 
       <section class="form-section" aria-labelledby="heading-waelder">
@@ -111,7 +133,7 @@
       <button type="button" id="analyse-back-button" class="secondary-button">Zurück zum Dashboard</button>
     </section>
 
-    <section id="screen-reflexion" class="screen" hidden>
+    <section id="screen-reflexion" class="screen feldbuch-seite" hidden>
       <header class="app-header">
         <h1>Reflexion</h1>
         <p class="app-subtitle" id="reflexion-subtitle"></p>
@@ -128,16 +150,18 @@
       <button type="button" id="reflexion-zurueck-button" class="secondary-button">Zurück zur Analyse</button>
     </section>
 
-    <section id="screen-forscherheft" class="screen" hidden>
+    <section id="screen-forscherheft" class="screen feldbuch-seite" hidden>
       <header class="app-header">
         <h1>Digitales Forscherheft</h1>
         <p class="app-subtitle" id="forscherheft-fortschritt"></p>
       </header>
 
+      <div id="forscherheft-tabs" class="forscherheft-tabs"></div>
       <ul id="forscherheft-liste" class="forscherheft-liste"></ul>
 
       <button type="button" id="forscherheft-neuer-durchlauf-button" class="play-button play-button--kompakt">Neuer Durchlauf</button>
       <button type="button" id="forscherheft-neue-sitzung-button" class="forscherheft-neue-sitzung-button">Neue Sitzung starten (alles löschen)</button>
+      <button type="button" id="app-reset-button" class="forscherheft-link">🔄 App zurücksetzen</button>
     </section>
 
     <section id="screen-netzwerk-sperre" class="screen" hidden>
@@ -206,7 +230,7 @@
       <button type="button" id="graph-zurueck-button" class="secondary-button">Zurück</button>
     </section>
 
-    <section id="screen-lexikon" class="screen" hidden>
+    <section id="screen-lexikon" class="screen feldbuch-seite" hidden>
       <header class="app-header">
         <h1>Arten-Lexikon</h1>
         <p class="app-subtitle">Alle Arten und Faktoren aus der Simulation, nach Kategorie sortiert.</p>
@@ -235,6 +259,7 @@
   <script src="./js/storage.js"></script>
   <script src="./js/data.js"></script>
   <script src="./js/ui.js"></script>
+  <script src="./js/navigation.js"></script>
   <script src="./js/icons.js"></script>
   <script src="./js/chart.js"></script>
   <script src="./js/simulationConfig.js"></script>

@@ -129,5 +129,42 @@ Keine Dauerbewegung, kein dekoratives Partikel-/Hintergrund-Rauschen (Performanc
 | Graph-Kanten | Farbe + Symbol pro Beziehungstyp, Linienstärke = Kantenstärke |
 | Dashboard | Feldmessinstrumente-Optik, Symbol + Skala + Text, nie Farbe allein |
 | Signatur-Element | Beobachtungs-Stempel im Forscherheft |
+| Navigation | Post-it-Registerleiste (Abschnitt 10), kein Stempel-Look |
 | Animation | max. 1 Moment pro Interaktion, keine Dauerbewegung |
 | Technische Priorität bei Konflikt | Performance auf älteren iPads > Detailgrad der Illustration |
+
+---
+
+## 10. Post-it-Navigation & Buchseiten-Hintergrund (M20)
+
+**Post-it-Registerleiste:** eine durchgängig sichtbare, senkrechte Reihe aus 5 Registern am rechten
+Bildschirmrand (geschnitten aus `docs/eingang/Bockmarks-3.png`, liegt als `assets/icons/post-it_*.webp`
+vor), farblich fest zugeordnet:
+
+| Farbe | Ziel |
+|---|---|
+| Oliv | Start |
+| Salbeigrün | Forscherheft |
+| Orange | Netzwerk-Graph |
+| Rotbraun | Für Lehrkräfte |
+| Blaugrau | Arten-Lexikon |
+
+Das zusätzliche, sechste Register (`post-it_lesezeichen.webp`, mit Eselsohr) ist **kein** eigenes
+Navigationsziel, sondern ein Etikett oberhalb der Leiste, das den Namen des gerade aktiven Bildschirms
+zeigt („aktuelle Seite" – ersetzt eine Breadcrumb/Kopfzeile). Das aktive Register in der Leiste selbst
+rückt sichtbar weiter heraus (`translateX`), das ist der einzige Bewegungsmoment dieses Elements
+(Animationsgrundsatz Abschnitt 7).
+
+Bewusst **kein** Stempel-Look (Abschnitt 7 nennt den Stempel als einmaliges Signatur-Element, das nicht
+für andere Zwecke wiederverwendet wird) – die Post-its sind flache Register, keine gestempelten Vermerke.
+Die Netzwerk-Graph-Freischaltung (M8, Abschnitt 5) bleibt inhaltlich unverändert; nur der Auslöser-Button
+sitzt jetzt in dieser Leiste statt nur im Start-Bildschirm-Header, wodurch er wirklich – wie ursprünglich
+vom Umsetzungsauftrag gefordert – von jedem Bildschirm aus sichtbar ist.
+
+**Buchseiten-Hintergrund:** `docs/eingang/Hintergrund.png` (als `assets/misc/feldbuch_hintergrund.webp`,
+komprimiert) liegt nur auf dem Screen-Hintergrund von Start, Reflexion, Forscherheft-Übersicht und
+Arten-Lexikon – bewusst nicht bei Dashboard/Analyse/Netzwerk-Graph (Backlog „Mehr Feldbuch feeling":
+„Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht"). Der eigentliche Inhalt steht
+immer in den bereits deckenden Karten (`--karte-hintergrund`), die Kopfzeile bekommt dafür eine eigene
+halbtransparente Fläche – das Bild selbst trägt nirgends Text, das gilt weiterhin als Anforderung aus
+Abschnitt 1 („Keine Papiertextur, die Kontrast/Lesbarkeit mindert").

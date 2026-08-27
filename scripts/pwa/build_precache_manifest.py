@@ -43,6 +43,7 @@ SHELL_FILES = [
 ASSET_DIRS = [
     "assets/icons",
     "assets/sprites",
+    "assets/misc",
     "css",
     "js",
     "data",

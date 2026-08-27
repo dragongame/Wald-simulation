@@ -124,3 +124,21 @@ Für die übrigen ~20 Arten (Reh, Rothirsch, Eichelhäher, Eichhörnchen, Buntsp
 2. Dateien in einen Ordner (z. B. `assets/sprites/`) legen.
 3. Diesen Ordner zusammen mit Wissensbasis, Technikdokument und Styleguide an Claude Code übergeben.
 4. Claude Code übernimmt ab hier ausschließlich den Code-Teil: Einbinden, Zustands-Umschaltung per Sprite-Tausch/Crossfade (siehe Styleguide Abschnitt 4 und 8) – **keine** eigene Bildgenerierung.
+
+---
+
+## 8. UI-Chrome-Sprites (z. B. Post-it-Register, M20)
+
+Abweichend von Abschnitt 5 (dort: ein Bild = ein Art-Sprite) liefert der Nutzer für UI-Chrome-Elemente
+gelegentlich ein **Sprite-Sheet mit mehreren Varianten auf einem schwarzen Hintergrund** (z. B.
+`docs/eingang/Bockmarks-3.png`: 5 Farben × links-/rechtsgespiegelt + 1 Sonderform). Claude Code schneidet
+in diesem Fall selbst zu:
+
+- Bounding-Box je Variante über eine feste Schwelle (`max(r,g,b)`) gegen den schwarzen Hintergrund
+  ermitteln, dabei einen weichen Alpha-Übergang statt harter Kante beibehalten (kein Neu-Einfärben/
+  Unpremultiply nötig, das verfälscht den Farbton).
+- Nur **eine** Spiegel-Richtung tatsächlich exportieren, die andere per CSS (`transform: scaleX(-1)`)
+  erzeugen, um die Dateizahl zu halbieren.
+- Export als WebP, Dateibenennung `assets/icons/<element>_<variante>.webp`, z. B.
+  `assets/icons/post-it_start.webp` – analog zur `<art-id>_<zustand>`-Konvention aus Abschnitt 5, aber
+  ohne Bezug zu einer Node-ID aus dem Technikdokument, da es sich um reines UI-Chrome handelt.

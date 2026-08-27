@@ -25,6 +25,13 @@ const WaldsimForscherheft = (() => {
 
   let laufMitSnapshots = null; // wird von WaldsimAnalyse.starteReflexion() gesetzt
   let frischGestempeltId = null; // Eintrags-ID für den Stempel-Effekt beim nächsten Übersicht-Render (Styleguide 7)
+  // M20: statt alle Einträge untereinander zu scrollen, zeigt die Übersicht
+  // immer nur einen Eintrag, ausgewählt über eine Reihe kleiner Post-it-Tabs
+  // (eine Seite nach der anderen umblättern). Neue Einträge landen per
+  // unshift() vorn in der Liste, Index 0 zeigt also automatisch den zuletzt
+  // gespeicherten Eintrag - der Stempel-Effekt (frischGestempeltId) bleibt
+  // dadurch ohne Zusatzlogik korrekt.
+  let aktiverEintragIndex = 0;
 
   function bucket(value) {
     if (value < 34) return "niedrig";
@@ -66,12 +73,16 @@ const WaldsimForscherheft = (() => {
   function aktualisiereZaehler() {
     const anzahl = ladeAlle().length;
     const el = document.getElementById("forscherheft-zaehler");
-    if (el) el.textContent = `(${anzahl})`;
+    if (el) el.textContent = String(anzahl);
   }
 
   function formatDatum(iso) {
     const d = new Date(iso);
     return `${d.toLocaleDateString("de-DE")} ${d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })}`;
+  }
+
+  function formatDatumKurz(iso) {
+    return new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
   }
 
   function exportText(data, eintrag) {
@@ -147,6 +158,13 @@ const WaldsimForscherheft = (() => {
       renderUebersicht();
     });
 
+    document.getElementById("forscherheft-tabs").addEventListener("click", (event) => {
+      const tab = event.target.closest(".forscherheft-tab");
+      if (!tab) return;
+      aktiverEintragIndex = Number(tab.dataset.index);
+      renderUebersicht();
+    });
+
     document.getElementById("forscherheft-liste").addEventListener("click", async (event) => {
       const loeschenButton = event.target.closest(".forscherheft-loeschen");
       if (loeschenButton) {
@@ -155,6 +173,7 @@ const WaldsimForscherheft = (() => {
         if (window.confirm("Diesen Forscherheft-Eintrag löschen?")) {
           alle.splice(index, 1);
           speichereAlle(alle);
+          if (index < aktiverEintragIndex) aktiverEintragIndex -= 1;
           aktualisiereZaehler();
           renderUebersicht();
         }
@@ -316,24 +335,40 @@ const WaldsimForscherheft = (() => {
     `;
   }
 
+  function tabHtml(eintrag, index) {
+    const stempelNamenKurz = eintrag.waelder.map((w) => w.waldtypName).join(" / ");
+    const aktivKlasse = index === aktiverEintragIndex ? " forscherheft-tab--aktiv" : "";
+    return `
+      <button type="button" class="forscherheft-tab${aktivKlasse}" data-index="${index}" aria-current="${index === aktiverEintragIndex}">
+        <span class="forscherheft-tab-datum">${formatDatumKurz(eintrag.zeitpunkt)}</span>
+        <span class="forscherheft-tab-namen">${escapeHtml(stempelNamenKurz)}</span>
+      </button>
+    `;
+  }
+
   async function renderUebersicht() {
     const data = await WaldsimData.load();
     const alle = ladeAlle();
+
+    aktiverEintragIndex = Math.max(0, Math.min(aktiverEintragIndex, alle.length - 1));
 
     document.getElementById("forscherheft-fortschritt").textContent =
       alle.length === 0 ? "Noch keine Durchläufe dokumentiert." : `Bisher ${alle.length} Durchlauf${alle.length === 1 ? "" : "e"} dokumentiert.`;
 
     document.getElementById("forscherheft-neue-sitzung-button").disabled = alle.length === 0;
 
+    document.getElementById("forscherheft-tabs").innerHTML = alle.map((eintrag, index) => tabHtml(eintrag, index)).join("");
+
     document.getElementById("forscherheft-liste").innerHTML =
       alle.length === 0
         ? '<li class="form-hint">Noch keine gespeicherten Forscherheft-Seiten. Ein Durchlauf wird nach der Reflexionsfrage automatisch hier abgelegt.</li>'
-        : alle.map((eintrag, index) => eintragHtml(data, eintrag, index)).join("");
+        : eintragHtml(data, alle[aktiverEintragIndex], aktiverEintragIndex);
 
     frischGestempeltId = null;
   }
 
   async function zeigeUebersicht() {
+    aktiverEintragIndex = 0;
     await renderUebersicht();
     showScreen("screen-forscherheft");
   }

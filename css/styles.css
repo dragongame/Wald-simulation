@@ -1497,3 +1497,200 @@ h1, h2, h3 {
   margin: 0.25rem 0;
   font-size: 0.85rem;
 }
+
+/* ---- Feldbuch-Navigation (M20) ----
+   Senkrechte Reihe aus 5 "Post-it"-Registern am rechten Bildschirmrand,
+   geschnitten aus docs/eingang/Bockmarks-3.png (siehe Illustrations-
+   Promptvorlage Abschnitt 5 fuer die Schnitt-Konvention). Ersetzt die
+   bisherige Button-Zeile im Start-Bildschirm-Header - die vier Ziel-Buttons
+   behalten ihre bestehenden IDs/Klick-Logik (js/forscherheft.js/graph.js/
+   lexikon.js/lehrkraft.js), nur Start ist neu (js/navigation.js). */
+
+#app {
+  padding-right: 9.5rem;
+}
+
+.feldbuch-nav {
+  position: fixed;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.9rem;
+}
+
+.feldbuch-nav-indikator {
+  width: 8.25rem;
+  height: 2.05rem;
+  background-image: url("../assets/icons/post-it_lesezeichen.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.4rem 0 0.4rem;
+  font-family: Iowan Old Style, Georgia, serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--tinte);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.feldbuch-nav-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.post-it {
+  --post-it-bg: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: 7.75rem;
+  height: 2.7rem;
+  padding: 0 1.2rem 0 0.6rem;
+  border: none;
+  background-color: transparent;
+  background-image: var(--post-it-bg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-family: inherit;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--tinte);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.1;
+  transition: transform 0.15s ease;
+}
+
+.post-it-badge {
+  position: absolute;
+  top: 0.15rem;
+  right: 1.35rem;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 0.2rem;
+  border-radius: 999px;
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  color: var(--tinte);
+  font-size: 0.55rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-it-icon {
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+.post-it-label {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-it--start { --post-it-bg: url("../assets/icons/post-it_start.webp"); }
+.post-it--forscherheft { --post-it-bg: url("../assets/icons/post-it_forscherheft.webp"); }
+.post-it--netzwerk { --post-it-bg: url("../assets/icons/post-it_netzwerk.webp"); }
+.post-it--lehrkraft { --post-it-bg: url("../assets/icons/post-it_lehrkraft.webp"); }
+.post-it--lexikon { --post-it-bg: url("../assets/icons/post-it_lexikon.webp"); }
+
+.post-it--aktiv {
+  transform: translateX(-0.5rem);
+}
+
+/* ---- Feldbuch-Seite: Buchseiten-Hintergrund (M20) ----
+   Bewusst nur auf Start/Reflexion/Forscherheft/Lexikon (Backlog "Mehr
+   Feldbuch feeling") - Dashboard/Analyse/Netzwerk-Graph bleiben unveraendert,
+   bis dafuer passende Hintergrundbilder entstehen (siehe Milestones-Dokument
+   M20). Das Bild sitzt nur auf dem Screen-Hintergrund; der eigentliche
+   Inhalt steht in den bereits deckenden Karten (--karte-hintergrund), die
+   Lesbarkeit ist dadurch unabhaengig vom Bild sichergestellt (Styleguide
+   Abschnitt 1: "Keine Papiertextur, die Kontrast/Lesbarkeit mindert"). */
+
+.feldbuch-seite {
+  --feldbuch-hintergrund: none;
+  background-image: var(--feldbuch-hintergrund);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+#screen-start.feldbuch-seite,
+#screen-reflexion.feldbuch-seite,
+#screen-forscherheft.feldbuch-seite,
+#screen-lexikon.feldbuch-seite {
+  --feldbuch-hintergrund: url("../assets/misc/feldbuch_hintergrund.webp");
+}
+
+/* Die Kopfzeile liegt (anders als .form-section-Karten und der
+   Forscherheft-Eintrag) direkt auf dem Bild - ohne eigene deckende Flaeche
+   waere sie an manchen Bildstellen zu kontrastarm (Styleguide Abschnitt 1). */
+.feldbuch-seite .app-header {
+  background: rgba(239, 233, 220, 0.85);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+/* ---- Forscherheft: Eintrags-Tabs (M20) ----
+   Ersetzt die vorherige durchgehende Scroll-Liste: kleine, flache Post-it-
+   Tabs (bewusst NICHT im Stempel-Look, siehe Abschnitt 7 des Styleguides -
+   der Stempel bleibt ein einmaliges Signatur-Element) blaettern zwischen
+   den gespeicherten Eintraegen wie Buchseiten - siehe aktiverEintragIndex
+   in js/forscherheft.js. */
+
+.forscherheft-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.forscherheft-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  border: 1px solid var(--rindenbraun);
+  background: var(--papier);
+  border-radius: 6px 6px 2px 2px;
+  padding: 0.3rem 0.55rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--tinte);
+  opacity: 0.75;
+}
+
+.forscherheft-tab--aktiv {
+  background: var(--karte-hintergrund);
+  opacity: 1;
+  box-shadow: 0 2px 4px rgba(43, 42, 38, 0.15);
+}
+
+.forscherheft-tab-datum {
+  font-size: 0.65rem;
+  opacity: 0.75;
+}
+
+.forscherheft-tab-namen {
+  font-size: 0.72rem;
+  font-weight: 600;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

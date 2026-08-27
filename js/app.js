@@ -48,6 +48,7 @@ if ("serviceWorker" in navigator) {
   setStatus("Dieser Browser unterstützt keine Offline-Nutzung.");
 }
 
+WaldsimNav.init();
 WaldsimForscherheft.init();
 WaldsimGraph.init();
 WaldsimLexikon.init();

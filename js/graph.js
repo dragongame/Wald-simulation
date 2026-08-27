@@ -165,9 +165,12 @@ const WaldsimGraph = (() => {
   }
 
   function aktualisiereTriggerButton() {
+    const icon = document.getElementById("netzwerk-tab-icon");
     const button = document.getElementById("netzwerk-oeffnen-button");
-    if (!button) return;
-    button.textContent = istFreigeschaltet() ? "🕸️ Netzwerk-Graph" : "🔬 Wissenschaftler:in um Hilfe bitten";
+    if (!icon || !button) return;
+    const frei = istFreigeschaltet();
+    icon.textContent = frei ? "🕸️" : "🔬";
+    button.title = frei ? "Netzwerk-Graph" : "Wissenschaftler:in um Hilfe bitten";
   }
 
   // ---- Knoten-/Kanten-Hilfsfunktionen ----
@@ -660,7 +663,11 @@ const WaldsimGraph = (() => {
 
   async function oeffneAllgemein() {
     data = await WaldsimData.load();
-    rueckkehrScreen = "screen-start";
+    // Der Trigger ist seit M20 durchgaengig (auf jedem Bildschirm ueber die
+    // Feldbuch-Navigation) erreichbar, nicht mehr nur vom Start-Bildschirm -
+    // "Zurueck" muss darum zum tatsaechlich sichtbaren Bildschirm fuehren.
+    const sichtbar = document.querySelector(".screen:not([hidden])");
+    rueckkehrScreen = sichtbar ? sichtbar.id : "screen-start";
     if (!istFreigeschaltet()) {
       zeigeSperre(() => zeigeGraph(null));
       return;
