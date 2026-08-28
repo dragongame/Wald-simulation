@@ -47,21 +47,17 @@ Diese drei Werte sind in den Quelldokumenten explizit als „Annahme, mit Lehrkr
 | M15 | **Netzwerk-Graph übersichtlicher**: Sidebar mit an-/abwählbaren Art-Icons zum Filtern der im Graphen gezeigten Knoten, deutlicher unterscheidbare Kanten-/Linienarten | ✅ fertig (2026-08-26) | Backlog „Netzwerk übersichtlicher gestalten" |
 | M16 | **Graphen-Snapshots im Forscherheft anzeigen**: die bis zu 3 gespeicherten Kurven-Snapshots (seit M6/M7 als Daten im Forscherheft-Eintrag vorhanden) als tatsächliche Kurvengrafik auf der Forscherheft-Seite rendern, nicht nur referenzieren | ✅ fertig (2026-08-26) | Backlog „Die Graphen sollen im Forscherheft angezeigt werden" |
 | M17 | **Instrumente als Tacho/Radialdiagramm**: Live-Dashboard-Instrumente (M5) optional/zusätzlich als Radialdiagramm/Tacho mit Art/Baum in der Mitte statt nur Symbol+Skala+Text | ⬜ offen | Backlog „Instrument Verbesserung" |
-| M18 | **Drag & Drop für Szenario-Zusammenstellung**: Wälder/Störungen per Drag & Drop ins Forscherheft/die Auswahl ziehen statt nur anzuklicken | ⬜ offen | Backlog „Drag & Drop" |
 | M19 | **Lehrkraft-Liste interessantester 2er-Kombinationen**: Übersicht/Empfehlung besonders kontrastreicher Wald×Störung-Kombinationen zur gezielten Verteilung an Gruppen | ✅ fertig (2026-08-26) | Backlog „Erstelle eine Liste den Interessantesten 2er Kombinationen" |
 | M20 | **Feldbuch-Feeling**: offene Buchseiten-Optik bei Szenario-Zusammenstellung, Reflexion, Forscherheft-Übersicht und Arten-Lexikon, durchgängige Post-it-Registerleiste (`docs/eingang/Bockmarks-3.png`) als neue App-weite Navigation inkl. Forscherheft-Eintrags-Tabs, `docs/eingang/Hintergrund.png` als Journal-Hintergrund, Netzwerk-Freischaltungs-Trigger jetzt wirklich durchgängig sichtbar statt nur auf dem Start-Bildschirm (M8) | ✅ fertig (2026-08-27) | Backlog „Mehr Feldbuch feeling", Styleguide Abschnitt 10 |
-| M21 | **PDF-Export des Forscherhefts**: Layout-/Bild-Export statt des bisherigen einfachen Textexports (M7) | ⬜ offen | Umsetzungsauftrag 2.9 (explizit auf „nicht Version 1" vertagt) |
-| M22 | **Vorführ-Modus für die Lehrkraft**: z. B. Beamer-Demo-Ablauf vor der eigentlichen Arbeitsphase | ⬜ offen | Umsetzungsauftrag 2.9 (explizit auf „nicht Version 1" vertagt) |
+| M23 | **Start-Bildschirm-Redesign „Erstkontakt"**: die lange Scroll-Auswahl wird ein 4-Schritt-Feldkarten-Wizard (Holztisch/Buchrahmen, live mitschreibendes „Protokoll", wachsende „Forschungsfrage"), aus einem vom Nutzer erarbeiteten Claude-Design-Canvas-Mockup übernommen | ✅ fertig (2026-08-28) | Styleguide Abschnitt 11 |
 
-**Priorisierung (Stand 2026-08-27):** M11, M13, M12, M16, M19, M14, M15 und M20 sind abgeschlossen. Nächster noch offener Schritt laut Reihenfolge: **M18**. Reihenfolge für M14–M22 festgelegt (Claude-Entscheidung; Kriterien: Struktur vor Optik, unabhängige Punkte davor, ursprünglich auf „nicht Version 1" vertagte Punkte zuletzt – Begründung je Punkt siehe Liste unten):
+**Priorisierung (Stand 2026-08-28):** M11, M13, M12, M16, M19, M14, M15, M20 und M23 sind abgeschlossen. Nächster noch offener Schritt laut Reihenfolge: **M17**. Reihenfolge für M14–M22 festgelegt (Claude-Entscheidung; Kriterien: Struktur vor Optik, unabhängige Punkte davor, ursprünglich auf „nicht Version 1" vertagte Punkte zuletzt – Begründung je Punkt siehe Liste unten):
 
-1. **M14** – vereinfacht die Auswahl-Struktur, bevor M20 sie optisch neu einkleidet.
-2. **M15** – eigenständige Graph-Verbesserung, kein Bezug zu den übrigen Punkten.
-3. **M20** – große Baustelle (Feldbuch-Feeling); bewusst nach den kleineren Punkten, damit sie nicht zweimal angefasst werden.
-4. **M18** – Drag & Drop zielt laut Backlog-Idee explizit auf „das Buch" – ergibt erst nach M20 Sinn.
-5. **M17** – rein dekorative Dashboard-Verbesserung, keine Abhängigkeiten, aber auch kein dringender Bedarf.
-6. **M21** – ursprünglich für „nicht Version 1" vertagt, größerer Aufwand (PDF-Bibliothek lokal einbinden).
-7. **M22** – ursprünglich für „nicht Version 1" vertagt, betrifft nur den optionalen Lehrkraft-Vorführmodus.
+1. **M20** – große Baustelle (Feldbuch-Feeling); bewusst nach den kleineren Punkten, damit sie nicht zweimal angefasst werden.
+2. **M17** – rein dekorative Dashboard-Verbesserung, keine Abhängigkeiten, aber auch kein dringender Bedarf.
+
+M23 kam außerhalb dieser Reihenfolge dazu (Nutzer-Wunsch nach einem eigenen Design-Canvas-Durchlauf,
+2026-08-28) und wurde direkt nach M20 eingeschoben, da es dessen Start-Bildschirm-Arbeit fortführt.
 
 Status-Legende: ⬜ offen · 🔶 in Arbeit · ✅ fertig
 
@@ -85,5 +81,9 @@ Nur echte offene Punkte bzw. Informationen mit Relevanz für künftige Milestone
   - *Live-Dashboard:* Feldausrüstungs-Tablett/Auskleidung am Rand (knüpft an die „Feldmessinstrumente"-Optik an, Styleguide Abschnitt 6) oder eine blasse Messprotokoll-Rasterseite.
   - *Analyse-Screen:* Klemmbrett-Motiv mit Konturlinien-Papier am Rand, oder eine Herbarium-Montage-Optik für die zwei Wald-Panels nebeneinander.
   - Umsetzung folgt dem gleichen Muster wie M20: Bild zuschneiden/komprimieren, in `assets/misc/` einbinden, über `--feldbuch-hintergrund` auf die jeweilige `.screen`-Sektion anwenden (siehe `css/styles.css`, Abschnitt „Feldbuch-Seite").
+- **M23-Umsetzungsnotiz:** Der Design-Canvas-Prozess hat für den Start-Bildschirm bewusst gegen Drag & Drop
+  entschieden („Schritt 1 · antippen, nicht ziehen") zugunsten von Antippen mit Washi-Tape-Etikett als
+  Auswahl-Rückmeldung – relevant, falls M18 (Drag & Drop) je wieder aufgegriffen wird: die aktuelle
+  Start-Bildschirm-Optik (Feldkarten-Wizard) ist nicht für Drag & Drop ausgelegt.
 - **M20-Umsetzungsnotiz:** Die Post-it-Navigation wurde nach Prüfung der tatsächlichen Grafik (`docs/eingang/Bockmarks-3.png` zeigt seitlich ansetzende Register, keine von oben hängenden Lesezeichen) als **senkrechte Leiste am rechten Bildschirmrand** umgesetzt statt der ursprünglich angedachten waagerechten Leiste oben – Nutzer-Entscheidung während der Umsetzung.
 - **Wiederkehrendes Bug-Muster für künftige Indikator-Erweiterungen:** In `model.py` wurden mehrfach Bestandsanteil (statisches Gewicht) und Vitalität (0–100-Gesundheitswert, startet bei 100 wenn die Art vorkommt) verwechselt (u. a. Fichte, Buschwindröschen, Blattläuse – Details in der Git-Historie dieser Datei). Bei neuen Indikatoren einen Baseline-Drift-Test (alle Waldtypen ohne Störung über 20 Jahre, kein Indikator darf ohne Ursache driften) einplanen.

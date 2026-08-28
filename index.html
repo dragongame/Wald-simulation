@@ -48,41 +48,61 @@
       </div>
     </nav>
 
-    <section id="screen-start" class="screen feldbuch-seite" hidden>
-      <header class="app-header">
-        <h1>Waldökosystem-Simulation</h1>
-        <p class="app-subtitle">Wähle zwei Waldtypen, eine Störungs-Kombination und stelle deine Hypothese auf.</p>
-      </header>
+    <section id="screen-start" class="screen wizard-screen" hidden>
+      <div class="wizard-tisch">
+        <div class="wizard-buch">
+          <div class="wizard-seiten">
 
-      <section class="form-section" aria-labelledby="heading-waelder">
-        <h2 id="heading-waelder">1 · Zwei Waldtypen wählen</h2>
-        <p class="form-hint">Klicke zwei der drei Waldtypen an – die Reihenfolge deiner Auswahl bestimmt Wald 1 und Wald 2.</p>
-        <div class="wald-slots" id="wald-slots"></div>
-      </section>
+            <div class="wizard-seite wizard-seite--links">
+              <header class="wizard-kopf">
+                <span class="wizard-kopf-punkt" id="wizard-kopf-punkt"></span>
+                <h2 id="wizard-schritt-titel"></h2>
+                <span class="wizard-fortschritt" id="wizard-schritt-fortschritt"></span>
+              </header>
+              <p class="wizard-hinweis" id="wizard-schritt-hinweis"></p>
 
-      <section class="form-section" aria-labelledby="heading-stoerungen">
-        <h2 id="heading-stoerungen">2 · Störung wählen (0–2)</h2>
-        <p class="form-hint">Naturereignis oder Bewirtschaftungsmaßnahme – frei kombinierbar, maximal zwei gleichzeitig.</p>
-        <div class="stoerungs-liste" id="stoerungs-liste"></div>
-        <div id="reihenfolge-auswahl" class="reihenfolge-auswahl" hidden></div>
-      </section>
+              <div class="wizard-schritt-inhalt">
+                <div class="wizard-schritt" data-schritt="1">
+                  <div class="wald-slots" id="wald-slots"></div>
+                </div>
+                <div class="wizard-schritt" data-schritt="2" hidden>
+                  <div class="stoerungs-liste" id="stoerungs-liste"></div>
+                  <div id="reihenfolge-auswahl" class="reihenfolge-auswahl" hidden></div>
+                </div>
+                <div class="wizard-schritt" data-schritt="3" hidden>
+                  <div id="regler-control"></div>
+                </div>
+                <div class="wizard-schritt" data-schritt="4" hidden>
+                  <div class="hypothesen" id="hypothesen"></div>
+                </div>
+              </div>
+            </div>
 
-      <section class="form-section" aria-labelledby="heading-regler">
-        <h2 id="heading-regler">3 · Prädator-Beute-Regulation / Wilddichte</h2>
-        <p class="form-hint">Strukturelles Ungleichgewicht, unabhängig von der Störungsauswahl. Standard: Luchs und Wolf beide anwesend (kaum Effekt).</p>
-        <div id="regler-control"></div>
-      </section>
+            <div class="wizard-seite wizard-seite--rechts">
+              <header class="wizard-kopf">
+                <span class="wizard-kopf-punkt ist-ockerorange"></span>
+                <h2>Protokoll</h2>
+              </header>
+              <p class="wizard-hinweis">Was bisher im Buch steht.</p>
+              <div id="protokoll-inhalt"></div>
+            </div>
 
-      <section class="form-section" aria-labelledby="heading-hypothese">
-        <h2 id="heading-hypothese">4 · Hypothese je Wald</h2>
-        <p class="form-hint">Was denkst du, wird passieren?</p>
-        <div class="hypothesen" id="hypothesen"></div>
-      </section>
+          </div>
+        </div>
 
-      <section class="form-section play-section">
-        <button type="button" id="play-button" class="play-button" disabled>Simulation starten</button>
-        <p id="play-hint" class="play-hint" role="status"></p>
-      </section>
+        <div class="wizard-fuss">
+          <div class="wizard-frage">
+            <span class="wizard-frage-etikett">Deine Forschungsfrage</span>
+            <span class="wizard-frage-text" id="wizard-frage-text"></span>
+          </div>
+          <div class="wizard-nav">
+            <div class="wizard-punkte" id="wizard-punkte"></div>
+            <span class="wizard-schritt-label" id="wizard-schritt-label"></span>
+            <button type="button" id="play-button" class="play-button" disabled>Weiter →</button>
+            <p id="play-hint" class="play-hint" role="status"></p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="screen-dashboard" class="screen" hidden>

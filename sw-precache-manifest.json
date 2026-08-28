@@ -1,8 +1,11 @@
 {
-  "version": "58d5f1bd5b8201a6",
-  "cacheName": "waldsim-precache-58d5f1bd5b8201a6",
+  "version": "020dd5156759ca07",
+  "cacheName": "waldsim-precache-020dd5156759ca07",
   "files": [
     "./",
+    "./assets/fonts/caprasimo.woff2",
+    "./assets/fonts/caveat.woff2",
+    "./assets/fonts/figtree.woff2",
     "./assets/icons/apple-touch-icon.png",
     "./assets/icons/icon-192.png",
     "./assets/icons/icon-512.png",

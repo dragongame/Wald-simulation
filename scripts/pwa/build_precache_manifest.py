@@ -44,6 +44,7 @@ ASSET_DIRS = [
     "assets/icons",
     "assets/sprites",
     "assets/misc",
+    "assets/fonts",
     "css",
     "js",
     "data",

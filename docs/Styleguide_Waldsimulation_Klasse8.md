@@ -130,6 +130,7 @@ Keine Dauerbewegung, kein dekoratives Partikel-/Hintergrund-Rauschen (Performanc
 | Dashboard | Feldmessinstrumente-Optik, Symbol + Skala + Text, nie Farbe allein |
 | Signatur-Element | Beobachtungs-Stempel im Forscherheft |
 | Navigation | Post-it-Registerleiste (Abschnitt 10), kein Stempel-Look |
+| Start-Bildschirm | Feldkarten-Wizard, Holztisch/Buchrahmen, eigene Typografie/Akzentfarben (Abschnitt 11) |
 | Animation | max. 1 Moment pro Interaktion, keine Dauerbewegung |
 | Technische Priorität bei Konflikt | Performance auf älteren iPads > Detailgrad der Illustration |
 
@@ -162,9 +163,51 @@ sitzt jetzt in dieser Leiste statt nur im Start-Bildschirm-Header, wodurch er wi
 vom Umsetzungsauftrag gefordert – von jedem Bildschirm aus sichtbar ist.
 
 **Buchseiten-Hintergrund:** `docs/eingang/Hintergrund.png` (als `assets/misc/feldbuch_hintergrund.webp`,
-komprimiert) liegt nur auf dem Screen-Hintergrund von Start, Reflexion, Forscherheft-Übersicht und
-Arten-Lexikon – bewusst nicht bei Dashboard/Analyse/Netzwerk-Graph (Backlog „Mehr Feldbuch feeling":
-„Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht"). Der eigentliche Inhalt steht
-immer in den bereits deckenden Karten (`--karte-hintergrund`), die Kopfzeile bekommt dafür eine eigene
-halbtransparente Fläche – das Bild selbst trägt nirgends Text, das gilt weiterhin als Anforderung aus
-Abschnitt 1 („Keine Papiertextur, die Kontrast/Lesbarkeit mindert").
+komprimiert) liegt auf dem Screen-Hintergrund von Reflexion, Forscherheft-Übersicht und Arten-Lexikon
+(`.feldbuch-seite`-Klasse) – bewusst nicht bei Dashboard/Analyse/Netzwerk-Graph (Backlog „Mehr Feldbuch
+feeling": „Bei der Simulation muss das nicht sein, bei der Auswertung auch nicht"). Der eigentliche
+Inhalt steht immer in den bereits deckenden Karten (`--karte-hintergrund`), die Kopfzeile bekommt dafür
+eine eigene halbtransparente Fläche – das Bild selbst trägt nirgends Text, das gilt weiterhin als
+Anforderung aus Abschnitt 1 („Keine Papiertextur, die Kontrast/Lesbarkeit mindert"). Der Start-Bildschirm
+selbst nutzt seit dem „Erstkontakt"-Redesign (Abschnitt 11) eine eigene, davon unabhängige Bildsprache
+(Holztisch/Buchrahmen statt Foto-Hintergrund) und trägt darum **nicht** mehr die `.feldbuch-seite`-Klasse.
+
+---
+
+## 11. Feldkarten-Wizard: Start-Bildschirm-Redesign („Erstkontakt")
+
+Entstanden aus einem vom Nutzer in einem Claude-Design-Canvas-Projekt erarbeiteten Mockup (mehrere
+Iterationen, siehe Milestones-Dokument M23) – ersetzt die vorherige lange Scroll-Seite aus vier
+`.form-section`-Karten durch einen **4-Schritt-Wizard**: ein aufgeschlagenes Buch auf einem Holztisch,
+links die aktuelle Auswahl, rechts ein live mitschreibendes „Protokoll", unten eine wachsende
+„Forschungsfrage" plus Schritt-Anzeige. Bewusst **nur** dieser eine Screen – alle anderen Bildschirme
+bleiben bei der in Abschnitt 1/10 beschriebenen Optik.
+
+**Zusätzliche Akzentfarben** (nur auf diesem Screen, siehe `--ockerorange`/`--salbeigruen` in
+`css/styles.css`), ergänzen bewusst die Palette aus Abschnitt 2, ersetzen sie nicht:
+
+| Farbe | Variable | Rolle |
+|---|---|---|
+| Ockerorange | `--ockerorange` (`#C67139`) | zweite Akzentfarbe für Störungs-/Vermutungs-Schritte |
+| Salbeigrün | `--salbeigruen` (`#7A8A5E`) | zweite, ruhigere Grün-Stimme (z. B. ausgefüllte Wörter in der Forschungsfrage) |
+
+**Drei zusätzliche, lokal gebündelte Schriften** (`assets/fonts/*.woff2`, Google Fonts/OFL-lizenziert,
+NICHT per CDN geladen – Offline-Pflicht aus Abschnitt 8), ebenfalls nur innerhalb von `#screen-start`:
+
+| Schrift | Rolle |
+|---|---|
+| Caprasimo | Display/Überschriften je Schritt („Vergleichsflächen wählen" usw.) |
+| Figtree | UI/Fließtext auf diesem Screen (ersetzt System-Sans nur hier) |
+| Caveat | handschriftlich wirkende Hinweistexte, Forschungsfrage, Hypothese-Eingabe |
+
+**Feldkarte** (neues, wiederverwendbares Auswahl-Element für Wald/Störung/Regler, `css/styles.css`
+`.feldkarte*`): Washi-Tape-Etikett oben („Fläche 1", „gewählt", „anwesend") statt Checkbox-Optik, Antippen
+statt Ziehen (eine frühere Drag&Drop-Variante wurde im Design-Prozess bewusst verworfen), Rundhaken statt
+Häkchen. Bewusst **nicht** der Stempel-Look (Abschnitt 7/10) – eigenständiges Element.
+
+Wie beim Post-it-Register (Abschnitt 10) gilt: **kein** neuer Datenbedarf – Protokoll und Forschungsfrage
+sind reine Darstellungen des ohnehin vorhandenen Auswahl-Zustands (`js/startScreen.js`), keine neuen
+fachlichen Aussagen. Wo das Mockup fachlich klingenden Text zeigte, der nicht 1:1 aus der Wissensbasis
+stammt (z. B. eine erfundene „Erwartung"-Formulierung je Störung), wurde er durch bereits an anderer
+Stelle verwendete `kurzbeschreibung`-Texte ersetzt statt neu erfunden (CLAUDE.md: keine Fachinhalte über
+die Wissensbasis hinaus).

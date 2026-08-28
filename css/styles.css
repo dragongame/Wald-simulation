@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Caprasimo";
+  src: url("../assets/fonts/caprasimo.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/figtree.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("../assets/fonts/caveat.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --papier: #EFE9DC;
   --tinte: #2B2A26;
@@ -7,6 +31,12 @@
   --himmelblau: #5C7A8A;
   --signalrot: #9A3324;
   --karte-hintergrund: #FFFDF7;
+  /* Start-Bildschirm-Wizard (Erstkontakt-Redesign): zwei zusaetzliche
+     Akzentfarben aus dem Claude-Design-Canvas-Mockup, bewusst NICHT
+     Ersatz fuer --bernstein/--moosgruen, sondern eine zweite, waermere
+     Stimme nur fuer diesen Screen (siehe Styleguide Abschnitt 10). */
+  --ockerorange: #C67139;
+  --salbeigruen: #7A8A5E;
   /* Netzwerk-Graph (M8): Zersetzung aus Styleguide Abschnitt 5 uebernommen.
      Bewirtschaftung/Strukturell sind dort (vor Szenario 5/6) noch nicht
      definiert - neue, von allen fuenf bestehenden Kantenfarben klar
@@ -181,151 +211,332 @@ h1, h2, h3 {
   display: flex;
 }
 
-/* ---- Wald-Plätze ---- */
+/* ---- Start-Bildschirm: Feldkarten-Wizard („Erstkontakt"-Redesign) ----
+   Ersetzt die vorherige lange Scroll-Seite durch einen 4-Schritt-Wizard
+   (aufgeschlagenes Buch auf einem Holztisch, links Auswahl/rechts Protokoll),
+   nach einem vom Nutzer in einem Claude-Design-Canvas erarbeiteten Mockup
+   (siehe Styleguide Abschnitt 10 fuer die Dokumentation der Bildsprache).
+   Bewusst NUR fuer #screen-start - keine der Klassen hier wird von anderen
+   Screens geteilt (im Unterschied zu .form-section/.play-button, die
+   unveraendert bleiben). */
 
-.wald-slots {
+#screen-start.wizard-screen {
+  margin: -1rem calc(-50vw + 50% - 1rem) -3rem calc(-50vw + 50% - 1rem);
+  padding: 1.2rem 1.2rem 1.5rem;
+}
+
+.wizard-tisch {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  min-height: calc(100vh - 2.4rem);
+  border-radius: 14px;
+  padding: 1.2rem;
+  background-color: #3b2b1d;
+  background-image:
+    repeating-linear-gradient(91deg, rgba(0, 0, 0, 0.2) 0 2px, transparent 2px 9px),
+    repeating-linear-gradient(89deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 15px),
+    linear-gradient(178deg, #4d3825 0%, #33241a 55%, #241a12 100%);
 }
 
-.wald-card-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-}
-
-.wald-card {
-  display: block;
-  cursor: pointer;
-  border: 2px solid var(--rindenbraun);
-  border-radius: 10px;
-  padding: 0.4rem;
-  min-height: 44px;
-}
-
-.wald-card:has(input:checked) {
-  border-color: var(--moosgruen);
-  background: rgba(76, 110, 74, 0.12);
-}
-
-.wald-card input {
+.wizard-tisch::before {
+  content: "";
   position: absolute;
-  opacity: 0;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 70% 60% at 50% 44%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.42) 100%);
   pointer-events: none;
 }
 
-.wald-card-name {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
+.wizard-buch {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 78rem;
+  width: 100%;
+  margin: 0 auto;
+  margin-right: 9.5rem;
+  border-radius: 20px;
+  padding: 0.7rem;
+  background: linear-gradient(158deg, #5a3f28 0%, #3d2a1a 48%, #2c1d12 100%);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
-.wald-card-rolle {
-  display: block;
-  margin: 0.25rem auto 0;
-  width: fit-content;
-  padding: 0.1rem 0.5rem;
+.wizard-seiten {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 20rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(176deg, #f4ecd8 0%, #efe6cf 52%, #e9dfc4 100%);
+  box-shadow: inset 0 0 34px rgba(150, 120, 80, 0.22);
+}
+
+.wizard-seiten::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3.5rem;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, rgba(103, 74, 44, 0) 0%, rgba(103, 74, 44, 0.22) 42%, rgba(103, 74, 44, 0.3) 50%, rgba(103, 74, 44, 0.22) 58%, rgba(103, 74, 44, 0) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.wizard-seite {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 1.6rem 1.9rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Figtree", -apple-system, "SF Pro", "Segoe UI", Roboto, sans-serif;
+  color: var(--tinte);
+  z-index: 1;
+}
+
+.wizard-seite--links {
+  padding-left: 2.1rem;
+}
+
+.wizard-seite--rechts {
+  padding-right: 2.1rem;
+}
+
+.wizard-kopf {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(107, 74, 52, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.wizard-kopf-punkt {
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 999px;
   background: var(--moosgruen);
-  color: #fff;
-  font-size: 0.65rem;
+  flex: 0 0 auto;
+}
+
+.wizard-kopf-punkt.ist-ockerorange {
+  background: var(--ockerorange);
+}
+
+.wizard-kopf h2 {
+  font-family: "Caprasimo", "Iowan Old Style", Georgia, serif;
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.wizard-fortschritt {
+  margin-left: auto;
+  font-size: 0.7rem;
   font-weight: 600;
+  color: rgba(43, 42, 38, 0.55);
+  white-space: nowrap;
 }
 
-.wald-beschreibung {
-  margin: 0.6rem 0 0;
-  font-size: 0.85rem;
+.wizard-hinweis {
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: #4a3a2a;
+  margin: 0 0 1.1rem;
 }
 
-/* ---- Störungen ---- */
-
-.stoerungs-gruppe {
-  margin-bottom: 0.9rem;
+.wizard-schritt-inhalt,
+#protokoll-inhalt {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
-.stoerungs-gruppe:last-child {
-  margin-bottom: 0;
+.wizard-schritt[hidden] {
+  display: none;
 }
 
-.stoerungs-gruppe-titel {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.5rem;
-  padding-left: 0.5rem;
-  border-left: 4px solid var(--moosgruen);
+/* Feldkarten: ersetzen .wald-card/.stoerung-card/.regler-segment mit
+   Washi-Tape-Etikett + Rundhaken statt Checkbox-Optik, Antippen statt
+   Ziehen (Entscheidung aus dem Mockup gegenueber einer frueheren
+   Drag&Drop-Variante). */
+
+.feldkarte-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.stoerungs-gruppe-titel.kategorie-bewirtschaftungsmassnahme {
-  border-left-color: var(--bernstein);
-}
-
-.stoerungs-karten {
+.feldkarte-reihe {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
 }
 
-.stoerung-card {
-  display: block;
+.feldkarte {
+  position: relative;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.6rem;
+  border: 2px solid var(--rindenbraun);
+  border-radius: 16px;
+  background: rgba(255, 253, 247, 0.55);
+  box-shadow: 0 2px 8px rgba(84, 60, 36, 0.1);
   cursor: pointer;
-  border: 2px solid var(--moosgruen);
-  border-radius: 10px;
-  padding: 0.5rem;
   min-height: 44px;
 }
 
-.stoerung-card.kategorie-bewirtschaftungsmassnahme {
-  border-color: var(--bernstein);
+.feldkarte:has(input:checked) {
+  border-color: var(--moosgruen);
+  background: rgba(76, 110, 74, 0.12);
+  box-shadow: 0 3px 10px rgba(84, 60, 36, 0.15);
+}
+
+.feldkarte.ist-bewirtschaftung {
   border-style: dashed;
+  border-color: var(--bernstein);
 }
 
-.stoerung-card:has(input:checked) {
-  background: rgba(76, 110, 74, 0.14);
-}
-
-.stoerung-card.kategorie-bewirtschaftungsmassnahme:has(input:checked) {
+.feldkarte.ist-bewirtschaftung:has(input:checked) {
+  border-style: solid;
   background: rgba(181, 101, 29, 0.14);
 }
 
-.stoerung-card.is-disabled {
+.feldkarte.is-disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.stoerung-card input {
+.feldkarte input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.stoerung-card-name {
-  display: block;
-  font-weight: 600;
-  font-size: 0.85rem;
+.feldkarte-etikett {
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  padding: 0.15rem 0.6rem;
+  background: rgba(206, 186, 140, 0.9);
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  transform: rotate(-2.5deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #5c4326;
+  white-space: nowrap;
 }
 
-.stoerung-card-kategorie-badge {
+.feldkarte-bild {
+  flex: 0 0 auto;
+  width: 5rem;
+  margin-bottom: 0 !important;
+}
+
+.feldkarte-bild.sprite-1-1 {
+  width: 3.4rem;
+}
+
+.feldkarte-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.feldkarte-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.feldkarte-badge {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   opacity: 0.7;
-  margin: 0.1rem 0 0.25rem;
+  margin: 0.15rem 0 0.2rem;
 }
 
-.stoerung-card-beschreibung {
+.feldkarte-beschreibung {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.73rem;
+  line-height: 1.4;
   opacity: 0.85;
+}
+
+.feldkarte-haken {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  border: 2px dashed rgba(107, 74, 52, 0.4);
+}
+
+.feldkarte:has(input:checked) .feldkarte-haken {
+  border-style: solid;
+  border-color: var(--moosgruen);
+  background: var(--moosgruen);
+}
+
+.feldkarte.ist-bewirtschaftung:has(input:checked) .feldkarte-haken {
+  border-color: var(--bernstein);
+  background: var(--bernstein);
+}
+
+.feldkarte:has(input:checked) .feldkarte-haken::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.feldkarte-gruppen-titel {
+  font-family: "Caprasimo", "Iowan Old Style", Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.55rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--moosgruen);
+  color: var(--tinte);
+}
+
+.feldkarte-gruppen-titel.kategorie-bewirtschaftungsmassnahme {
+  border-left-color: var(--bernstein);
+}
+
+.wizard-gruppe {
+  margin-bottom: 1rem;
+}
+
+.wizard-gruppe:last-child {
+  margin-bottom: 0;
 }
 
 /* ---- Reihenfolge-Auswahl ---- */
 
 .reihenfolge-auswahl {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px dashed var(--rindenbraun);
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed rgba(107, 74, 52, 0.35);
 }
 
 .reihenfolge-optionen {
@@ -338,80 +549,355 @@ h1, h2, h3 {
   display: block;
   cursor: pointer;
   border: 2px solid var(--himmelblau);
-  border-radius: 8px;
-  padding: 0.5rem 0.6rem;
-  font-size: 0.85rem;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.82rem;
   min-height: 44px;
+  background: rgba(255, 253, 247, 0.55);
 }
 
 .reihenfolge-option:has(input:checked) {
-  background: rgba(92, 122, 138, 0.16);
+  background: rgba(92, 122, 138, 0.18);
 }
 
-/* ---- Wildverbiss-Regler ---- */
-
-.regler-control {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.regler-segmente {
-  display: flex;
-  gap: 0.5rem;
-  flex: 1;
-  min-width: 12rem;
-}
-
-.regler-segment {
-  flex: 1;
-  text-align: center;
-  cursor: pointer;
-  border: 2px solid var(--rindenbraun);
-  border-radius: 8px;
-  padding: 0.6rem 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  min-height: 44px;
-}
-
-.regler-segment:has(input:checked) {
-  background: rgba(181, 101, 29, 0.18);
-  border-color: var(--bernstein);
-}
-
-.regler-segment input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ---- Hypothesen ---- */
+/* ---- Hypothesen (Schritt 4): handschriftliche Notizkarten ---- */
 
 .hypothesen {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   gap: 1rem;
+}
+
+.hypothese-feld {
+  position: relative;
+  border: 2px solid var(--moosgruen);
+  background: rgba(255, 253, 247, 0.82);
+  border-radius: 16px;
+  padding: 0.8rem 0.9rem;
+  box-shadow: 0 4px 11px rgba(84, 60, 36, 0.18);
+}
+
+.hypothese-feld:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+
+.hypothese-feld:nth-child(even) {
+  transform: rotate(0.5deg);
 }
 
 .hypothese-feld label {
   display: block;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.85rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .hypothese-feld textarea {
   width: 100%;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  line-height: 1.4;
   padding: 0.5rem;
-  border: 1px solid var(--rindenbraun);
+  border: 1px solid rgba(107, 74, 52, 0.35);
   border-radius: 8px;
   background: var(--papier);
-  color: var(--tinte);
+  color: #3a2c1e;
   resize: vertical;
+  box-sizing: border-box;
+}
+
+/* ---- Protokoll-Panel (rechte Buchseite) ---- */
+
+.protokoll-waelder {
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.protokoll-wald-karte {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  border: 2px solid var(--moosgruen);
+  background: rgba(255, 253, 247, 0.82);
+  border-radius: 16px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 11px rgba(84, 60, 36, 0.18);
+}
+
+.protokoll-wald-karte:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.protokoll-wald-karte:nth-child(even) {
+  transform: rotate(0.9deg);
+}
+
+.protokoll-wald-karte .sprite-frame {
+  margin-bottom: 0.45rem;
+}
+
+.protokoll-wald-rolle {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--moosgruen);
+}
+
+.protokoll-wald-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.protokoll-leerhinweis {
+  font-size: 0.78rem;
+  opacity: 0.6;
+  margin: 0 0 1.1rem;
+}
+
+.protokoll-abschnitt {
+  border-top: 1px solid rgba(107, 74, 52, 0.26);
+  padding-top: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.protokoll-abschnitt-titel {
+  font-family: "Caprasimo", "Iowan Old Style", Georgia, serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(43, 42, 38, 0.5);
+  margin: 0 0 0.5rem;
+}
+
+.protokoll-offen-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.protokoll-offen-eintrag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: rgba(43, 42, 38, 0.75);
+}
+
+.protokoll-offen-punkt {
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  border: 1.5px dashed rgba(107, 74, 52, 0.45);
+  flex: 0 0 auto;
+}
+
+.protokoll-offen-eintrag.ist-erledigt .protokoll-offen-punkt {
+  border-style: solid;
+  border-color: var(--moosgruen);
+  background: var(--moosgruen);
+}
+
+.protokoll-stoerung-zeile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.protokoll-stoerung-zeile:last-child {
+  margin-bottom: 0;
+}
+
+.protokoll-stoerung-zeile .sprite-frame {
+  width: 2.6rem;
+  margin-bottom: 0;
+}
+
+.protokoll-stoerung-name {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.regler-intro {
+  margin: 0 0 0.9rem;
+}
+
+.protokoll-fakt {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: rgba(43, 42, 38, 0.8);
+}
+
+.protokoll-fussnotiz {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+}
+
+.protokoll-fussnotiz .sprite-frame {
+  width: 2rem;
+  margin-bottom: 0;
+  border-radius: 999px;
+}
+
+.protokoll-fussnotiz-text {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: rgba(43, 42, 38, 0.6);
+  font-style: italic;
+}
+
+/* ---- Fussleiste: Forschungsfrage + Schritt-Navigation ---- */
+
+.wizard-fuss {
+  position: relative;
+  max-width: 78rem;
+  margin: 0.9rem auto 0;
+  margin-right: 9.5rem;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.wizard-frage {
+  position: relative;
+  flex: 1 1 20rem;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1.3rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #e6dbc0, #d8cbab);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  min-height: 3.4rem;
+}
+
+.wizard-frage-etikett {
+  position: absolute;
+  top: -0.6rem;
+  left: 1.7rem;
+  padding: 0.12rem 0.7rem;
+  background: rgba(206, 186, 140, 0.92);
+  transform: rotate(-2.5deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #5c4326;
+  white-space: nowrap;
+}
+
+.wizard-frage-text {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #3a2c1e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wizard-frage-text b {
+  border-bottom: 2px solid var(--salbeigruen);
+  font-weight: 600;
+}
+
+.wizard-frage-text .ist-offen {
+  color: rgba(58, 44, 30, 0.35);
+  border-bottom: 2px dashed rgba(107, 74, 52, 0.4);
+}
+
+.wizard-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0 1.1rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #e6dbc0, #d8cbab);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.wizard-punkte {
+  display: flex;
+  align-items: center;
+}
+
+.wizard-punkt {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(107, 74, 52, 0.28);
+}
+
+.wizard-punkt.ist-erledigt {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--salbeigruen);
+}
+
+.wizard-punkt.ist-aktuell {
+  background: var(--moosgruen);
+}
+
+.wizard-punkt-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.75rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wizard-punkt-button:disabled {
+  cursor: default;
+}
+
+.wizard-schritt-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(43, 42, 38, 0.62);
+  white-space: nowrap;
+}
+
+.wizard-nav .play-hint {
+  margin: 0;
+  font-size: 0.7rem;
+  max-width: 9rem;
+}
+
+@media (max-width: 62rem) {
+  #screen-start.wizard-screen {
+    margin-right: -1rem;
+  }
+  .wizard-buch,
+  .wizard-fuss {
+    margin-right: 0;
+    max-width: none;
+  }
+  .wizard-seiten {
+    flex-direction: column;
+  }
+  .wizard-seiten::before {
+    display: none;
+  }
+  .wizard-seite--rechts {
+    border-top: 1px solid rgba(107, 74, 52, 0.3);
+  }
 }
 
 /* ---- Play-Button ---- */
