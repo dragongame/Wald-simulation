@@ -221,17 +221,36 @@ h1, h2, h3 {
    unveraendert bleiben). */
 
 #screen-start.wizard-screen {
-  margin: -1rem calc(-50vw + 50% - 1rem) -3rem calc(-50vw + 50% - 1rem);
+  /* position:fixed + inset:0 statt eines margin-basierten Full-Bleed-Tricks:
+     #app zentriert sich selbst UND hat eigenes, asymmetrisches Padding
+     (padding-right fuer die Nav-Leiste) - jede rein margin-/prozentbasierte
+     Breakout-Formel muesste beides exakt gegenrechnen und war in der Praxis
+     fehleranfaellig. fixed+inset ignoriert die Eltern-Box komplett und trifft
+     den Viewport-Rand garantiert exakt; loest nebenbei robust den Scroll-Bug
+     (ein fixed-positioniertes Element traegt nie zur Dokumenthoehe bei). */
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 1.2rem 1.2rem 1.5rem;
+  overflow-y: auto;
 }
 
 .wizard-tisch {
   position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 87rem;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 2.4rem);
   border-radius: 14px;
-  padding: 1.2rem;
+  /* padding-right reserviert allein hier den Platz fuer die fixierte
+     Nav-Leiste (Abschnitt "Feldbuch-Navigation") - .wizard-buch/.wizard-fuss
+     brauchen dadurch selbst kein eigenes margin/width-Ringen mehr. */
+  padding: 1.2rem 10.2rem 1.2rem 1.2rem;
   background-color: #3b2b1d;
   background-image:
     repeating-linear-gradient(91deg, rgba(0, 0, 0, 0.2) 0 2px, transparent 2px 9px),
@@ -254,10 +273,6 @@ h1, h2, h3 {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  max-width: 78rem;
-  width: 100%;
-  margin: 0 auto;
-  margin-right: 9.5rem;
   border-radius: 20px;
   padding: 0.7rem;
   background: linear-gradient(158deg, #5a3f28 0%, #3d2a1a 48%, #2c1d12 100%);
@@ -760,9 +775,7 @@ h1, h2, h3 {
 
 .wizard-fuss {
   position: relative;
-  max-width: 78rem;
-  margin: 0.9rem auto 0;
-  margin-right: 9.5rem;
+  margin-top: 0.9rem;
   display: flex;
   gap: 0.85rem;
   flex-wrap: wrap;
@@ -881,14 +894,6 @@ h1, h2, h3 {
 }
 
 @media (max-width: 62rem) {
-  #screen-start.wizard-screen {
-    margin-right: -1rem;
-  }
-  .wizard-buch,
-  .wizard-fuss {
-    margin-right: 0;
-    max-width: none;
-  }
   .wizard-seiten {
     flex-direction: column;
   }
@@ -1993,7 +1998,16 @@ h1, h2, h3 {
    lexikon.js/lehrkraft.js), nur Start ist neu (js/navigation.js). */
 
 #app {
-  padding-right: 9.5rem;
+  padding-right: 9rem;
+}
+
+/* Der Wizard fuellt die Bildschirmhoehe bewusst exakt (.wizard-tisch
+   min-height: 100vh-Rechnung) - Status-/Versionstext danach wuerde sie
+   auf iPad minimal ueberschreiten und einen unnoetigen Scroll auslösen.
+   Blendet die beiden Zeilen darum nur waehrend der Wizard aktiv ist aus. */
+#app:has(#screen-start.wizard-screen:not([hidden])) .app-status,
+#app:has(#screen-start.wizard-screen:not([hidden])) .app-version-hinweis {
+  display: none;
 }
 
 .feldbuch-nav {
