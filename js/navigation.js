@@ -49,6 +49,27 @@ const WaldsimNav = (() => {
     });
     const indikator = document.getElementById("feldbuch-nav-indikator");
     if (indikator) indikator.textContent = info ? info.label : "";
+    positionNav();
+  }
+
+  // Positioniert die Register-Leiste an der tatsaechlichen rechten Kante der
+  // aktuell sichtbaren "Buchseite" (bei screen-start ist das .wizard-buch,
+  // die cremefarbenen Seiten - nicht .wizard-tisch/der volle Bildschirm, da
+  // .wizard-screen bewusst fixed+inset:0 ist und der Holztisch-Rahmen deutlich
+  // breiter ist als die eigentlichen Seiten). Ohne das haengt die Leiste rein
+  // am Viewport-Rand und driftet auf breiten Bildschirmen von der
+  // (zentrierten, max-width-begrenzten) Seite weg.
+  const UEBERLAPPUNG_PX = 6;
+
+  function positionNav() {
+    const nav = document.getElementById("feldbuch-nav");
+    const activeScreen = document.querySelector(".screen:not([hidden])");
+    if (!nav || !activeScreen) return;
+    const inhaltsElement =
+      (activeScreen.id === "screen-start" && activeScreen.querySelector(".wizard-buch")) || activeScreen;
+    const rect = inhaltsElement.getBoundingClientRect();
+    if (rect.width === 0) return;
+    nav.style.left = `${Math.round(rect.right - UEBERLAPPUNG_PX)}px`;
   }
 
   function wireEvents() {
@@ -56,10 +77,12 @@ const WaldsimNav = (() => {
     if (startButton) {
       startButton.addEventListener("click", () => showScreen("screen-start"));
     }
+    window.addEventListener("resize", positionNav);
   }
 
   function init() {
     wireEvents();
+    positionNav();
   }
 
   return { init, updateActiveState };

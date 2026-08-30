@@ -220,7 +220,7 @@ h1, h2, h3 {
    Screens geteilt (im Unterschied zu .form-section/.play-button, die
    unveraendert bleiben). */
 
-#screen-start.wizard-screen {
+#screen-start.wizard-screen:not([hidden]) {
   /* position:fixed + inset:0 statt eines margin-basierten Full-Bleed-Tricks:
      #app zentriert sich selbst UND hat eigenes, asymmetrisches Padding
      (padding-right fuer die Nav-Leiste) - jede rein margin-/prozentbasierte
@@ -1228,10 +1228,8 @@ h1, h2, h3 {
 
 .analyse-farb-chip {
   flex: 0 0 auto;
-  width: 0.7rem;
+  width: 1.4rem;
   height: 0.7rem;
-  border-radius: 50%;
-  border: 1px solid var(--tinte);
 }
 
 .analyse-indikator-name {
@@ -2011,9 +2009,15 @@ h1, h2, h3 {
 }
 
 .feldbuch-nav {
+  /* left statt right: js/navigation.js setzt left per-Bildschirm dynamisch
+     auf die tatsaechliche rechte Kante der Buchseite/des Wizard-Tischs, damit
+     die Register sichtbar an der Seite ankleben statt lose im Holztisch-Rand
+     zu schweben (bei zentriertem, max-width-begrenztem Inhalt wuerde ein
+     rein viewport-relatives right auf breiten Bildschirmen eine grosse Luecke
+     lassen). Der calc()-Wert hier ist nur der Fallback vor dem ersten JS-Lauf. */
   position: fixed;
   top: 50%;
-  right: 0.75rem;
+  left: calc(100vw - 9rem);
   transform: translateY(-50%);
   z-index: 20;
   display: flex;

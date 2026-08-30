@@ -126,3 +126,55 @@ only local damage) — check these when touching simulation logic.
   `Illustrations_Promptvorlage_Waldsimulation_Klasse8.md`, then rerun the precache-manifest build.
 - Any change to what's cached for offline use is incomplete until
   `scripts/pwa/build_precache_manifest.py` has been rerun and its output committed.
+
+## Visual / Responsive Testing (Playwright MCP)
+
+Two Playwright MCP servers are configured for cross-device visual checks:
+
+- **playwright-ipad** — WebKit engine, "iPad Pro 11" device profile (real touch,
+  device pixel ratio, and Safari user agent). Use this for anything iPad-related:
+  layout checks, touch target sizing, Safari-specific CSS behavior.
+- **playwright-desktop** — Chromium, 1440x900 viewport. Use this for the
+  normal laptop-browser check.
+
+Both are headless — no browser window will appear.
+
+### One-time setup (already done, listed here for reference / new machines)
+
+    claude mcp add playwright-ipad -- npx -y @playwright/mcp@latest \
+      --browser webkit --device "iPad Pro 11" --headless
+
+    claude mcp add playwright-desktop -- npx -y @playwright/mcp@latest \
+      --browser chromium --viewport-size=1440,900 --headless
+
+### Workflow
+
+When asked to check a page's layout or "make sure it looks good on iPad and
+laptop":
+
+1. Start the local dev server if it isn't already running.
+2. Use `playwright-ipad` to navigate to the page and take a screenshot.
+3. Use `playwright-desktop` to navigate to the same page and take a screenshot.
+4. Save screenshots to `.claude/screenshots/` using the pattern
+   `<page-name>-ipad.png` / `<page-name>-desktop.png` (e.g.
+   `settings-ipad.png`, `settings-desktop.png`) so before/after runs are
+   diffable by filename.
+5. Report anything that looks broken or cramped at either size — don't just
+   confirm the screenshots were taken.
+
+### Extra viewport sizes (manual check via playwright-desktop's browser_resize)
+
+Use these when a bug report or design spec calls for a size outside the two
+defaults above:
+
+| Device                  | CSS viewport |
+|--------------------------|--------------|
+| iPad Pro 12.9"           | 1024 x 1366  |
+| iPad Air / 10.9"         | 820 x 1180   |
+| iPad mini                | 744 x 1133   |
+| Small laptop             | 1366 x 768   |
+| Large laptop / desktop   | 1920 x 1080  |
+
+`browser_resize` only changes pixel dimensions (no touch/UA emulation), so
+it's for layout-only spot checks, not a substitute for the iPad server above.
+

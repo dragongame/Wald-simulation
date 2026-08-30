@@ -83,10 +83,10 @@ const WaldsimAnalyse = (() => {
   }
 
   function kurvenFuer(zeitreihe) {
-    return ausgewaehlteIndikatoren().map((ind, idx) => ({
+    return ausgewaehlteIndikatoren().map((ind) => ({
       werte: WaldsimChart.werteAusZeitreihe(zeitreihe, ind.id),
       farbe: ind.farbe,
-      dash: WaldsimChart.DASH_MUSTER[idx % WaldsimChart.DASH_MUSTER.length],
+      dash: ind.dash,
     }));
   }
 
@@ -113,7 +113,7 @@ const WaldsimAnalyse = (() => {
     return `
       <label class="analyse-indikator-zeile ${relevant ? "ist-kaskadenrelevant" : ""}">
         <input type="checkbox" value="${ind.id}" ${ausgewaehlt.has(ind.id) ? "checked" : ""}>
-        <span class="analyse-farb-chip" style="background:${ind.farbe}"></span>
+        ${WaldsimChart.legendenChipSvg(ind.farbe, ind.dash)}
         <span class="analyse-indikator-name">${escapeHtml(ind.name)}</span>
         ${relevant ? '<span class="analyse-kaskaden-badge" title="Teil des tatsächlich abgelaufenen Kaskadenpfads">★</span>' : ""}
       </label>
@@ -216,7 +216,11 @@ const WaldsimAnalyse = (() => {
     const data = await WaldsimData.load();
 
     lauf = neuerLauf;
-    indikatoren = data.indikatoren.map((ind) => ({ ...ind, farbe: WaldsimChart.farbeFuer(ind.id) }));
+    indikatoren = data.indikatoren.map((ind) => ({
+      ...ind,
+      farbe: WaldsimChart.farbeFuer(ind.id),
+      dash: WaldsimChart.linienstilFuer(ind.id),
+    }));
     kaskadenrelevant = ermittleKaskadenrelevant(lauf.resolved, lauf.regler);
     ausgewaehlt = new Set(kaskadenrelevant);
     snapshots = [];

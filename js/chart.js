@@ -13,54 +13,90 @@ const WaldsimChart = (() => {
   const JAHRE_GESAMT = 20;
   const DASH_MUSTER = ["", "6 3", "2 3", "8 2 2 2"];
 
-  // Feste Farbzuordnung je Indikator (Reihenfolge aus data/indikatoren.json),
-  // damit Legende und Diagramme über Analyse-Screen und Forscherheft hinweg
-  // konsistent bleiben. Signalrot bleibt bewusst ausgespart (laut Styleguide
-  // reserviert für den Fichtenmonokultur-Kollaps im Dashboard).
-  const INDIKATOR_FARBEN = {
-    gesamtvitalitaet: "#4C6E4A",
-    borkenkaefer_dichte: "#B5651D",
-    totholzmenge: "#6B4A34",
-    kronendach: "#6E9B6B",
-    bodenfeuchte: "#5C7A8A",
-    biodiversitaet: "#6E5A63",
-    fichte_vitalitaet: "#2F5233",
-    buche_vitalitaet: "#A67C3D",
-    eiche_vitalitaet: "#7A8B3F",
-    kiefer_vitalitaet: "#C08A4E",
-    birke_anteil: "#B79A6B",
-    verjuengung_mischbaumarten: "#3D6B4F",
-    reh_dichte: "#8C6349",
-    rothirsch_dichte: "#6B4E3D",
-    brandrisiko: "#A8522E",
-    // Erweiterung um bislang nur im Lexikon/Netzwerk-Graph vorhandene Arten
-    // (siehe docs/Wissensbasis_Erweiterung_weitere_Arten.md) - Paletten an
-    // Kategorie angelehnt: Sträucher bräunlich-grün, Pilze dunkel-holzig,
-    // Kräuter grasgrün, Prädatoren erdig-warm.
-    hasel_anteil: "#8A9B5E",
-    holunder_anteil: "#6F7D3F",
-    brombeere_anteil: "#7C4A5E",
-    zunderschwamm_indikator: "#5A4433",
-    blaeuepilz_indikator: "#4A5F7A",
-    hallimasch_indikator: "#8B5A2B",
-    brennnessel_indikator: "#4F7A3D",
-    eichelhaeher_indikator: "#5E7A9B",
-    buntspecht_indikator: "#8B4A3A",
-    ameisenbuntkaefer_indikator: "#9B6B2E",
-    buschwindroeschen_indikator: "#7FA0C4",
-    waldmeister_indikator: "#3F8B5C",
-    heidelbeere_indikator: "#5C4B8A",
-    eichhoernchen_indikator: "#C06B2E",
-    raupen_indikator: "#7A8B3F",
-    blattlaeuse_indikator: "#8FA85E",
-    habicht_indikator: "#6B5A4A",
-    sperber_indikator: "#8A7A6A",
-    kleinsaeuger_indikator: "#9B8A6B",
-    fuchs_indikator: "#C1732E",
+  // Farbe + Linienstil sind gemeinsam fest je Indikator hinterlegt (statt wie
+  // vor Backlog "Kurven-Darstellung verbessern" Farbe fix + Linienstil live
+  // aus dem Auswahl-Index berechnet) - damit ändert sich beim An-/Abwählen
+  // weiterer Kurven weder Farbe noch Linienstil bereits sichtbarer Kurven.
+  // Farbe ist an die `kategorie` aus data/indikatoren.json gekoppelt (nicht
+  // mehr an den einzelnen Indikator), damit z.B. alle Baumarten als
+  // Grün-Familie erkennbar sind. Kategorien mit mehr als 4 Mitgliedern
+  // (baumbestand, praedator) bekommen zwei eng verwandte Farbtöne entlang
+  // einer fachlich sinnvollen Untergruppe (Nadel-/Laubbaum bzw. Vögel/
+  // Boden-Rinden-Prädatoren, siehe Wissensbasis Nr. 23-26), damit jede
+  // Farb-Untergruppe mit höchstens 4 Linienstilen auskommt. Signalrot bleibt
+  // bewusst ausgespart (laut Styleguide reserviert für den
+  // Fichtenmonokultur-Kollaps im Dashboard).
+  const INDIKATOR_STIL = {
+    // baumbestand - Nadelbaum-Familie (dunkles Grün)
+    gesamtvitalitaet: { farbe: "#2F5233", dash: 0 },
+    fichte_vitalitaet: { farbe: "#2F5233", dash: 1 },
+    kiefer_vitalitaet: { farbe: "#2F5233", dash: 2 },
+    // baumbestand - Laubbaum-Familie (helleres Grün)
+    buche_vitalitaet: { farbe: "#7BA05B", dash: 0 },
+    eiche_vitalitaet: { farbe: "#7BA05B", dash: 1 },
+    birke_anteil: { farbe: "#7BA05B", dash: 2 },
+
+    borkenkaefer_dichte: { farbe: "#B5651D", dash: 0 }, // schaedling
+
+    totholzmenge: { farbe: "#6B4A34", dash: 0 }, // struktur
+    kronendach: { farbe: "#6B4A34", dash: 1 },
+
+    bodenfeuchte: { farbe: "#5C7A8A", dash: 0 }, // abiotisch
+    biodiversitaet: { farbe: "#6E5A75", dash: 0 }, // biodiversitaet
+
+    verjuengung_mischbaumarten: { farbe: "#8C6349", dash: 0 }, // wildverbiss
+    reh_dichte: { farbe: "#8C6349", dash: 1 },
+    rothirsch_dichte: { farbe: "#8C6349", dash: 2 },
+
+    brandrisiko: { farbe: "#9C4A2E", dash: 0 }, // szenario5
+
+    hasel_anteil: { farbe: "#9B8449", dash: 0 }, // strauch
+    holunder_anteil: { farbe: "#9B8449", dash: 1 },
+    brombeere_anteil: { farbe: "#9B8449", dash: 2 },
+
+    zunderschwamm_indikator: { farbe: "#4A3A2C", dash: 0 }, // pilz
+    blaeuepilz_indikator: { farbe: "#4A3A2C", dash: 1 },
+    hallimasch_indikator: { farbe: "#4A3A2C", dash: 2 },
+
+    brennnessel_indikator: { farbe: "#3F8A6E", dash: 0 }, // kraut
+    buschwindroeschen_indikator: { farbe: "#3F8A6E", dash: 1 },
+    waldmeister_indikator: { farbe: "#3F8A6E", dash: 2 },
+    heidelbeere_indikator: { farbe: "#3F8A6E", dash: 3 },
+
+    eichelhaeher_indikator: { farbe: "#5E7A9B", dash: 0 }, // verbreiter
+
+    eichhoernchen_indikator: { farbe: "#B08A2E", dash: 0 }, // herbivor
+    raupen_indikator: { farbe: "#B08A2E", dash: 1 },
+    blattlaeuse_indikator: { farbe: "#B08A2E", dash: 2 },
+
+    // praedator - Vögel-Familie (Buntspecht/Habicht/Sperber, schlagen v.a.
+    // in der Baum-/Luftschicht zu, siehe Wissensbasis Nr. 23/26)
+    buntspecht_indikator: { farbe: "#6B6B8A", dash: 0 },
+    habicht_indikator: { farbe: "#6B6B8A", dash: 1 },
+    sperber_indikator: { farbe: "#6B6B8A", dash: 2 },
+    // praedator - Boden-/Rinden-Familie (Ameisenbuntkäfer auf der Rinde,
+    // Fuchs am Boden, siehe Wissensbasis Nr. 24/25)
+    ameisenbuntkaefer_indikator: { farbe: "#A85A45", dash: 0 },
+    fuchs_indikator: { farbe: "#A85A45", dash: 1 },
+
+    kleinsaeuger_indikator: { farbe: "#8A7A92", dash: 0 }, // kleinsaeuger
   };
 
+  function stilFuer(indikatorId) {
+    return INDIKATOR_STIL[indikatorId] || { farbe: "#888888", dash: 0 };
+  }
+
   function farbeFuer(indikatorId) {
-    return INDIKATOR_FARBEN[indikatorId] || "#888888";
+    return stilFuer(indikatorId).farbe;
+  }
+
+  function linienstilFuer(indikatorId) {
+    return DASH_MUSTER[stilFuer(indikatorId).dash % DASH_MUSTER.length];
+  }
+
+  /** Kleines Linien-Icon für Legenden, exakt im selben Farb-/Dash-Muster wie die echte Kurve. */
+  function legendenChipSvg(farbe, dash) {
+    return `<svg class="analyse-farb-chip" viewBox="0 0 20 10" width="20" height="10" aria-hidden="true"><line x1="1" y1="5" x2="19" y2="5" stroke="${farbe}" stroke-width="2.5" stroke-dasharray="${dash || ""}"/></svg>`;
   }
 
   function werteAusZeitreihe(zeitreihe, indikatorId) {
@@ -112,5 +148,5 @@ const WaldsimChart = (() => {
     `;
   }
 
-  return { JAHRE_GESAMT, DASH_MUSTER, farbeFuer, werteAusZeitreihe, svg };
+  return { JAHRE_GESAMT, DASH_MUSTER, farbeFuer, linienstilFuer, legendenChipSvg, werteAusZeitreihe, svg };
 })();

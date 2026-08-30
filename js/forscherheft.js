@@ -280,7 +280,7 @@ const WaldsimForscherheft = (() => {
     const legendeHtml = snap.namen
       .map(
         (name, idx) =>
-          `<li><span class="analyse-farb-chip" style="background:${snap.kurven[0][idx].farbe}"></span>${escapeHtml(name)}</li>`
+          `<li>${WaldsimChart.legendenChipSvg(snap.kurven[0][idx].farbe, snap.kurven[0][idx].dash)}${escapeHtml(name)}</li>`
       )
       .join("");
     const chartsHtml = eintrag.waelder
