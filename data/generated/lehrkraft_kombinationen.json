@@ -147,59 +147,24 @@
       "waldtyp_b": "mischwald",
       "ereignisse": [
         {
-          "typ": "borkenkaefer",
-          "trigger_jahr": 0
-        },
-        {
           "typ": "trockenheit",
           "trigger_jahr": 0
-        }
-      ],
-      "wildverbiss_regler": "beide",
-      "kontrast_score": 29.4,
-      "ereignis_label": "Borkenkäferbefall + Trockenheit / Dürre (gleichzeitig)",
-      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
-      "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 7.8,
-        "label": "Kollaps"
-      },
-      "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 96.0,
-        "label": "kaum Schaden"
-      },
-      "staerkste_unterschiede": [
-        "Baumbestand (gesamt)",
-        "Biodiversität",
-        "Totholzmenge"
-      ],
-      "verjuengung_a": 98.0,
-      "verjuengung_b": 94.9,
-      "verjuengung_diff": 3.1,
-      "rang": 5
-    },
-    {
-      "waldtyp_a": "fichtenmonokultur",
-      "waldtyp_b": "mischwald",
-      "ereignisse": [
+        },
         {
           "typ": "sturm",
-          "trigger_jahr": 0
-        },
-        {
-          "typ": "trockenheit",
           "trigger_jahr": 1
         }
       ],
       "wildverbiss_regler": "beide",
-      "kontrast_score": 28.7,
-      "ereignis_label": "Extremwetter (Sturm/Windwurf) → Trockenheit / Dürre (1 Jahr(e) später)",
+      "kontrast_score": 29.1,
+      "ereignis_label": "Trockenheit / Dürre → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)",
       "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
       "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 55.9,
+        "gesamtvitalitaet": 48.7,
         "label": "deutlicher Schaden"
       },
       "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 95.1,
+        "gesamtvitalitaet": 92.0,
         "label": "kaum Schaden"
       },
       "staerkste_unterschiede": [
@@ -210,6 +175,41 @@
       "verjuengung_a": 94.0,
       "verjuengung_b": 94.0,
       "verjuengung_diff": 0.0,
+      "rang": 5
+    },
+    {
+      "waldtyp_a": "fichtenmonokultur",
+      "waldtyp_b": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "borkenkaefer",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "beide",
+      "kontrast_score": 28.3,
+      "ereignis_label": "Borkenkäferbefall + Trockenheit / Dürre (gleichzeitig)",
+      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
+      "waldtyp_a_endzustand": {
+        "gesamtvitalitaet": 6.8,
+        "label": "Kollaps"
+      },
+      "waldtyp_b_endzustand": {
+        "gesamtvitalitaet": 91.4,
+        "label": "kaum Schaden"
+      },
+      "staerkste_unterschiede": [
+        "Baumbestand (gesamt)",
+        "Biodiversität",
+        "Totholzmenge"
+      ],
+      "verjuengung_a": 98.1,
+      "verjuengung_b": 94.9,
+      "verjuengung_diff": 3.2,
       "rang": 6
     },
     {
@@ -257,11 +257,11 @@
         }
       ],
       "wildverbiss_regler": "beide",
-      "kontrast_score": 26.0,
+      "kontrast_score": 27.2,
       "ereignis_label": "Borkenkäferbefall + Trockenheit / Dürre (gleichzeitig)",
       "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
       "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 7.8,
+        "gesamtvitalitaet": 6.8,
         "label": "Kollaps"
       },
       "waldtyp_b_endzustand": {
@@ -273,9 +273,9 @@
         "Totholzmenge",
         "Biodiversität"
       ],
-      "verjuengung_a": 98.0,
+      "verjuengung_a": 98.1,
       "verjuengung_b": 98.5,
-      "verjuengung_diff": 0.5,
+      "verjuengung_diff": 0.4,
       "rang": 8
     },
     {
@@ -416,6 +416,41 @@
     },
     {
       "waldtyp_a": "fichtenmonokultur",
+      "waldtyp_b": "kiefernwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "sturm",
+          "trigger_jahr": 1
+        }
+      ],
+      "wildverbiss_regler": "beide",
+      "kontrast_score": 20.1,
+      "ereignis_label": "Trockenheit / Dürre → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)",
+      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
+      "waldtyp_a_endzustand": {
+        "gesamtvitalitaet": 48.7,
+        "label": "deutlicher Schaden"
+      },
+      "waldtyp_b_endzustand": {
+        "gesamtvitalitaet": 100.0,
+        "label": "kaum Schaden"
+      },
+      "staerkste_unterschiede": [
+        "Baumbestand (gesamt)",
+        "Totholzmenge",
+        "Kronendach / Beschattung"
+      ],
+      "verjuengung_a": 94.0,
+      "verjuengung_b": 95.6,
+      "verjuengung_diff": 1.6,
+      "rang": 13
+    },
+    {
+      "waldtyp_a": "fichtenmonokultur",
       "waldtyp_b": "mischwald",
       "ereignisse": [
         {
@@ -447,41 +482,6 @@
       "verjuengung_a": 94.0,
       "verjuengung_b": 94.0,
       "verjuengung_diff": 0.0,
-      "rang": 13
-    },
-    {
-      "waldtyp_a": "fichtenmonokultur",
-      "waldtyp_b": "kiefernwald",
-      "ereignisse": [
-        {
-          "typ": "sturm",
-          "trigger_jahr": 0
-        },
-        {
-          "typ": "trockenheit",
-          "trigger_jahr": 1
-        }
-      ],
-      "wildverbiss_regler": "beide",
-      "kontrast_score": 18.1,
-      "ereignis_label": "Extremwetter (Sturm/Windwurf) → Trockenheit / Dürre (1 Jahr(e) später)",
-      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
-      "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 55.9,
-        "label": "deutlicher Schaden"
-      },
-      "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 100.0,
-        "label": "kaum Schaden"
-      },
-      "staerkste_unterschiede": [
-        "Baumbestand (gesamt)",
-        "Totholzmenge",
-        "Kronendach / Beschattung"
-      ],
-      "verjuengung_a": 94.0,
-      "verjuengung_b": 95.6,
-      "verjuengung_diff": 1.6,
       "rang": 14
     },
     {
@@ -498,20 +498,20 @@
         }
       ],
       "wildverbiss_regler": "beide",
-      "kontrast_score": 14.2,
+      "kontrast_score": 17.5,
       "ereignis_label": "Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)",
       "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
       "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 63.3,
+        "gesamtvitalitaet": 35.9,
         "label": "deutlicher Schaden"
       },
       "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 96.0,
+        "gesamtvitalitaet": 91.3,
         "label": "kaum Schaden"
       },
       "staerkste_unterschiede": [
-        "Biodiversität",
         "Baumbestand (gesamt)",
+        "Biodiversität",
         "Totholzmenge"
       ],
       "verjuengung_a": 99.0,
@@ -521,23 +521,62 @@
     },
     {
       "waldtyp_a": "fichtenmonokultur",
-      "waldtyp_b": "mischwald",
+      "waldtyp_b": "kiefernwald",
       "ereignisse": [
+        {
+          "typ": "temperatur",
+          "trigger_jahr": 0
+        },
         {
           "typ": "trockenheit",
           "trigger_jahr": 0
         }
       ],
       "wildverbiss_regler": "beide",
-      "kontrast_score": 13.0,
-      "ereignis_label": "Trockenheit / Dürre",
+      "kontrast_score": 16.6,
+      "ereignis_label": "Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)",
       "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
       "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 72.4,
-        "label": "kaum Schaden"
+        "gesamtvitalitaet": 35.9,
+        "label": "deutlicher Schaden"
       },
       "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 96.3,
+        "gesamtvitalitaet": 100.0,
+        "label": "kaum Schaden"
+      },
+      "staerkste_unterschiede": [
+        "Baumbestand (gesamt)",
+        "Totholzmenge",
+        "Biodiversität"
+      ],
+      "verjuengung_a": 99.0,
+      "verjuengung_b": 98.5,
+      "verjuengung_diff": 0.5,
+      "rang": 16
+    },
+    {
+      "waldtyp_a": "fichtenmonokultur",
+      "waldtyp_b": "mischwald",
+      "ereignisse": [
+        {
+          "typ": "trockenheit",
+          "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
+        }
+      ],
+      "wildverbiss_regler": "beide",
+      "kontrast_score": 16.0,
+      "ereignis_label": "Trockenheit / Dürre + Totholzentnahme zur Waldbrandprävention (gleichzeitig)",
+      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
+      "waldtyp_a_endzustand": {
+        "gesamtvitalitaet": 47.1,
+        "label": "deutlicher Schaden"
+      },
+      "waldtyp_b_endzustand": {
+        "gesamtvitalitaet": 91.8,
         "label": "kaum Schaden"
       },
       "staerkste_unterschiede": [
@@ -548,41 +587,6 @@
       "verjuengung_a": 99.0,
       "verjuengung_b": 94.9,
       "verjuengung_diff": 4.1,
-      "rang": 16
-    },
-    {
-      "waldtyp_a": "fichtenmonokultur",
-      "waldtyp_b": "kiefernwald",
-      "ereignisse": [
-        {
-          "typ": "borkenkaefer",
-          "trigger_jahr": 0
-        },
-        {
-          "typ": "sturm",
-          "trigger_jahr": 1
-        }
-      ],
-      "wildverbiss_regler": "beide",
-      "kontrast_score": 12.4,
-      "ereignis_label": "Borkenkäferbefall → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)",
-      "regler_label": "Luchs & Wolf (Standard, kaum Effekt)",
-      "waldtyp_a_endzustand": {
-        "gesamtvitalitaet": 68.6,
-        "label": "deutlicher Schaden"
-      },
-      "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 100.0,
-        "label": "kaum Schaden"
-      },
-      "staerkste_unterschiede": [
-        "Baumbestand (gesamt)",
-        "Totholzmenge",
-        "Kronendach / Beschattung"
-      ],
-      "verjuengung_a": 94.0,
-      "verjuengung_b": 95.6,
-      "verjuengung_diff": 1.6,
       "rang": 17
     },
     {
@@ -592,18 +596,22 @@
         {
           "typ": "trockenheit",
           "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
         }
       ],
       "wildverbiss_regler": "keine",
-      "kontrast_score": 9.7,
-      "ereignis_label": "Trockenheit / Dürre",
+      "kontrast_score": 10.0,
+      "ereignis_label": "Trockenheit / Dürre + Totholzentnahme zur Waldbrandprävention (gleichzeitig)",
       "regler_label": "beide fehlen (starker Wildverbiss)",
       "waldtyp_a_endzustand": {
         "gesamtvitalitaet": 100.0,
         "label": "kaum Schaden"
       },
       "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 95.4,
+        "gesamtvitalitaet": 90.8,
         "label": "kaum Schaden"
       },
       "staerkste_unterschiede": [
@@ -622,24 +630,20 @@
       "waldtyp_b": "mischwald",
       "ereignisse": [
         {
-          "typ": "trockenheit",
-          "trigger_jahr": 0
-        },
-        {
-          "typ": "totholzentnahme",
+          "typ": "temperatur",
           "trigger_jahr": 0
         }
       ],
       "wildverbiss_regler": "keine",
-      "kontrast_score": 8.2,
-      "ereignis_label": "Trockenheit / Dürre + Totholzentnahme zur Waldbrandprävention (gleichzeitig)",
+      "kontrast_score": 7.9,
+      "ereignis_label": "Höhere Temperaturen",
       "regler_label": "beide fehlen (starker Wildverbiss)",
       "waldtyp_a_endzustand": {
         "gesamtvitalitaet": 100.0,
         "label": "kaum Schaden"
       },
       "waldtyp_b_endzustand": {
-        "gesamtvitalitaet": 95.4,
+        "gesamtvitalitaet": 98.9,
         "label": "kaum Schaden"
       },
       "staerkste_unterschiede": [
@@ -660,11 +664,15 @@
         {
           "typ": "temperatur",
           "trigger_jahr": 0
+        },
+        {
+          "typ": "totholzentnahme",
+          "trigger_jahr": 0
         }
       ],
       "wildverbiss_regler": "keine",
-      "kontrast_score": 7.9,
-      "ereignis_label": "Höhere Temperaturen",
+      "kontrast_score": 7.2,
+      "ereignis_label": "Höhere Temperaturen + Totholzentnahme zur Waldbrandprävention (gleichzeitig)",
       "regler_label": "beide fehlen (starker Wildverbiss)",
       "waldtyp_a_endzustand": {
         "gesamtvitalitaet": 100.0,

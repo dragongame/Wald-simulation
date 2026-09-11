@@ -261,6 +261,10 @@ const WaldsimForscherheft = (() => {
       zeitpunkt: new Date().toISOString(),
       regler: lauf.regler,
       ereignisse: lauf.resolved.events,
+      // M34: konfigId löst die exakte Zeitreihen-Datei eindeutig auf (u.a.
+      // wichtig bei Trockenheit, wo "ereignisse" allein bei 4 vs. 8 Jahren
+      // identisch aussieht) - siehe js/graph.js oeffneFuerEintrag().
+      konfigId: lauf.resolved.konfigId,
       waelder: [0, 1].map((i) => ({
         waldtypId: lauf.waldtypen[i].id,
         waldtypName: lauf.waldtypen[i].kurzname,

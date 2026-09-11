@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "fichtenmonokultur",
+    "konfig_id": "temperatur+sturm",
     "ereignisse": [
       {
         "typ": "temperatur",

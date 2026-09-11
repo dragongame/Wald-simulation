@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "mischwald",
+    "konfig_id": "totholzentnahme",
     "ereignisse": [
       {
         "typ": "totholzentnahme",

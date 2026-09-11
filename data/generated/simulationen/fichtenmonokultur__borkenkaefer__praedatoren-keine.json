@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "fichtenmonokultur",
+    "konfig_id": "borkenkaefer",
     "ereignisse": [
       {
         "typ": "borkenkaefer",

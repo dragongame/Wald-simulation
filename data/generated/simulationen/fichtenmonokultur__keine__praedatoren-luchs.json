@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "fichtenmonokultur",
+    "konfig_id": "keine",
     "ereignisse": [],
     "wildverbiss_regler": "luchs"
   },

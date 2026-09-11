@@ -51,6 +51,8 @@
       "kurzbeschreibung": "Wassermangel senkt die Abwehrkraft der Bäume, besonders der Fichte, und macht sie anfälliger für Borkenkäfer und Hallimasch.",
       "dauer_jahre": 4,
       "dauer_jahre_hinweis": "Didaktisch vereinfachte Annahme (Wissensbasis Abschnitt 5 'didaktische Reduktion'). Vorher Konstante DAUER_TROCKENHEIT_JAHRE in scripts/simulation/model.py, seit M33 hierher verschoben (reines Refactoring).",
+      "dauer_wahlmoeglichkeiten": [4, 8],
+      "dauer_wahlmoeglichkeiten_hinweis": "Nutzer-Entscheidung 2026-09-11 (M34, siehe Milestones-Dokument): 4 Jahre (Status quo) bleibt Standard, 8 Jahre kommt als zweite Stufe hinzu - einzige Störung mit wählbarer Dauer, alle anderen behalten ihr festes dauer_jahre. Nur die trockenheit-Konfigurationen (8 der 22 Ereignis-Auswahlzustände) werden dadurch verdoppelt, siehe kombinatorik unten.",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 2"
     },
     {
@@ -197,16 +199,16 @@
   },
   "kombinatorik": {
     "beschreibung": "Erwartete Gesamtzahl vorab zu berechnender 20-Jahres-Verläufe für die Build-Time-Vorabsimulation (M2) - siehe Umsetzungsauftrag 2.11. Wird dort NICHT berechnet, sondern nur als Prüfsumme für das Build-Skript dokumentiert.",
-    "kombinatorik_aenderung_hinweis": "Seit 2026-08-26 (Nutzer-Entscheidung, Ersetzung des 3-Stufen-Wildverbiss-Reglers durch den Wolf/Luchs-Schalter, siehe Milestones-Dokument) 4 statt 3 Kombinationen auf dieser Achse - Gesamtzahl dadurch von 195 auf 261 gestiegen. Weicht vom in docs/Umsetzungsauftrag_Waldsimulation_Klasse8_fuer_Claude_Code.md dokumentierten Akzeptanzkriterium '195 Kombinationen' ab; dort noch nicht nachgezogen (Rang-1-Quelldokument, nur nach expliziter Rücksprache zu ändern).",
-    "ereignis_auswahlzustaende": 22,
-    "ereignis_auswahlzustaende_erklaerung": "0 Ereignisse (1) + 5 einzelne (5) + 16 Zweierkombinationen (Temperatur-Paare ohne Reihenfolge gezählt) = 22.",
+    "kombinatorik_aenderung_hinweis": "Seit 2026-08-26 (Nutzer-Entscheidung, Ersetzung des 3-Stufen-Wildverbiss-Reglers durch den Wolf/Luchs-Schalter, siehe Milestones-Dokument) 4 statt 3 Kombinationen auf dieser Achse - Gesamtzahl dadurch von 195 auf 261 gestiegen. Seit 2026-09-11 (M34, wählbare Trockenheitsdauer) weitere 96 Zeitreihen durch die verdoppelten Trockenheits-Zustände hinzugekommen - Gesamtzahl von 261 auf 357 gestiegen. Weicht vom in docs/Umsetzungsauftrag_Waldsimulation_Klasse8_fuer_Claude_Code.md dokumentierten Akzeptanzkriterium '195 Kombinationen' ab; dort noch nicht nachgezogen (Rang-1-Quelldokument, nur nach expliziter Rücksprache zu ändern, siehe M42).",
+    "ereignis_auswahlzustaende": 30,
+    "ereignis_auswahlzustaende_erklaerung": "0 Ereignisse (1) + 5 einzelne (5) + 16 Zweierkombinationen (Temperatur-Paare ohne Reihenfolge gezählt) = 22, plus 8 zusätzliche 8-Jahre-Trockenheits-Varianten (die 8 der 22 Zustände, die Trockenheit enthalten, siehe dauer_wahlmoeglichkeiten oben) = 30.",
     "praedatoren_kombinationen": 4,
     "praedatoren_kombinationen_erklaerung": "Luchs an/aus × Wolf an/aus = 4 Kombinationen (beide/nur-luchs/nur-wolf/keine), ersetzt die früheren 3 Regler-Stufen.",
     "ungueltige_kombination_nichts_gewaehlt": 1,
-    "konfigurationen_pro_waldtyp": 87,
-    "konfigurationen_pro_waldtyp_formel": "22 * 4 - 1 = 87",
+    "konfigurationen_pro_waldtyp": 119,
+    "konfigurationen_pro_waldtyp_formel": "30 * 4 - 1 = 119",
     "waldtypen": 3,
-    "gesamt_zeitreihen": 261,
-    "gesamt_zeitreihen_formel": "87 * 3 = 261"
+    "gesamt_zeitreihen": 357,
+    "gesamt_zeitreihen_formel": "119 * 3 = 357"
   }
 }

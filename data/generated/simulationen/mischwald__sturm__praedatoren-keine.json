@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "mischwald",
+    "konfig_id": "sturm",
     "ereignisse": [
       {
         "typ": "sturm",

@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "fichtenmonokultur",
+    "konfig_id": "trockenheit-dann-borkenkaefer",
     "ereignisse": [
       {
         "typ": "trockenheit",

@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "kiefernwald",
+    "konfig_id": "trockenheit-dann-borkenkaefer",
     "ereignisse": [
       {
         "typ": "trockenheit",

@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "kiefernwald",
+    "konfig_id": "sturm-dann-totholzentnahme",
     "ereignisse": [
       {
         "typ": "sturm",

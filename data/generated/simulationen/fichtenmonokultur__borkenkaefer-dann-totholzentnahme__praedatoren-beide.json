@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "fichtenmonokultur",
+    "konfig_id": "borkenkaefer-dann-totholzentnahme",
     "ereignisse": [
       {
         "typ": "borkenkaefer",

@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "mischwald",
+    "konfig_id": "trockenheit-dann-totholzentnahme",
     "ereignisse": [
       {
         "typ": "trockenheit",

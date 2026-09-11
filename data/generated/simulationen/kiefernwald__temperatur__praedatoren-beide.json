@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "kiefernwald",
+    "konfig_id": "temperatur",
     "ereignisse": [
       {
         "typ": "temperatur",

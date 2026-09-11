@@ -23,7 +23,7 @@ const WaldsimConfig = (() => {
    * @param {[string, string]|null} reihenfolge - vom Nutzer gewählte Reihenfolge [erst, zweit], falls schon getroffen
    * @returns {{konfigId: string|null, events: {typ: string, trigger_jahr: number}[]|null, brauchtReihenfolge: boolean, reihenfolgeOptionen: [string, string]|null, abstandJahre: number|null}}
    */
-  function resolveEreignisKonfiguration(stoerungen, gewaehlteEreignisse, reihenfolge) {
+  function resolveEreignisKonfigurationBasis(stoerungen, gewaehlteEreignisse, reihenfolge) {
     if (gewaehlteEreignisse.length === 0) {
       return { konfigId: "keine", events: [], brauchtReihenfolge: false, reihenfolgeOptionen: null, abstandJahre: null };
     }
@@ -91,6 +91,26 @@ const WaldsimConfig = (() => {
       reihenfolgeOptionen: [x, y],
       abstandJahre: eintrag.abstand_jahre,
     };
+  }
+
+  /**
+   * M34: hängt bei gewählter Trockenheit + Nicht-Standard-Dauer (8 statt 4
+   * Jahre) einen Suffix an konfigId an, exakt wie scripts/simulation/
+   * build_simulationen.py's erweitere_um_trockenheitsdauer() ihn beim Build
+   * erzeugt hat. Die Standard-Dauer (4 Jahre) bleibt unverändert, damit vor
+   * M34 gespeicherte Forscherheft-Einträge weiterhin auflösbar sind.
+   *
+   * @param {number} [trockenheitDauer] - 4 (Standard) oder 8, nur relevant wenn "trockenheit" gewählt ist
+   */
+  function resolveEreignisKonfiguration(stoerungen, gewaehlteEreignisse, reihenfolge, trockenheitDauer) {
+    const ergebnis = resolveEreignisKonfigurationBasis(stoerungen, gewaehlteEreignisse, reihenfolge);
+    const trockenheitEintrag = stoerungen.ereignis_stoerungen.find((s) => s.id === "trockenheit");
+    const standardDauer = trockenheitEintrag.dauer_jahre;
+    const brauchtSuffix = gewaehlteEreignisse.includes("trockenheit") && trockenheitDauer && trockenheitDauer !== standardDauer;
+    if (ergebnis.konfigId && brauchtSuffix) {
+      return { ...ergebnis, konfigId: `${ergebnis.konfigId}-dauer${trockenheitDauer}` };
+    }
+    return ergebnis;
   }
 
   function dateiname(waldtypId, konfigId, praedatorenCode) {

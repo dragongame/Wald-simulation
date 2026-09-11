@@ -790,22 +790,39 @@ const WaldsimGraph = (() => {
 
   /**
    * Lädt für jeden Wald des Forscherheft-Eintrags die exakt passende, bereits
-   * vorab berechnete Zeitreihen-Datei (dieselbe Waldtyp/Ereignisse/Regler-
-   * Kombination, über data/generated/simulationen_index.json aufgelöst - kein
-   * erneutes Berechnen) und liefert die Vereinigung ihrer `projektion.wichtig`
-   * (M29) - Fundament für die szenario-genaue Teilmenge in M32.
+   * vorab berechnete Zeitreihen-Datei (kein erneutes Berechnen) und liefert
+   * die Vereinigung ihrer `projektion.wichtig` (M29) - Fundament für die
+   * szenario-genaue Teilmenge in M32.
+   *
+   * Bevorzugt `eintrag.konfigId` (seit M34, siehe js/forscherheft.js) für den
+   * direkten Dateinamen über WaldsimConfig.dateiname() - seit der wählbaren
+   * Trockenheitsdauer sehen zwei Konfigurationen mit unterschiedlicher Dauer
+   * über `ereignisse` allein identisch aus (Dauer steckt nur im konfigId-
+   * Suffix), ein Abgleich allein über `ereignisse` wäre dafür mehrdeutig.
+   * Vor M34 gespeicherte Einträge kennen `konfigId` noch nicht - für sie war
+   * `ereignisse` allein damals noch eindeutig, der Index-Abgleich bleibt also
+   * als Rückfalloption korrekt.
    */
   async function ladeProjektionWichtig(eintrag) {
     const union = new Set();
     for (const wald of eintrag.waelder) {
-      const treffer = data.simulationenIndex.eintraege.find(
-        (e) =>
-          e.waldtyp === wald.waldtypId &&
-          e.wildverbiss_regler === eintrag.regler &&
-          JSON.stringify(e.ereignisse) === JSON.stringify(eintrag.ereignisse)
-      );
-      if (!treffer) continue;
-      const zeitreihenDatei = await WaldsimData.ladeZeitreihe(treffer.datei);
+      let datei = eintrag.konfigId
+        ? `simulationen/${WaldsimConfig.dateiname(wald.waldtypId, eintrag.konfigId, eintrag.regler)}`
+        : null;
+      if (datei && !data.simulationenIndex.eintraege.some((e) => e.datei === datei)) {
+        datei = null; // unerwartet fehlende Datei - nicht crashen, siehe Rückfall unten
+      }
+      if (!datei) {
+        const treffer = data.simulationenIndex.eintraege.find(
+          (e) =>
+            e.waldtyp === wald.waldtypId &&
+            e.wildverbiss_regler === eintrag.regler &&
+            JSON.stringify(e.ereignisse) === JSON.stringify(eintrag.ereignisse)
+        );
+        datei = treffer && treffer.datei;
+      }
+      if (!datei) continue;
+      const zeitreihenDatei = await WaldsimData.ladeZeitreihe(datei);
       (zeitreihenDatei.projektion.wichtig || []).forEach((id) => union.add(id));
     }
     return union;

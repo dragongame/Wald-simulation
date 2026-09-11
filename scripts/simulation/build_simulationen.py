@@ -143,6 +143,27 @@ def baue_ereignis_konfigurationen(stoerungen):
     return konfigs
 
 
+def erweitere_um_trockenheitsdauer(ereignis_konfigs, dauer_wahlmoeglichkeiten, standard_dauer):
+    """M34: verdoppelt jeden Ereignis-Auswahlzustand, der Trockenheit enthält,
+    um eine Variante je zusätzlicher Dauer-Stufe (data/stoerungen.json ->
+    ereignis_stoerungen[trockenheit].dauer_wahlmoeglichkeiten). Die
+    Standard-Dauer behält den unveränderten konfig_id/Dateinamen
+    (Abwärtskompatibilität für bereits gespeicherte Forscherheft-Einträge -
+    siehe M34-Abnahmekriterium), zusätzliche Stufen bekommen einen Suffix.
+    Liefert (konfig_id, events, trockenheit_dauer)-Tripel statt der
+    (konfig_id, events)-Paare aus baue_ereignis_konfigurationen().
+    """
+    erweitert = []
+    for konfig_id, events in ereignis_konfigs:
+        if not any(e["typ"] == "trockenheit" for e in events):
+            erweitert.append((konfig_id, events, standard_dauer))
+            continue
+        for dauer in dauer_wahlmoeglichkeiten:
+            suffix = "" if dauer == standard_dauer else f"-dauer{dauer}"
+            erweitert.append((f"{konfig_id}{suffix}", events, dauer))
+    return erweitert
+
+
 def main():
     waldtypen = lade("waldtypen.json")["waldtypen"]
     stoerungen = lade("stoerungen.json")
@@ -160,9 +181,14 @@ def main():
 
     # Dauer akuter Effekte je Ereignis-Typ (seit M33 Datenfeld statt Konstante
     # in model.py, siehe data/stoerungen.json -> ereignis_stoerungen[].dauer_jahre).
-    dauer_je_typ = {e["id"]: e.get("dauer_jahre") for e in stoerungen["ereignis_stoerungen"]}
+    dauer_je_typ_basis = {e["id"]: e.get("dauer_jahre") for e in stoerungen["ereignis_stoerungen"]}
+    trockenheit_eintrag = next(e for e in stoerungen["ereignis_stoerungen"] if e["id"] == "trockenheit")
+    trockenheit_wahlmoeglichkeiten = trockenheit_eintrag["dauer_wahlmoeglichkeiten"]
+    trockenheit_standard = trockenheit_eintrag["dauer_jahre"]
 
-    ereignis_konfigs = baue_ereignis_konfigurationen(stoerungen)
+    ereignis_konfigs = erweitere_um_trockenheitsdauer(
+        baue_ereignis_konfigurationen(stoerungen), trockenheit_wahlmoeglichkeiten, trockenheit_standard
+    )
     erwartete_ereigniszustaende = stoerungen["kombinatorik"]["ereignis_auswahlzustaende"]
     assert len(ereignis_konfigs) == erwartete_ereigniszustaende, (
         f"Erwartet {erwartete_ereigniszustaende} Ereignis-Auswahlzustände, "
@@ -176,7 +202,8 @@ def main():
     index = []
     anzahl = 0
     for waldtyp in waldtypen:
-        for konfig_id, events in ereignis_konfigs:
+        for konfig_id, events, trockenheit_dauer in ereignis_konfigs:
+            dauer_je_typ = {**dauer_je_typ_basis, "trockenheit": trockenheit_dauer}
             for praedatoren_code, wolf_aktiv, luchs_aktiv in praedatoren_kombinationen:
                 if konfig_id == "keine" and praedatoren_code == "beide":
                     continue  # ungültig: keine Abweichung vom Ausgangszustand (2.10.2/3.2)
@@ -189,6 +216,7 @@ def main():
                 payload = {
                     "konfiguration": {
                         "waldtyp": waldtyp["id"],
+                        "konfig_id": konfig_id,
                         "ereignisse": events,
                         "wildverbiss_regler": praedatoren_code,
                     },

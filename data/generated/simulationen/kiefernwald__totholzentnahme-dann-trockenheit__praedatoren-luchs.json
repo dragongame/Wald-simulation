@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "kiefernwald",
+    "konfig_id": "totholzentnahme-dann-trockenheit",
     "ereignisse": [
       {
         "typ": "totholzentnahme",

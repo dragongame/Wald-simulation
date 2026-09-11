@@ -1,6 +1,7 @@
 {
   "konfiguration": {
     "waldtyp": "kiefernwald",
+    "konfig_id": "totholzentnahme",
     "ereignisse": [
       {
         "typ": "totholzentnahme",

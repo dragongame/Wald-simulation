@@ -54,6 +54,7 @@ const WaldsimStartScreen = (() => {
     wald: [],
     ereignisse: [],
     reihenfolge: null,
+    trockenheitDauer: 4, // M34: Standard-Dauer, nur bei gewählter Trockenheit sichtbar/relevant
     regler: "beide", // Ausgangszustand: Luchs + Wolf anwesend, kein Effekt
     hypothesen: ["", ""],
   };
@@ -143,9 +144,42 @@ const WaldsimStartScreen = (() => {
       .join("");
   }
 
+  function trockenheitEintrag() {
+    return data.stoerungen.ereignis_stoerungen.find((s) => s.id === "trockenheit");
+  }
+
+  // M34: eigene Auswahlachse nur für Trockenheit, nur sichtbar wenn gewählt -
+  // analog zu renderReihenfolge() unten (gleiches Container-/Radiogroup-Muster).
+  function renderTrockenheitDauer() {
+    const container = document.getElementById("trockenheit-dauer-auswahl");
+    if (!state.ereignisse.includes("trockenheit")) {
+      container.hidden = true;
+      container.innerHTML = "";
+      return;
+    }
+
+    const eintrag = trockenheitEintrag();
+    container.hidden = false;
+    container.innerHTML = `
+      <p class="wizard-hinweis">Wie lange hält die Trockenheit an?</p>
+      <div class="reihenfolge-optionen" role="radiogroup" aria-label="Dauer der Trockenheit">
+        ${eintrag.dauer_wahlmoeglichkeiten
+          .map(
+            (jahre) => `
+          <label class="reihenfolge-option">
+            <input type="radio" name="trockenheit-dauer" value="${jahre}" ${state.trockenheitDauer === jahre ? "checked" : ""}>
+            ${jahre} Jahre${jahre === eintrag.dauer_jahre ? " (Standard)" : ""}
+          </label>
+        `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
   function renderReihenfolge() {
     const container = document.getElementById("reihenfolge-auswahl");
-    const resolved = WaldsimConfig.resolveEreignisKonfiguration(data.stoerungen, state.ereignisse, state.reihenfolge);
+    const resolved = WaldsimConfig.resolveEreignisKonfiguration(data.stoerungen, state.ereignisse, state.reihenfolge, state.trockenheitDauer);
     lastResolved = resolved;
 
     if (!resolved.brauchtReihenfolge) {
@@ -361,7 +395,7 @@ const WaldsimStartScreen = (() => {
   }
 
   function aktualisiereAnzeige() {
-    const resolved = WaldsimConfig.resolveEreignisKonfiguration(data.stoerungen, state.ereignisse, state.reihenfolge);
+    const resolved = WaldsimConfig.resolveEreignisKonfiguration(data.stoerungen, state.ereignisse, state.reihenfolge, state.trockenheitDauer);
     lastResolved = resolved;
 
     document.getElementById("wizard-schritt-fortschritt").textContent = schrittFortschrittText(state.schritt);
@@ -448,10 +482,20 @@ const WaldsimStartScreen = (() => {
           state.ereignisse.push(id);
         } else {
           state.ereignisse = state.ereignisse.filter((e) => e !== id);
+          if (id === "trockenheit") {
+            state.trockenheitDauer = trockenheitEintrag().dauer_jahre; // zurück auf Standard
+          }
         }
         state.reihenfolge = null;
         renderStoerungen();
+        renderTrockenheitDauer();
         renderReihenfolge();
+        aktualisiereAnzeige();
+        return;
+      }
+
+      if (target.matches('input[name="trockenheit-dauer"]')) {
+        state.trockenheitDauer = Number(target.value);
         aktualisiereAnzeige();
         return;
       }
@@ -513,9 +557,11 @@ const WaldsimStartScreen = (() => {
     );
 
     data = await WaldsimData.load();
+    state.trockenheitDauer = data.stoerungen.ereignis_stoerungen.find((s) => s.id === "trockenheit").dauer_jahre;
 
     renderWaldSlots();
     renderStoerungen();
+    renderTrockenheitDauer();
     renderReihenfolge();
     renderRegler();
     renderHypothesen();
