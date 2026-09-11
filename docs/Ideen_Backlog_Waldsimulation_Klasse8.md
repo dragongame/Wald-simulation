@@ -12,6 +12,13 @@
 
 **Hinweis (2026-09-11):** Nach einer Impact/UX-Priorisierung wurden vier Einträge zu Milestones **M25–M28** gemacht (siehe Milestones-Dokument): „Hypothese-vs-Ergebnis-Vergleich in der Reflexion", „Mehr Leitfragen für die Reflexion", „Lehrkraft-Übersicht (M19) als generierte Markdown-Datei statt In-App-Screen" und „Kritische Durchsicht: nachvollziehbare, aber nicht triviale Rückkopplungsschleifen in den Top-10-Szenarien". Die übrigen Einträge bleiben bewusst hier stehen, da sie größer sind und eine eigene Scoping-Runde brauchen.
 
+**Hinweis (2026-09-11, zweite Runde):** Die drei großen verbliebenen Punkte wurden gemeinsam mit dem Nutzer zugeschnitten und zu den Milestones **M29–M37** gemacht (siehe Milestones-Dokument, inkl. der drei dort protokollierten Grundsatzentscheidungen zu Feuer-Mechanik, Trockenheits-Dauerstufen und Reduktionsgrad):
+- „Vereinfachte Projektion für Schüler:innen" + „Umschalten zwischen vereinfachter und vollständiger Netzwerk-Ansicht" → **M29–M32**
+- „Mehrjährige Störungsdauer" → **M33–M34**
+- „Überlegen, ob Brände auch simuliert werden sollten" → **M35–M37** (M35 ist reine Doku-Abwägung und endet mit einer Go/No-Go-Entscheidung; M36/M37 starten erst danach)
+
+Die Beschreibungen bleiben unten als Herkunftsnachweis stehen.
+
 ---
 
 ## Offene Diskussion (noch kein Milestone)
@@ -20,6 +27,7 @@
 
 - Das muss aber noch diskutiert und abgewogen werden.
 - Neue Störungsart mit eigener fachlicher/didaktischer Abwägung (kein kleiner Fix wie z. B. eine reine UI-Änderung) – erst nach Rücksprache in einen Milestone überführen.
+- **Erledigt durch M35–M37 (2026-09-11):** genau diese Abwägung ist jetzt als eigener, reiner Doku-Milestone M35 vorgeschaltet; entschieden wurde außerdem, den Brand **endogen** (aus dem Lauf heraus, wenn `brandrisiko` eine Schwelle überschreitet) statt als sechste wählbare Störung zu modellieren.
 
 ### Vereinfachte Projektion für Schüler:innen – Komplexität wächst schneller als die Verständlichkeit (2026-08-28)
 
@@ -29,6 +37,7 @@
 - **Wichtige Leitplanke für die Umsetzung:** Die Gruppierung darf nicht von Hand anhand der Top-20-Szenarien (siehe M19) festgelegt werden – ein Knoten, der in diesen 20 Kombinationen unauffällig ist, kann in einer der übrigen ~175 Kombinationen der eigentliche Kaskadentreiber sein, und eine fest verdrahtete Gruppierung würde das verschleiern. Ebenso würde eine Brand-Störung (siehe Eintrag oben) oder jede künftige Erweiterung eine von Hand gepflegte Gruppierung veralten lassen. Stattdessen: Beitrag/Gruppierung **je generiertem Szenario automatisch im Build-Schritt** ableiten (z. B. über Stärke/Varianz der Abweichung vom Ausgangszustand), als zusätzlicher Output neben `model.py`/`build_simulationen.py` – dann ist die Projektion immer für das gezeigte Szenario gültig und bleibt nach jedem `build_simulationen.py`-Lauf automatisch korrekt, genau wie der Rest der Pipeline.
 - **Umfang:** Sollte in mehrere Milestones aufgeteilt werden (Analyse-Kurven, Dashboard-Kacheln, Graph-Knoten haben unterschiedliche Anforderungen an die Darstellung von Sammelknoten) statt als ein großer Schritt. Kandidat für den ersten Teil-Milestone: Analyse-Screen-Kurven, da dort die Kurvenflut aktuell am größten ist.
 - Noch keine Milestone-Nummer – braucht erst weitere Diskussion (u. a. wie Sammelknoten im Graphen visuell dargestellt werden).
+- **Erledigt durch M29–M32 (2026-09-11):** aufgeteilt in Build-Fundament (M29), Analyse-Kurven (M30), Dashboard-Kacheln (M31) und Graph (M32). Die Leitplanke „nicht von Hand anhand der Top-20 gruppieren" ist als ausdrückliches Abnahmekriterium in M29 verankert (Gegenprobe gegen die Lehrkraft-Top-20). Offene Frage zur Sammelknoten-Darstellung im Graphen beantwortet: Stapel-Karte mit Anzahl, antippbar zum Aufklappen (M32). Reduktionsgrad festgelegt auf max. 6 Einzelkurven.
 
 ### Offener Design-Workshop: drei radikal unterschiedliche Darstellungen der Simulation (2026-09-11)
 
@@ -61,6 +70,7 @@
 - **Idee:** Dauer als wählbare/parametrisierbare Größe statt fixer Konstante anbieten – z. B. kurze/lange Trockenheit als Auswahloption, oder allgemeiner ein Dauer-Feld je Störung in `data/stoerungen.json` statt im Python-Code.
 - Offene Fragen: nur bei Trockenheit wählbar machen oder als allgemeines Konzept für mehrere Störungstypen einführen? Wirkt sich auf die Kombinatorik in `build_simulationen.py` aus (mehr Varianten je Störung = mehr generierte Zeitreihen) – Umfang vorab abschätzen.
 - Hängt mit dem Backlog-Punkt „Review der Lehrkraft-Annahmen" oben zusammen – `DAUER_TROCKENHEIT_JAHRE` ist ein konkretes Beispiel für eine Annahme, die aktuell nur im Code, nicht in den Daten steht.
+- **Erledigt durch M33–M34 (2026-09-11):** die offene Frage „nur Trockenheit oder allgemeines Konzept?" ist entschieden – Dauer wird in M33 für **alle** Störungen zum Datenfeld (reines Refactoring mit Null-Diff-Nachweis), aber in M34 nur bei der **Trockenheit** zur wählbaren Größe, und dort mit genau zwei Stufen (4 Jahre = heutiger Status quo, 8 Jahre = lang). Vorab abgeschätzter Umfang: 8 der 22 Ereigniszustände enthalten Trockenheit ⇒ 261 → 357 Zeitreihen.
 
 ### Umschalten zwischen vereinfachter und vollständiger Netzwerk-Ansicht (2026-09-11)
 
