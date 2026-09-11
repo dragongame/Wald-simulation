@@ -11,11 +11,17 @@
  * nutzbar (WaldsimForscherheft ruft dafür oeffneFuerEintrag() auf).
  *
  * Knoten/Kanten kommen aus data/nodes.json + data/edges.json (single source
- * of truth aus M1). Standardmäßig zeigt der Graph nur die für die gespielte
- * Störung/den Regler relevante Teilmenge (data/stoerungen.json,
- * "relevante_knoten" je Störung/Regler - bereits in M6 fürs Analyse-Screen
- * genutzt), mit Umschalter aufs vollständige Netzwerk (Technikdokument 4.3).
- * Der tatsächlich abgelaufene Kaskadenpfad wird per Breitensuche entlang der
+ * of truth aus M1). Standardmäßig ("vereinfacht") zeigt der Graph nur die
+ * für die gespielte Waldtyp/Störung/Regler-Kombination relevante Teilmenge,
+ * mit explizitem Umschalter aufs vollständige Netzwerk (Technikdokument 4.3).
+ * Seit M32 wird diese Teilmenge aus der szenario-genauen Beitragsanalyse
+ * (M29, `projektion.wichtig` je vorab berechneter Zeitreihen-Datei) abgeleitet
+ * statt aus dem vorher handgepflegten `relevante_knoten` in
+ * data/stoerungen.json - siehe relevanteKnotenFuerKontext()/oeffneFuerEintrag().
+ * Relevante Knoten, die weder "wichtig" noch Teil des tatsächlich abgelaufenen
+ * Kaskadenpfads sind, fasst je ökologischer Kategorie ein antippbarer
+ * Sammelknoten ("Stapel-Karte" mit Anzahl) zusammen, siehe anwendeStapelung().
+ * Der Kaskadenpfad selbst wird weiterhin per Breitensuche entlang der
  * relevanten Kanten ab einem je Störung kuratierten Startknoten ermittelt
  * und als "Tinten-Spur" hervorgehoben (Styleguide Abschnitt 5) - siehe
  * Milestones-Dokument für die Begründung dieser UI-Entscheidung.
@@ -89,6 +95,50 @@ const WaldsimGraph = (() => {
     baumverjuengung_allgemein: { name: "Baumverjüngung (allgemein)", emoji: "🌱", erklaerung: "Junge Bäume aller Arten, nicht auf eine einzelne Baumart eingegrenzt." },
   };
 
+  // Namensbrücke zwischen den zwei bestehenden ID-Räumen data/nodes.json
+  // (Graph-Knoten) und data/indikatoren.json (Simulation) - dieselbe
+  // Art/derselbe Faktor hat dort aus historischen Gründen unterschiedliche
+  // IDs (z. B. Knoten "fichte" <-> Indikator "fichte_vitalitaet"). Reine
+  // Umbenennung, keine neue fachliche Zuordnung: für die meisten Arten schon
+  // in js/dashboard.js (ARTEN/WEITERE_ARTEN) genauso hinterlegt. Knoten ohne
+  // Eintrag hier (mykorrhizapilz, licht, temperatur, mensch_bewirtschaftung,
+  // luchs, wolf sowie die generischen Sammelgruppen "kraut"/"voegel_generisch")
+  // haben keinen eigenen numerischen Indikator und werden nie automatisch als
+  // "wichtig" erkannt - Trigger-/Regler-Knoten bleiben trotzdem über
+  // ermittleStartknoten()/den Regler-Wechsel-Fall sichtbar (M32).
+  const KNOTEN_INDIKATOR = {
+    fichte: "fichte_vitalitaet",
+    buche: "buche_vitalitaet",
+    eiche: "eiche_vitalitaet",
+    kiefer: "kiefer_vitalitaet",
+    birke: "birke_anteil",
+    hasel: "hasel_anteil",
+    holunder: "holunder_anteil",
+    brombeere: "brombeere_anteil",
+    hallimasch: "hallimasch_indikator",
+    zunderschwamm: "zunderschwamm_indikator",
+    blaeuepilz: "blaeuepilz_indikator",
+    buschwindroeschen: "buschwindroeschen_indikator",
+    waldmeister: "waldmeister_indikator",
+    brennnessel: "brennnessel_indikator",
+    heidelbeere: "heidelbeere_indikator",
+    borkenkaefer: "borkenkaefer_dichte",
+    reh: "reh_dichte",
+    rothirsch: "rothirsch_dichte",
+    eichhoernchen: "eichhoernchen_indikator",
+    raupen: "raupen_indikator",
+    blattlaeuse: "blattlaeuse_indikator",
+    eichelhaeher: "eichelhaeher_indikator",
+    buntspecht: "buntspecht_indikator",
+    ameisenbuntkaefer: "ameisenbuntkaefer_indikator",
+    fuchs: "fuchs_indikator",
+    habicht: "habicht_indikator",
+    sperber: "sperber_indikator",
+    totholz: "totholzmenge",
+    wasser: "bodenfeuchte",
+  };
+  const INDIKATOR_ZU_KNOTEN = Object.fromEntries(Object.entries(KNOTEN_INDIKATOR).map(([knotenId, indikatorId]) => [indikatorId, knotenId]));
+
   // Styleguide Abschnitt 5 definiert Farbe+Symbol für die fünf ursprünglichen
   // Beziehungstypen. "bewirtschaftung"/"strukturell" (Szenario 5/6) lösen den
   // in data/edges.json dokumentierten M8-TODO auf - neue Farben, die sich
@@ -148,6 +198,9 @@ const WaldsimGraph = (() => {
   // Knoten-IDs (inkl. "gruppe_<id>" für die Sammelgruppen), wirkt zusätzlich
   // zur Vollständig/Kaskade-Teilmenge aus sichtbareMenge().
   let ausgeblendeteKnoten = new Set();
+  // Sammelknoten-Stapel (M32): Kategorien, deren Stapel-Karte der/die
+  // Nutzer:in in der aktuellen Ansicht aufgeklappt hat (siehe anwendeStapelung()).
+  let aufgeklappteStapel = new Set();
 
   // ---- Freischaltung ----
 
@@ -216,18 +269,29 @@ const WaldsimGraph = (() => {
 
   // ---- Relevante Teilmenge & Kaskadenpfad ----
 
+  /**
+   * Seit M32 aus der szenario-genauen Beitragsanalyse (M29, `projektion.wichtig`
+   * je Zeitreihen-Datei) abgeleitet statt aus dem handgepflegten
+   * `relevante_knoten` in data/stoerungen.json - `kontext.projektionWichtig`
+   * (eine Menge Indikator-IDs, von oeffneFuerEintrag() vorab geladen und über
+   * INDIKATOR_ZU_KNOTEN zurückübersetzt) muss dafür vorliegen. Trigger-Knoten
+   * (Startknoten je Störung, Luchs/Wolf bei Regler-Abweichung) bleiben
+   * unabhängig davon immer Teil der Teilmenge, da sie keinen eigenen
+   * numerischen Indikator haben, aber die Ursache der Kaskade sind.
+   */
   function relevanteKnotenFuerKontext(kontext) {
-    if (!kontext) return null;
-    const set = new Set();
-    kontext.ereignisse.forEach((e) => {
-      const eintrag = data.stoerungen.ereignis_stoerungen.find((s) => s.id === e.typ);
-      (eintrag && eintrag.relevante_knoten ? eintrag.relevante_knoten : []).forEach((id) => set.add(id));
-    });
+    if (!kontext || !kontext.projektionWichtig) return null;
+    const set = new Set(ermittleStartknoten(kontext));
     // "beide" (Wolf + Luchs anwesend) ist seit 2026-08-26 der Ausgangszustand
     // ohne Effekt, ersetzt das frühere "niedrig" (siehe Milestones-Dokument).
     if (kontext.regler && kontext.regler !== "beide") {
-      data.stoerungen.wildverbiss_regler.relevante_knoten.forEach((id) => set.add(id));
+      set.add("luchs");
+      set.add("wolf");
     }
+    kontext.projektionWichtig.forEach((indikatorId) => {
+      const knotenId = INDIKATOR_ZU_KNOTEN[indikatorId];
+      if (knotenId) set.add(knotenId);
+    });
     return set;
   }
 
@@ -320,21 +384,67 @@ const WaldsimGraph = (() => {
     return { knoten, kanten };
   }
 
+  /**
+   * Sammelknoten (M32): die vereinfachte Ansicht zeigt nur die szenario-genau
+   * relevante Teilmenge (relevanteKnotenFuerKontext(), aus M29 abgeleitet) -
+   * alle 35 Knoten aus data/nodes.json, die NICHT in dieser Teilmenge stehen,
+   * fasst je ökologischer Kategorie ein antippbarer Sammelknoten ("+N weitere
+   * <Kategorie>") zusammen, statt einfach zu verschwinden. Der tatsächlich
+   * abgelaufene Kaskadenpfad besteht per Konstruktion ausschließlich aus
+   * bereits einzeln sichtbaren Knoten (relevanteKnotenFuerKontext() ist die
+   * Grundlage von baueKaskade()) und wird von der Stapelung nie berührt - die
+   * Tinten-Spur-Animation funktioniert deshalb unverändert in beiden Ansichten.
+   * Aufklappen (aufgeklappteStapel) reicht die versteckten Knoten dieser
+   * Kategorie einzeln nach; die Kanten werden für die dann größere Knotenmenge
+   * neu ermittelt (kantenInnerhalb ist bereits eine reine Funktion, kein neuer
+   * Berechnungsweg).
+   */
+  function anwendeStapelung(sichtbar) {
+    if (aktuellVollstaendig || !aktuellerKontext || !aktuellerKontext.projektionWichtig) {
+      return { knoten: sichtbar.knoten, kanten: sichtbar.kanten, stapelById: new Map() };
+    }
+
+    const neueKnotenIds = new Set(sichtbar.knoten);
+    const versteckteProKategorie = new Map(); // kategorie -> [knotenId]
+
+    data.knoten.forEach((knoten) => {
+      if (sichtbar.knoten.has(knoten.id)) return; // schon einzeln sichtbar
+      if (aufgeklappteStapel.has(knoten.kategorie)) {
+        neueKnotenIds.add(knoten.id); // Kategorie aufgeklappt: einzeln nachreichen
+        return;
+      }
+      if (!versteckteProKategorie.has(knoten.kategorie)) versteckteProKategorie.set(knoten.kategorie, []);
+      versteckteProKategorie.get(knoten.kategorie).push(knoten.id);
+    });
+
+    const stapelById = new Map();
+    versteckteProKategorie.forEach((mitglieder, kategorie) => {
+      const stapelId = `stapel_${kategorie}`;
+      stapelById.set(stapelId, {
+        id: stapelId,
+        name: `+${mitglieder.length} weitere ${KATEGORIE_LABEL[kategorie] || kategorie}`,
+        emoji: KATEGORIE_EMOJI[kategorie] || "📦",
+        istStapel: true,
+        kategorie,
+        mitglieder,
+      });
+      neueKnotenIds.add(stapelId);
+    });
+
+    const kanten = aufgeklappteStapel.size > 0 ? kantenInnerhalb(neueKnotenIds) : sichtbar.kanten;
+    return { knoten: neueKnotenIds, kanten, stapelById };
+  }
+
   // ---- Layout ----
 
   function berechneLayout(sichtbareKnotenIds, knotenById) {
     const zeilen = new Map();
-    data.knoten.forEach((knoten) => {
-      if (!sichtbareKnotenIds.has(knoten.id)) return;
+    sichtbareKnotenIds.forEach((id) => {
+      const knoten = knotenById.get(id);
+      if (!knoten) return;
       const zeile = KATEGORIE_ZEILE[knoten.kategorie] ?? GRUPPEN_ZEILE;
       if (!zeilen.has(zeile)) zeilen.set(zeile, []);
-      zeilen.get(zeile).push(knoten.id);
-    });
-    Object.keys(GRUPPEN_KNOTEN).forEach((id) => {
-      const knotenId = `gruppe_${id}`;
-      if (!sichtbareKnotenIds.has(knotenId)) return;
-      if (!zeilen.has(GRUPPEN_ZEILE)) zeilen.set(GRUPPEN_ZEILE, []);
-      zeilen.get(GRUPPEN_ZEILE).push(knotenId);
+      zeilen.get(zeile).push(id);
     });
 
     const zeilenIndizes = Array.from(zeilen.keys()).sort((a, b) => a - b);
@@ -377,13 +487,14 @@ const WaldsimGraph = (() => {
     ];
     if (istKaskade) styleTeile.push(`--verzoegerung:${(kaskadeIdx * ANIMATION_STEP).toFixed(2)}s`);
 
-    const src = knoten.istGruppe ? null : standardSpriteSrc(knoten);
+    const istPseudo = knoten.istGruppe || knoten.istStapel;
+    const src = istPseudo ? null : standardSpriteSrc(knoten);
     const inhalt = src
       ? spriteFrameHtml(`./assets/sprites/${src}`, knoten.name, emojiFuer(knoten), "sprite-1-1")
-      : `<span class="graph-knoten-emoji" aria-hidden="true">${knoten.istGruppe ? knoten.emoji : emojiFuer(knoten)}</span>`;
+      : `<span class="graph-knoten-emoji" aria-hidden="true">${istPseudo ? knoten.emoji : emojiFuer(knoten)}</span>`;
 
     return `
-      <button type="button" class="graph-knoten ${knoten.istGruppe ? "ist-gruppe" : ""} ${istKaskade ? "ist-kaskade" : ""}" data-knoten="${knoten.id}" style="${styleTeile.join("; ")}">
+      <button type="button" class="graph-knoten ${knoten.istGruppe ? "ist-gruppe" : ""} ${knoten.istStapel ? "ist-stapel" : ""} ${istKaskade ? "ist-kaskade" : ""}" data-knoten="${knoten.id}" ${knoten.istStapel ? `data-stapel-kategorie="${escapeHtml(knoten.kategorie)}" title="Antippen zum Aufklappen"` : ""} style="${styleTeile.join("; ")}">
         ${inhalt}
         <span class="graph-knoten-name">${escapeHtml(knoten.name)}</span>
       </button>
@@ -526,8 +637,9 @@ const WaldsimGraph = (() => {
   }
 
   function renderSeiten() {
-    const { knoten: sichtbareIds, kanten: sichtbareKanten } = sichtbareMenge();
+    const { knoten: sichtbareIds, kanten: sichtbareKanten, stapelById } = anwendeStapelung(sichtbareMenge());
     const knotenById = baueKnotenIndex();
+    stapelById.forEach((knoten, id) => knotenById.set(id, knoten));
     const layout = berechneLayout(sichtbareIds, knotenById);
     const kaskadeKantenIndex = new Map(aktuelleKaskade.kaskadenKanten.map((k, idx) => [kanteSchluessel(k), idx]));
 
@@ -638,6 +750,7 @@ const WaldsimGraph = (() => {
   function zeigeGraph(kontext) {
     aktuellerKontext = kontext;
     ausgeblendeteKnoten = new Set();
+    aufgeklappteStapel = new Set();
     aktuelleKaskade = baueKaskade(kontext);
     const hatTeilmenge = !!(aktuelleKaskade.relevanteSet && aktuelleKaskade.relevanteSet.size > 0);
     aktuellVollstaendig = !kontext || !hatTeilmenge;
@@ -675,14 +788,39 @@ const WaldsimGraph = (() => {
     zeigeGraph(null);
   }
 
+  /**
+   * Lädt für jeden Wald des Forscherheft-Eintrags die exakt passende, bereits
+   * vorab berechnete Zeitreihen-Datei (dieselbe Waldtyp/Ereignisse/Regler-
+   * Kombination, über data/generated/simulationen_index.json aufgelöst - kein
+   * erneutes Berechnen) und liefert die Vereinigung ihrer `projektion.wichtig`
+   * (M29) - Fundament für die szenario-genaue Teilmenge in M32.
+   */
+  async function ladeProjektionWichtig(eintrag) {
+    const union = new Set();
+    for (const wald of eintrag.waelder) {
+      const treffer = data.simulationenIndex.eintraege.find(
+        (e) =>
+          e.waldtyp === wald.waldtypId &&
+          e.wildverbiss_regler === eintrag.regler &&
+          JSON.stringify(e.ereignisse) === JSON.stringify(eintrag.ereignisse)
+      );
+      if (!treffer) continue;
+      const zeitreihenDatei = await WaldsimData.ladeZeitreihe(treffer.datei);
+      (zeitreihenDatei.projektion.wichtig || []).forEach((id) => union.add(id));
+    }
+    return union;
+  }
+
   async function oeffneFuerEintrag(eintrag) {
     data = await WaldsimData.load();
     rueckkehrScreen = "screen-forscherheft";
+    const projektionWichtig = await ladeProjektionWichtig(eintrag);
     const kontext = {
       modusVergleich: true,
       waelder: eintrag.waelder.map((w) => ({ id: w.waldtypId, name: w.waldtypName })),
       ereignisse: eintrag.ereignisse,
       regler: eintrag.regler,
+      projektionWichtig,
     };
     if (!istFreigeschaltet()) {
       zeigeSperre(() => zeigeGraph(kontext));
@@ -731,6 +869,11 @@ const WaldsimGraph = (() => {
     document.getElementById("graph-seiten").addEventListener("click", (event) => {
       const knotenButton = event.target.closest(".graph-knoten");
       if (knotenButton) {
+        if (knotenButton.dataset.stapelKategorie) {
+          aufgeklappteStapel.add(knotenButton.dataset.stapelKategorie);
+          renderSeiten();
+          return;
+        }
         zeigeKnotenSteckbrief(knotenButton.dataset.knoten);
         return;
       }

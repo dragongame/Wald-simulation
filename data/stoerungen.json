@@ -39,14 +39,6 @@
       "icon_sprite": "borkenkaefer_massenvermehrung.png",
       "icon_hinweis": "Kein neues Bild nötig - nutzt das bereits vorhandene Art-Sprite.",
       "kurzbeschreibung": "Der Buchdrucker befällt bevorzugt geschwächte Fichten und kann sich bei warm-trockener Witterung explosionsartig vermehren.",
-      "relevante_knoten": [
-        "borkenkaefer",
-        "fichte",
-        "blaeuepilz",
-        "buntspecht",
-        "ameisenbuntkaefer",
-        "totholz"
-      ],
       "dauer_jahre": 12,
       "dauer_jahre_hinweis": "Danach i.d.R. Wirtserschöpfung (didaktisch vereinfachte Annahme, siehe Wissensbasis Abschnitt 5 'didaktische Reduktion'). Vorher Konstante DAUER_BORKENKAEFER_MAX_JAHRE in scripts/simulation/model.py, seit M33 hierher verschoben (reines Refactoring).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 1"
@@ -57,15 +49,6 @@
       "kategorie": "naturereignis",
       "icon_sprite": "stoerung_trockenheit.png",
       "kurzbeschreibung": "Wassermangel senkt die Abwehrkraft der Bäume, besonders der Fichte, und macht sie anfälliger für Borkenkäfer und Hallimasch.",
-      "relevante_knoten": [
-        "wasser",
-        "fichte",
-        "borkenkaefer",
-        "hallimasch",
-        "buche",
-        "eiche",
-        "kiefer"
-      ],
       "dauer_jahre": 4,
       "dauer_jahre_hinweis": "Didaktisch vereinfachte Annahme (Wissensbasis Abschnitt 5 'didaktische Reduktion'). Vorher Konstante DAUER_TROCKENHEIT_JAHRE in scripts/simulation/model.py, seit M33 hierher verschoben (reines Refactoring).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 2"
@@ -76,11 +59,6 @@
       "kategorie": "naturereignis",
       "icon_sprite": "stoerung_temperatur.png",
       "kurzbeschreibung": "Wärme beschleunigt die Käferentwicklung (mehr Generationen/Jahr) und verschiebt langfristig die Klima-Nischen der Baumarten.",
-      "relevante_knoten": [
-        "temperatur",
-        "borkenkaefer",
-        "fichte"
-      ],
       "besonderheit": "dauerhafter_hintergrundfaktor",
       "besonderheit_hinweis": "Anders als die anderen 4 Ereignis-Störungen kein punktuelles Trigger-Jahr: ab Jahr 0 durchgehend als erhöhter Hintergrundfaktor aktiv. Bei Kombination mit einer zweiten Störung entfällt deshalb die Reihenfolge-Auswahl in der UI.",
       "dauer_jahre": null,
@@ -93,12 +71,6 @@
       "kategorie": "naturereignis",
       "icon_sprite": "stoerung_sturm.png",
       "kurzbeschreibung": "Sturm wirft v. a. flachwurzelnde Fichten um; das liegende Holz ist ideales Brutmaterial für den Borkenkäfer im Folgejahr.",
-      "relevante_knoten": [
-        "fichte",
-        "borkenkaefer",
-        "birke",
-        "eichelhaeher"
-      ],
       "dauer_jahre": null,
       "dauer_jahre_hinweis": "null = ab Trigger-Jahr dauerhaft aktiv (einmaliger Schlag, dessen Folgeschäden im Modell nicht wieder abklingen).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 4"
@@ -109,14 +81,6 @@
       "kategorie": "bewirtschaftungsmassnahme",
       "icon_sprite": "stoerung_totholzentnahme.png",
       "kurzbeschreibung": "Bewusste menschliche Entscheidung mit Zielkonflikt: Der erhoffte Effekt auf das Brandrisiko ist wissenschaftlich nur gering/unsicher, der Effekt auf die Biodiversität (Habitatverlust) ist dagegen deutlich.",
-      "relevante_knoten": [
-        "mensch_bewirtschaftung",
-        "totholz",
-        "hallimasch",
-        "zunderschwamm",
-        "buntspecht",
-        "ameisenbuntkaefer"
-      ],
       "relevantester_waldtyp": "kiefernwald",
       "empfehlung_umsetzung": "Brandschutz-Effekt bewusst klein/unsicher modellieren (kein starker linearer Effekt); der klar sichtbare, starke Effekt liegt auf dem Biodiversitäts-Indikator.",
       "dauer_jahre": null,
@@ -141,15 +105,6 @@
     "code_werte_hinweis": "Vier Kombinationen aus den zwei unabhängigen Schaltern (Luchs an/aus × Wolf an/aus), als einzelner String-Code für Dateinamen/UI-Zustand (siehe js/simulationConfig.js, scripts/simulation/build_simulationen.py).",
     "standardwert": "beide",
     "standardwert_hinweis": "beide = Ausgangszustand, kein/kaum Effekt (funktionierende Regulation). Entfernen eines oder beider Prädatoren ist die vom Nutzer gewählte Abweichung, die Schalenwild-Überpopulation auslöst - entspricht inhaltlich dem früheren 'niedrig'.",
-    "relevante_knoten": [
-      "reh",
-      "rothirsch",
-      "eichelhaeher",
-      "eichhoernchen",
-      "eiche",
-      "luchs",
-      "wolf"
-    ],
     "relevantester_waldtyp": "mischwald",
     "isoliert_spielbar": true,
     "isoliert_spielbar_hinweis": "Bei 0 Ereignis-Störungen + mindestens einem fehlenden Prädator zeigt sich im Mischwald die rein schleichende Verarmung der Baumartenvielfalt ohne akutes Ereignis (pädagogisch explizit gewollt, Wissensbasis Szenario 6).",

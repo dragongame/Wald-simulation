@@ -1894,6 +1894,19 @@ h1, h2, h3 {
   opacity: 0.85;
 }
 
+/* Sammelknoten/Stapel-Karte (M32): fasst nicht "wichtige", nicht am
+   Kaskadenpfad beteiligte Knoten einer Kategorie zu einer Karte zusammen -
+   der doppelte Rand imitiert einen Kartenstapel, tippen klappt ihn auf. */
+.graph-knoten.ist-stapel {
+  background: var(--karte-hintergrund);
+  border-style: dashed;
+  box-shadow: 3px 3px 0 -1px var(--papier), 3px 3px 0 0 var(--rindenbraun);
+}
+
+.graph-knoten.ist-stapel .graph-knoten-emoji {
+  opacity: 0.8;
+}
+
 .graph-knoten .sprite-frame {
   width: 1.9rem;
   height: 1.9rem;
