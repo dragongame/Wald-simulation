@@ -149,12 +149,24 @@ const WaldsimDashboard = (() => {
     return artenListe.filter((art) => Object.keys(zeitreihe).some((jahrKey) => (zeitreihe[jahrKey][art.indikator] || 0) > 0));
   }
 
-  function gruppiereWeitereArten(artenRelevant) {
-    return WEITERE_ARTEN_KATEGORIE_REIHENFOLGE.map((kategorie) => ({
-      kategorie,
-      label: WEITERE_ARTEN_KATEGORIE_LABEL[kategorie],
-      arten: artenRelevant.filter((art) => art.kategorie === kategorie),
-    })).filter((gruppe) => gruppe.arten.length > 0);
+  /**
+   * M31 (nutzt die M29-Beitragsanalyse): Arten, deren Indikator im Lauf
+   * nicht als "wichtig" gilt (`projektion.wichtig` DIESES Waldes, nicht die
+   * Vereinigung wie im Analyse-Screen M30 - jede Dashboard-Kachelreihe ist
+   * ohnehin schon pro Wald getrennt), klappen zu einer einzigen
+   * Kategorie-Kachel zusammen statt je eine eigene Sprite-Kachel zu
+   * belegen. Kaskadenrelevante Arten (in `wichtig`) bleiben einzeln stehen.
+   */
+  function gruppiereWeitereArten(artenRelevant, wichtigSet) {
+    return WEITERE_ARTEN_KATEGORIE_REIHENFOLGE.map((kategorie) => {
+      const artenDerKategorie = artenRelevant.filter((art) => art.kategorie === kategorie);
+      return {
+        kategorie,
+        label: WEITERE_ARTEN_KATEGORIE_LABEL[kategorie],
+        einzel: artenDerKategorie.filter((art) => wichtigSet.has(art.indikator)),
+        kollabiert: artenDerKategorie.filter((art) => !wichtigSet.has(art.indikator)),
+      };
+    }).filter((gruppe) => gruppe.einzel.length > 0 || gruppe.kollabiert.length > 0);
   }
 
   function stoerungName(data, id) {
@@ -185,18 +197,40 @@ const WaldsimDashboard = (() => {
     `;
   }
 
-  function weitereArtenHtml(i, weitereArtenRelevant) {
+  /** Kategorie-Kachel (M31): ersetzt mehrere unwichtige Einzel-Kacheln, zeigt
+   * den bereits build-seitig gemittelten Kategorie-Durchschnitt (M29
+   * `projektion.gruppen[].kurve`) statt eigener Sprite-Kunst - dafür gibt es
+   * für eine Kategorie-Sammlung kein sinnvolles Einzelmotiv. */
+  function kategorieKachelHtml(id, kategorie, anzahl) {
+    return `
+      <div class="art-sprite art-sprite--klein art-sprite--kategorie" id="${id}">
+        <div class="sprite-frame sprite-1-1">
+          <span class="sprite-fallback">
+            <span class="sprite-fallback-emoji" aria-hidden="true">${WEITERE_ARTEN_KATEGORIE_EMOJI[kategorie]}</span>
+            <span class="art-sprite-kategorie-wert"></span>
+          </span>
+        </div>
+        <span class="art-sprite-name">${escapeHtml(WEITERE_ARTEN_KATEGORIE_LABEL[kategorie])} (${anzahl})</span>
+      </div>
+    `;
+  }
+
+  function weitereArtenHtml(i, weitereArtenRelevant, wichtigSet) {
     if (weitereArtenRelevant.length === 0) return "";
-    const gruppen = gruppiereWeitereArten(weitereArtenRelevant);
+    const gruppen = gruppiereWeitereArten(weitereArtenRelevant, wichtigSet);
     const gruppenHtml = gruppen
       .map((gruppe) => {
-        const kachelnHtml = gruppe.arten
+        const einzelHtml = gruppe.einzel
           .map((art) => speciesSpriteHtml(`w${i}-weitere-${art.id}`, art.name, WEITERE_ARTEN_KATEGORIE_EMOJI[gruppe.kategorie], true))
           .join("");
+        const kollabiertHtml =
+          gruppe.kollabiert.length > 0
+            ? kategorieKachelHtml(`w${i}-kategorie-${gruppe.kategorie}`, gruppe.kategorie, gruppe.kollabiert.length)
+            : "";
         return `
           <div class="weitere-arten-gruppe">
             <h3>${escapeHtml(gruppe.label)}</h3>
-            <div class="art-reihe art-reihe--klein">${kachelnHtml}</div>
+            <div class="art-reihe art-reihe--klein">${einzelHtml}${kollabiertHtml}</div>
           </div>
         `;
       })
@@ -222,7 +256,7 @@ const WaldsimDashboard = (() => {
     `;
   }
 
-  function waldPanelHtml(i, wt, hypothese, artenRelevant, instrumente, weitereArtenRelevant) {
+  function waldPanelHtml(i, wt, hypothese, artenRelevant, instrumente, weitereArtenRelevant, wichtigSet) {
     const artenHtml = artenRelevant.map((art) => speciesSpriteHtml(`w${i}-art-${art.id}`, art.name, art.emoji)).join("");
     const kaeferHtml = speciesSpriteHtml(`w${i}-borkenkaefer`, "Borkenkäfer", "🐛");
     const totholzHtml = speciesSpriteHtml(`w${i}-totholz`, "Totholz", "🪵");
@@ -234,7 +268,7 @@ const WaldsimDashboard = (() => {
         <p class="hypothese-recap"><strong>Hypothese:</strong> ${hypothese ? escapeHtml(hypothese) : "(keine angegeben)"}</p>
         <div class="art-reihe">${artenHtml}${kaeferHtml}${totholzHtml}</div>
         <div class="instrumente-grid">${instrumenteHtml}</div>
-        ${weitereArtenHtml(i, weitereArtenRelevant)}
+        ${weitereArtenHtml(i, weitereArtenRelevant, wichtigSet)}
       </article>
     `;
   }
@@ -264,6 +298,22 @@ const WaldsimDashboard = (() => {
       const container = document.getElementById(`w${i}-${idPraefix}-${art.id}`);
       updateSpeciesSprite(container, zustand.src, `${art.name}: ${bucket(value)}`);
       if (container) container.style.opacity = value > 0 ? "1" : "0.18";
+    });
+  }
+
+  /** Live-Wert der Kategorie-Kacheln (M31): liest direkt den für dieses
+   * Jahr bereits build-seitig gemittelten Wert aus `projektion.gruppen[]`
+   * (M29) - keine eigene Mittelwertbildung im Browser. */
+  function updateKategorieKacheln(i, jahrKey, gruppenProjektion, weitereArtenRelevant, wichtigSet) {
+    gruppiereWeitereArten(weitereArtenRelevant, wichtigSet).forEach((gruppe) => {
+      if (gruppe.kollabiert.length === 0) return;
+      const eintrag = gruppenProjektion.find((g) => g.kategorie === gruppe.kategorie);
+      const container = document.getElementById(`w${i}-kategorie-${gruppe.kategorie}`);
+      if (!container || !eintrag) return;
+      const wert = eintrag.kurve[jahrKey] ?? 0;
+      const wertEl = container.querySelector(".art-sprite-kategorie-wert");
+      if (wertEl) wertEl.textContent = `Ø ${Math.round(wert)}`;
+      container.style.opacity = wert > 0 ? "1" : "0.18";
     });
   }
 
@@ -318,8 +368,10 @@ const WaldsimDashboard = (() => {
     document.getElementById("dash-jahr-label").textContent = `Jahr ${jahr} von ${JAHRE_GESAMT}`;
 
     [0, 1].forEach((i) => {
-      const zr = lauf.zeitreihen[i].zeitreihe[`jahr_${jahr}`];
+      const jahrKey = `jahr_${jahr}`;
+      const zr = lauf.zeitreihen[i].zeitreihe[jahrKey];
       updateArtenFuerWald(i, zr, lauf.artenRelevant[i], lauf.weitereArtenRelevant[i]);
+      updateKategorieKacheln(i, jahrKey, lauf.zeitreihen[i].projektion.gruppen, lauf.weitereArtenRelevant[i], lauf.wichtigJeWald[i]);
       updateInstrumenteFuerWald(i, zr, lauf.instrumente);
     });
 
@@ -405,6 +457,9 @@ const WaldsimDashboard = (() => {
       waldtypen: neuerLauf.waldIds.map((id) => waldtypenById[id]),
       artenRelevant: neuerLauf.zeitreihen.map((z) => ermittleRelevanteArten(z.zeitreihe)),
       weitereArtenRelevant: neuerLauf.zeitreihen.map((z) => ermittleRelevanteArten(z.zeitreihe, WEITERE_ARTEN)),
+      // M31: pro Wald eigene "wichtig"-Menge (keine Vereinigung wie im
+      // Analyse-Screen M30 - jedes Wald-Panel wird ohnehin getrennt gezeigt).
+      wichtigJeWald: neuerLauf.zeitreihen.map((z) => new Set(z.projektion.wichtig)),
       instrumente: INSTRUMENTE_META.map((meta) => ({ ...meta, label: indikatorenById[meta.id].name })),
     };
 
@@ -412,7 +467,17 @@ const WaldsimDashboard = (() => {
       `${beschreibeEreignisse(data, lauf.resolved)} · Wildverbiss-Regler: ${kapitalisiere(lauf.regler)}`;
 
     document.getElementById("dash-waelder").innerHTML = [0, 1]
-      .map((i) => waldPanelHtml(i, lauf.waldtypen[i], lauf.hypothesen[i], lauf.artenRelevant[i], lauf.instrumente, lauf.weitereArtenRelevant[i]))
+      .map((i) =>
+        waldPanelHtml(
+          i,
+          lauf.waldtypen[i],
+          lauf.hypothesen[i],
+          lauf.artenRelevant[i],
+          lauf.instrumente,
+          lauf.weitereArtenRelevant[i],
+          lauf.wichtigJeWald[i]
+        )
+      )
       .join("");
 
     wireEvents();

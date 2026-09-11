@@ -1195,6 +1195,25 @@ h1, h2, h3 {
   font-size: 0.55rem;
 }
 
+/* Kategorie-Kachel (M31): fasst nicht "wichtige" Arten einer Kategorie zu
+   einer Kachel zusammen statt eigener Sprite-Kunst - .sprite-fallback ist
+   normalerweise nur der Fehlschlag-Zustand fehlender Bilder, hier bewusst
+   immer sichtbar, da es für eine Kategorie-Sammlung kein Einzelmotiv gibt. */
+.art-sprite--kategorie .sprite-frame {
+  border: 1px dashed var(--rindenbraun);
+  background: var(--karte-hintergrund);
+}
+
+.art-sprite--kategorie .sprite-fallback {
+  display: flex;
+}
+
+.art-sprite-kategorie-wert {
+  font-size: 0.6rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
 /* ---- Analyse-Screen (M6, vereinfachte Projektion M30) ---- */
 
 .analyse-indikatoren-kopf {
