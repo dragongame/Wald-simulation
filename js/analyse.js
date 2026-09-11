@@ -69,7 +69,7 @@ const WaldsimAnalyse = (() => {
   function ermittleKaskadenrelevant(resolved, regler) {
     const set = new Set();
     resolved.events.forEach((e) => (KASKADE_JE_STOERUNG[e.typ] || []).forEach((id) => set.add(id)));
-    if (regler !== "niedrig") {
+    if (regler !== "beide") {
       KASKADE_WILDVERBISS.forEach((id) => set.add(id));
     }
     if (set.size === 0) {
