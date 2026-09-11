@@ -88,3 +88,15 @@
 - Die aktuellen Reflexionsfragen in `js/forscherheft.js` sind wörtlich aus der Wissensbasis Abschnitt 6.5 übernommen (bewusste Entscheidung, siehe M7).
 - **Idee:** zusätzliche Leitfragen ergänzen, um die Reflexion zu vertiefen.
 - Offene Frage: neue Fragen in die Wissensbasis (Abschnitt 6.5) aufnehmen und von dort wörtlich übernehmen (konsistent mit der bisherigen Quelle-vor-Code-Regel), oder als app-eigene Ergänzung ohne Wissensbasis-Bezug behandeln?
+
+### Hypothese-vs-Ergebnis-Vergleich in der Reflexion (2026-09-11, Claude-Vorschlag)
+
+- **Ausgangslage:** Die Hypothese wird bereits vor dem Durchlauf je Wald erfasst (M4) und landet unverändert im Forscherheft-Eintrag (M7), aber es gibt aktuell keine explizite Gegenüberstellung „das hast du vorhergesagt" vs. „das ist tatsächlich passiert" – die Reflexionsfragen (siehe Punkt oben) sind offen formuliert, ohne direkten Rückbezug auf den eigenen Vorab-Text.
+- **Idee:** auf dem Reflexions-Screen (oder im Forscherheft-Eintrag) Hypothesentext und Endzustand/größte Abweichung nebeneinander anzeigen, bevor die Reflexionsfragen beantwortet werden – macht den Vorhersage-Realität-Abgleich zum Teil der Reflexion selbst statt ihn dem Zufall zu überlassen.
+- Ergänzt sich mit „Mehr Leitfragen für die Reflexion" oben (z. B. eine neue Leitfrage könnte direkt auf diese Gegenüberstellung Bezug nehmen).
+
+### Automatisierter Baseline-Drift-Test für `model.py` (2026-09-11, Claude-Vorschlag)
+
+- **Hintergrund:** Die Milestones-Doku dokumentiert unter „Wiederkehrendes Bug-Muster" bereits einen mehrfach aufgetretenen Fehlertyp in `scripts/simulation/model.py` – Bestandsanteil (statisches Gewicht) und Vitalität (0–100-Gesundheitswert) wurden wiederholt verwechselt (Fichte, Buschwindröschen, Blattläuse laut Git-Historie). Die dort empfohlene Gegenprobe („alle Waldtypen ohne Störung über 20 Jahre, kein Indikator darf ohne Ursache driften") ist bisher nur eine Erinnerung für künftige Änderungen, kein tatsächlich existierendes Skript.
+- **Idee:** diese Gegenprobe als kleines eigenständiges Skript umsetzen (z. B. `scripts/simulation/test_baseline_drift.py`, stdlib-only wie die übrigen Build-Skripte) – simuliert alle Waldtypen ohne jede Störung über 20 Jahre und schlägt fehl, sobald ein Indikator sich ohne Ursache von seinem Jahr-0-Wert entfernt. Kein volles Testframework nötig (bewusste Entscheidung gegen automatisierte Tests laut CLAUDE.md bleibt unangetastet), nur ein gezielter Regressionstest für genau dieses wiederkehrende Bug-Muster.
+- Günstig, weil klein und gezielt: fängt genau die Fehlerklasse ab, die schon mehrfach aufgetreten ist, ohne den „kein Testframework"-Ansatz des Projekts grundsätzlich zu ändern.
