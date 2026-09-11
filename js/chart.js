@@ -26,60 +26,73 @@ const WaldsimChart = (() => {
   // Farb-Untergruppe mit höchstens 4 Linienstilen auskommt. Signalrot bleibt
   // bewusst ausgespart (laut Styleguide reserviert für den
   // Fichtenmonokultur-Kollaps im Dashboard).
+  //
+  // Alle 16 Kategorie-Grundfarben wurden 2026-09-10 gegen die "dataviz"-Skill-
+  // Checks (OKLCH-Helligkeitsband, Chroma-Untergrenze, CVD-Abstand Protan/
+  // Deutan/Tritan, Kontrast gegen den Papier-Hintergrund #EFE9DC) neu über den
+  // Farbkreis verteilt, weil die ursprüngliche Palette 6 Kategorien im selben
+  // schmalen Braun/Orange-Tonband hatte (siehe Milestones-Doku, Abschnitt
+  // "M24-Farbpalette"). Alle 16 bestehen jetzt Helligkeitsband + Chroma-
+  // Untergrenze, der schlechteste Nachbar-Abstand liegt bei ΔE 4,5 (OKLab,
+  // Deutan) statt vorher 0,3 - bei 16 gleichzeitig frei wählbaren Kategorien
+  // ist ein durchgängiges ΔE ≥ 8 rechnerisch nicht erreichbar (die Skill-Doku
+  // selbst beschreibt das schon für 8 Kategorien als Grenze); Linienmuster +
+  // Textlabel im Legenden-Chip bleiben deshalb laut Styleguide 5.5 immer die
+  // verbindliche zweite Kennung, nie Farbe allein.
   const INDIKATOR_STIL = {
     // baumbestand - Nadelbaum-Familie (dunkles Grün)
-    gesamtvitalitaet: { farbe: "#2F5233", dash: 0 },
-    fichte_vitalitaet: { farbe: "#2F5233", dash: 1 },
-    kiefer_vitalitaet: { farbe: "#2F5233", dash: 2 },
+    gesamtvitalitaet: { farbe: "#087736", dash: 0 },
+    fichte_vitalitaet: { farbe: "#087736", dash: 1 },
+    kiefer_vitalitaet: { farbe: "#087736", dash: 2 },
     // baumbestand - Laubbaum-Familie (helleres Grün)
-    buche_vitalitaet: { farbe: "#7BA05B", dash: 0 },
-    eiche_vitalitaet: { farbe: "#7BA05B", dash: 1 },
-    birke_anteil: { farbe: "#7BA05B", dash: 2 },
+    buche_vitalitaet: { farbe: "#76923F", dash: 0 },
+    eiche_vitalitaet: { farbe: "#76923F", dash: 1 },
+    birke_anteil: { farbe: "#76923F", dash: 2 },
 
-    borkenkaefer_dichte: { farbe: "#B5651D", dash: 0 }, // schaedling
+    borkenkaefer_dichte: { farbe: "#C06C4F", dash: 0 }, // schaedling
 
-    totholzmenge: { farbe: "#6B4A34", dash: 0 }, // struktur
-    kronendach: { farbe: "#6B4A34", dash: 1 },
+    totholzmenge: { farbe: "#A23C42", dash: 0 }, // struktur
+    kronendach: { farbe: "#A23C42", dash: 1 },
 
-    bodenfeuchte: { farbe: "#5C7A8A", dash: 0 }, // abiotisch
-    biodiversitaet: { farbe: "#6E5A75", dash: 0 }, // biodiversitaet
+    bodenfeuchte: { farbe: "#0C9C82", dash: 0 }, // abiotisch
+    biodiversitaet: { farbe: "#8679C6", dash: 0 }, // biodiversitaet
 
-    verjuengung_mischbaumarten: { farbe: "#8C6349", dash: 0 }, // wildverbiss
-    reh_dichte: { farbe: "#8C6349", dash: 1 },
-    rothirsch_dichte: { farbe: "#8C6349", dash: 2 },
+    verjuengung_mischbaumarten: { farbe: "#BD6783", dash: 0 }, // wildverbiss
+    reh_dichte: { farbe: "#BD6783", dash: 1 },
+    rothirsch_dichte: { farbe: "#BD6783", dash: 2 },
 
-    brandrisiko: { farbe: "#9C4A2E", dash: 0 }, // szenario5
+    brandrisiko: { farbe: "#933F7B", dash: 0 }, // szenario5
 
-    hasel_anteil: { farbe: "#9B8449", dash: 0 }, // strauch
-    holunder_anteil: { farbe: "#9B8449", dash: 1 },
-    brombeere_anteil: { farbe: "#9B8449", dash: 2 },
+    hasel_anteil: { farbe: "#AA7D25", dash: 0 }, // strauch
+    holunder_anteil: { farbe: "#AA7D25", dash: 1 },
+    brombeere_anteil: { farbe: "#AA7D25", dash: 2 },
 
-    zunderschwamm_indikator: { farbe: "#4A3A2C", dash: 0 }, // pilz
-    blaeuepilz_indikator: { farbe: "#4A3A2C", dash: 1 },
-    hallimasch_indikator: { farbe: "#4A3A2C", dash: 2 },
+    zunderschwamm_indikator: { farbe: "#B06AA2", dash: 0 }, // pilz
+    blaeuepilz_indikator: { farbe: "#B06AA2", dash: 1 },
+    hallimasch_indikator: { farbe: "#B06AA2", dash: 2 },
 
-    brennnessel_indikator: { farbe: "#3F8A6E", dash: 0 }, // kraut
-    buschwindroeschen_indikator: { farbe: "#3F8A6E", dash: 1 },
-    waldmeister_indikator: { farbe: "#3F8A6E", dash: 2 },
-    heidelbeere_indikator: { farbe: "#3F8A6E", dash: 3 },
+    brennnessel_indikator: { farbe: "#796600", dash: 0 }, // kraut
+    buschwindroeschen_indikator: { farbe: "#796600", dash: 1 },
+    waldmeister_indikator: { farbe: "#796600", dash: 2 },
+    heidelbeere_indikator: { farbe: "#796600", dash: 3 },
 
-    eichelhaeher_indikator: { farbe: "#5E7A9B", dash: 0 }, // verbreiter
+    eichelhaeher_indikator: { farbe: "#0096A6", dash: 0 }, // verbreiter
 
-    eichhoernchen_indikator: { farbe: "#B08A2E", dash: 0 }, // herbivor
-    raupen_indikator: { farbe: "#B08A2E", dash: 1 },
-    blattlaeuse_indikator: { farbe: "#B08A2E", dash: 2 },
+    eichhoernchen_indikator: { farbe: "#994C00", dash: 0 }, // herbivor
+    raupen_indikator: { farbe: "#994C00", dash: 1 },
+    blattlaeuse_indikator: { farbe: "#994C00", dash: 2 },
 
     // praedator - Vögel-Familie (Buntspecht/Habicht/Sperber, schlagen v.a.
     // in der Baum-/Luftschicht zu, siehe Wissensbasis Nr. 23/26)
-    buntspecht_indikator: { farbe: "#6B6B8A", dash: 0 },
-    habicht_indikator: { farbe: "#6B6B8A", dash: 1 },
-    sperber_indikator: { farbe: "#6B6B8A", dash: 2 },
+    buntspecht_indikator: { farbe: "#2D90C1", dash: 0 },
+    habicht_indikator: { farbe: "#2D90C1", dash: 1 },
+    sperber_indikator: { farbe: "#2D90C1", dash: 2 },
     // praedator - Boden-/Rinden-Familie (Ameisenbuntkäfer auf der Rinde,
     // Fuchs am Boden, siehe Wissensbasis Nr. 24/25)
-    ameisenbuntkaefer_indikator: { farbe: "#A85A45", dash: 0 },
-    fuchs_indikator: { farbe: "#A85A45", dash: 1 },
+    ameisenbuntkaefer_indikator: { farbe: "#3D5EAF", dash: 0 },
+    fuchs_indikator: { farbe: "#3D5EAF", dash: 1 },
 
-    kleinsaeuger_indikator: { farbe: "#8A7A92", dash: 0 }, // kleinsaeuger
+    kleinsaeuger_indikator: { farbe: "#7D499A", dash: 0 }, // kleinsaeuger
   };
 
   function stilFuer(indikatorId) {
