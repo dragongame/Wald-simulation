@@ -791,5 +791,326 @@
       "fuchs_indikator": 68.1,
       "gesamtvitalitaet": 95.4
     }
+  },
+  "projektion": {
+    "wichtig": [
+      "gesamtvitalitaet",
+      "totholzmenge",
+      "bodenfeuchte",
+      "fichte_vitalitaet",
+      "buche_vitalitaet",
+      "verjuengung_mischbaumarten",
+      "reh_dichte",
+      "rothirsch_dichte",
+      "zunderschwamm_indikator",
+      "hallimasch_indikator",
+      "eichelhaeher_indikator",
+      "buntspecht_indikator",
+      "ameisenbuntkaefer_indikator",
+      "buschwindroeschen_indikator",
+      "eichhoernchen_indikator",
+      "raupen_indikator",
+      "blattlaeuse_indikator",
+      "habicht_indikator"
+    ],
+    "gruppen": [
+      {
+        "kategorie": "schaedling",
+        "mitglieder": [
+          "borkenkaefer_dichte"
+        ],
+        "kurve": {
+          "jahr_0": 0.0,
+          "jahr_1": 0.0,
+          "jahr_2": 0.0,
+          "jahr_3": 0.0,
+          "jahr_4": 0.0,
+          "jahr_5": 0.0,
+          "jahr_6": 0.0,
+          "jahr_7": 0.0,
+          "jahr_8": 0.0,
+          "jahr_9": 0.0,
+          "jahr_10": 0.0,
+          "jahr_11": 0.0,
+          "jahr_12": 0.0,
+          "jahr_13": 0.0,
+          "jahr_14": 0.0,
+          "jahr_15": 0.0,
+          "jahr_16": 0.0,
+          "jahr_17": 0.0,
+          "jahr_18": 0.0,
+          "jahr_19": 0.0,
+          "jahr_20": 0.0
+        }
+      },
+      {
+        "kategorie": "struktur",
+        "mitglieder": [
+          "kronendach"
+        ],
+        "kurve": {
+          "jahr_0": 100.0,
+          "jahr_1": 100.0,
+          "jahr_2": 100.0,
+          "jahr_3": 100.0,
+          "jahr_4": 100.0,
+          "jahr_5": 100.0,
+          "jahr_6": 100.0,
+          "jahr_7": 100.0,
+          "jahr_8": 100.0,
+          "jahr_9": 100.0,
+          "jahr_10": 100.0,
+          "jahr_11": 100.0,
+          "jahr_12": 100.0,
+          "jahr_13": 100.0,
+          "jahr_14": 100.0,
+          "jahr_15": 100.0,
+          "jahr_16": 100.0,
+          "jahr_17": 100.0,
+          "jahr_18": 100.0,
+          "jahr_19": 100.0,
+          "jahr_20": 100.0
+        }
+      },
+      {
+        "kategorie": "biodiversitaet",
+        "mitglieder": [
+          "biodiversitaet"
+        ],
+        "kurve": {
+          "jahr_0": 80.0,
+          "jahr_1": 79.3,
+          "jahr_2": 78.8,
+          "jahr_3": 78.4,
+          "jahr_4": 78.1,
+          "jahr_5": 77.9,
+          "jahr_6": 77.8,
+          "jahr_7": 77.6,
+          "jahr_8": 77.5,
+          "jahr_9": 77.4,
+          "jahr_10": 77.4,
+          "jahr_11": 77.3,
+          "jahr_12": 77.3,
+          "jahr_13": 77.2,
+          "jahr_14": 77.1,
+          "jahr_15": 77.1,
+          "jahr_16": 77.0,
+          "jahr_17": 76.9,
+          "jahr_18": 76.9,
+          "jahr_19": 76.8,
+          "jahr_20": 76.8
+        }
+      },
+      {
+        "kategorie": "baumbestand",
+        "mitglieder": [
+          "eiche_vitalitaet",
+          "kiefer_vitalitaet",
+          "birke_anteil"
+        ],
+        "kurve": {
+          "jahr_0": 33.33,
+          "jahr_1": 33.33,
+          "jahr_2": 33.33,
+          "jahr_3": 33.3,
+          "jahr_4": 33.3,
+          "jahr_5": 33.27,
+          "jahr_6": 33.27,
+          "jahr_7": 33.23,
+          "jahr_8": 33.2,
+          "jahr_9": 33.2,
+          "jahr_10": 33.17,
+          "jahr_11": 33.07,
+          "jahr_12": 32.97,
+          "jahr_13": 32.87,
+          "jahr_14": 32.77,
+          "jahr_15": 32.63,
+          "jahr_16": 32.53,
+          "jahr_17": 32.43,
+          "jahr_18": 32.33,
+          "jahr_19": 32.23,
+          "jahr_20": 32.13
+        }
+      },
+      {
+        "kategorie": "szenario5",
+        "mitglieder": [
+          "brandrisiko"
+        ],
+        "kurve": {
+          "jahr_0": 15.0,
+          "jahr_1": 13.4,
+          "jahr_2": 13.4,
+          "jahr_3": 13.4,
+          "jahr_4": 13.4,
+          "jahr_5": 13.4,
+          "jahr_6": 13.4,
+          "jahr_7": 13.4,
+          "jahr_8": 13.4,
+          "jahr_9": 13.4,
+          "jahr_10": 13.4,
+          "jahr_11": 13.4,
+          "jahr_12": 13.4,
+          "jahr_13": 13.4,
+          "jahr_14": 13.4,
+          "jahr_15": 13.4,
+          "jahr_16": 13.4,
+          "jahr_17": 13.4,
+          "jahr_18": 13.4,
+          "jahr_19": 13.4,
+          "jahr_20": 13.4
+        }
+      },
+      {
+        "kategorie": "strauch",
+        "mitglieder": [
+          "hasel_anteil",
+          "holunder_anteil",
+          "brombeere_anteil"
+        ],
+        "kurve": {
+          "jahr_0": 0.0,
+          "jahr_1": 0.0,
+          "jahr_2": 0.13,
+          "jahr_3": 0.23,
+          "jahr_4": 0.23,
+          "jahr_5": 0.23,
+          "jahr_6": 0.23,
+          "jahr_7": 0.23,
+          "jahr_8": 0.23,
+          "jahr_9": 0.23,
+          "jahr_10": 0.23,
+          "jahr_11": 0.23,
+          "jahr_12": 0.23,
+          "jahr_13": 0.23,
+          "jahr_14": 0.23,
+          "jahr_15": 0.23,
+          "jahr_16": 0.23,
+          "jahr_17": 0.23,
+          "jahr_18": 0.23,
+          "jahr_19": 0.23,
+          "jahr_20": 0.23
+        }
+      },
+      {
+        "kategorie": "pilz",
+        "mitglieder": [
+          "blaeuepilz_indikator"
+        ],
+        "kurve": {
+          "jahr_0": 0.0,
+          "jahr_1": 0.0,
+          "jahr_2": 0.0,
+          "jahr_3": 0.0,
+          "jahr_4": 0.0,
+          "jahr_5": 0.0,
+          "jahr_6": 0.0,
+          "jahr_7": 0.0,
+          "jahr_8": 0.0,
+          "jahr_9": 0.0,
+          "jahr_10": 0.0,
+          "jahr_11": 0.0,
+          "jahr_12": 0.0,
+          "jahr_13": 0.0,
+          "jahr_14": 0.0,
+          "jahr_15": 0.0,
+          "jahr_16": 0.0,
+          "jahr_17": 0.0,
+          "jahr_18": 0.0,
+          "jahr_19": 0.0,
+          "jahr_20": 0.0
+        }
+      },
+      {
+        "kategorie": "kraut",
+        "mitglieder": [
+          "brennnessel_indikator",
+          "waldmeister_indikator",
+          "heidelbeere_indikator"
+        ],
+        "kurve": {
+          "jahr_0": 39.33,
+          "jahr_1": 39.33,
+          "jahr_2": 39.33,
+          "jahr_3": 39.33,
+          "jahr_4": 39.33,
+          "jahr_5": 39.33,
+          "jahr_6": 39.33,
+          "jahr_7": 39.33,
+          "jahr_8": 39.33,
+          "jahr_9": 39.33,
+          "jahr_10": 39.33,
+          "jahr_11": 39.33,
+          "jahr_12": 39.33,
+          "jahr_13": 39.33,
+          "jahr_14": 39.33,
+          "jahr_15": 39.33,
+          "jahr_16": 39.33,
+          "jahr_17": 39.33,
+          "jahr_18": 39.33,
+          "jahr_19": 39.33,
+          "jahr_20": 39.33
+        }
+      },
+      {
+        "kategorie": "praedator",
+        "mitglieder": [
+          "sperber_indikator",
+          "fuchs_indikator"
+        ],
+        "kurve": {
+          "jahr_0": 65.0,
+          "jahr_1": 65.0,
+          "jahr_2": 64.95,
+          "jahr_3": 64.85,
+          "jahr_4": 64.75,
+          "jahr_5": 64.55,
+          "jahr_6": 64.35,
+          "jahr_7": 64.15,
+          "jahr_8": 63.9,
+          "jahr_9": 63.7,
+          "jahr_10": 63.55,
+          "jahr_11": 63.4,
+          "jahr_12": 63.25,
+          "jahr_13": 63.1,
+          "jahr_14": 63.05,
+          "jahr_15": 62.95,
+          "jahr_16": 62.8,
+          "jahr_17": 62.7,
+          "jahr_18": 62.6,
+          "jahr_19": 62.5,
+          "jahr_20": 62.4
+        }
+      },
+      {
+        "kategorie": "kleinsaeuger",
+        "mitglieder": [
+          "kleinsaeuger_indikator"
+        ],
+        "kurve": {
+          "jahr_0": 100.0,
+          "jahr_1": 99.8,
+          "jahr_2": 99.5,
+          "jahr_3": 99.0,
+          "jahr_4": 98.7,
+          "jahr_5": 98.5,
+          "jahr_6": 98.3,
+          "jahr_7": 98.1,
+          "jahr_8": 98.0,
+          "jahr_9": 97.9,
+          "jahr_10": 97.8,
+          "jahr_11": 97.7,
+          "jahr_12": 97.6,
+          "jahr_13": 97.4,
+          "jahr_14": 97.3,
+          "jahr_15": 97.2,
+          "jahr_16": 97.0,
+          "jahr_17": 96.9,
+          "jahr_18": 96.7,
+          "jahr_19": 96.6,
+          "jahr_20": 96.4
+        }
+      }
+    ]
   }
 }
