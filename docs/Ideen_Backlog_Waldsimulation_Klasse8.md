@@ -28,6 +28,24 @@
 - **Umfang:** Sollte in mehrere Milestones aufgeteilt werden (Analyse-Kurven, Dashboard-Kacheln, Graph-Knoten haben unterschiedliche Anforderungen an die Darstellung von Sammelknoten) statt als ein großer Schritt. Kandidat für den ersten Teil-Milestone: Analyse-Screen-Kurven, da dort die Kurvenflut aktuell am größten ist.
 - Noch keine Milestone-Nummer – braucht erst weitere Diskussion (u. a. wie Sammelknoten im Graphen visuell dargestellt werden).
 
+### Kritische Durchsicht: nachvollziehbare, aber nicht triviale Rückkopplungsschleifen in den Top-10-Szenarien (2026-09-11)
+
+- **Hintergrund:** M19 wählt die kontrastreichsten Wald×Störung-Kombinationen für die Lehrkraft-Empfehlung aus (`scripts/simulation/build_lehrkraft_kombinationen.py`), aber „größter Kontrast" ist nicht automatisch dasselbe wie „lehrreichste Rückkopplungsschleife".
+- **Idee:** gezielt durchgehen, ob die aktuell empfohlenen Top-Szenarien Rückkopplungsschleifen zeigen, die für Klasse 8 verständlich, aber nicht sofort offensichtlich sind – das eigentliche didaktische Ziel der Simulation (siehe Umsetzungsauftrag). Falls nicht: Auswahlkriterium in `build_lehrkraft_kombinationen.py` ergänzen statt nur nach Kontraststärke zu sortieren.
+- Zunächst reine Analyse-/Review-Aufgabe, kein Code-Vorgriff nötig, bevor das Ergebnis vorliegt.
+
+### Offener Design-Workshop: drei radikal unterschiedliche Darstellungen der Simulation (2026-09-11)
+
+- **Idee:** bewusst ergebnisoffene Design-Session mit drei grundverschiedenen Ansätzen, wie die Simulation dargestellt werden könnte – losgelöst vom aktuellen Feldbuch/Naturjournal-Konzept (Styleguide) – als Gegenprobe, ob das aktuelle Konzept die Kaskadenlogik wirklich am besten vermittelt oder ob eine ganz andere Darstellung besser wäre.
+- Bietet sich für einen eigenen Claude-Design-Canvas-Durchlauf an (wie bei M23), diesmal explizit mit mehreren parallelen Entwürfen statt einem.
+- Ergebnis wäre zunächst Diskussionsgrundlage, keine Festlegung – erst nach Rücksprache ggf. in einen Milestone überführen (analog zur Brand-Störung oben).
+
+### Review der Lehrkraft-Annahmen: sicherstellen, dass sie in Config-Dateien statt hartkodiert stehen (2026-09-11)
+
+- **Hintergrund:** Die Milestones-Doku führt unter „Offene Lehrkraft-Abgleiche" bereits mehrere plausibel hergeleitete, aber nie mit einer echten Lehrkraft geprüfte Annahmen auf: Sprite-Zustands-Schwellenwerte in `js/dashboard.js`, Endzustandsbild-Schwellen 34/67 in `js/forscherheft.js` → `endzustandBild()`, Luchs/Wolf-Reduktionsfaktoren in `scripts/simulation/model.py`. Dazu kommt `DAUER_TROCKENHEIT_JAHRE` in `model.py` (siehe „Mehrjährige Störungsdauer" unten) – ein weiterer Wert dieser Art, der bislang gefunden wurde.
+- **Idee:** gezielt durchgehen, welche dieser mit-einer-Lehrkraft-abzugleichenden Werte aktuell in JS-/Python-Code statt in `data/*.json` stehen, und die hartkodierten in Konfigurationsdateien verschieben – damit eine Lehrkraft sie nach Rücksprache anpassen kann, ohne Code anzufassen.
+- Reine Refactoring-Idee ohne fachliche Änderung der Werte selbst – nur der Ort, an dem sie stehen, ändert sich.
+
 ---
 
 ## Verbesserungen
@@ -40,3 +58,33 @@
   Art/Baum in der Mitte darstellen statt nur Symbol+Skala+Text.
 - Bei erneuter Aufnahme als Milestone: Styleguide Abschnitt 6 (Feldmessinstrumente-Optik,
   „nie Farbe allein") bleibt maßgeblich, auch für die Radialdiagramm-Variante.
+
+### Mehrjährige Störungsdauer (z. B. mehrjährige Trockenheit) (2026-09-11)
+
+- **Ist-Zustand:** Nur Trockenheit hat überhaupt ein Dauer-Konzept – `DAUER_TROCKENHEIT_JAHRE = 4` in `scripts/simulation/model.py`, fest einprogrammiert (nicht in `data/stoerungen.json`). Borkenkäfer/Sturm/Temperatur/Totholzentnahme sind ab Trigger-Jahr dauerhaft aktiv (kein definiertes Ende); Trockenheit ist die einzige Störung mit einem festen Ende.
+- **Idee:** Dauer als wählbare/parametrisierbare Größe statt fixer Konstante anbieten – z. B. kurze/lange Trockenheit als Auswahloption, oder allgemeiner ein Dauer-Feld je Störung in `data/stoerungen.json` statt im Python-Code.
+- Offene Fragen: nur bei Trockenheit wählbar machen oder als allgemeines Konzept für mehrere Störungstypen einführen? Wirkt sich auf die Kombinatorik in `build_simulationen.py` aus (mehr Varianten je Störung = mehr generierte Zeitreihen) – Umfang vorab abschätzen.
+- Hängt mit dem Backlog-Punkt „Review der Lehrkraft-Annahmen" oben zusammen – `DAUER_TROCKENHEIT_JAHRE` ist ein konkretes Beispiel für eine Annahme, die aktuell nur im Code, nicht in den Daten steht.
+
+### Umschalten zwischen vereinfachter und vollständiger Netzwerk-Ansicht (2026-09-11)
+
+- Ergänzt den Backlog-Punkt „Vereinfachte Projektion für Schüler:innen" oben um eine konkrete Interaktionsidee: statt (oder zusätzlich zu) einer automatisch reduzierten Ansicht ein explizites Umschalten zwischen „vereinfacht" und „vollständig" anbieten, damit Schüler:innen bei Bedarf selbst in die volle Komplexität wechseln können.
+- Betrifft in erster Linie den Netzwerk-Graphen (M8/M15), wo Unübersichtlichkeit laut dem Punkt oben am dringendsten ist.
+- Sollte zusammen mit „Vereinfachte Projektion" oben diskutiert, nicht separat umgesetzt werden (gleiche Leitplanke: Gruppierung automatisch aus den generierten Szenariodaten ableiten, nicht von Hand pflegen).
+
+### Lehrkraft-Übersicht (M19) als generierte Markdown-Datei statt In-App-Screen (2026-09-11)
+
+- **Ist-Zustand:** `data/generated/lehrkraft_kombinationen.json` wird bereits build-time von `scripts/simulation/build_lehrkraft_kombinationen.py` erzeugt, aktuell aber live in der App gerendert (`js/lehrkraft.js`, Post-it-Tab „Für Lehrkräfte", `#screen-lehrkraft` in `index.html`).
+- **Idee:** In-App-Screen entfernen, stattdessen die vorhandenen Build-Time-Daten direkt als lesbare Markdown-Datei ausgeben (z. B. `docs/Lehrkraft_Empfehlungen.md`, aus demselben Build-Skript generiert) – Lehrkräfte lesen das außerhalb der Schüler-App, kein zusätzlicher Navigationspunkt nötig.
+- Aufräumarbeit bei Umsetzung: Post-it-Nav-Eintrag, `#screen-lehrkraft`, `js/lehrkraft.js` und der zugehörige Precache-Eintrag müssten entfernt werden.
+
+### README für das Projekt (2026-09-11)
+
+- Bisher gibt es keine `README.md` im Projekt-Root – Einstieg für neue Mitwirkende/Lehrkräfte läuft aktuell nur über `CLAUDE.md` und die `docs/`-Quelldokumente.
+- **Idee:** kurze `README.md` mit Projektbeschreibung, Zielgruppe, lokalem Start (`python3 -m http.server`), Verweis auf `docs/` als Quelldokumente und auf `CLAUDE.md` für die Entwicklungs-Konventionen.
+
+### Mehr Leitfragen für die Reflexion (2026-09-11)
+
+- Die aktuellen Reflexionsfragen in `js/forscherheft.js` sind wörtlich aus der Wissensbasis Abschnitt 6.5 übernommen (bewusste Entscheidung, siehe M7).
+- **Idee:** zusätzliche Leitfragen ergänzen, um die Reflexion zu vertiefen.
+- Offene Frage: neue Fragen in die Wissensbasis (Abschnitt 6.5) aufnehmen und von dort wörtlich übernehmen (konsistent mit der bisherigen Quelle-vor-Code-Regel), oder als app-eigene Ergänzung ohne Wissensbasis-Bezug behandeln?
