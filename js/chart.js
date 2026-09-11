@@ -120,6 +120,27 @@ const WaldsimChart = (() => {
     return werte;
   }
 
+  // Sammelkurven der vereinfachten Projektion (M29/M30): `kurve` ist die
+  // build-seitig bereits gemittelte {jahr_0..jahr_20}-Reihe eines einzelnen
+  // Kategorie-Durchschnitts, kein Indikator-Objekt - eigene Extraktion statt
+  // werteAusZeitreihe(), da dort pro Jahr mehrere Indikatoren stehen.
+  function werteAusKurve(kurve) {
+    const werte = [];
+    for (let jahr = 0; jahr <= JAHRE_GESAMT; jahr++) {
+      werte.push(kurve[`jahr_${jahr}`] ?? 0);
+    }
+    return werte;
+  }
+
+  // Einheitlicher, bewusst zurückhaltender Stil für alle Sammelkurven -
+  // sollen als "Hintergrundrauschen" erkennbar bleiben statt mit der
+  // INDIKATOR_STIL-Farbpalette der hervorgehobenen Einzelkurven zu
+  // konkurrieren (Milestones-Dokument M30 "optisch abgesetzt").
+  const GRUPPEN_STIL = { farbe: "#8C8272", dash: "3 3" };
+  function gruppenStil() {
+    return GRUPPEN_STIL;
+  }
+
   function punktePfad(werte) {
     return werte
       .map((wert, jahr) => {
@@ -132,7 +153,7 @@ const WaldsimChart = (() => {
 
   /**
    * @param {string} waldName Für den aria-label-Text.
-   * @param {{werte: number[], farbe: string, dash?: string}[]} kurven
+   * @param {{werte: number[], farbe: string, dash?: string, gruppiert?: boolean}[]} kurven
    */
   function svg(waldName, kurven) {
     const gitter = [0, 25, 50, 75, 100]
@@ -150,7 +171,7 @@ const WaldsimChart = (() => {
     const linien = kurven
       .map(
         (k) =>
-          `<polyline points="${punktePfad(k.werte)}" class="analyse-linie" style="stroke:${k.farbe}" stroke-dasharray="${k.dash || ""}"/>`
+          `<polyline points="${punktePfad(k.werte)}" class="analyse-linie${k.gruppiert ? " analyse-linie--gruppe" : ""}" style="stroke:${k.farbe}" stroke-dasharray="${k.dash || ""}"/>`
       )
       .join("");
 
@@ -161,5 +182,15 @@ const WaldsimChart = (() => {
     `;
   }
 
-  return { JAHRE_GESAMT, DASH_MUSTER, farbeFuer, linienstilFuer, legendenChipSvg, werteAusZeitreihe, svg };
+  return {
+    JAHRE_GESAMT,
+    DASH_MUSTER,
+    farbeFuer,
+    linienstilFuer,
+    legendenChipSvg,
+    werteAusZeitreihe,
+    werteAusKurve,
+    gruppenStil,
+    svg,
+  };
 })();

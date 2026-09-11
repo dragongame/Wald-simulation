@@ -53,8 +53,18 @@ def berechne_projektion(zeitreihe, indikatoren):
         werte = [zeitreihe[f"jahr_{jahr}"][iid] for jahr in range(JAHRE)]
         max_abweichung[iid] = max(abs(w - basis[iid]) for w in werte)
 
-    wichtig = [iid for iid in ids if max_abweichung[iid] >= SCHWELLE_WICHTIG]
+    # Absteigend nach Stärke sortiert (M30-Fundament): die UI kann die
+    # Vereinigung zweier Wälder so auf die stärksten N begrenzen, ohne selbst
+    # ökologisch zu rechnen - reines Sortieren nach bereits hier berechneten
+    # Werten. `abweichungen` (alle 35 ids, nicht nur wichtig) macht diese
+    # Werte auch für Ids verfügbar, die in EINEM Wald wichtig sind, im
+    # anderen aber nicht, damit die Stärke dort trotzdem vergleichbar bleibt.
+    wichtig = sorted(
+        (iid for iid in ids if max_abweichung[iid] >= SCHWELLE_WICHTIG),
+        key=lambda iid: -max_abweichung[iid],
+    )
     wichtig_set = set(wichtig)
+    abweichungen = {iid: round(max_abweichung[iid], 1) for iid in ids}
 
     rest_je_kategorie = {}
     for iid in ids:
@@ -81,7 +91,7 @@ def berechne_projektion(zeitreihe, indikatoren):
         f"{sorted(abgedeckt)} != {sorted(ids)}"
     )
 
-    return {"wichtig": wichtig, "gruppen": gruppen}
+    return {"wichtig": wichtig, "gruppen": gruppen, "abweichungen": abweichungen}
 
 
 def lade(name):

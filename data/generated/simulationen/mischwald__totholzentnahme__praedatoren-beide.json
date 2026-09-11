@@ -790,13 +790,13 @@
   },
   "projektion": {
     "wichtig": [
-      "totholzmenge",
-      "verjuengung_mischbaumarten",
       "rothirsch_dichte",
+      "totholzmenge",
       "zunderschwamm_indikator",
-      "hallimasch_indikator",
       "buntspecht_indikator",
-      "ameisenbuntkaefer_indikator"
+      "ameisenbuntkaefer_indikator",
+      "hallimasch_indikator",
+      "verjuengung_mischbaumarten"
     ],
     "gruppen": [
       {
@@ -1219,6 +1219,43 @@
           "jahr_20": 100.0
         }
       }
-    ]
+    ],
+    "abweichungen": {
+      "gesamtvitalitaet": 0.0,
+      "borkenkaefer_dichte": 0.0,
+      "totholzmenge": 11.6,
+      "kronendach": 0.0,
+      "bodenfeuchte": 0.0,
+      "biodiversitaet": 2.8,
+      "fichte_vitalitaet": 0.0,
+      "buche_vitalitaet": 0.0,
+      "eiche_vitalitaet": 0.0,
+      "kiefer_vitalitaet": 0.0,
+      "birke_anteil": 0.0,
+      "verjuengung_mischbaumarten": 5.1,
+      "reh_dichte": 2.8,
+      "rothirsch_dichte": 40.4,
+      "brandrisiko": 1.6,
+      "hasel_anteil": 0.0,
+      "holunder_anteil": 0.0,
+      "brombeere_anteil": 0.0,
+      "zunderschwamm_indikator": 10.5,
+      "blaeuepilz_indikator": 0.0,
+      "hallimasch_indikator": 8.0,
+      "brennnessel_indikator": 0.0,
+      "eichelhaeher_indikator": 0.0,
+      "buntspecht_indikator": 9.3,
+      "ameisenbuntkaefer_indikator": 9.3,
+      "buschwindroeschen_indikator": 0.0,
+      "waldmeister_indikator": 0.0,
+      "heidelbeere_indikator": 0.0,
+      "eichhoernchen_indikator": 0.0,
+      "raupen_indikator": 0.0,
+      "blattlaeuse_indikator": 0.0,
+      "habicht_indikator": 0.0,
+      "sperber_indikator": 0.0,
+      "kleinsaeuger_indikator": 0.0,
+      "fuchs_indikator": 0.0
+    }
   }
 }

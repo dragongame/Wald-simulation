@@ -130,8 +130,14 @@
       </header>
 
       <section class="form-section">
-        <h2>Indikatoren wählen</h2>
-        <p class="form-hint">Kaskadenrelevante Kurven (★) sind vorausgewählt – frei weitere dazu- oder abwählen.</p>
+        <div class="analyse-indikatoren-kopf">
+          <h2>Indikatoren wählen</h2>
+          <label class="graph-toggle">
+            <input type="checkbox" id="analyse-vollstaendig-toggle">
+            Vollständige Indikatorenliste anzeigen
+          </label>
+        </div>
+        <p class="form-hint" id="analyse-modus-hinweis"></p>
         <div id="analyse-indikatoren-liste" class="analyse-indikatoren-liste"></div>
       </section>
 

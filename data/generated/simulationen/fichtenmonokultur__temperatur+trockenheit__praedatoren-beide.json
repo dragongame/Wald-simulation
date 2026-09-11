@@ -794,22 +794,22 @@
   },
   "projektion": {
     "wichtig": [
-      "gesamtvitalitaet",
-      "totholzmenge",
       "bodenfeuchte",
-      "fichte_vitalitaet",
       "rothirsch_dichte",
-      "brandrisiko",
+      "gesamtvitalitaet",
+      "fichte_vitalitaet",
+      "brennnessel_indikator",
+      "totholzmenge",
       "zunderschwamm_indikator",
       "hallimasch_indikator",
-      "brennnessel_indikator",
+      "blattlaeuse_indikator",
       "buntspecht_indikator",
       "ameisenbuntkaefer_indikator",
-      "buschwindroeschen_indikator",
-      "eichhoernchen_indikator",
       "raupen_indikator",
-      "blattlaeuse_indikator",
+      "eichhoernchen_indikator",
       "habicht_indikator",
+      "buschwindroeschen_indikator",
+      "brandrisiko",
       "sperber_indikator"
     ],
     "gruppen": [
@@ -1139,6 +1139,43 @@
           "jahr_20": 0.0
         }
       }
-    ]
+    ],
+    "abweichungen": {
+      "gesamtvitalitaet": 36.7,
+      "borkenkaefer_dichte": 0.0,
+      "totholzmenge": 18.3,
+      "kronendach": 0.0,
+      "bodenfeuchte": 47.7,
+      "biodiversitaet": 0.9,
+      "fichte_vitalitaet": 36.7,
+      "buche_vitalitaet": 0.0,
+      "eiche_vitalitaet": 0.0,
+      "kiefer_vitalitaet": 0.0,
+      "birke_anteil": 0.0,
+      "verjuengung_mischbaumarten": 1.0,
+      "reh_dichte": 2.8,
+      "rothirsch_dichte": 40.4,
+      "brandrisiko": 8.0,
+      "hasel_anteil": 0.0,
+      "holunder_anteil": 2.8,
+      "brombeere_anteil": 0.0,
+      "zunderschwamm_indikator": 16.5,
+      "blaeuepilz_indikator": 0.0,
+      "hallimasch_indikator": 16.1,
+      "brennnessel_indikator": 21.5,
+      "eichelhaeher_indikator": 0.0,
+      "buntspecht_indikator": 14.7,
+      "ameisenbuntkaefer_indikator": 14.7,
+      "buschwindroeschen_indikator": 8.3,
+      "waldmeister_indikator": 0.0,
+      "heidelbeere_indikator": 0.0,
+      "eichhoernchen_indikator": 11.5,
+      "raupen_indikator": 13.1,
+      "blattlaeuse_indikator": 15.2,
+      "habicht_indikator": 10.9,
+      "sperber_indikator": 6.6,
+      "kleinsaeuger_indikator": 0.0,
+      "fuchs_indikator": 0.0
+    }
   }
 }

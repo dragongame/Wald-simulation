@@ -790,22 +790,22 @@
   },
   "projektion": {
     "wichtig": [
-      "totholzmenge",
-      "bodenfeuchte",
-      "fichte_vitalitaet",
-      "buche_vitalitaet",
-      "verjuengung_mischbaumarten",
       "rothirsch_dichte",
-      "zunderschwamm_indikator",
+      "bodenfeuchte",
       "hallimasch_indikator",
+      "fichte_vitalitaet",
+      "blattlaeuse_indikator",
       "brennnessel_indikator",
+      "totholzmenge",
+      "raupen_indikator",
+      "zunderschwamm_indikator",
       "buntspecht_indikator",
       "ameisenbuntkaefer_indikator",
       "buschwindroeschen_indikator",
       "eichhoernchen_indikator",
-      "raupen_indikator",
-      "blattlaeuse_indikator",
-      "habicht_indikator"
+      "verjuengung_mischbaumarten",
+      "habicht_indikator",
+      "buche_vitalitaet"
     ],
     "gruppen": [
       {
@@ -1163,6 +1163,43 @@
           "jahr_20": 97.8
         }
       }
-    ]
+    ],
+    "abweichungen": {
+      "gesamtvitalitaet": 3.7,
+      "borkenkaefer_dichte": 0.0,
+      "totholzmenge": 8.3,
+      "kronendach": 0.0,
+      "bodenfeuchte": 36.0,
+      "biodiversitaet": 0.4,
+      "fichte_vitalitaet": 12.1,
+      "buche_vitalitaet": 4.4,
+      "eiche_vitalitaet": 0.0,
+      "kiefer_vitalitaet": 0.0,
+      "birke_anteil": 0.0,
+      "verjuengung_mischbaumarten": 5.1,
+      "reh_dichte": 2.8,
+      "rothirsch_dichte": 40.4,
+      "brandrisiko": 0.0,
+      "hasel_anteil": 0.0,
+      "holunder_anteil": 1.2,
+      "brombeere_anteil": 0.0,
+      "zunderschwamm_indikator": 7.4,
+      "blaeuepilz_indikator": 0.0,
+      "hallimasch_indikator": 12.7,
+      "brennnessel_indikator": 9.8,
+      "eichelhaeher_indikator": 2.2,
+      "buntspecht_indikator": 6.6,
+      "ameisenbuntkaefer_indikator": 6.6,
+      "buschwindroeschen_indikator": 5.3,
+      "waldmeister_indikator": 0.0,
+      "heidelbeere_indikator": 0.0,
+      "eichhoernchen_indikator": 5.3,
+      "raupen_indikator": 7.9,
+      "blattlaeuse_indikator": 11.6,
+      "habicht_indikator": 5.0,
+      "sperber_indikator": 3.0,
+      "kleinsaeuger_indikator": 2.2,
+      "fuchs_indikator": 1.4
+    }
   }
 }

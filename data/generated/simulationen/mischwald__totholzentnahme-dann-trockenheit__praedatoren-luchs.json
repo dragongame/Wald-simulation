@@ -794,23 +794,23 @@
   },
   "projektion": {
     "wichtig": [
-      "gesamtvitalitaet",
-      "totholzmenge",
+      "rothirsch_dichte",
       "bodenfeuchte",
       "fichte_vitalitaet",
-      "buche_vitalitaet",
+      "blattlaeuse_indikator",
       "verjuengung_mischbaumarten",
-      "reh_dichte",
-      "rothirsch_dichte",
+      "totholzmenge",
+      "raupen_indikator",
       "zunderschwamm_indikator",
-      "hallimasch_indikator",
       "buntspecht_indikator",
       "ameisenbuntkaefer_indikator",
-      "buschwindroeschen_indikator",
+      "reh_dichte",
       "eichhoernchen_indikator",
-      "raupen_indikator",
-      "blattlaeuse_indikator",
-      "habicht_indikator"
+      "hallimasch_indikator",
+      "buschwindroeschen_indikator",
+      "habicht_indikator",
+      "buche_vitalitaet",
+      "gesamtvitalitaet"
     ],
     "gruppen": [
       {
@@ -1139,6 +1139,43 @@
           "jahr_20": 97.2
         }
       }
-    ]
+    ],
+    "abweichungen": {
+      "gesamtvitalitaet": 4.1,
+      "borkenkaefer_dichte": 0.0,
+      "totholzmenge": 7.9,
+      "kronendach": 0.0,
+      "bodenfeuchte": 36.0,
+      "biodiversitaet": 2.9,
+      "fichte_vitalitaet": 12.1,
+      "buche_vitalitaet": 4.4,
+      "eiche_vitalitaet": 1.6,
+      "kiefer_vitalitaet": 0.0,
+      "birke_anteil": 0.0,
+      "verjuengung_mischbaumarten": 10.9,
+      "reh_dichte": 6.0,
+      "rothirsch_dichte": 62.0,
+      "brandrisiko": 1.6,
+      "hasel_anteil": 0.0,
+      "holunder_anteil": 0.7,
+      "brombeere_anteil": 0.0,
+      "zunderschwamm_indikator": 7.1,
+      "blaeuepilz_indikator": 0.0,
+      "hallimasch_indikator": 5.4,
+      "brennnessel_indikator": 0.0,
+      "eichelhaeher_indikator": 3.0,
+      "buntspecht_indikator": 6.3,
+      "ameisenbuntkaefer_indikator": 6.3,
+      "buschwindroeschen_indikator": 5.3,
+      "waldmeister_indikator": 0.0,
+      "heidelbeere_indikator": 0.0,
+      "eichhoernchen_indikator": 5.6,
+      "raupen_indikator": 7.9,
+      "blattlaeuse_indikator": 11.6,
+      "habicht_indikator": 5.2,
+      "sperber_indikator": 3.1,
+      "kleinsaeuger_indikator": 2.8,
+      "fuchs_indikator": 1.6
+    }
   }
 }
