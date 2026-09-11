@@ -47,6 +47,8 @@
         "ameisenbuntkaefer",
         "totholz"
       ],
+      "dauer_jahre": 12,
+      "dauer_jahre_hinweis": "Danach i.d.R. Wirtserschöpfung (didaktisch vereinfachte Annahme, siehe Wissensbasis Abschnitt 5 'didaktische Reduktion'). Vorher Konstante DAUER_BORKENKAEFER_MAX_JAHRE in scripts/simulation/model.py, seit M33 hierher verschoben (reines Refactoring).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 1"
     },
     {
@@ -64,6 +66,8 @@
         "eiche",
         "kiefer"
       ],
+      "dauer_jahre": 4,
+      "dauer_jahre_hinweis": "Didaktisch vereinfachte Annahme (Wissensbasis Abschnitt 5 'didaktische Reduktion'). Vorher Konstante DAUER_TROCKENHEIT_JAHRE in scripts/simulation/model.py, seit M33 hierher verschoben (reines Refactoring).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 2"
     },
     {
@@ -79,6 +83,8 @@
       ],
       "besonderheit": "dauerhafter_hintergrundfaktor",
       "besonderheit_hinweis": "Anders als die anderen 4 Ereignis-Störungen kein punktuelles Trigger-Jahr: ab Jahr 0 durchgehend als erhöhter Hintergrundfaktor aktiv. Bei Kombination mit einer zweiten Störung entfällt deshalb die Reihenfolge-Auswahl in der UI.",
+      "dauer_jahre": null,
+      "dauer_jahre_hinweis": "null = ab Trigger-Jahr dauerhaft aktiv (kein Abklingen im Simulationszeitraum).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 3; Umsetzungsauftrag 2.6"
     },
     {
@@ -93,6 +99,8 @@
         "birke",
         "eichelhaeher"
       ],
+      "dauer_jahre": null,
+      "dauer_jahre_hinweis": "null = ab Trigger-Jahr dauerhaft aktiv (einmaliger Schlag, dessen Folgeschäden im Modell nicht wieder abklingen).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 4"
     },
     {
@@ -111,6 +119,8 @@
       ],
       "relevantester_waldtyp": "kiefernwald",
       "empfehlung_umsetzung": "Brandschutz-Effekt bewusst klein/unsicher modellieren (kein starker linearer Effekt); der klar sichtbare, starke Effekt liegt auf dem Biodiversitäts-Indikator.",
+      "dauer_jahre": null,
+      "dauer_jahre_hinweis": "null = ab Trigger-Jahr dauerhaft aktiv (einmaliger Schritt-Effekt, keine Wiederholung).",
       "quelle_abschnitt": "Wissensbasis Abschnitt 4, Szenario 5; Umsetzungsauftrag 2.10.1/2.10.4"
     }
   ],

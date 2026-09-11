@@ -49,10 +49,10 @@ WILDVERBISS_WALDTYP_MULTIPLIKATOR = {"mischwald": 1.0, "fichtenmonokultur": 0.2,
 
 BAUMARTEN = ["fichte", "buche", "eiche", "kiefer", "birke"]
 
-# Dauer akuter Effekte in Jahren (didaktisch vereinfachte Annahme, siehe Wissensbasis
-# Abschnitt 5 "didaktische Reduktion" - kein exaktes Modell gefordert).
-DAUER_TROCKENHEIT_JAHRE = 4
-DAUER_BORKENKAEFER_MAX_JAHRE = 12  # danach i.d.R. Wirtserschöpfung
+# Dauer akuter Effekte in Jahren: seit M33 Datenfeld statt Konstante, siehe
+# data/stoerungen.json -> ereignis_stoerungen[].dauer_jahre (null = ab Trigger
+# dauerhaft). Wird von build_simulationen.py eingelesen und als dauer_je_typ
+# an simuliere()/Simulation durchgereicht.
 
 
 def _resilienz_faktor(text):
@@ -84,10 +84,11 @@ def _clamp(x, lo=0.0, hi=100.0):
 class Simulation:
     """Führt eine einzelne Waldtyp x Konfiguration-Simulation über 21 Jahre aus."""
 
-    def __init__(self, waldtyp, konfiguration, wolf_aktiv, luchs_aktiv):
+    def __init__(self, waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ):
         self.waldtyp = waldtyp  # dict aus data/waldtypen.json
         self.wid = waldtyp["id"]
         self.konfiguration = konfiguration  # Liste von {"typ", "trigger_jahr", "dauerhaft"}
+        self.dauer_je_typ = dauer_je_typ  # {typ: jahre|None}, aus data/stoerungen.json (M33)
         # Ersetzt den früheren 3-Stufen-Wildverbiss-Regler (niedrig/mittel/
         # hoch) durch die tatsächliche Ursache: Anwesenheit von Wolf/Luchs.
         # Ausgangszustand (kein deviation) = beide Prädatoren aktiv, siehe
@@ -221,9 +222,10 @@ class Simulation:
             return False
         if jahr < e["trigger_jahr"]:
             return False
-        if typ == "trockenheit":
-            return jahr < e["trigger_jahr"] + DAUER_TROCKENHEIT_JAHRE
-        return True  # borkenkaefer/sturm/totholzentnahme/temperatur: ab Trigger dauerhaft relevant
+        dauer = self.dauer_je_typ.get(typ)
+        if dauer is None:
+            return True  # dauerhaft ab Trigger relevant (siehe data/stoerungen.json dauer_jahre)
+        return jahr < e["trigger_jahr"] + dauer
 
     def _jahre_seit_trigger(self, typ, jahr):
         e = self._ereignis(typ)
@@ -284,7 +286,8 @@ class Simulation:
 
         # --- Borkenkäfer: wirtsbestandslimitiertes Wachstum ---
         seit_kaefer = self._jahre_seit_trigger("borkenkaefer", jahr)
-        if seit_kaefer is not None and seit_kaefer >= 0 and seit_kaefer <= DAUER_BORKENKAEFER_MAX_JAHRE:
+        dauer_kaefer = self.dauer_je_typ.get("borkenkaefer")
+        if seit_kaefer is not None and seit_kaefer >= 0 and seit_kaefer <= dauer_kaefer:
             # res_borkenkaefer ist ein Schweregrad-Multiplikator (gering Resilienz -> hoher
             # Wert -> schnelles Wachstum); siehe _resilienz_faktor(). Muss MULTIPLIKATIV
             # eingehen, nicht dividierend, sonst kehrt sich die Wirkung um.
@@ -315,7 +318,7 @@ class Simulation:
             s["fichte_vitalitaet"] = _clamp(s["fichte_vitalitaet"] - schaden)
             s["totholzmenge"] = _clamp(s["totholzmenge"] + schaden * 0.5, hi=100)
             s["kronendach"] = _clamp(s["kronendach"] - schaden * 0.2)
-        elif seit_kaefer is not None and seit_kaefer > DAUER_BORKENKAEFER_MAX_JAHRE:
+        elif seit_kaefer is not None and seit_kaefer > dauer_kaefer:
             s["borkenkaefer_dichte"] = _clamp(s["borkenkaefer_dichte"] * 0.7)
 
         # --- Totholzentnahme: permanenter Schritt-Effekt ab Trigger-Jahr ---
@@ -555,9 +558,12 @@ class Simulation:
         return out
 
 
-def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv):
+def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ):
     """Öffentliche Schnittstelle: liefert die 21-Jahre-Zeitreihe (jahr_0..jahr_20)
     aller Indikatoren für einen Waldtyp x Konfiguration x Wolf/Luchs-Anwesenheit.
+
+    dauer_je_typ: {ereignis_typ: dauer_jahre|None}, aus data/stoerungen.json
+    (ereignis_stoerungen[].dauer_jahre, null = ab Trigger dauerhaft).
     """
-    sim = Simulation(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv)
+    sim = Simulation(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ)
     return sim.run()

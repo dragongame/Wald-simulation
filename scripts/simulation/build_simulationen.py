@@ -85,6 +85,10 @@ def main():
         ("keine", False, False),
     ]
 
+    # Dauer akuter Effekte je Ereignis-Typ (seit M33 Datenfeld statt Konstante
+    # in model.py, siehe data/stoerungen.json -> ereignis_stoerungen[].dauer_jahre).
+    dauer_je_typ = {e["id"]: e.get("dauer_jahre") for e in stoerungen["ereignis_stoerungen"]}
+
     ereignis_konfigs = baue_ereignis_konfigurationen(stoerungen)
     erwartete_ereigniszustaende = stoerungen["kombinatorik"]["ereignis_auswahlzustaende"]
     assert len(ereignis_konfigs) == erwartete_ereigniszustaende, (
@@ -104,7 +108,7 @@ def main():
                 if konfig_id == "keine" and praedatoren_code == "beide":
                     continue  # ungültig: keine Abweichung vom Ausgangszustand (2.10.2/3.2)
 
-                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv)
+                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv, dauer_je_typ)
 
                 dateiname = f"{waldtyp['id']}__{konfig_id}__praedatoren-{praedatoren_code}.json"
                 out_path = OUT_DIR / dateiname
