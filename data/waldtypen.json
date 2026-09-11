@@ -66,7 +66,8 @@
         "borkenkaefer": "gering",
         "trockenheit": "gering",
         "sturm": "gering",
-        "feuer": null,
+        "feuer": "gering",
+        "feuer_hinweis": "Seit M36 gesetzt (Wissensbasis-Erweiterung Waldbrand, Abschnitt 2): Fichten-Nadelstreu ist stark brennbar (hoher Gehalt ätherischer Öle), wenn auch nicht ganz so stark wie Kiefer; zusätzlich erzeugt der im Modell bereits vorhandene Borkenkäfer-Kollaps real dokumentiert erhöhte Brandlast (trockenes Kronen-/Totholzmaterial). Tendenziell auf Kiefernwald-Niveau eingeordnet, nicht auf Mischwald-Niveau. Unsicherheit MITTEL - Annahme, mit Lehrkraft abzugleichen (wie die übrigen resilienzfaktoren-Einordnungen auch).",
         "hinweis": "Bietet dem Buchdrucker optimale Vermehrungsbedingungen; fällt die eine Baumart aus, bricht das System großflächig zusammen. Die Fichte weist unter allen wichtigen Baumarten das höchste biotische Risiko auf (FVA Baden-Württemberg)."
       },
       "szenario6_relevanz": "gering - kaum Mischbaumarten-Verjüngung vorhanden, die verloren gehen könnte.",

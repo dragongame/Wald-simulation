@@ -6,7 +6,15 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 
 ---
 
-### #1 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #1 · Kiefernwald auf Sand ⇄ Buchen-Eichen-Mischwald
+
+- **Störung:** Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)
+- **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
+- **Kiefernwald auf Sand:** deutlicher Schaden (Baumbestand 43.3 von 100)
+- **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 91.3 von 100)
+- **Größte Unterschiede:** Kronendach / Beschattung, Biodiversität, Baumbestand (gesamt)
+
+### #2 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Höhere Temperaturen + Borkenkäferbefall (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -14,7 +22,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 98.1 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Biodiversität, Totholzmenge
 
-### #2 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #3 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Borkenkäferbefall
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -22,7 +30,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.5 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Biodiversität, Totholzmenge
 
-### #3 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #4 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Borkenkäferbefall + Totholzentnahme zur Waldbrandprävention (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -30,7 +38,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.4 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Biodiversität, Totholzmenge
 
-### #4 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+### #5 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
 
 - **Störung:** Höhere Temperaturen + Borkenkäferbefall (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -38,7 +46,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Kronendach / Beschattung
 
-### #5 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #6 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Trockenheit / Dürre → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -46,7 +54,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 92.0 von 100)
 - **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Totholzmenge
 
-### #6 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #7 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Borkenkäferbefall + Trockenheit / Dürre (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -54,7 +62,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 91.4 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Biodiversität, Totholzmenge
 
-### #7 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+### #8 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
 
 - **Störung:** Borkenkäferbefall
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -62,7 +70,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Kronendach / Beschattung
 
-### #8 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+### #9 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
 
 - **Störung:** Borkenkäferbefall + Trockenheit / Dürre (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -70,7 +78,15 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Biodiversität
 
-### #9 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+### #10 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+
+- **Störung:** Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)
+- **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
+- **Fichtenmonokultur:** deutlicher Schaden (Baumbestand 35.9 von 100)
+- **Kiefernwald auf Sand:** deutlicher Schaden (Baumbestand 43.3 von 100)
+- **Größte Unterschiede:** Kronendach / Beschattung, Bodenfeuchte, Totholzmenge
+
+### #11 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
 
 - **Störung:** Borkenkäferbefall + Totholzentnahme zur Waldbrandprävention (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -78,7 +94,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Kronendach / Beschattung
 
-### #10 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #12 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Borkenkäferbefall → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -86,7 +102,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.4 von 100)
 - **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Totholzmenge
 
-### #11 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #13 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Höhere Temperaturen → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -94,7 +110,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.4 von 100)
 - **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Totholzmenge
 
-### #12 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #14 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Extremwetter (Sturm/Windwurf)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -102,7 +118,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.5 von 100)
 - **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Totholzmenge
 
-### #13 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
+### #15 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
 
 - **Störung:** Trockenheit / Dürre → Extremwetter (Sturm/Windwurf) (1 Jahr(e) später)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -110,7 +126,7 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Kronendach / Beschattung
 
-### #14 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #16 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Extremwetter (Sturm/Windwurf) + Totholzentnahme zur Waldbrandprävention (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
@@ -118,29 +134,13 @@ Rangliste der 20 kontrastreichsten von 48 geprüften Wald×Störung-Kombinatione
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 99.5 von 100)
 - **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Kronendach / Beschattung
 
-### #15 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
+### #17 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
 
 - **Störung:** Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)
 - **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
 - **Fichtenmonokultur:** deutlicher Schaden (Baumbestand 35.9 von 100)
 - **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 91.3 von 100)
 - **Größte Unterschiede:** Baumbestand (gesamt), Biodiversität, Totholzmenge
-
-### #16 · Fichtenmonokultur ⇄ Kiefernwald auf Sand
-
-- **Störung:** Höhere Temperaturen + Trockenheit / Dürre (gleichzeitig)
-- **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
-- **Fichtenmonokultur:** deutlicher Schaden (Baumbestand 35.9 von 100)
-- **Kiefernwald auf Sand:** kaum Schaden (Baumbestand 100.0 von 100)
-- **Größte Unterschiede:** Baumbestand (gesamt), Totholzmenge, Biodiversität
-
-### #17 · Fichtenmonokultur ⇄ Buchen-Eichen-Mischwald
-
-- **Störung:** Trockenheit / Dürre + Totholzentnahme zur Waldbrandprävention (gleichzeitig)
-- **Prädator-Regler:** Luchs & Wolf (Standard, kaum Effekt)
-- **Fichtenmonokultur:** deutlicher Schaden (Baumbestand 47.1 von 100)
-- **Buchen-Eichen-Mischwald:** kaum Schaden (Baumbestand 91.8 von 100)
-- **Größte Unterschiede:** Biodiversität, Baumbestand (gesamt), Totholzmenge
 
 ### #18 · Kiefernwald auf Sand ⇄ Buchen-Eichen-Mischwald
 

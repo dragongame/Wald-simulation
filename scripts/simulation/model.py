@@ -28,6 +28,21 @@ BASIS_TOTHOLZ = {"mischwald": 15, "fichtenmonokultur": 5, "kiefernwald": 10}
 BASIS_BIODIVERSITAET = {"mischwald": 80, "fichtenmonokultur": 30, "kiefernwald": 40}
 BASIS_BRANDRISIKO = {"mischwald": 15, "fichtenmonokultur": 40, "kiefernwald": 70}
 
+# Waldbrand (M36, siehe docs/Wissensbasis_Erweiterung_Waldbrand.md): endogen
+# ausgeloest, kein Auswahl-Haekchen (Nutzer-Entscheidung, Milestones-Dokument
+# Grundsatzentscheidungen). Ausloeser ist NICHT der Waldtyp allein, sondern
+# die AKTUELLE Witterung waehrend des Laufs (Abschnitt 1: das entspricht dem
+# realen DWD-Waldbrandgefahrenindex-Prinzip) - brandrisiko muss zusaetzlich
+# zur bestehenden Temperatur-Kopplung deshalb auch unter Trockenheit steigen,
+# schneller in Waldtypen mit geringer Feuer-Resilienz (res_feuer).
+# BRANDSCHWELLE MUSS > 78 sein (= höchster BASIS_BRANDRISIKO-Wert 70
+# [kiefernwald] + 20 Jahre * 0.4 Temperatur-Zuwachs/Jahr, siehe Temperatur-
+# Block unten) - sonst würde Temperatur allein (ganz ohne Trockenheit) über
+# 20 Jahre irgendwann selbst auslösen, was der Recherche widerspricht
+# (Trockenheit ist der eigentliche Haupttreiber, Temperatur nur Verstärker).
+BRANDSCHWELLE = 82.0
+BRANDRISIKO_TROCKENHEIT_RATE = 2.0
+
 # Reh/Rothirsch-Zieldichte ohne Prädatoren (Ausgangswert 80 = reale
 # Überpopulations-Situation, wie sie heute in weiten Teilen Deutschlands
 # ohne Luchs/Wolf vorherrscht - siehe Wissensbasis-Ergänzung, Abschnitt
@@ -197,6 +212,7 @@ class Simulation:
         self._sturm_ausgeloest = False
         self._kaefer_gestartet = False
         self._entnahme_ausgeloest = False
+        self._brand_ausgeloest = False
 
     def _wild_start(self):
         # Startet niedrig und wächst über ~5 Jahre auf die Zielstufe zu (2.10.2: kein
@@ -252,6 +268,11 @@ class Simulation:
         if self._ist_aktiv("trockenheit", jahr):
             intensitaet = 1.0 + (0.3 if temperatur_aktiv else 0.0)
             s["bodenfeuchte"] = _clamp(s["bodenfeuchte"] - 12 * intensitaet)
+            # Waldbrand-Vorbereitung (M36): Trockenheit ist laut Recherche der
+            # Haupttreiber der akuten Brandgefahr, nicht nur die Temperatur
+            # (siehe Wissensbasis-Erweiterung Waldbrand, Abschnitt 1) - Rate
+            # skaliert mit der waldtyp-eigenen Feuer-Anfälligkeit.
+            s["brandrisiko"] = _clamp(s["brandrisiko"] + BRANDRISIKO_TROCKENHEIT_RATE * self.res_feuer * intensitaet)
 
             fichte_vor = s["fichte_vitalitaet"]
             s["fichte_vitalitaet"] = _clamp(
@@ -375,6 +396,35 @@ class Simulation:
             s["totholzmenge"] = _clamp(s["totholzmenge"] + (fichte_vor - s["fichte_vitalitaet"]) * 0.5, hi=100)
             s["bodenfeuchte"] = _clamp(s["bodenfeuchte"] - 0.3)
             s["brandrisiko"] = _clamp(s["brandrisiko"] + 0.4)
+
+        # --- Waldbrand: einmaliger Ausbruch, sobald brandrisiko eine Schwelle
+        # überschreitet, während Temperatur (dauerhafter Hintergrundfaktor)
+        # aktiv ist (M36). brandrisiko selbst steigt nur durch aktive/
+        # vergangene Trockenheit und Temperatur (siehe oben) - die Schwelle
+        # ist damit faktisch nur nach einer ausreichend langen/intensiven
+        # Trockenheit erreichbar, nicht durch Temperatur allein (in 20 Jahren
+        # rechnerisch nicht erreichbar, siehe Wissensbasis-Erweiterung
+        # Waldbrand, Abschnitt 7 - kein "trockenheit gerade jetzt aktiv"-
+        # Erfordernis nötig, da brandrisiko ohne Trockenheit ohnehin nie hoch
+        # genug wird). Kein neuer Indikator: Kronendach/Totholz/Baumvitalität
+        # werden direkt verändert, Birke/Brombeere-Sukzession und der
+        # biphasische Biodiversitäts-Verlauf (kurzfristig runter, mittelfristig
+        # über den Ausgangswert hinaus) ergeben sich bereits aus der
+        # bestehenden "Nachwirkende Dynamik" unten (dieselbe Formel wie nach
+        # Sturm/Borkenkäfer, siehe Wissensbasis-Erweiterung Waldbrand,
+        # Abschnitt 4/6). Nur Fichte/Kiefer (Nadelbäume, kronenfeueranfällig
+        # laut Abschnitt 2) verlieren direkt Vitalität - Buche/Eiche sind laut
+        # Recherche deutlich weniger kronenfeueranfällig und bleiben hier
+        # unberührt.
+        if not self._brand_ausgeloest and temperatur_aktiv and s["brandrisiko"] >= BRANDSCHWELLE:
+            self._brand_ausgeloest = True
+            kronendach_vor = s["kronendach"]
+            s["kronendach"] = _clamp(s["kronendach"] - 55 * self.res_feuer)
+            kronendach_verlust = kronendach_vor - s["kronendach"]
+            s["totholzmenge"] = _clamp(s["totholzmenge"] + kronendach_verlust * 0.6, hi=100)
+            for baum in ("fichte_vitalitaet", "kiefer_vitalitaet"):
+                s[baum] = _clamp(s[baum] - 50 * self.res_feuer)
+            s["brandrisiko"] = _clamp(s["brandrisiko"] - 50)
 
         # --- Nachwirkende Dynamik: Kronendach-Regeneration, Sukzession, Biodiversität ---
         # leichte Kronendach-Erholung, wenn keine akuten Schäden mehr auftreten
