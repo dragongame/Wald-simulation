@@ -27,37 +27,49 @@ Diese drei Werte sind in den Quelldokumenten explizit als „Annahme, mit Lehrkr
 
 ## Milestones
 
-| # | Milestone | Status | Bezug (Akzeptanzkriterien/Abschnitte) |
-|---|---|---|---|
-| M0 | **Content-Fundament**: Sprites aus Atlas extrahiert (`assets/sprites/`, 38 Dateien, `hirsch`→`rothirsch` vereinheitlicht), Styleguide integriert, Prompt-Dateien für alle 17 bekannten fehlenden Bilder (`assets/prompts/`), Milestone-Doku angelegt | ✅ fertig (2026-08-25) | Vorbereitung für alle folgenden Milestones |
-| M1 | **Datenmodell**: `data/nodes.json` (32 Knoten inkl. `mensch_bewirtschaftung` + 3 abiotische Sonderknoten Licht/Wasser/Temperatur), `data/edges.json` (59 Kanten, Beziehungstabelle inkl. Kanten-Transformationsregel für Habicht/Sperber, Luchs/Wolf, Raupen/Blattläuse), `data/waldtypen.json` (3 Waldtypen mit Resilienzfaktoren), `data/stoerungen.json` (5 Ereignis-Störungen, Wildverbiss-Regler, Zeitabstands-/Kombinationsregeln) als single source of truth, referentiell geprüft | ✅ fertig (2026-08-25) | Umsetzungsauftrag 4.1–4.4, Wissensbasis Abschnitt 2–3 |
-| M2 | **Build-Time-Simulationsmodul**: geschlossenes Berechnungsmodul (`scripts/simulation/model.py`) + Build-Skript (`scripts/simulation/build_simulationen.py`), erzeugt alle 195 gültigen Waldtyp×Konfiguration-Kombinationen als statische Zeitreihen-JSONs unter `data/generated/simulationen/` (+ Index), Akzeptanzkriterium „Borkenkäfer+Fichtenmonokultur=Kollaps, Borkenkäfer+Mischwald=lokal" und „Wildverbiss erst in 2. Hälfte sichtbar" verifiziert | ✅ fertig (2026-08-25) | Umsetzungsauftrag 2.11, Akzeptanzkriterium „195 Kombinationen vorab berechnet" |
-| M3 | **PWA-Grundgerüst**: `manifest.json`, `index.html`/`css/styles.css`/`js/app.js` als App-Shell, Service Worker (`sw.js`, inhaltshash-versioniert über `sw-precache-manifest.json`, `skipWaiting`/`clients.claim`), konsequent relative Pfade (GitHub-Pages-Unterordner), `js/storage.js` als localStorage-Grundlage fürs spätere Forscherheft | ✅ fertig (2026-08-26) | Technikdokument 5.1–5.2, 5.7 |
-| M4 | **Start & Auswahl**: zwei Pflicht-Wald-Plätze (zwingend unterschiedliche Typen, gegenseitig deaktiviert), freie Störungsauswahl (0–2 von 5 Ereignis-Typen, Kategorie-Icons/-Rahmen Naturereignis/Bewirtschaftung, Reihenfolge-Auswahl nur wenn `reihenfolge_waehlbar`), Wildverbiss-Regler (3 Stufen), Hypothese je Wald, Play-Sperre bei „keine Abweichung vom Ausgangszustand", löst Auswahl live zur passenden vorab berechneten Zeitreihe auf (Vorschau-Screen mit Jahr-0/Jahr-20-Werten, Live-Dashboard folgt in M5) | ✅ fertig (2026-08-26) | Umsetzungsauftrag 2.1/2.2/2.10, 3.2 |
-| M5 | **Live-Dashboard**: Feldmessinstrumente-Optik (6 Indikatoren, Symbol+Skala+Text, nie Farbe allein), Zeitsteuerung (Play/Pause/Einzelschritt + Zeitachsen-Regler, Jahr 0–20), Art-Sprite-Zustandswechsel mit Crossfade (inkl. Sukzession, z. B. Birke erscheint erst im Verlauf), Vergleichsansicht zweier Wälder nebeneinander, kurzer Abschluss-Hinweis am Ende des Durchlaufs | ✅ fertig (2026-08-26) | Umsetzungsauftrag 3.3, Styleguide Abschnitt 6 |
-| M6 | **Analyse-Screen**: eigener Vollbild-Screen (getrennt vom Dashboard, erreichbar über Button im Abschluss-Hinweis bei Jahr 20), frei kombinierbare Kurven für alle 14 Indikatoren (nicht nur die 6 Dashboard-Instrumente), kaskadenrelevante Kurven vorausgewählt/mit ★ hervorgehoben, bis zu 3 Kurven-Kombinationen als Snapshot merkbar (Übernahme ins Forscherheft folgt mit M7) | ✅ fertig (2026-08-26) | Umsetzungsauftrag 2.5, User Stories 3.7/3.8 |
-| M7 | **Forscherheft**: eigener Reflexions-Screen nach der Analyse (Reflexionsfragen wörtlich aus Wissensbasis 6.5, inkl. Zusatzfrage bei Totholzentnahme), dauerhafte lokale Speicherung als Datenmodell v2 (2× Wald-Datensatz inkl. automatischem Endzustandsbild/Kurzbeschreibung, Störung(en) inkl. Reihenfolge/Zeitpunkt, Regler, bis zu 3 Kurven-Snapshots, gemeinsamer Reflexionstext, Feldbuch-Stempel als Signatur-Element), Übersichts-Screen mit Fortschrittsanzeige ohne festen Zielwert, Textexport je Seite (Kopieren/Teilen), „neue Sitzung" (alle Einträge löschen, mit Bestätigung), von überall über Button auf dem Startbildschirm erreichbar | ✅ fertig (2026-08-26) | Umsetzungsauftrag 2.4/2.9, Technikdokument 5.6 |
-| M8 | **Netzwerk-Graph & Rachel Carson**: Graph zu Beginn gesperrt, Button „Wissenschaftler:in um Hilfe bitten", tolerante Namensprüfung, editierbare Brief-Content-Datei, Kaskadenpfad-Hervorhebung als „Tinten-Spur", Vergleichsansicht als Doppelseite | ✅ fertig (2026-08-26) | Umsetzungsauftrag 2.3, Styleguide Abschnitt 5 |
-| M9 | **Arten-Lexikon**: alle 32 Knoten, nach Kategorie gruppiert, Bild + 1–2 Fakten, ohne Suche, unabhängig vom Graphen aufrufbar | ✅ fertig (2026-08-26) | Umsetzungsauftrag 2.8 |
-| M10 | **Asset-Feinschliff**: restliche extern generierte Bilder einpflegen sobald geliefert (17 Prompt-Dateien aus M0 + laufend ergänzte Liste), Beobachtungs-Stempel, Animationen gemäß Styleguide Abschnitt 7 | ✅ fertig (2026-08-26) | Fehlende_Grafiken_Bekannt/_Laufend, Styleguide Abschnitt 4/6/7 |
-| M11 | **Test & Deployment**: Abgleich gegen alle Akzeptanzkriterien (Umsetzungsauftrag Abschnitt 6), GitHub Pages Deployment, QR-Code für die Klasse | ✅ fertig (2026-08-26) | Umsetzungsauftrag Abschnitt 6, Technikdokument 5.7 |
-| M12 | **Dashboard-Kacheln für die 20 neuen Arten-Indikatoren**: eigene Live-Dashboard-Kacheln/Sprites für die in der Analyse-Erweiterung (siehe „Erweiterung (2026-08-26), 20 neue Arten-Indikatoren" unten) simulierten Arten, die bisher nur als Kurve wählbar sind | ✅ fertig (2026-08-26) | Backlog „Mehr Tiere und Pflanzen bei der Simulation anzeigen" (Teil-Erledigung) |
-| M13 | **Reihenfolge-Abfrage nur bei echtem Zeitversatz**: Reihenfolge-Auswahl in der UI nur noch anbieten, wenn `abstand_jahre > 0` (z. B. Sturm+Borkenkäfer, Sturm+Trockenheit); bei `abstand_jahre = 0` (aktuell nur Trockenheit+Borkenkäfer betroffen) entfällt die Frage, nachdem verifiziert ist, dass beide Reihenfolgen bei echter Gleichzeitigkeit identische Zeitreihen liefern | ✅ fertig (2026-08-26) | Backlog „Szenarios wo die Reihenfolge egal ist" |
-| M14 | **Einfachere Wald-Auswahl**: statt fester Plätze „Wald 1"/„Wald 2" alle drei Waldtypen nebeneinander zeigen, zwei davon anwählen, Reihenfolge der Anwahl (links→rechts) bestimmt automatisch Wald 1/Wald 2 | ✅ fertig (2026-08-26) | Backlog „Einfachere Auswahl" |
-| M15 | **Netzwerk-Graph übersichtlicher**: Sidebar mit an-/abwählbaren Art-Icons zum Filtern der im Graphen gezeigten Knoten, deutlicher unterscheidbare Kanten-/Linienarten | ✅ fertig (2026-08-26) | Backlog „Netzwerk übersichtlicher gestalten" |
-| M16 | **Graphen-Snapshots im Forscherheft anzeigen**: die bis zu 3 gespeicherten Kurven-Snapshots (seit M6/M7 als Daten im Forscherheft-Eintrag vorhanden) als tatsächliche Kurvengrafik auf der Forscherheft-Seite rendern, nicht nur referenzieren | ✅ fertig (2026-08-26) | Backlog „Die Graphen sollen im Forscherheft angezeigt werden" |
-| M19 | **Lehrkraft-Liste interessantester 2er-Kombinationen**: Übersicht/Empfehlung besonders kontrastreicher Wald×Störung-Kombinationen zur gezielten Verteilung an Gruppen | ✅ fertig (2026-08-26) | Backlog „Erstelle eine Liste den Interessantesten 2er Kombinationen" |
-| M20 | **Feldbuch-Feeling**: offene Buchseiten-Optik bei Szenario-Zusammenstellung, Reflexion, Forscherheft-Übersicht und Arten-Lexikon, durchgängige Post-it-Registerleiste (`docs/eingang/Bockmarks-3.png`) als neue App-weite Navigation inkl. Forscherheft-Eintrags-Tabs, `docs/eingang/Hintergrund.png` als Journal-Hintergrund, Netzwerk-Freischaltungs-Trigger jetzt wirklich durchgängig sichtbar statt nur auf dem Start-Bildschirm (M8) | ✅ fertig (2026-08-27) | Backlog „Mehr Feldbuch feeling", Styleguide Abschnitt 10 |
-| M23 | **Start-Bildschirm-Redesign „Erstkontakt"**: die lange Scroll-Auswahl wird ein 4-Schritt-Feldkarten-Wizard (Holztisch/Buchrahmen, live mitschreibendes „Protokoll", wachsende „Forschungsfrage"), aus einem vom Nutzer erarbeiteten Claude-Design-Canvas-Mockup übernommen | ✅ fertig (2026-08-28) | Styleguide Abschnitt 11 |
-| M24 | **Kurven-Darstellung verbessert**: Farbe in `js/chart.js` jetzt an die Indikator-`kategorie` gekoppelt statt an den Einzelindikator (Baumbestand/Prädatoren als zwei eng verwandte Farbtöne je nach fachlicher Untergruppe – Nadel-/Laubbaum bzw. Vögel/Boden-Rinden-Prädatoren), Linienstil fest je Indikator statt aus dem Auswahl-Index berechnet (ändert sich nicht mehr beim An-/Abwählen weiterer Kurven), Legenden-Chip in Analyse-Screen (M6) und Forscherheft-Snapshots (M16) zeigt jetzt Linienmuster statt nur Farbe | ✅ fertig (2026-08-28) | Backlog „Kurven-Darstellung verbessern" |
+**Alle bisherigen Milestones (M0–M24, ohne M17/M18/M21/M22 – siehe unten) sind abgeschlossen.** Am
+2026-09-11 auf Nutzer-Wunsch geleert, um Platz für eine neue Runde Milestones aus dem Ideen-Backlog zu
+schaffen (siehe `Ideen_Backlog_Waldsimulation_Klasse8.md` für die Kandidaten und die anstehende
+Impact-Priorisierung). Volle Beschreibungen der abgeschlossenen Milestones stehen weiterhin per
+`git log -- docs/Milestones_Waldsimulation_Klasse8.md` zur Verfügung; unten nur die Kurzübersicht.
 
-**Priorisierung (Stand 2026-09-11):** M11, M13, M12, M16, M19, M14, M15, M20, M23 und M24 sind abgeschlossen. **M17** (Instrumente als Tacho/Radialdiagramm) wurde am 2026-09-11 auf Nutzer-Wunsch zurück in den Ideen-Backlog verschoben (rein kosmetisch, kein dringender Bedarf) – siehe `Ideen_Backlog_Waldsimulation_Klasse8.md`. Aktuell steht **kein** Milestone mehr offen; weitere Schritte kommen aus dem Ideen-Backlog oder neuen Nutzer-Wünschen.
+<details>
+<summary>Archiv: abgeschlossene Milestones M0–M24 (Kurzübersicht, Details per Git-Historie)</summary>
 
-M23 kam außerhalb dieser Reihenfolge dazu (Nutzer-Wunsch nach einem eigenen Design-Canvas-Durchlauf,
-2026-08-28) und wurde direkt nach M20 eingeschoben, da es dessen Start-Bildschirm-Arbeit fortführt.
+| # | Milestone | Datum |
+|---|---|---|
+| M0 | Content-Fundament (Sprites, Styleguide, Prompt-Dateien) | 2026-08-25 |
+| M1 | Datenmodell (nodes/edges/waldtypen/stoerungen) | 2026-08-25 |
+| M2 | Build-Time-Simulationsmodul | 2026-08-25 |
+| M3 | PWA-Grundgerüst | 2026-08-26 |
+| M4 | Start & Auswahl | 2026-08-26 |
+| M5 | Live-Dashboard | 2026-08-26 |
+| M6 | Analyse-Screen | 2026-08-26 |
+| M7 | Forscherheft | 2026-08-26 |
+| M8 | Netzwerk-Graph & Rachel Carson | 2026-08-26 |
+| M9 | Arten-Lexikon | 2026-08-26 |
+| M10 | Asset-Feinschliff | 2026-08-26 |
+| M11 | Test & Deployment | 2026-08-26 |
+| M12 | Dashboard-Kacheln für 20 neue Arten-Indikatoren | 2026-08-26 |
+| M13 | Reihenfolge-Abfrage nur bei echtem Zeitversatz | 2026-08-26 |
+| M14 | Einfachere Wald-Auswahl | 2026-08-26 |
+| M15 | Netzwerk-Graph übersichtlicher | 2026-08-26 |
+| M16 | Graphen-Snapshots im Forscherheft anzeigen | 2026-08-26 |
+| M19 | Lehrkraft-Liste interessantester 2er-Kombinationen | 2026-08-26 |
+| M20 | Feldbuch-Feeling | 2026-08-27 |
+| M23 | Start-Bildschirm-Redesign „Erstkontakt" | 2026-08-28 |
+| M24 | Kurven-Darstellung verbessert | 2026-08-28 |
 
-M24 kam ebenfalls außerhalb dieser Reihenfolge dazu (aus einer Ideen-Diskussion mit dem Nutzer zur
-Kurven-Darstellung entstanden, 2026-08-28) und wurde direkt nach M23 umgesetzt.
+**Nie umgesetzt/vergeben:** M17 (Instrumente als Tacho/Radialdiagramm) wurde am 2026-09-11 zurück in
+den Ideen-Backlog verschoben. M18 (Drag & Drop), M21 (PDF-Export Forscherheft) und M22 (Vorführ-Modus
+für Lehrkraft) wurden bereits am 2026-08-28 vom Nutzer selbst aus der Tabelle entfernt (M18 durch die
+Tippen-statt-Ziehen-Entscheidung in M23 überholt; M21/M22 ohne dokumentierten Einzelgrund gestrichen) –
+absichtliche frühere Entscheidungen, hier nicht erneut aufgegriffen.
+
+</details>
+
+**Aktuell offen:** kein Milestone – die nächste Runde wird nach der anstehenden Impact-Priorisierung
+des Ideen-Backlogs neu vergeben (M25 aufwärts).
 
 Status-Legende: ⬜ offen · 🔶 in Arbeit · ✅ fertig
 
