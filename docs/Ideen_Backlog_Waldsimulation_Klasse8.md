@@ -31,3 +31,12 @@
 ---
 
 ## Verbesserungen
+
+### Instrumente als Tacho/Radialdiagramm (2026-09-11, zurückgestuft von M17)
+
+- War als Milestone M17 eingeplant, auf Nutzer-Wunsch zurück in den Backlog verschoben: rein
+  kosmetische Verbesserung ohne Abhängigkeiten, aber auch ohne dringenden Bedarf.
+- **Idee:** Live-Dashboard-Instrumente (M5) optional/zusätzlich als Radialdiagramm/Tacho mit
+  Art/Baum in der Mitte darstellen statt nur Symbol+Skala+Text.
+- Bei erneuter Aufnahme als Milestone: Styleguide Abschnitt 6 (Feldmessinstrumente-Optik,
+  „nie Farbe allein") bleibt maßgeblich, auch für die Radialdiagramm-Variante.
