@@ -31,7 +31,26 @@
           "abgestorben",
           "totholz"
         ],
-        "dateimuster": "fichte_<zustand>.png"
+        "dateimuster": "fichte_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 70,
+            "zustand": "gesund"
+          },
+          {
+            "min": 40,
+            "zustand": "gestresst"
+          },
+          {
+            "min": 15,
+            "zustand": "befallen"
+          },
+          {
+            "min": 0,
+            "zustand": "abgestorben"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 3",
       "zaehlt_zu_32_knoten": true,
@@ -59,7 +78,18 @@
           "gesund",
           "gestresst"
         ],
-        "dateimuster": "buche_<zustand>.png"
+        "dateimuster": "buche_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 60,
+            "zustand": "gesund"
+          },
+          {
+            "min": 0,
+            "zustand": "gestresst"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 1",
       "zaehlt_zu_32_knoten": true,
@@ -85,7 +115,14 @@
         "zustandsvarianten": [
           "gesund"
         ],
-        "dateimuster": "eiche_<zustand>.png"
+        "dateimuster": "eiche_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 0,
+            "zustand": "gesund"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 2",
       "zaehlt_zu_32_knoten": true,
@@ -112,7 +149,18 @@
           "gesund",
           "gestresst"
         ],
-        "dateimuster": "kiefer_<zustand>.png"
+        "dateimuster": "kiefer_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 60,
+            "zustand": "gesund"
+          },
+          {
+            "min": 0,
+            "zustand": "gestresst"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 4",
       "zaehlt_zu_32_knoten": true,
@@ -137,7 +185,14 @@
         "zustandsvarianten": [
           "pionier"
         ],
-        "dateimuster": "birke_<zustand>.png"
+        "dateimuster": "birke_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 0,
+            "zustand": "pionier"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 5",
       "zaehlt_zu_32_knoten": true,
@@ -416,7 +471,18 @@
           "einzeln",
           "massenvermehrung"
         ],
-        "dateimuster": "borkenkaefer_<zustand>.png"
+        "dateimuster": "borkenkaefer_<zustand>.png",
+        "dashboard_schwellen": [
+          {
+            "min": 50,
+            "zustand": "massenvermehrung"
+          },
+          {
+            "min": 0,
+            "zustand": "einzeln"
+          }
+        ],
+        "dashboard_schwellen_hinweis": "Schwellenwert, ab welchem Indikatorwert (0-100) welcher Sprite-Zustand im Live-Dashboard gezeigt wird - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstante in js/dashboard.js, seit M41 hierher verschoben (reines Refactoring)."
       },
       "quelle": "Wissensbasis Abschnitt 2, Nr. 17",
       "zaehlt_zu_32_knoten": true,

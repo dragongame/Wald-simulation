@@ -15,53 +15,32 @@ const WaldsimDashboard = (() => {
   const JAHRE_GESAMT = 20;
   const TICK_MS = 900;
 
-  // Zustands-Sprites sind absteigend nach "min" sortiert (siehe Styleguide
-  // Abschnitt 4). Buche/Kiefer/Eiche/Birke haben laut Umsetzungsauftrag 2.9
-  // bewusst weniger Zustandsvarianten als Fichte (Asset-Abdeckung).
-  const ARTEN = [
-    {
-      id: "fichte",
-      indikator: "fichte_vitalitaet",
-      name: "Fichte",
-      emoji: "🌲",
-      zustaende: [
-        { min: 70, src: "fichte_gesund.png" },
-        { min: 40, src: "fichte_gestresst.png" },
-        { min: 15, src: "fichte_befallen.png" },
-        { min: 0, src: "fichte_abgestorben.png" },
-      ],
-    },
-    {
-      id: "buche",
-      indikator: "buche_vitalitaet",
-      name: "Buche",
-      emoji: "🌳",
-      zustaende: [
-        { min: 60, src: "buche_gesund.png" },
-        { min: 0, src: "buche_gestresst.png" },
-      ],
-    },
-    {
-      id: "kiefer",
-      indikator: "kiefer_vitalitaet",
-      name: "Kiefer",
-      emoji: "🌲",
-      zustaende: [
-        { min: 60, src: "kiefer_gesund.png" },
-        { min: 0, src: "kiefer_gestresst.png" },
-      ],
-    },
-    { id: "eiche", indikator: "eiche_vitalitaet", name: "Eiche", emoji: "🌳", zustaende: [{ min: 0, src: "eiche_gesund.png" }] },
-    { id: "birke", indikator: "birke_anteil", name: "Birke (Pionier)", emoji: "🌳", zustaende: [{ min: 0, src: "birke_pionier.png" }] },
+  // Stammdaten (id/Indikator/Name/Emoji) - die eigentlichen Zustands-
+  // Schwellenwerte (welcher Indikatorwert zeigt welchen Sprite-Zustand)
+  // stehen seit M41 in data/nodes.json (sprite.dashboard_schwellen je
+  // Knoten), damit eine Lehrkraft sie nach Rücksprache ohne Code-Änderung
+  // anpassen kann. artenAktuell (unten) baut daraus zur Laufzeit die
+  // vollständigen {id, indikator, name, emoji, zustaende}-Objekte.
+  const ARTEN_META = [
+    { id: "fichte", indikator: "fichte_vitalitaet", name: "Fichte", emoji: "🌲" },
+    { id: "buche", indikator: "buche_vitalitaet", name: "Buche", emoji: "🌳" },
+    { id: "kiefer", indikator: "kiefer_vitalitaet", name: "Kiefer", emoji: "🌲" },
+    { id: "eiche", indikator: "eiche_vitalitaet", name: "Eiche", emoji: "🌳" },
+    { id: "birke", indikator: "birke_anteil", name: "Birke (Pionier)", emoji: "🌳" },
   ];
 
-  const BORKENKAEFER_ART = {
-    name: "Borkenkäfer",
-    zustaende: [
-      { min: 50, src: "borkenkaefer_massenvermehrung.png" },
-      { min: 0, src: "borkenkaefer_einzeln.png" },
-    ],
-  };
+  // Von start() befüllt, sobald data/nodes.json geladen ist - siehe
+  // zustaendeAusKnoten().
+  let artenAktuell = [];
+  let borkenkaeferZustaende = [];
+
+  /** Baut aus data/nodes.json (sprite.dashboard_schwellen + dateimuster) die
+   * {min, src}-Zustandsliste, die zustandFuer()/updateArtenListe() erwarten -
+   * ersetzt die vorher in ARTEN/BORKENKAEFER_ART hartkodierten Werte (M41). */
+  function zustaendeAusKnoten(knotenById, knotenId) {
+    const sprite = knotenById.get(knotenId).sprite;
+    return sprite.dashboard_schwellen.map((s) => ({ min: s.min, src: sprite.dateimuster.replace("<zustand>", s.zustand) }));
+  }
 
   // Meilenstein M12: Dashboard-Kacheln für die 20 Arten-Indikatoren aus der
   // Analyse-Erweiterung (siehe Milestones-Dokument, Erweiterung 2026-08-26),
@@ -141,11 +120,13 @@ const WaldsimDashboard = (() => {
     return "gut";
   }
 
+  // Erwartet art.zustaende absteigend nach "min" sortiert (so hinterlegt in
+  // data/nodes.json -> sprite.dashboard_schwellen, siehe zustaendeAusKnoten()).
   function zustandFuer(art, value) {
     return art.zustaende.find((z) => value >= z.min) || art.zustaende[art.zustaende.length - 1];
   }
 
-  function ermittleRelevanteArten(zeitreihe, artenListe = ARTEN) {
+  function ermittleRelevanteArten(zeitreihe, artenListe = artenAktuell) {
     return artenListe.filter((art) => Object.keys(zeitreihe).some((jahrKey) => (zeitreihe[jahrKey][art.indikator] || 0) > 0));
   }
 
@@ -323,7 +304,7 @@ const WaldsimDashboard = (() => {
 
     const dichte = zr.borkenkaefer_dichte || 0;
     const kaeferContainer = document.getElementById(`w${i}-borkenkaefer`);
-    updateSpeciesSprite(kaeferContainer, zustandFuer(BORKENKAEFER_ART, dichte).src, `Borkenkäfer: ${bucket(dichte)}`);
+    updateSpeciesSprite(kaeferContainer, zustandFuer({ zustaende: borkenkaeferZustaende }, dichte).src, `Borkenkäfer: ${bucket(dichte)}`);
     if (kaeferContainer) kaeferContainer.style.opacity = dichte > 0.5 ? "1" : "0.12";
 
     const totholzContainer = document.getElementById(`w${i}-totholz`);
@@ -451,6 +432,10 @@ const WaldsimDashboard = (() => {
     const data = await WaldsimData.load();
     const waldtypenById = Object.fromEntries(data.waldtypen.map((w) => [w.id, w]));
     const indikatorenById = Object.fromEntries(data.indikatoren.map((ind) => [ind.id, ind]));
+    const knotenById = new Map(data.knoten.map((k) => [k.id, k]));
+
+    artenAktuell = ARTEN_META.map((meta) => ({ ...meta, zustaende: zustaendeAusKnoten(knotenById, meta.id) }));
+    borkenkaeferZustaende = zustaendeAusKnoten(knotenById, "borkenkaefer");
 
     lauf = {
       ...neuerLauf,

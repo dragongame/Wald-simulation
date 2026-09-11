@@ -82,5 +82,15 @@
       "beschreibung": "Hilfsgröße (Mäuse u. a.), als Modellierungs-Voraussetzung für den Fuchs ergänzt; an das Mastjahr-Nahrungsangebot von Buche/Eiche gekoppelt (kein eigener Lexikon-Knoten, strukturelle Ergänzung)." },
     { "id": "fuchs_indikator", "name": "Fuchs", "kategorie": "praedator", "dashboard_sichtbar": false,
       "beschreibung": "Generalist; schwach an den Kleinsäuger-Indikator gekoppelt, da im Modell kein direkterer Waldstörungsbezug belegbar ist (Annahme, mit Lehrkraft abzugleichen)." }
-  ]
+  ],
+  "endzustand_klassifikation": {
+    "beschreibung": "Schwellenwerte für die Einordnung des Jahr-20-Endzustands im Forscherheft (js/forscherheft.js -> endzustandBild(), bestimmt welches Endzustandsbild-Sprite gezeigt wird) - plausibel hergeleitet, nicht mit einer Lehrkraft geprüft (siehe Milestones-Dokument M41/Lücken-Liste). Vorher als Konstanten in js/forscherheft.js, seit M41 hierher verschoben (reines Refactoring).",
+    "gesamtvitalitaet_stabil_ab": 67,
+    "gesamtvitalitaet_kollabiert_unter": 34,
+    "mischwald_verarmter_reinbestand": {
+      "erklaerung": "Sonderfall nur für den Mischwald: Baumbestand insgesamt noch überwiegend intakt, aber die Baumartenvielfalt ist erodiert (schleichender Regler-Effekt ohne akute Ereignis-Störung, Wissensbasis Szenario 6) - eigenes Endzustandsbild statt der generischen stabil/geschädigt/kollabiert-Stufen.",
+      "gesamtvitalitaet_mindestens": 60,
+      "verjuengung_mischbaumarten_unter": 50
+    }
+  }
 }

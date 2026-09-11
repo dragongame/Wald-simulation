@@ -44,13 +44,27 @@ const WaldsimForscherheft = (() => {
     return "hoch";
   }
 
-  function endzustandBild(waldtypId, regler, zr20) {
+  // Schwellenwerte kommen seit M41 aus data/indikatoren.json
+  // (endzustand_klassifikation), damit eine Lehrkraft sie nach Rücksprache
+  // ohne Code-Änderung anpassen kann - reines Refactoring, Werte unverändert.
+  function endzustandBild(waldtypId, regler, zr20, klass) {
+    const verarmt = klass.mischwald_verarmter_reinbestand;
     // "beide" (Wolf + Luchs anwesend) ist seit 2026-08-26 der Ausgangszustand
     // ohne Effekt, ersetzt das frühere "niedrig" (siehe Milestones-Dokument).
-    if (waldtypId === "mischwald" && regler !== "beide" && zr20.verjuengung_mischbaumarten < 50 && zr20.gesamtvitalitaet >= 60) {
+    if (
+      waldtypId === "mischwald" &&
+      regler !== "beide" &&
+      zr20.verjuengung_mischbaumarten < verarmt.verjuengung_mischbaumarten_unter &&
+      zr20.gesamtvitalitaet >= verarmt.gesamtvitalitaet_mindestens
+    ) {
       return "wald_mischwald_verarmt_reinbestand.png";
     }
-    const stufe = zr20.gesamtvitalitaet >= 67 ? "stabil" : zr20.gesamtvitalitaet >= 34 ? "geschaedigt" : "kollabiert";
+    const stufe =
+      zr20.gesamtvitalitaet >= klass.gesamtvitalitaet_stabil_ab
+        ? "stabil"
+        : zr20.gesamtvitalitaet >= klass.gesamtvitalitaet_kollabiert_unter
+          ? "geschaedigt"
+          : "kollabiert";
     return `wald_${waldtypId}_${stufe}.png`;
   }
 
@@ -253,6 +267,7 @@ const WaldsimForscherheft = (() => {
   }
 
   async function speichereEintrag(reflexionstext) {
+    const data = await WaldsimData.load();
     const lauf = laufMitSnapshots;
     const zr20 = zr20Fuer(lauf);
 
@@ -269,7 +284,7 @@ const WaldsimForscherheft = (() => {
         waldtypId: lauf.waldtypen[i].id,
         waldtypName: lauf.waldtypen[i].kurzname,
         hypothese: lauf.hypothesen[i] || "",
-        endzustandBild: endzustandBild(lauf.waldtypen[i].id, lauf.regler, zr20[i]),
+        endzustandBild: endzustandBild(lauf.waldtypen[i].id, lauf.regler, zr20[i], data.endzustandKlassifikation),
         kurzbeschreibung: kurzbeschreibung(zr20[i]),
       })),
       snapshots: lauf.snapshots || [],

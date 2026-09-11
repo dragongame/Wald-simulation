@@ -29,6 +29,7 @@ const WaldsimData = (() => {
         stoerungen,
         simulationenIndex,
         indikatoren: indikatorenDatei.indikatoren,
+        endzustandKlassifikation: indikatorenDatei.endzustand_klassifikation,
         knoten: nodesDatei.knoten,
         kanten: edgesDatei.kanten,
         brief,

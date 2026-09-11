@@ -178,6 +178,9 @@ def main():
         ("wolf", True, False),
         ("keine", False, False),
     ]
+    # Reduktionsfaktoren je Prädator (seit M41 Datenfeld statt Konstante in
+    # model.py, siehe data/stoerungen.json -> wildverbiss_regler.praedatoren[].reduktion).
+    praedatoren_reduktion = {p["id"]: p["reduktion"] for p in stoerungen["wildverbiss_regler"]["praedatoren"]}
 
     # Dauer akuter Effekte je Ereignis-Typ (seit M33 Datenfeld statt Konstante
     # in model.py, siehe data/stoerungen.json -> ereignis_stoerungen[].dauer_jahre).
@@ -208,7 +211,7 @@ def main():
                 if konfig_id == "keine" and praedatoren_code == "beide":
                     continue  # ungültig: keine Abweichung vom Ausgangszustand (2.10.2/3.2)
 
-                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv, dauer_je_typ)
+                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion)
                 projektion = berechne_projektion(zeitreihe, indikatoren)
 
                 dateiname = f"{waldtyp['id']}__{konfig_id}__praedatoren-{praedatoren_code}.json"

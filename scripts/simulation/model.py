@@ -32,19 +32,12 @@ BASIS_BRANDRISIKO = {"mischwald": 15, "fichtenmonokultur": 40, "kiefernwald": 70
 # Überpopulations-Situation, wie sie heute in weiten Teilen Deutschlands
 # ohne Luchs/Wolf vorherrscht - siehe Wissensbasis-Ergänzung, Abschnitt
 # "Nachrecherche" Punkt 7: reale Dichte-Spannen bestätigen die Richtung,
-# der 0-100-Wert selbst bleibt eine didaktische Skala). LUCHS_REDUKTION/
-# WOLF_REDUKTION sind mit echten Beutespektrum-Zahlen unterlegt (KORA-
-# Radiotelemetrie bzw. DBBW/Senckenberg-Kotprobenanalyse, siehe dort Punkt
-# 6): der Luchs ist ein Reh-Spezialist (Rothirsch taucht in den Studien
-# praktisch nicht als Beute auf), der Wolf nimmt deutlich mehr Rothirsch,
-# aber laut Diätanteilen klar seltener als Reh. Diätanteile sind kein
-# direktes Maß für Regulationswirkung pro Kopf - die Übertragung auf
-# Reduktionsfaktoren bleibt eine Modellierungs-Annahme, jetzt aber mit
-# echter Zahlengrundlage statt freier Schätzung.
+# der 0-100-Wert selbst bleibt eine didaktische Skala). Die Luchs-/Wolf-
+# Reduktionsfaktoren selbst stehen seit M41 in data/stoerungen.json
+# (wildverbiss_regler.praedatoren[].reduktion, samt Herleitung/Quellen) und
+# werden von build_simulationen.py als praedatoren_reduktion durchgereicht.
 REH_ZIEL_BASIS = 80.0
 ROTHIRSCH_ZIEL_BASIS = 80.0
-LUCHS_REDUKTION = {"reh": 0.80, "rothirsch": 0.10}
-WOLF_REDUKTION = {"reh": 0.55, "rothirsch": 0.30}
 WILDVERBISS_WALDTYP_MULTIPLIKATOR = {"mischwald": 1.0, "fichtenmonokultur": 0.2, "kiefernwald": 0.3}
 
 BAUMARTEN = ["fichte", "buche", "eiche", "kiefer", "birke"]
@@ -84,11 +77,12 @@ def _clamp(x, lo=0.0, hi=100.0):
 class Simulation:
     """Führt eine einzelne Waldtyp x Konfiguration-Simulation über 21 Jahre aus."""
 
-    def __init__(self, waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ):
+    def __init__(self, waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion):
         self.waldtyp = waldtyp  # dict aus data/waldtypen.json
         self.wid = waldtyp["id"]
         self.konfiguration = konfiguration  # Liste von {"typ", "trigger_jahr", "dauerhaft"}
         self.dauer_je_typ = dauer_je_typ  # {typ: jahre|None}, aus data/stoerungen.json (M33)
+        self.praedatoren_reduktion = praedatoren_reduktion  # {"luchs"|"wolf": {"reh", "rothirsch"}}, aus data/stoerungen.json (M41)
         # Ersetzt den früheren 3-Stufen-Wildverbiss-Regler (niedrig/mittel/
         # hoch) durch die tatsächliche Ursache: Anwesenheit von Wolf/Luchs.
         # Ausgangszustand (kein deviation) = beide Prädatoren aktiv, siehe
@@ -344,11 +338,13 @@ class Simulation:
         ziel_reh = REH_ZIEL_BASIS
         ziel_rothirsch = ROTHIRSCH_ZIEL_BASIS
         if self.luchs_aktiv:
-            ziel_reh *= 1 - LUCHS_REDUKTION["reh"]
-            ziel_rothirsch *= 1 - LUCHS_REDUKTION["rothirsch"]
+            luchs_reduktion = self.praedatoren_reduktion["luchs"]
+            ziel_reh *= 1 - luchs_reduktion["reh"]
+            ziel_rothirsch *= 1 - luchs_reduktion["rothirsch"]
         if self.wolf_aktiv:
-            ziel_reh *= 1 - WOLF_REDUKTION["reh"]
-            ziel_rothirsch *= 1 - WOLF_REDUKTION["rothirsch"]
+            wolf_reduktion = self.praedatoren_reduktion["wolf"]
+            ziel_reh *= 1 - wolf_reduktion["reh"]
+            ziel_rothirsch *= 1 - wolf_reduktion["rothirsch"]
         s["reh_dichte"] = _clamp(s["reh_dichte"] + (ziel_reh - s["reh_dichte"]) * 0.3)
         s["rothirsch_dichte"] = _clamp(s["rothirsch_dichte"] + (ziel_rothirsch - s["rothirsch_dichte"]) * 0.3)
 
@@ -558,12 +554,14 @@ class Simulation:
         return out
 
 
-def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ):
+def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion):
     """Öffentliche Schnittstelle: liefert die 21-Jahre-Zeitreihe (jahr_0..jahr_20)
     aller Indikatoren für einen Waldtyp x Konfiguration x Wolf/Luchs-Anwesenheit.
 
     dauer_je_typ: {ereignis_typ: dauer_jahre|None}, aus data/stoerungen.json
     (ereignis_stoerungen[].dauer_jahre, null = ab Trigger dauerhaft).
+    praedatoren_reduktion: {"luchs"|"wolf": {"reh": faktor, "rothirsch": faktor}},
+    aus data/stoerungen.json (wildverbiss_regler.praedatoren[].reduktion).
     """
-    sim = Simulation(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ)
+    sim = Simulation(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion)
     return sim.run()
