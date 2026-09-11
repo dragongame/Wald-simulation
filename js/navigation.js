@@ -1,20 +1,21 @@
 /**
  * Feldbuch-Navigation (Meilenstein M20): eine durchgängig sichtbare, senkrechte
- * Reihe aus 5 "Post-it"-Registern am rechten Rand (assets/icons/post-it_*.webp,
- * aus docs/eingang/Bockmarks-3.png geschnitten), die die vier bisher nur im
- * Start-Bildschirm-Header verfügbaren Ziele (Forscherheft/Netzwerk/Lexikon/
- * Lehrkräfte) plus Start selbst app-weit erreichbar macht. Löst damit auch
- * die in M20 geforderte Prüfung von M8s Regel "Netzwerk-Trigger durchgängig
- * sichtbar" (Umsetzungsauftrag 2.3) - vorher existierte der Button nur auf
- * dem Start-Bildschirm.
+ * Reihe aus Post-it-Registern am rechten Rand (assets/icons/post-it_*.webp,
+ * aus docs/eingang/Bockmarks-3.png geschnitten), die die bisher nur im
+ * Start-Bildschirm-Header verfügbaren Ziele (Forscherheft/Netzwerk/Lexikon)
+ * plus Start selbst app-weit erreichbar macht. Löst damit auch die in M20
+ * geforderte Prüfung von M8s Regel "Netzwerk-Trigger durchgängig sichtbar"
+ * (Umsetzungsauftrag 2.3) - vorher existierte der Button nur auf dem
+ * Start-Bildschirm. (Der vierte Tab „Für Lehrkräfte" wurde mit M27 entfernt -
+ * die Lehrkraft-Übersicht ist seitdem eine generierte Markdown-Datei
+ * außerhalb der App, siehe docs/Lehrkraft_Empfehlungen.md.)
  *
- * Die vier bestehenden Ziel-Buttons (IDs unverändert: forscherheft-oeffnen-
- * button, netzwerk-oeffnen-button, lexikon-oeffnen-button, lehrkraft-
- * oeffnen-button) sitzen jetzt hier in der Nav-Leiste statt im Start-Header,
- * ihre Klick-Logik bleibt vollständig in js/forscherheft.js/graph.js/
- * lexikon.js/lehrkraft.js - dieses Modul fügt nur den neuen Start-Button
- * hinzu und hält den "aktiv"-Zustand der Tabs + das Register-Etikett oben
- * (`post-it_lesezeichen.webp`) aktuell.
+ * Die bestehenden Ziel-Buttons (IDs unverändert: forscherheft-oeffnen-button,
+ * netzwerk-oeffnen-button, lexikon-oeffnen-button) sitzen hier in der
+ * Nav-Leiste statt im Start-Header, ihre Klick-Logik bleibt vollständig in
+ * js/forscherheft.js/graph.js/lexikon.js - dieses Modul fügt nur den neuen
+ * Start-Button hinzu und hält den "aktiv"-Zustand der Tabs + das
+ * Register-Etikett oben (`post-it_lesezeichen.webp`) aktuell.
  *
  * Zustands-Tracking läuft zentral über WaldsimUI.showScreen() (js/ui.js),
  * das nach jedem Bildschirmwechsel updateActiveState() aufruft - kein
@@ -37,7 +38,6 @@ const WaldsimNav = (() => {
     "screen-brief": { tab: "screen-graph", label: "Brief" },
     "screen-graph": { tab: "screen-graph", label: "Netzwerk-Graph" },
     "screen-lexikon": { tab: "screen-lexikon", label: "Arten-Lexikon" },
-    "screen-lehrkraft": { tab: "screen-lehrkraft", label: "Für Lehrkräfte" },
   };
 
   function updateActiveState(screenId) {

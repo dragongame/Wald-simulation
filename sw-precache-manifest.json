@@ -1,6 +1,6 @@
 {
-  "version": "cf5b30ff9ef4466a",
-  "cacheName": "waldsim-precache-cf5b30ff9ef4466a",
+  "version": "e8983860149269ed",
+  "cacheName": "waldsim-precache-e8983860149269ed",
   "files": [
     "./",
     "./assets/fonts/caprasimo.woff2",
@@ -10,7 +10,6 @@
     "./assets/icons/icon-192.png",
     "./assets/icons/icon-512.png",
     "./assets/icons/post-it_forscherheft.webp",
-    "./assets/icons/post-it_lehrkraft.webp",
     "./assets/icons/post-it_lesezeichen.webp",
     "./assets/icons/post-it_lexikon.webp",
     "./assets/icons/post-it_netzwerk.webp",
@@ -349,7 +348,6 @@
     "./js/forscherheft.js",
     "./js/graph.js",
     "./js/icons.js",
-    "./js/lehrkraft.js",
     "./js/lexikon.js",
     "./js/navigation.js",
     "./js/simulationConfig.js",

@@ -37,10 +37,6 @@
           <span class="post-it-icon" id="netzwerk-tab-icon" aria-hidden="true">🔬</span>
           <span class="post-it-label">Netzwerk</span>
         </button>
-        <button type="button" id="lehrkraft-oeffnen-button" class="post-it post-it--lehrkraft" data-nav-target="screen-lehrkraft" aria-current="false">
-          <span class="post-it-icon" aria-hidden="true">🍎</span>
-          <span class="post-it-label">Lehrkräfte</span>
-        </button>
         <button type="button" id="lexikon-oeffnen-button" class="post-it post-it--lexikon" data-nav-target="screen-lexikon" aria-current="false">
           <span class="post-it-icon" aria-hidden="true">📚</span>
           <span class="post-it-label">Lexikon</span>
@@ -160,6 +156,11 @@
       </header>
 
       <section class="form-section">
+        <h2>Vorhersage vs. Ergebnis</h2>
+        <div id="reflexion-vergleich" class="reflexion-vergleich"></div>
+      </section>
+
+      <section class="form-section">
         <h2>Zum Nachdenken</h2>
         <ul id="reflexion-fragen" class="reflexion-fragen"></ul>
         <label for="reflexion-text" class="sr-only">Deine Reflexion</label>
@@ -261,17 +262,6 @@
       <button type="button" id="lexikon-zurueck-button" class="secondary-button">Zurück</button>
     </section>
 
-    <section id="screen-lehrkraft" class="screen" hidden>
-      <header class="app-header">
-        <h1>Für Lehrkräfte</h1>
-        <p class="app-subtitle" id="lehrkraft-hinweis"></p>
-      </header>
-
-      <ol id="lehrkraft-liste" class="lehrkraft-liste"></ol>
-
-      <button type="button" id="lehrkraft-zurueck-button" class="secondary-button">Zurück</button>
-    </section>
-
     <p class="app-status" id="app-status">Waldökosystem-Simulation wird geladen …</p>
     <p class="app-version-hinweis" id="app-version-hinweis"></p>
   </main>
@@ -289,7 +279,6 @@
   <script src="./js/forscherheft.js"></script>
   <script src="./js/graph.js"></script>
   <script src="./js/lexikon.js"></script>
-  <script src="./js/lehrkraft.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

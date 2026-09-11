@@ -1323,6 +1323,31 @@ h1, h2, h3 {
   font-size: 0.9rem;
 }
 
+/* M25: Vorhersage-vs-Ergebnis-Vergleich vor den Reflexionsfragen */
+.reflexion-vergleich {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 0.75rem;
+}
+
+.reflexion-vergleich-wald {
+  background: var(--karte-hintergrund);
+  border: 1px solid var(--rindenbraun);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+.reflexion-vergleich-hypothese,
+.reflexion-vergleich-ergebnis {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+}
+
+.reflexion-vergleich-label {
+  font-weight: 600;
+  color: var(--rindenbraun);
+}
+
 #reflexion-text {
   width: 100%;
   font-family: inherit;
@@ -1946,54 +1971,15 @@ h1, h2, h3 {
   line-height: 1.35;
 }
 
-/* ---- Für Lehrkräfte (M19) ---- */
-
-.lehrkraft-liste {
-  list-style: none;
-  margin: 0 0 1.25rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.lehrkraft-eintrag {
-  background: var(--karte-hintergrund);
-  border: 1px solid var(--rindenbraun);
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
-}
-
-.lehrkraft-eintrag-kopf {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 0.4rem;
-}
-
-.lehrkraft-rang {
-  font-family: Iowan Old Style, Georgia, serif;
-  font-weight: bold;
-  color: var(--bernstein);
-  flex: 0 0 auto;
-}
-
-.lehrkraft-waelder {
-  font-weight: bold;
-}
-
-.lehrkraft-eintrag p {
-  margin: 0.25rem 0;
-  font-size: 0.85rem;
-}
-
 /* ---- Feldbuch-Navigation (M20) ----
-   Senkrechte Reihe aus 5 "Post-it"-Registern am rechten Bildschirmrand,
+   Senkrechte Reihe aus Post-it-Registern am rechten Bildschirmrand,
    geschnitten aus docs/eingang/Bockmarks-3.png (siehe Illustrations-
    Promptvorlage Abschnitt 5 fuer die Schnitt-Konvention). Ersetzt die
-   bisherige Button-Zeile im Start-Bildschirm-Header - die vier Ziel-Buttons
+   bisherige Button-Zeile im Start-Bildschirm-Header - die Ziel-Buttons
    behalten ihre bestehenden IDs/Klick-Logik (js/forscherheft.js/graph.js/
-   lexikon.js/lehrkraft.js), nur Start ist neu (js/navigation.js). */
+   lexikon.js), nur Start ist neu (js/navigation.js). Der frühere fünfte Tab
+   „Für Lehrkräfte" (M19-Screen, `.lehrkraft-*`-Klassen) wurde mit M27
+   entfernt - siehe docs/Lehrkraft_Empfehlungen.md. */
 
 #app {
   padding-right: 9rem;
@@ -2108,7 +2094,6 @@ h1, h2, h3 {
 .post-it--start { --post-it-bg: url("../assets/icons/post-it_start.webp"); }
 .post-it--forscherheft { --post-it-bg: url("../assets/icons/post-it_forscherheft.webp"); }
 .post-it--netzwerk { --post-it-bg: url("../assets/icons/post-it_netzwerk.webp"); }
-.post-it--lehrkraft { --post-it-bg: url("../assets/icons/post-it_lehrkraft.webp"); }
 .post-it--lexikon { --post-it-bg: url("../assets/icons/post-it_lexikon.webp"); }
 
 .post-it--aktiv {

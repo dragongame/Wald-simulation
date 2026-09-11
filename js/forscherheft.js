@@ -22,6 +22,11 @@ const WaldsimForscherheft = (() => {
   const REFLEXIONSFRAGE_STANDARD = "Welche Art war betroffen, obwohl du sie nicht direkt gestört hast?";
   const REFLEXIONSFRAGE_TOTHOLZENTNAHME =
     "Hat die Maßnahme das Brandrisiko wirklich stark gesenkt? Was hat sich stattdessen sicher verändert?";
+  // M26: zwei weitere, allgemein einsetzbare Leitfragen (Wissensbasis Abschnitt 6.5, Ergänzung 2026-09-11).
+  const REFLEXIONSFRAGE_VORHERSAGE_VERGLEICH =
+    "Was hat dich am stärksten überrascht, wenn du deine Vorhersage mit dem tatsächlichen Ergebnis vergleichst?";
+  const REFLEXIONSFRAGE_STAERKERE_STOERUNG =
+    "Was würde vermutlich passieren, wenn die Störung noch stärker wäre oder deutlich länger anhalten würde?";
 
   let laufMitSnapshots = null; // wird von WaldsimAnalyse.starteReflexion() gesetzt
   let frischGestempeltId = null; // Eintrags-ID für den Stempel-Effekt beim nächsten Übersicht-Render (Styleguide 7)
@@ -51,6 +56,28 @@ const WaldsimForscherheft = (() => {
 
   function kurzbeschreibung(zr20) {
     return `Baumbestand am Ende: ${Math.round(zr20.gesamtvitalitaet)} von 100 (${bucket(zr20.gesamtvitalitaet)}). Biodiversität: ${Math.round(zr20.biodiversitaet)} (${bucket(zr20.biodiversitaet)}).`;
+  }
+
+  function zr20Fuer(lauf) {
+    return [0, 1].map((i) => lauf.zeitreihen[i].zeitreihe.jahr_20);
+  }
+
+  // M25: stellt vor den Reflexionsfragen die eingangs erfasste Hypothese (M4)
+  // dem tatsächlichen Ergebnis gegenüber, statt den Vorhersage-Realität-
+  // Abgleich dem Zufall zu überlassen.
+  function vergleichHtml(lauf, zr20) {
+    return [0, 1]
+      .map((i) => {
+        const hypothese = lauf.hypothesen[i];
+        return `
+          <div class="reflexion-vergleich-wald">
+            <strong>${escapeHtml(lauf.waldtypen[i].kurzname)}</strong>
+            <p class="reflexion-vergleich-hypothese"><span class="reflexion-vergleich-label">Deine Vorhersage:</span> ${hypothese ? escapeHtml(hypothese) : "(keine angegeben)"}</p>
+            <p class="reflexion-vergleich-ergebnis"><span class="reflexion-vergleich-label">Tatsächliches Ergebnis:</span> ${escapeHtml(kurzbeschreibung(zr20[i]))}</p>
+          </div>
+        `;
+      })
+      .join("");
   }
 
   function stoerungName(data, id) {
@@ -117,7 +144,9 @@ const WaldsimForscherheft = (() => {
     document.getElementById("reflexion-subtitle").textContent =
       `${ereignisText(data, lauf.resolved.events)} · Wildverbiss-Regler: ${kapitalisiere(lauf.regler)}`;
 
-    const fragen = [REFLEXIONSFRAGE_STANDARD];
+    document.getElementById("reflexion-vergleich").innerHTML = vergleichHtml(lauf, zr20Fuer(lauf));
+
+    const fragen = [REFLEXIONSFRAGE_STANDARD, REFLEXIONSFRAGE_VORHERSAGE_VERGLEICH, REFLEXIONSFRAGE_STAERKERE_STOERUNG];
     if (lauf.resolved.events.some((e) => e.typ === "totholzentnahme")) {
       fragen.push(REFLEXIONSFRAGE_TOTHOLZENTNAHME);
     }
@@ -225,7 +254,7 @@ const WaldsimForscherheft = (() => {
 
   async function speichereEintrag(reflexionstext) {
     const lauf = laufMitSnapshots;
-    const zr20 = [0, 1].map((i) => lauf.zeitreihen[i].zeitreihe.jahr_20);
+    const zr20 = zr20Fuer(lauf);
 
     const eintrag = {
       id: `fb-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,

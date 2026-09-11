@@ -32,12 +32,34 @@ async function loadManifest() {
   return response.json();
 }
 
+// WICHTIG: cache.addAll(urls) reicht bewusst NICHT - seine internen fetch()-
+// Aufrufe respektieren den normalen HTTP-Cache des Browsers. Ein Datei-Hash-
+// Wechsel im Cache-Namen garantiert dadurch NICHT automatisch frische Bytes:
+// wenn z.B. index.html noch einen "frischen" HTTP-Cache-Eintrag von einem
+// frueheren Besuch hat, landet dieser unveraendert im neuen Cache-Bucket -
+// derselbe bekannte Cache.addAll()-Fallstrick, der beim Test von M27 in
+// dieser Session tatsaechlich reproduziert wurde (stale "Lehrkraft"-Tab trotz
+// neuem Cache-Namen). Fix: jede Datei einzeln mit {cache: "reload"} laden
+// (erzwingt eine echte Netzwerk-Anfrage, aktualisiert dabei den HTTP-Cache)
+// und das Ergebnis manuell in den SW-Cache schreiben.
+async function precacheAlle(cache, urls) {
+  await Promise.all(
+    urls.map(async (url) => {
+      const response = await fetch(url, { cache: "reload" });
+      if (!response.ok) {
+        throw new Error(`Precache fehlgeschlagen fuer ${url}: ${response.status}`);
+      }
+      await cache.put(url, response);
+    })
+  );
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const manifest = await loadManifest();
       const cache = await caches.open(manifest.cacheName);
-      await cache.addAll(manifest.files);
+      await precacheAlle(cache, manifest.files);
       await self.skipWaiting();
     })()
   );
