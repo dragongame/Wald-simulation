@@ -12,7 +12,8 @@
         "trigger_jahr": 1
       }
     ],
-    "wildverbiss_regler": "luchs"
+    "wildverbiss_regler": "luchs",
+    "brand_jahr": null
   },
   "zeitreihe": {
     "jahr_0": {

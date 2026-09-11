@@ -339,6 +339,16 @@ const WaldsimGraph = (() => {
     if (kontext.regler && kontext.regler !== "beide") {
       start.push(STARTKNOTEN_WILDVERBISS);
     }
+    // M37: Waldbrand (M36) hat im Beziehungsnetz keinen eigenen Knoten (kein
+    // Wissensbasis-Eintrag für "Feuer" als Art/Faktor) - "totholz" ist aber
+    // eine direkte, bereits in data/edges.json dokumentierte Modell-Folge
+    // (Kronendach-/Baumsterben durch den Brand) und hat selbst ausgehende
+    // Kanten (→ hallimasch/zunderschwamm/buntspecht/ameisenbuntkaefer/
+    // brennnessel) - darüber wird der Brand-Kaskadenpfad ohne erfundene
+    // Kanten sichtbar.
+    if (kontext.brandAusgeloest) {
+      start.push("totholz");
+    }
     return start;
   }
 
@@ -805,6 +815,7 @@ const WaldsimGraph = (() => {
    */
   async function ladeProjektionWichtig(eintrag) {
     const union = new Set();
+    let brandAusgeloest = false;
     for (const wald of eintrag.waelder) {
       let datei = eintrag.konfigId
         ? `simulationen/${WaldsimConfig.dateiname(wald.waldtypId, eintrag.konfigId, eintrag.regler)}`
@@ -824,20 +835,27 @@ const WaldsimGraph = (() => {
       if (!datei) continue;
       const zeitreihenDatei = await WaldsimData.ladeZeitreihe(datei);
       (zeitreihenDatei.projektion.wichtig || []).forEach((id) => union.add(id));
+      // M37: ob in DIESEM Lauf ein Waldbrand (M36) ausgelöst wurde, steht in
+      // konfiguration.brand_jahr - bestimmt den zusätzlichen Kaskaden-
+      // Startknoten "totholz" (siehe ermittleStartknoten()).
+      if (zeitreihenDatei.konfiguration.brand_jahr !== null && zeitreihenDatei.konfiguration.brand_jahr !== undefined) {
+        brandAusgeloest = true;
+      }
     }
-    return union;
+    return { wichtig: union, brandAusgeloest };
   }
 
   async function oeffneFuerEintrag(eintrag) {
     data = await WaldsimData.load();
     rueckkehrScreen = "screen-forscherheft";
-    const projektionWichtig = await ladeProjektionWichtig(eintrag);
+    const { wichtig: projektionWichtig, brandAusgeloest } = await ladeProjektionWichtig(eintrag);
     const kontext = {
       modusVergleich: true,
       waelder: eintrag.waelder.map((w) => ({ id: w.waldtypId, name: w.waldtypName })),
       ereignisse: eintrag.ereignisse,
       regler: eintrag.regler,
       projektionWichtig,
+      brandAusgeloest,
     };
     if (!istFreigeschaltet()) {
       zeigeSperre(() => zeigeGraph(kontext));

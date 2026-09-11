@@ -12,7 +12,8 @@
         "trigger_jahr": 0
       }
     ],
-    "wildverbiss_regler": "wolf"
+    "wildverbiss_regler": "wolf",
+    "brand_jahr": 3
   },
   "zeitreihe": {
     "jahr_0": {

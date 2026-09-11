@@ -247,11 +247,28 @@ const WaldsimDashboard = (() => {
       <article class="wald-panel">
         <h2>${escapeHtml(wt.kurzname)}</h2>
         <p class="hypothese-recap"><strong>Hypothese:</strong> ${hypothese ? escapeHtml(hypothese) : "(keine angegeben)"}</p>
+        <p class="brand-marker" id="w${i}-brand-marker" hidden></p>
         <div class="art-reihe">${artenHtml}${kaeferHtml}${totholzHtml}</div>
         <div class="instrumente-grid">${instrumenteHtml}</div>
         ${weitereArtenHtml(i, weitereArtenRelevant, wichtigSet)}
       </article>
     `;
+  }
+
+  // M37: der Waldbrand (M36) ist endogen ausgelöst, nicht vom Schüler
+  // gewählt - bliebe im Dashboard sonst unerklärt. Ursache ist laut Modell
+  // (scripts/simulation/model.py, Waldbrand-Block) immer dieselbe Kombination
+  // aus Trockenheit und hoher Temperatur, deshalb hier als fester Text statt
+  // aus den Indikatoren rekonstruiert.
+  function updateBrandMarker(i, jahr, brandJahr) {
+    const el = document.getElementById(`w${i}-brand-marker`);
+    if (!el) return;
+    if (brandJahr === null || brandJahr === undefined || jahr < brandJahr) {
+      el.hidden = true;
+      return;
+    }
+    el.hidden = false;
+    el.textContent = `🔥 Jahr ${brandJahr}: Waldbrand – ausgelöst durch anhaltende Trockenheit bei hoher Temperatur`;
   }
 
   function updateSpeciesSprite(container, relSrc, altText) {
@@ -354,6 +371,7 @@ const WaldsimDashboard = (() => {
       updateArtenFuerWald(i, zr, lauf.artenRelevant[i], lauf.weitereArtenRelevant[i]);
       updateKategorieKacheln(i, jahrKey, lauf.zeitreihen[i].projektion.gruppen, lauf.weitereArtenRelevant[i], lauf.wichtigJeWald[i]);
       updateInstrumenteFuerWald(i, zr, lauf.instrumente);
+      updateBrandMarker(i, jahr, lauf.zeitreihen[i].konfiguration.brand_jahr);
     });
 
     const abschluss = document.getElementById("dash-abschluss");

@@ -3,7 +3,8 @@
     "waldtyp": "mischwald",
     "konfig_id": "keine",
     "ereignisse": [],
-    "wildverbiss_regler": "wolf"
+    "wildverbiss_regler": "wolf",
+    "brand_jahr": null
   },
   "zeitreihe": {
     "jahr_0": {

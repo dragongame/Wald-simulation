@@ -957,6 +957,20 @@ h1, h2, h3 {
 
 /* ---- Live-Dashboard (M5) ---- */
 
+/* Waldbrand-Ereignismarker (M37): der Brand ist endogen ausgeloest (M36),
+   nicht vom Schueler gewaehlt - braucht deshalb eine sichtbare
+   Ursachenangabe statt nur ueber die Indikatoren erschliessbar zu sein. */
+.brand-marker {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--signalrot);
+  background: rgba(154, 51, 36, 0.12);
+  border: 1px solid var(--signalrot);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  margin: 0 0 0.75rem;
+}
+
 .zeitsteuerung {
   display: flex;
   align-items: center;
@@ -2037,6 +2051,27 @@ h1, h2, h3 {
   padding-left: 1.1rem;
   font-size: 0.75rem;
   line-height: 1.35;
+}
+
+/* Ereignis-Block (M37, z. B. Waldbrand): kein Art-/Faktor-Knoten, deshalb
+   eigene Überschrift + abgesetzter Rahmen statt einer weiteren Karte in der
+   Knoten-Kategorie-Liste. */
+#lexikon-ereignisse h2 {
+  font-size: 1.05rem;
+  margin: 0.5rem 0 0.6rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--signalrot);
+}
+
+.lexikon-karte--ereignis {
+  max-width: 22rem;
+  border-color: var(--signalrot);
+}
+
+.lexikon-karte--ereignis p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* ---- Feldbuch-Navigation (M20) ----

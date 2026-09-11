@@ -9,21 +9,24 @@
       "waldtyp": "mischwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__keine__praedatoren-wolf.json",
       "waldtyp": "mischwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__keine__praedatoren-keine.json",
       "waldtyp": "mischwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer__praedatoren-beide.json",
@@ -35,7 +38,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer__praedatoren-luchs.json",
@@ -47,7 +51,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer__praedatoren-wolf.json",
@@ -59,7 +64,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer__praedatoren-keine.json",
@@ -71,7 +77,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit__praedatoren-beide.json",
@@ -83,7 +90,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit__praedatoren-luchs.json",
@@ -95,7 +103,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit__praedatoren-wolf.json",
@@ -107,7 +116,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit__praedatoren-keine.json",
@@ -119,7 +129,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dauer8__praedatoren-beide.json",
@@ -131,7 +142,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dauer8__praedatoren-luchs.json",
@@ -143,7 +155,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dauer8__praedatoren-wolf.json",
@@ -155,7 +168,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dauer8__praedatoren-keine.json",
@@ -167,7 +181,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur__praedatoren-beide.json",
@@ -179,7 +194,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur__praedatoren-luchs.json",
@@ -191,7 +207,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur__praedatoren-wolf.json",
@@ -203,7 +220,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur__praedatoren-keine.json",
@@ -215,7 +233,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm__praedatoren-beide.json",
@@ -227,7 +246,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm__praedatoren-luchs.json",
@@ -239,7 +259,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm__praedatoren-wolf.json",
@@ -251,7 +272,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm__praedatoren-keine.json",
@@ -263,7 +285,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme__praedatoren-beide.json",
@@ -275,7 +298,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme__praedatoren-luchs.json",
@@ -287,7 +311,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme__praedatoren-wolf.json",
@@ -299,7 +324,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme__praedatoren-keine.json",
@@ -311,7 +337,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
@@ -327,7 +354,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
@@ -343,7 +371,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
@@ -359,7 +388,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
@@ -375,7 +405,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -391,7 +422,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -407,7 +439,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -423,7 +456,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -439,7 +473,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
@@ -455,7 +490,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
@@ -471,7 +507,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
@@ -487,7 +524,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
@@ -503,7 +541,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-beide.json",
@@ -519,7 +558,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-luchs.json",
@@ -535,7 +575,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-wolf.json",
@@ -551,7 +592,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-keine.json",
@@ -567,7 +609,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-beide.json",
@@ -583,7 +626,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-luchs.json",
@@ -599,7 +643,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-wolf.json",
@@ -615,7 +660,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-sturm__praedatoren-keine.json",
@@ -631,7 +677,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-beide.json",
@@ -647,7 +694,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-luchs.json",
@@ -663,7 +711,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-wolf.json",
@@ -679,7 +728,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-borkenkaefer__praedatoren-keine.json",
@@ -695,7 +745,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
@@ -711,7 +762,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
@@ -727,7 +779,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
@@ -743,7 +796,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
@@ -759,7 +813,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
@@ -775,7 +830,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
@@ -791,7 +847,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
@@ -807,7 +864,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
@@ -823,7 +881,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-beide.json",
@@ -839,7 +898,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-luchs.json",
@@ -855,7 +915,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-wolf.json",
@@ -871,7 +932,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm__praedatoren-keine.json",
@@ -887,7 +949,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm-dauer8__praedatoren-beide.json",
@@ -903,7 +966,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm-dauer8__praedatoren-luchs.json",
@@ -919,7 +983,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm-dauer8__praedatoren-wolf.json",
@@ -935,7 +1000,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-sturm-dauer8__praedatoren-keine.json",
@@ -951,7 +1017,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-beide.json",
@@ -967,7 +1034,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-luchs.json",
@@ -983,7 +1051,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-wolf.json",
@@ -999,7 +1068,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit__praedatoren-keine.json",
@@ -1015,7 +1085,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -1031,7 +1102,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -1047,7 +1119,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -1063,7 +1136,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -1079,7 +1153,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
@@ -1095,7 +1170,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
@@ -1111,7 +1187,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
@@ -1127,7 +1204,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
@@ -1143,7 +1221,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-beide.json",
@@ -1159,7 +1238,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-luchs.json",
@@ -1175,7 +1255,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-wolf.json",
@@ -1191,7 +1272,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-keine.json",
@@ -1207,7 +1289,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
@@ -1223,7 +1306,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
@@ -1239,7 +1323,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
@@ -1255,7 +1340,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
@@ -1271,7 +1357,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -1287,7 +1374,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -1303,7 +1391,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -1319,7 +1408,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -1335,7 +1425,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-beide.json",
@@ -1351,7 +1442,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-luchs.json",
@@ -1367,7 +1459,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-wolf.json",
@@ -1383,7 +1476,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__sturm-dann-totholzentnahme__praedatoren-keine.json",
@@ -1399,7 +1493,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-beide.json",
@@ -1415,7 +1510,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-luchs.json",
@@ -1431,7 +1527,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-wolf.json",
@@ -1447,7 +1544,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__totholzentnahme-dann-sturm__praedatoren-keine.json",
@@ -1463,7 +1561,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-beide.json",
@@ -1479,7 +1578,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-luchs.json",
@@ -1495,7 +1595,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-wolf.json",
@@ -1511,7 +1612,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+borkenkaefer__praedatoren-keine.json",
@@ -1527,7 +1629,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-beide.json",
@@ -1543,7 +1646,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-luchs.json",
@@ -1559,7 +1663,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-wolf.json",
@@ -1575,7 +1680,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit__praedatoren-keine.json",
@@ -1591,7 +1697,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit-dauer8__praedatoren-beide.json",
@@ -1607,7 +1714,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit-dauer8__praedatoren-luchs.json",
@@ -1623,7 +1731,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit-dauer8__praedatoren-wolf.json",
@@ -1639,7 +1748,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+trockenheit-dauer8__praedatoren-keine.json",
@@ -1655,7 +1765,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-beide.json",
@@ -1671,7 +1782,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-luchs.json",
@@ -1687,7 +1799,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-wolf.json",
@@ -1703,7 +1816,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+sturm__praedatoren-keine.json",
@@ -1719,7 +1833,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-beide.json",
@@ -1735,7 +1850,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-luchs.json",
@@ -1751,7 +1867,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-wolf.json",
@@ -1767,7 +1884,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/mischwald__temperatur+totholzentnahme__praedatoren-keine.json",
@@ -1783,28 +1901,32 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__keine__praedatoren-luchs.json",
       "waldtyp": "fichtenmonokultur",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__keine__praedatoren-wolf.json",
       "waldtyp": "fichtenmonokultur",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__keine__praedatoren-keine.json",
       "waldtyp": "fichtenmonokultur",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-beide.json",
@@ -1816,7 +1938,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-luchs.json",
@@ -1828,7 +1951,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-wolf.json",
@@ -1840,7 +1964,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer__praedatoren-keine.json",
@@ -1852,7 +1977,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-beide.json",
@@ -1864,7 +1990,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-luchs.json",
@@ -1876,7 +2003,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-wolf.json",
@@ -1888,7 +2016,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit__praedatoren-keine.json",
@@ -1900,7 +2029,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dauer8__praedatoren-beide.json",
@@ -1912,7 +2042,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dauer8__praedatoren-luchs.json",
@@ -1924,7 +2055,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dauer8__praedatoren-wolf.json",
@@ -1936,7 +2068,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dauer8__praedatoren-keine.json",
@@ -1948,7 +2081,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-beide.json",
@@ -1960,7 +2094,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-luchs.json",
@@ -1972,7 +2107,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-wolf.json",
@@ -1984,7 +2120,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur__praedatoren-keine.json",
@@ -1996,7 +2133,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-beide.json",
@@ -2008,7 +2146,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-luchs.json",
@@ -2020,7 +2159,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-wolf.json",
@@ -2032,7 +2172,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm__praedatoren-keine.json",
@@ -2044,7 +2185,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-beide.json",
@@ -2056,7 +2198,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-luchs.json",
@@ -2068,7 +2211,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-wolf.json",
@@ -2080,7 +2224,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme__praedatoren-keine.json",
@@ -2092,7 +2237,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
@@ -2108,7 +2254,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
@@ -2124,7 +2271,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
@@ -2140,7 +2288,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
@@ -2156,7 +2305,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -2172,7 +2322,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -2188,7 +2339,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -2204,7 +2356,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -2220,7 +2373,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
@@ -2236,7 +2390,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
@@ -2252,7 +2407,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
@@ -2268,7 +2424,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
@@ -2284,7 +2441,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer-dauer8__praedatoren-beide.json",
@@ -2300,7 +2458,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer-dauer8__praedatoren-luchs.json",
@@ -2316,7 +2475,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer-dauer8__praedatoren-wolf.json",
@@ -2332,7 +2492,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-borkenkaefer-dauer8__praedatoren-keine.json",
@@ -2348,7 +2509,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-beide.json",
@@ -2364,7 +2526,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-luchs.json",
@@ -2380,7 +2543,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-wolf.json",
@@ -2396,7 +2560,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-sturm__praedatoren-keine.json",
@@ -2412,7 +2577,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-beide.json",
@@ -2428,7 +2594,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-luchs.json",
@@ -2444,7 +2611,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-wolf.json",
@@ -2460,7 +2628,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-borkenkaefer__praedatoren-keine.json",
@@ -2476,7 +2645,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
@@ -2492,7 +2662,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
@@ -2508,7 +2679,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
@@ -2524,7 +2696,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
@@ -2540,7 +2713,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
@@ -2556,7 +2730,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
@@ -2572,7 +2747,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
@@ -2588,7 +2764,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
@@ -2604,7 +2781,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-beide.json",
@@ -2620,7 +2798,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-luchs.json",
@@ -2636,7 +2815,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-wolf.json",
@@ -2652,7 +2832,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm__praedatoren-keine.json",
@@ -2668,7 +2849,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm-dauer8__praedatoren-beide.json",
@@ -2684,7 +2866,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm-dauer8__praedatoren-luchs.json",
@@ -2700,7 +2883,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm-dauer8__praedatoren-wolf.json",
@@ -2716,7 +2900,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-sturm-dauer8__praedatoren-keine.json",
@@ -2732,7 +2917,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-beide.json",
@@ -2748,7 +2934,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-luchs.json",
@@ -2764,7 +2951,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-wolf.json",
@@ -2780,7 +2968,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit__praedatoren-keine.json",
@@ -2796,7 +2985,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -2812,7 +3002,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -2828,7 +3019,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -2844,7 +3036,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -2860,7 +3053,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
@@ -2876,7 +3070,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
@@ -2892,7 +3087,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
@@ -2908,7 +3104,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
@@ -2924,7 +3121,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme-dauer8__praedatoren-beide.json",
@@ -2940,7 +3138,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme-dauer8__praedatoren-luchs.json",
@@ -2956,7 +3155,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme-dauer8__praedatoren-wolf.json",
@@ -2972,7 +3172,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__trockenheit-dann-totholzentnahme-dauer8__praedatoren-keine.json",
@@ -2988,7 +3189,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
@@ -3004,7 +3206,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
@@ -3020,7 +3223,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
@@ -3036,7 +3240,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
@@ -3052,7 +3257,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -3068,7 +3274,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -3084,7 +3291,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -3100,7 +3308,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -3116,7 +3325,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-beide.json",
@@ -3132,7 +3342,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-luchs.json",
@@ -3148,7 +3359,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-wolf.json",
@@ -3164,7 +3376,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__sturm-dann-totholzentnahme__praedatoren-keine.json",
@@ -3180,7 +3393,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-beide.json",
@@ -3196,7 +3410,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-luchs.json",
@@ -3212,7 +3427,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-wolf.json",
@@ -3228,7 +3444,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__totholzentnahme-dann-sturm__praedatoren-keine.json",
@@ -3244,7 +3461,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-beide.json",
@@ -3260,7 +3478,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-luchs.json",
@@ -3276,7 +3495,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-wolf.json",
@@ -3292,7 +3512,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+borkenkaefer__praedatoren-keine.json",
@@ -3308,7 +3529,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-beide.json",
@@ -3324,7 +3546,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-luchs.json",
@@ -3340,7 +3563,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-wolf.json",
@@ -3356,7 +3580,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit__praedatoren-keine.json",
@@ -3372,7 +3597,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit-dauer8__praedatoren-beide.json",
@@ -3388,7 +3614,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit-dauer8__praedatoren-luchs.json",
@@ -3404,7 +3631,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit-dauer8__praedatoren-wolf.json",
@@ -3420,7 +3648,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+trockenheit-dauer8__praedatoren-keine.json",
@@ -3436,7 +3665,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-beide.json",
@@ -3452,7 +3682,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-luchs.json",
@@ -3468,7 +3699,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-wolf.json",
@@ -3484,7 +3716,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+sturm__praedatoren-keine.json",
@@ -3500,7 +3733,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-beide.json",
@@ -3516,7 +3750,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-luchs.json",
@@ -3532,7 +3767,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-wolf.json",
@@ -3548,7 +3784,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/fichtenmonokultur__temperatur+totholzentnahme__praedatoren-keine.json",
@@ -3564,28 +3801,32 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__keine__praedatoren-luchs.json",
       "waldtyp": "kiefernwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__keine__praedatoren-wolf.json",
       "waldtyp": "kiefernwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__keine__praedatoren-keine.json",
       "waldtyp": "kiefernwald",
       "konfig_id": "keine",
       "ereignisse": [],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-beide.json",
@@ -3597,7 +3838,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-luchs.json",
@@ -3609,7 +3851,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-wolf.json",
@@ -3621,7 +3864,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer__praedatoren-keine.json",
@@ -3633,7 +3877,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit__praedatoren-beide.json",
@@ -3645,7 +3890,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit__praedatoren-luchs.json",
@@ -3657,7 +3903,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit__praedatoren-wolf.json",
@@ -3669,7 +3916,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit__praedatoren-keine.json",
@@ -3681,7 +3929,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dauer8__praedatoren-beide.json",
@@ -3693,7 +3942,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dauer8__praedatoren-luchs.json",
@@ -3705,7 +3955,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dauer8__praedatoren-wolf.json",
@@ -3717,7 +3968,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dauer8__praedatoren-keine.json",
@@ -3729,7 +3981,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur__praedatoren-beide.json",
@@ -3741,7 +3994,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur__praedatoren-luchs.json",
@@ -3753,7 +4007,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur__praedatoren-wolf.json",
@@ -3765,7 +4020,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur__praedatoren-keine.json",
@@ -3777,7 +4033,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm__praedatoren-beide.json",
@@ -3789,7 +4046,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm__praedatoren-luchs.json",
@@ -3801,7 +4059,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm__praedatoren-wolf.json",
@@ -3813,7 +4072,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm__praedatoren-keine.json",
@@ -3825,7 +4085,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-beide.json",
@@ -3837,7 +4098,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-luchs.json",
@@ -3849,7 +4111,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-wolf.json",
@@ -3861,7 +4124,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme__praedatoren-keine.json",
@@ -3873,7 +4137,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-beide.json",
@@ -3889,7 +4154,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-luchs.json",
@@ -3905,7 +4171,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-wolf.json",
@@ -3921,7 +4188,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit__praedatoren-keine.json",
@@ -3937,7 +4205,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -3953,7 +4222,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -3969,7 +4239,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -3985,7 +4256,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -4001,7 +4273,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-beide.json",
@@ -4017,7 +4290,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-luchs.json",
@@ -4033,7 +4307,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-wolf.json",
@@ -4049,7 +4324,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer__praedatoren-keine.json",
@@ -4065,7 +4341,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-beide.json",
@@ -4081,7 +4358,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-luchs.json",
@@ -4097,7 +4375,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-wolf.json",
@@ -4113,7 +4392,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-borkenkaefer-dauer8__praedatoren-keine.json",
@@ -4129,7 +4409,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-beide.json",
@@ -4145,7 +4426,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-luchs.json",
@@ -4161,7 +4443,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-wolf.json",
@@ -4177,7 +4460,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-sturm__praedatoren-keine.json",
@@ -4193,7 +4477,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-beide.json",
@@ -4209,7 +4494,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-luchs.json",
@@ -4225,7 +4511,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-wolf.json",
@@ -4241,7 +4528,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-borkenkaefer__praedatoren-keine.json",
@@ -4257,7 +4545,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-beide.json",
@@ -4273,7 +4562,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-luchs.json",
@@ -4289,7 +4579,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-wolf.json",
@@ -4305,7 +4596,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__borkenkaefer-dann-totholzentnahme__praedatoren-keine.json",
@@ -4321,7 +4613,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-beide.json",
@@ -4337,7 +4630,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-luchs.json",
@@ -4353,7 +4647,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-wolf.json",
@@ -4369,7 +4664,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-borkenkaefer__praedatoren-keine.json",
@@ -4385,7 +4681,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-beide.json",
@@ -4401,7 +4698,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-luchs.json",
@@ -4417,7 +4715,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-wolf.json",
@@ -4433,7 +4732,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm__praedatoren-keine.json",
@@ -4449,7 +4749,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm-dauer8__praedatoren-beide.json",
@@ -4465,7 +4766,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm-dauer8__praedatoren-luchs.json",
@@ -4481,7 +4783,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm-dauer8__praedatoren-wolf.json",
@@ -4497,7 +4800,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-sturm-dauer8__praedatoren-keine.json",
@@ -4513,7 +4817,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-beide.json",
@@ -4529,7 +4834,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-luchs.json",
@@ -4545,7 +4851,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-wolf.json",
@@ -4561,7 +4868,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit__praedatoren-keine.json",
@@ -4577,7 +4885,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -4593,7 +4902,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -4609,7 +4919,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -4625,7 +4936,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -4641,7 +4953,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-beide.json",
@@ -4657,7 +4970,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-luchs.json",
@@ -4673,7 +4987,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-wolf.json",
@@ -4689,7 +5004,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme__praedatoren-keine.json",
@@ -4705,7 +5021,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-beide.json",
@@ -4721,7 +5038,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-luchs.json",
@@ -4737,7 +5055,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-wolf.json",
@@ -4753,7 +5072,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__trockenheit-dann-totholzentnahme-dauer8__praedatoren-keine.json",
@@ -4769,7 +5089,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-beide.json",
@@ -4785,7 +5106,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-luchs.json",
@@ -4801,7 +5123,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-wolf.json",
@@ -4817,7 +5140,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit__praedatoren-keine.json",
@@ -4833,7 +5157,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-beide.json",
@@ -4849,7 +5174,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-luchs.json",
@@ -4865,7 +5191,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-wolf.json",
@@ -4881,7 +5208,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-trockenheit-dauer8__praedatoren-keine.json",
@@ -4897,7 +5225,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-beide.json",
@@ -4913,7 +5242,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-luchs.json",
@@ -4929,7 +5259,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-wolf.json",
@@ -4945,7 +5276,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__sturm-dann-totholzentnahme__praedatoren-keine.json",
@@ -4961,7 +5293,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-beide.json",
@@ -4977,7 +5310,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-luchs.json",
@@ -4993,7 +5327,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-wolf.json",
@@ -5009,7 +5344,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__totholzentnahme-dann-sturm__praedatoren-keine.json",
@@ -5025,7 +5361,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-beide.json",
@@ -5041,7 +5378,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-luchs.json",
@@ -5057,7 +5395,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-wolf.json",
@@ -5073,7 +5412,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+borkenkaefer__praedatoren-keine.json",
@@ -5089,7 +5429,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-beide.json",
@@ -5105,7 +5446,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-luchs.json",
@@ -5121,7 +5463,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-wolf.json",
@@ -5137,7 +5480,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit__praedatoren-keine.json",
@@ -5153,7 +5497,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit-dauer8__praedatoren-beide.json",
@@ -5169,7 +5514,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit-dauer8__praedatoren-luchs.json",
@@ -5185,7 +5531,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit-dauer8__praedatoren-wolf.json",
@@ -5201,7 +5548,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+trockenheit-dauer8__praedatoren-keine.json",
@@ -5217,7 +5565,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": 3
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-beide.json",
@@ -5233,7 +5582,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-luchs.json",
@@ -5249,7 +5599,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-wolf.json",
@@ -5265,7 +5616,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+sturm__praedatoren-keine.json",
@@ -5281,7 +5633,8 @@
           "trigger_jahr": 1
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-beide.json",
@@ -5297,7 +5650,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "beide"
+      "wildverbiss_regler": "beide",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-luchs.json",
@@ -5313,7 +5667,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "luchs"
+      "wildverbiss_regler": "luchs",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-wolf.json",
@@ -5329,7 +5684,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "wolf"
+      "wildverbiss_regler": "wolf",
+      "brand_jahr": null
     },
     {
       "datei": "simulationen/kiefernwald__temperatur+totholzentnahme__praedatoren-keine.json",
@@ -5345,7 +5701,8 @@
           "trigger_jahr": 0
         }
       ],
-      "wildverbiss_regler": "keine"
+      "wildverbiss_regler": "keine",
+      "brand_jahr": null
     }
   ]
 }

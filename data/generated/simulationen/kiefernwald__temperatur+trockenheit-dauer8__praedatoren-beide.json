@@ -12,7 +12,8 @@
         "trigger_jahr": 0
       }
     ],
-    "wildverbiss_regler": "beide"
+    "wildverbiss_regler": "beide",
+    "brand_jahr": 3
   },
   "zeitreihe": {
     "jahr_0": {

@@ -3,7 +3,8 @@
     "waldtyp": "fichtenmonokultur",
     "konfig_id": "keine",
     "ereignisse": [],
-    "wildverbiss_regler": "luchs"
+    "wildverbiss_regler": "luchs",
+    "brand_jahr": null
   },
   "zeitreihe": {
     "jahr_0": {

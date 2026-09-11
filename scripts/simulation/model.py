@@ -213,6 +213,7 @@ class Simulation:
         self._kaefer_gestartet = False
         self._entnahme_ausgeloest = False
         self._brand_ausgeloest = False
+        self._brand_jahr = None  # M37: welches Jahr, fuer die UI-Ursachenangabe im Dashboard
 
     def _wild_start(self):
         # Startet niedrig und wächst über ~5 Jahre auf die Zielstufe zu (2.10.2: kein
@@ -418,6 +419,7 @@ class Simulation:
         # unberührt.
         if not self._brand_ausgeloest and temperatur_aktiv and s["brandrisiko"] >= BRANDSCHWELLE:
             self._brand_ausgeloest = True
+            self._brand_jahr = jahr
             kronendach_vor = s["kronendach"]
             s["kronendach"] = _clamp(s["kronendach"] - 55 * self.res_feuer)
             kronendach_verlust = kronendach_vor - s["kronendach"]
@@ -595,7 +597,7 @@ class Simulation:
         for jahr in range(1, JAHRE):
             self._schritt(jahr)
             zeitreihe[f"jahr_{jahr}"] = self._snapshot()
-        return zeitreihe
+        return zeitreihe, self._brand_jahr
 
     def _snapshot(self):
         s = self.state
@@ -605,8 +607,12 @@ class Simulation:
 
 
 def simuliere(waldtyp, konfiguration, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion):
-    """Öffentliche Schnittstelle: liefert die 21-Jahre-Zeitreihe (jahr_0..jahr_20)
-    aller Indikatoren für einen Waldtyp x Konfiguration x Wolf/Luchs-Anwesenheit.
+    """Öffentliche Schnittstelle: liefert (zeitreihe, brand_jahr) für einen
+    Waldtyp x Konfiguration x Wolf/Luchs-Anwesenheit über 21 Jahre
+    (jahr_0..jahr_20). brand_jahr ist None, wenn im Lauf kein Waldbrand (M36)
+    ausgelöst wurde, sonst das Jahr der Auslösung (für die Ursachenangabe im
+    Dashboard, M37 - der Brand ist endogen, nicht vom Schüler gewählt, und
+    bliebe sonst unerklärt).
 
     dauer_je_typ: {ereignis_typ: dauer_jahre|None}, aus data/stoerungen.json
     (ereignis_stoerungen[].dauer_jahre, null = ab Trigger dauerhaft).

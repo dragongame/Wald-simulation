@@ -82,6 +82,23 @@ const WaldsimLexikon = (() => {
       .join("");
   }
 
+  // M37: Waldbrand ist kein Art-/Faktor-Knoten (nicht Teil der 32 Lexikon-
+  // Knoten laut Umsetzungsauftrag 2.8) - eigener, klar abgesetzter Block
+  // statt einer weiteren "lexikon-karte" in der Knoten-Liste.
+  function renderEreignisse() {
+    const erklaerung = data.stoerungen.waldbrand_erklaerung;
+    if (!erklaerung) return;
+    const src = erklaerung.icon_sprite;
+    document.getElementById("lexikon-ereignisse").innerHTML = `
+      <h2>Ereignisse</h2>
+      <article class="lexikon-karte lexikon-karte--ereignis">
+        ${spriteFrameHtml(`./assets/sprites/${src}`, erklaerung.name, "🔥", "sprite-1-1")}
+        <h3>${escapeHtml(erklaerung.name)}</h3>
+        <p>${escapeHtml(erklaerung.kurzbeschreibung)}</p>
+      </article>
+    `;
+  }
+
   function wireEvents() {
     if (wired) return;
     wired = true;
@@ -89,6 +106,7 @@ const WaldsimLexikon = (() => {
     document.getElementById("lexikon-oeffnen-button").addEventListener("click", async () => {
       data = await WaldsimData.load();
       renderGruppen();
+      renderEreignisse();
       showScreen("screen-lexikon");
     });
 

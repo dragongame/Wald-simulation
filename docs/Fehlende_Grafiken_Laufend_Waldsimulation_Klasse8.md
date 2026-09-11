@@ -61,6 +61,7 @@ watermark or signature, multiple unrelated species in one image
 | # | Status | Dateiname (Vorschlag) | Verwendungsort in der App | Bildtyp (A / B / Sonstiges) | Prompt-Entwurf (Zustandsteil) | Priorität |
 |---|---|---|---|---|---|---|
 | 1 | geliefert (2026-08-26) | stoerung_wildverbiss.png | Wildverbiss-Regler (Kategorie „Strukturelles Ungleichgewicht", 2.10.2/3.2 Umsetzungsauftrag) auf dem Störungs-/Reglerbildschirm | A | „A symbolic illustration of overabundant deer browsing pressure on forest regeneration: a small browsed young sapling with visibly bitten-off shoot tips standing next to a healthy intact twig for contrast, evoking chronic selective browsing damage rather than a single acute event." | mittel |
+| 2 | offen (Platzhalter: Emoji-Fallback 🔥 über die bestehende `sprite-missing`-Logik) | stoerung_waldbrand.png | Arten-Lexikon, neuer „Ereignisse"-Block (`js/lexikon.js` `renderEreignisse()`, M37) – Waldbrand ist kein Auswahl-Häkchen, hat also keine Feldkarte im Wizard, nur diese eine Anzeigestelle | A | „A symbolic illustration of a recently burned forest patch: a few charred, blackened tree trunks with smoke-grey bark standing among ash-dusted ground and pale regrowth shoots just emerging at the base, evoking the aftermath of a forest fire rather than active flames." | niedrig |
 
 <!--
 Beispielzeile zur Orientierung (bitte löschen, sobald die erste echte Zeile eingetragen wird):

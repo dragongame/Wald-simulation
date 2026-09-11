@@ -211,7 +211,7 @@ def main():
                 if konfig_id == "keine" and praedatoren_code == "beide":
                     continue  # ungültig: keine Abweichung vom Ausgangszustand (2.10.2/3.2)
 
-                zeitreihe = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion)
+                zeitreihe, brand_jahr = simuliere(waldtyp, events, wolf_aktiv, luchs_aktiv, dauer_je_typ, praedatoren_reduktion)
                 projektion = berechne_projektion(zeitreihe, indikatoren)
 
                 dateiname = f"{waldtyp['id']}__{konfig_id}__praedatoren-{praedatoren_code}.json"
@@ -222,6 +222,11 @@ def main():
                         "konfig_id": konfig_id,
                         "ereignisse": events,
                         "wildverbiss_regler": praedatoren_code,
+                        # M37: Jahr eines endogen ausgelösten Waldbrands (M36),
+                        # None wenn keiner ausgelöst wurde - für die
+                        # Ursachenangabe im Dashboard, da der Brand nicht vom
+                        # Schüler gewählt wurde und sonst unerklärt bliebe.
+                        "brand_jahr": brand_jahr,
                     },
                     "zeitreihe": zeitreihe,
                     "projektion": projektion,

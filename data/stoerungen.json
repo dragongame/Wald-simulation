@@ -211,5 +211,13 @@
     "waldtypen": 3,
     "gesamt_zeitreihen": 357,
     "gesamt_zeitreihen_formel": "119 * 3 = 357"
+  },
+  "waldbrand_erklaerung": {
+    "name": "Waldbrand",
+    "kategorie": "endogenes_ereignis",
+    "icon_sprite": "stoerung_waldbrand.png",
+    "icon_hinweis": "Neuer Bildbedarf seit M37 (siehe Fehlende_Grafiken_Laufend_Waldsimulation_Klasse8.md) - anders als die 5 wählbaren Störungen keine Feldkarte im Wizard, nur Lexikon-/Dashboard-/Graph-Anzeige.",
+    "kurzbeschreibung": "Ein Waldbrand ist keine eigene wählbare Störung, sondern eine mögliche Folge: Er entsteht von selbst, wenn anhaltende Trockenheit und hohe Temperatur gleichzeitig zusammentreffen und das Brandrisiko dadurch stark genug ansteigt - genau wie beim echten Waldbrandgefahrenindex des Deutschen Wetterdienstes. Nadelwälder (Kiefer, Fichte) sind wegen brennbarer Nadelstreu und Harz deutlich anfälliger als naturnahe Laubmischwälder. Nach einem Brand bricht das Kronendach stark ein und die Totholzmenge steigt sprunghaft; Pionierarten wie Birke und Brombeere besiedeln die offene Fläche, die Artenvielfalt sinkt kurzfristig, erholt sich danach aber wieder.",
+    "quelle_abschnitt": "docs/Wissensbasis_Erweiterung_Waldbrand.md (M35), umgesetzt in scripts/simulation/model.py (M36)"
   }
 }
