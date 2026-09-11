@@ -10,6 +10,8 @@
 
 **Hinweis (2026-08-28):** Der Eintrag „Kurven-Darstellung verbessern – Analyse-Screen und Forscherheft-Snapshots" wurde zu Milestone **M24** gemacht (siehe Milestones-Dokument).
 
+**Hinweis (2026-09-11):** Nach einer Impact/UX-Priorisierung wurden vier Einträge zu Milestones **M25–M28** gemacht (siehe Milestones-Dokument): „Hypothese-vs-Ergebnis-Vergleich in der Reflexion", „Mehr Leitfragen für die Reflexion", „Lehrkraft-Übersicht (M19) als generierte Markdown-Datei statt In-App-Screen" und „Kritische Durchsicht: nachvollziehbare, aber nicht triviale Rückkopplungsschleifen in den Top-10-Szenarien". Die übrigen Einträge bleiben bewusst hier stehen, da sie größer sind und eine eigene Scoping-Runde brauchen.
+
 ---
 
 ## Offene Diskussion (noch kein Milestone)
@@ -27,12 +29,6 @@
 - **Wichtige Leitplanke für die Umsetzung:** Die Gruppierung darf nicht von Hand anhand der Top-20-Szenarien (siehe M19) festgelegt werden – ein Knoten, der in diesen 20 Kombinationen unauffällig ist, kann in einer der übrigen ~175 Kombinationen der eigentliche Kaskadentreiber sein, und eine fest verdrahtete Gruppierung würde das verschleiern. Ebenso würde eine Brand-Störung (siehe Eintrag oben) oder jede künftige Erweiterung eine von Hand gepflegte Gruppierung veralten lassen. Stattdessen: Beitrag/Gruppierung **je generiertem Szenario automatisch im Build-Schritt** ableiten (z. B. über Stärke/Varianz der Abweichung vom Ausgangszustand), als zusätzlicher Output neben `model.py`/`build_simulationen.py` – dann ist die Projektion immer für das gezeigte Szenario gültig und bleibt nach jedem `build_simulationen.py`-Lauf automatisch korrekt, genau wie der Rest der Pipeline.
 - **Umfang:** Sollte in mehrere Milestones aufgeteilt werden (Analyse-Kurven, Dashboard-Kacheln, Graph-Knoten haben unterschiedliche Anforderungen an die Darstellung von Sammelknoten) statt als ein großer Schritt. Kandidat für den ersten Teil-Milestone: Analyse-Screen-Kurven, da dort die Kurvenflut aktuell am größten ist.
 - Noch keine Milestone-Nummer – braucht erst weitere Diskussion (u. a. wie Sammelknoten im Graphen visuell dargestellt werden).
-
-### Kritische Durchsicht: nachvollziehbare, aber nicht triviale Rückkopplungsschleifen in den Top-10-Szenarien (2026-09-11)
-
-- **Hintergrund:** M19 wählt die kontrastreichsten Wald×Störung-Kombinationen für die Lehrkraft-Empfehlung aus (`scripts/simulation/build_lehrkraft_kombinationen.py`), aber „größter Kontrast" ist nicht automatisch dasselbe wie „lehrreichste Rückkopplungsschleife".
-- **Idee:** gezielt durchgehen, ob die aktuell empfohlenen Top-Szenarien Rückkopplungsschleifen zeigen, die für Klasse 8 verständlich, aber nicht sofort offensichtlich sind – das eigentliche didaktische Ziel der Simulation (siehe Umsetzungsauftrag). Falls nicht: Auswahlkriterium in `build_lehrkraft_kombinationen.py` ergänzen statt nur nach Kontraststärke zu sortieren.
-- Zunächst reine Analyse-/Review-Aufgabe, kein Code-Vorgriff nötig, bevor das Ergebnis vorliegt.
 
 ### Offener Design-Workshop: drei radikal unterschiedliche Darstellungen der Simulation (2026-09-11)
 
@@ -72,28 +68,10 @@
 - Betrifft in erster Linie den Netzwerk-Graphen (M8/M15), wo Unübersichtlichkeit laut dem Punkt oben am dringendsten ist.
 - Sollte zusammen mit „Vereinfachte Projektion" oben diskutiert, nicht separat umgesetzt werden (gleiche Leitplanke: Gruppierung automatisch aus den generierten Szenariodaten ableiten, nicht von Hand pflegen).
 
-### Lehrkraft-Übersicht (M19) als generierte Markdown-Datei statt In-App-Screen (2026-09-11)
-
-- **Ist-Zustand:** `data/generated/lehrkraft_kombinationen.json` wird bereits build-time von `scripts/simulation/build_lehrkraft_kombinationen.py` erzeugt, aktuell aber live in der App gerendert (`js/lehrkraft.js`, Post-it-Tab „Für Lehrkräfte", `#screen-lehrkraft` in `index.html`).
-- **Idee:** In-App-Screen entfernen, stattdessen die vorhandenen Build-Time-Daten direkt als lesbare Markdown-Datei ausgeben (z. B. `docs/Lehrkraft_Empfehlungen.md`, aus demselben Build-Skript generiert) – Lehrkräfte lesen das außerhalb der Schüler-App, kein zusätzlicher Navigationspunkt nötig.
-- Aufräumarbeit bei Umsetzung: Post-it-Nav-Eintrag, `#screen-lehrkraft`, `js/lehrkraft.js` und der zugehörige Precache-Eintrag müssten entfernt werden.
-
 ### README für das Projekt (2026-09-11)
 
 - Bisher gibt es keine `README.md` im Projekt-Root – Einstieg für neue Mitwirkende/Lehrkräfte läuft aktuell nur über `CLAUDE.md` und die `docs/`-Quelldokumente.
 - **Idee:** kurze `README.md` mit Projektbeschreibung, Zielgruppe, lokalem Start (`python3 -m http.server`), Verweis auf `docs/` als Quelldokumente und auf `CLAUDE.md` für die Entwicklungs-Konventionen.
-
-### Mehr Leitfragen für die Reflexion (2026-09-11)
-
-- Die aktuellen Reflexionsfragen in `js/forscherheft.js` sind wörtlich aus der Wissensbasis Abschnitt 6.5 übernommen (bewusste Entscheidung, siehe M7).
-- **Idee:** zusätzliche Leitfragen ergänzen, um die Reflexion zu vertiefen.
-- Offene Frage: neue Fragen in die Wissensbasis (Abschnitt 6.5) aufnehmen und von dort wörtlich übernehmen (konsistent mit der bisherigen Quelle-vor-Code-Regel), oder als app-eigene Ergänzung ohne Wissensbasis-Bezug behandeln?
-
-### Hypothese-vs-Ergebnis-Vergleich in der Reflexion (2026-09-11, Claude-Vorschlag)
-
-- **Ausgangslage:** Die Hypothese wird bereits vor dem Durchlauf je Wald erfasst (M4) und landet unverändert im Forscherheft-Eintrag (M7), aber es gibt aktuell keine explizite Gegenüberstellung „das hast du vorhergesagt" vs. „das ist tatsächlich passiert" – die Reflexionsfragen (siehe Punkt oben) sind offen formuliert, ohne direkten Rückbezug auf den eigenen Vorab-Text.
-- **Idee:** auf dem Reflexions-Screen (oder im Forscherheft-Eintrag) Hypothesentext und Endzustand/größte Abweichung nebeneinander anzeigen, bevor die Reflexionsfragen beantwortet werden – macht den Vorhersage-Realität-Abgleich zum Teil der Reflexion selbst statt ihn dem Zufall zu überlassen.
-- Ergänzt sich mit „Mehr Leitfragen für die Reflexion" oben (z. B. eine neue Leitfrage könnte direkt auf diese Gegenüberstellung Bezug nehmen).
 
 ### Automatisierter Baseline-Drift-Test für `model.py` (2026-09-11, Claude-Vorschlag)
 

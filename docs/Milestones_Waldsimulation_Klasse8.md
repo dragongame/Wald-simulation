@@ -68,8 +68,17 @@ absichtliche frühere Entscheidungen, hier nicht erneut aufgegriffen.
 
 </details>
 
-**Aktuell offen:** kein Milestone – die nächste Runde wird nach der anstehenden Impact-Priorisierung
-des Ideen-Backlogs neu vergeben (M25 aufwärts).
+**Neue Runde (Stand 2026-09-11):** Ideen-Backlog nach Impact/UX-Nutzen für Schüler:innen und Lehrkraft
+durchgesehen; die folgenden vier Punkte hatten das beste Verhältnis aus Nutzen und Aufwand und wurden
+direkt zu Milestones gemacht (weitere, größere Kandidaten wie „Vereinfachte Projektion für
+Schüler:innen" bleiben bewusst im Ideen-Backlog, da sie eine eigene Scoping-Runde brauchen).
+
+| # | Milestone | Status | Bezug |
+|---|---|---|---|
+| M25 | **Hypothese-vs-Ergebnis-Vergleich in der Reflexion**: Auf dem Reflexions-Screen (`js/forscherheft.js`), vor den Reflexionsfragen, je Wald die eingangs erfasste Hypothese (seit M4) dem tatsächlichen Endzustand/der größten Abweichung (seit M7 im Forscherheft-Eintrag vorhanden) gegenüberstellen – reine Anzeige-Erweiterung, kein neues Datenmodell nötig | ⬜ offen | Backlog „Hypothese-vs-Ergebnis-Vergleich in der Reflexion" |
+| M26 | **Mehr Leitfragen für die Reflexion**: zusätzliche Reflexions-Leitfragen ergänzen – zuerst neue Kandidatenfragen in der Wissensbasis (Abschnitt 6, Punkt 5, neben den zwei bestehenden) ergänzen (konsistent mit der bisherigen Quelle-vor-Code-Regel), danach wörtlich in `js/forscherheft.js` übernehmen | ⬜ offen | Backlog „Mehr Leitfragen für die Reflexion" |
+| M27 | **Lehrkraft-Übersicht als generierte Markdown-Datei statt In-App-Screen**: `scripts/simulation/build_lehrkraft_kombinationen.py` um eine Markdown-Ausgabe erweitern (z. B. `docs/Lehrkraft_Empfehlungen.md`), In-App-Screen entfernen (Post-it-Nav-Eintrag, `#screen-lehrkraft` in `index.html`, `js/lehrkraft.js`), Precache-Manifest neu bauen | ⬜ offen | Backlog „Lehrkraft-Übersicht (M19) als generierte Markdown-Datei statt In-App-Screen" |
+| M28 | **Kritische Durchsicht der Top-Lehrkraft-Szenarien auf nicht-triviale Rückkopplungsschleifen**: die von `build_lehrkraft_kombinationen.py` aktuell empfohlenen Szenarien fachlich gegen die Wissensbasis-Kaskadenlogik prüfen, ob sie für Klasse 8 nachvollziehbare, aber nicht sofort offensichtliche Rückkopplungsschleifen zeigen; bei Bedarf Auswahlkriterium ergänzen statt nur nach Kontraststärke zu sortieren | ⬜ offen | Backlog „Kritische Durchsicht: nachvollziehbare, aber nicht triviale Rückkopplungsschleifen in den Top-10-Szenarien" |
 
 Status-Legende: ⬜ offen · 🔶 in Arbeit · ✅ fertig
 
